@@ -34,9 +34,9 @@ export default function Home(props) {
   function renderProductsList(products) {
     return [{}].concat(products).map((product, i) =>
       i !== 0 ? (
-        <LinkContainer key={product.productId} to={`/products/${product.productId}`}>
-          <ListGroupItem header={product.content.trim().split("\n")[0]}>
-            {"Created: " + new Date(product.createdAt).toLocaleString()}
+        <LinkContainer key={product._id} to={`/products/${product._id}`}>
+          <ListGroupItem header={product.imgName.trim().split("\n")[0]}>
+            {/* {"Created: " + new Date(product.createdAt).toLocaleString()} */}
           </ListGroupItem>
         </LinkContainer>
       ) : (
