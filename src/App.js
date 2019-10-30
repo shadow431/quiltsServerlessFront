@@ -5,7 +5,7 @@ import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
 import "./App.css";
-import serviceWorker from "./serviceWorker";
+import { register } from "./serviceWorker";
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -74,4 +74,5 @@ function App(props) {
     )
   );
 }
+register();
 export default withRouter(App);

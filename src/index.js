@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import config from './config';
 import './index.css';
 import App from './App';
+import { register } from "./serviceWorker";
 
 Amplify.configure({
   Auth: {
@@ -22,7 +23,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "notes",
+        name: "products",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
       },
@@ -40,3 +41,4 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+register();

@@ -37,7 +37,7 @@ export default function NewProduct(props) {
         ? await s3Upload(file.current)
         : null;
 
-      await createNote({ content, attachment });
+      await createProduct({ content, attachment });
       props.history.push("/");
     } catch (e) {
       alert(e);
@@ -45,9 +45,9 @@ export default function NewProduct(props) {
     }
   }
 
-  function createNote(note) {
-    return API.post("notes", "/notes", {
-      body: note
+  function createProduct(product) {
+    return API.post("products", "/products", {
+      body: product
     });
   }
 

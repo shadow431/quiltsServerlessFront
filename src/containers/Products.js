@@ -8,27 +8,27 @@ import "./Products.css";
 
 export default function Products(props) {
   const file = useRef(null);
-  const [note, setNote] = useState(null);
+  const [product, setProduct] = useState(null);
   const [content, setContent] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    function loadNote() {
+    function loadProduct() {
       return API.get("Products", `/Products/${props.match.params.id}`);
     }
 
     async function onLoad() {
       try {
-        const note = await loadNote();
-        const { content, attachment } = note;
+        const product = await loadProduct();
+        const { content, attachment } = product;
 
         if (attachment) {
-          note.attachmentURL = await Storage.vault.get(attachment);
+          product.attachmentURL = await Storage.vault.get(attachment);
         }
 
         setContent(content);
-        setNote(note);
+        setProduct(product);
       } catch (e) {
         alert(e);
       }
@@ -49,9 +49,9 @@ export default function Products(props) {
     file.current = event.target.files[0];
   }
 
-  function saveNote(note) {
+  function saveProduct(product) {
     return API.put("Products", `/Products/${props.match.params.id}`, {
-      body: note
+      body: product
     });
   }
 
@@ -75,9 +75,9 @@ export default function Products(props) {
         attachment = await s3Upload(file.current);
       }
 
-      await saveNote({
+      await saveProduct({
         content,
-        attachment: attachment || note.attachment
+        attachment: attachment || product.attachment
       });
       props.history.push("/");
     } catch (e) {
@@ -86,7 +86,7 @@ export default function Products(props) {
     }
   }
 
-  function deleteNote() {
+  function deleteProduct() {
     return API.del("Products", `/Products/${props.match.params.id}`);
   }
 
@@ -94,7 +94,7 @@ export default function Products(props) {
     event.preventDefault();
 
     const confirmed = window.confirm(
-      "Are you sure you want to delete this note?"
+      "Are you sure you want to delete this product?"
     );
 
     if (!confirmed) {
@@ -104,7 +104,7 @@ export default function Products(props) {
     setIsDeleting(true);
 
     try {
-      await deleteNote();
+      await deleteProduct();
       props.history.push("/");
     } catch (e) {
       alert(e);
@@ -114,7 +114,7 @@ export default function Products(props) {
 
   return (
     <div className="Products">
-      {note && (
+      {product && (
         <form onSubmit={handleSubmit}>
           <FormGroup controlId="content">
             <FormControl
@@ -123,22 +123,22 @@ export default function Products(props) {
               onChange={e => setContent(e.target.value)}
             />
           </FormGroup>
-          {note.attachment && (
+          {product.attachment && (
             <FormGroup>
               <ControlLabel>Attachment</ControlLabel>
               <FormControl.Static>
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
-                  href={note.attachmentURL}
+                  href={product.attachmentURL}
                 >
-                  {formatFilename(note.attachment)}
+                  {formatFilename(product.attachment)}
                 </a>
               </FormControl.Static>
             </FormGroup>
           )}
           <FormGroup controlId="file">
-            {!note.attachment && <ControlLabel>Attachment</ControlLabel>}
+            {!product.attachment && <ControlLabel>Attachment</ControlLabel>}
             <FormControl onChange={handleFileChange} type="file" />
           </FormGroup>
           <LoaderButton
