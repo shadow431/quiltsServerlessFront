@@ -46,8 +46,7 @@ export default function NewProduct(props) {
     setIsLoading(true);
 
     try {
-      console.log(file.current);
-      // await s3Upload(file.current);
+      await s3Upload(file.current);
 
       const response = await createProduct({ imgName, imgType, price, imgHeight, imgWidth, imgUrl });
       console.log("db attempt: " + response);

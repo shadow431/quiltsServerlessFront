@@ -1,7 +1,7 @@
 const dev = {
   STRIPE_KEY: "pk_test_v1amvR35uoCNduJfkqGB8RLD",
   s3: {
-    REGION: "us-east-2",
+    REGION: "us-west-2",
     BUCKET: "wanda-quilts"
   },
   apiGateway: {
@@ -19,7 +19,7 @@ const dev = {
 const prod = {
   STRIPE_KEY: "pk_test_LvcoovDotThQ9oZ5Jb5jWjLp00XjM6Vkpf",
   s3: {
-    REGION: "us-east-2",
+    REGION: "us-west-2",
     BUCKET: "wanda-quilts"
   },
   apiGateway: {
