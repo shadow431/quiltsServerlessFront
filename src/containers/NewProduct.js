@@ -30,7 +30,6 @@ export default function NewProduct(props) {
     setImgName(file.current.name.split(".")[0]);
     setImgType(file.current.name.substr(0,2));
     setImgUrl(imgLinkLocation + file.current.name);
-    console.log(file.current);
   }
 
   async function handleSubmit(event) {
@@ -47,9 +46,11 @@ export default function NewProduct(props) {
     setIsLoading(true);
 
     try {
-      await s3Upload(file.current);
+      console.log(file.current);
+      // await s3Upload(file.current);
 
-      await createProduct({ imgName, imgType, price, imgHeight, imgWidth, imgUrl });
+      const response = await createProduct({ imgName, imgType, price, imgHeight, imgWidth, imgUrl });
+      console.log("db attempt: " + response);
       props.history.push("/");
     } catch (e) {
       alert(e);
@@ -57,10 +58,11 @@ export default function NewProduct(props) {
     }
   }
 
-  function createProduct(product) {
-    return API.post("products", "/products", {
-      body: product
-    });
+  async function createProduct(product) {
+      const response = await API.post("products", "/products", {
+        body: product
+      });
+      console.log("createProduct response: " + response);
   }
 
   return (
