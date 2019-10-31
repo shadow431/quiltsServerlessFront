@@ -9,7 +9,7 @@ import "./NewProduct.css";
 
 
 export default function NewProduct(props) {
-  const imgLinkLocation = "https://wanda-quilts.s3-us-west-2.amazonaws.com/product/";
+  const imgLinkLocation = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
   const file = useRef(null);
   const [imgName, setImgName] = useState("");
   const [imgType, setImgType] = useState("");
@@ -48,8 +48,7 @@ export default function NewProduct(props) {
     try {
       await s3Upload(file.current);
 
-      const response = await createProduct({ imgName, imgType, price, imgHeight, imgWidth, imgUrl });
-      console.log("db attempt: " + response);
+      await createProduct({ imgName, imgType, price, imgHeight, imgWidth, imgUrl });
       props.history.push("/");
     } catch (e) {
       alert(e);
@@ -61,7 +60,7 @@ export default function NewProduct(props) {
       const response = await API.post("products", "/products", {
         body: product
       });
-      console.log("createProduct response: " + response);
+      return response.key;
   }
 
   return (

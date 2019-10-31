@@ -35,9 +35,11 @@ export default function Home(props) {
     return [{}].concat(products).map((product, i) =>
       i !== 0 ? (
         <LinkContainer key={product._id} to={`/products/${product._id}`}>
-          <ListGroupItem header={product.imgName.trim().split("\n")[0]}>
+          <ListGroupItem header={product.imgName.trim().split(".")[0]}>
+            <img src={product.imgUrl} alt="Product View"></img>
             {/* {"Created: " + new Date(product.createdAt).toLocaleString()} */}
           </ListGroupItem>
+
         </LinkContainer>
       ) : (
         <LinkContainer key="new" to="/products/new">

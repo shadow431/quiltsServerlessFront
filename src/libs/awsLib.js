@@ -9,5 +9,5 @@ export async function s3Upload(file) {
   });
   console.log("s3upload stored: " + stored);
 
-  return stored.key;
+  return stored;
 }

@@ -1,12 +1,12 @@
 const dev = {
   STRIPE_KEY: "pk_test_v1amvR35uoCNduJfkqGB8RLD",
   s3: {
-    REGION: "us-west-2",
-    BUCKET: "wanda-quilts"
+    REGION: "us-east-2",
+    BUCKET: "wandaquilts"
   },
   apiGateway: {
     REGION: "us-east-2",
-    URL: "https://3kl73n4tjk.execute-api.us-east-2.amazonaws.com/prod"
+    URL: "https://h9ueaa5ebh.execute-api.us-east-2.amazonaws.com/prod"
   },
   cognito: {
     REGION: "us-east-2",
@@ -19,12 +19,12 @@ const dev = {
 const prod = {
   STRIPE_KEY: "pk_test_LvcoovDotThQ9oZ5Jb5jWjLp00XjM6Vkpf",
   s3: {
-    REGION: "us-west-2",
-    BUCKET: "wanda-quilts"
+    REGION: "us-east-2",
+    BUCKET: "wandaquilts"
   },
   apiGateway: {
     REGION: "us-east-2",
-    URL: "https://3kl73n4tjk.execute-api.us-east-2.amazonaws.com/prod"
+    URL: "https://h9ueaa5ebh.execute-api.us-east-2.amazonaws.com/prod"
   },
   cognito: {
     REGION: "us-east-2",
@@ -41,6 +41,7 @@ const config = process.env.REACT_APP_STAGE === 'prod'
 
 export default {
   // Add common config values here
+  AWS_DEFAULT_REGION: "us-east-2",
   MAX_ATTACHMENT_SIZE: 5000000,
   ...config
 };
