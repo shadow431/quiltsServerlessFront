@@ -58,24 +58,30 @@ export default function Home(props) {
       <div className="lander">
         <h1>Quilting and Embroidery</h1>
         <p>A Quilts and Embroidery Provider</p>
+
       </div>
     );
   }
 
   function renderProducts() {
     return (
-      <div className="products">
+      <div className="products" className="row">
         <PageHeader>Products Available!!</PageHeader>
-        <ListGroup>
+        <ListGroup className="col-md-6">
           {!isLoading && renderProductsList(products)}
         </ListGroup>
+
       </div>
     );
   }
 
   return (
     <div className="Home">
-      {props.isAuthenticated ? renderProducts() : renderLander()}
+      {renderProducts()}
+
     </div>
   );
 }
+
+
+// {props.isAuthenticated ?  : renderLander()}
