@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { LinkContainer } from "react-router-bootstrap";
-import { Col, ListGroup, ListGroupItem } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Grid,
+  Thumbnail
+} from "react-bootstrap";
 import "./Home.css";
 
 export default function Home(props) {
@@ -32,34 +37,33 @@ export default function Home(props) {
   }
 
   function renderProductsList(products) {
-    return [{}].concat(products).map((product, i) =>
-      i !== 0 ? (
-        <LinkContainer key={product._id} to={`/products/${product._id}`}>
-          <ListGroupItem header={product.imgName.trim().split(".")[0]}>
-            <img src={product.imgUrl} alt="Product View"></img>
-          </ListGroupItem>
-
-        </LinkContainer>
-      ) : (
-        <LinkContainer key="new" to="/products/new">
-          <ListGroupItem>
-            <h4>
-              <b>{"\uFF0B"}</b> Create a new note
-            </h4>
-          </ListGroupItem>
-        </LinkContainer>
-      )
-    );
-  }
+    return [{}].concat(products).map((product, i) => {
+      if(i !== 0) {
+        return (
+          <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work...">
+            <h3>{product.imgName}</h3>
+            <Button bsStyle="primary">
+              Add to Cart!
+            </Button>
+          </Thumbnail>
+        )
+      }
+    })
+}
 
   function renderProducts() {
     return (
-      <Col id="homeHead" md={6}>
-        <ListGroup>
-          {!isLoading && renderProductsList(products)}
-        </ListGroup>
-
-      </Col>
+      <Grid fluid>
+        <Col md={4} mdOffset={2} xs={6} xsOffset={3}>
+            {
+              isLoading ?
+                (
+                  <h3>Loading products now, please be patient :)</h3>
+                )
+              : renderProductsList(products)
+            }
+        </Col>
+      </Grid>
     );
   }
 
@@ -72,3 +76,11 @@ export default function Home(props) {
 
 
 // {props.isAuthenticated ?  : renderLander()}
+// to={`/products/${product._id}`}
+{/* <LinkContainer key="new" to="/products/new">
+          <ListGroupItem>
+            <h4>
+              <b>{"\uFF0B"}</b> Create a new note
+            </h4>
+          </ListGroupItem>
+        </LinkContainer> */}
