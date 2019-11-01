@@ -43,7 +43,7 @@ function App(props) {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Scratch</Link>
+              <Link to="/">Wanda's Quilts and Embroidery</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -69,6 +69,50 @@ function App(props) {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <Nav bsStyle="pills" stacked pullLeft activeKey={1}>
+          <NavItem eventKey={1} to="/">
+            Home
+          </NavItem>
+          <NavItem eventKey={2} to="/schedule">
+            Show Schedule
+          </NavItem>
+          <NavItem eventKey={3} to="/baby">
+            Baby Quilts
+          </NavItem>
+          <NavItem eventKey={4} to="/potato">
+            Baked Potato Bag
+          </NavItem>
+          <NavItem eventKey={5} to="bowlSmall">
+            Bowl Wrap Small
+          </NavItem>
+          <NavItem eventKey={6} to="bowlLarge">
+            Bowl Wrap Large
+          </NavItem>
+          <NavItem eventKey={7} to="/caps">
+            Caps
+          </NavItem>
+          <NavItem eventKey={8} to="dog">
+            Dog Quilts
+          </NavItem>
+          <NavItem eventKey={9} to="ovenMitt">
+            Oven Mitts
+          </NavItem>
+          <NavItem eventKey={10} to="sling">
+            Sling
+          </NavItem>
+          <NavItem eventKey={11} to="tortBag">
+            Tortilla Bags
+          </NavItem>
+          <NavItem eventKey={12} to="toteBag">
+            Tote Bags
+          </NavItem>
+          <NavItem eventKey={13} to="toteZip">
+            Zipper Totes
+          </NavItem>
+          <NavItem eventKey={14} to="contact">
+            Contact Us
+          </NavItem>
+        </Nav>
         <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
       </div>
     )
@@ -76,3 +120,47 @@ function App(props) {
 }
 register();
 export default withRouter(App);
+
+
+{/* <LinkContainer to="/">
+              <NavItem>Home</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/schedule">
+              <NavItem>Show Schedule</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/baby">
+              <NavItem>Baby Quilts</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/potato">
+              <NavItem>Baked Potato Bag</NavItem>
+            </LinkContainer>
+            <LinkContainer to="bowlSmall">
+              <NavItem>Bowl Wrap Small</NavItem>
+            </LinkContainer>
+            <LinkContainer to="bowlLarge">
+              <NavItem>Bowl Wrap Large</NavItem>
+            </LinkContainer>
+            <LinkContainer to="/caps">
+              <NavItem>Caps</NavItem>
+            </LinkContainer>
+            <LinkContainer to="dog">
+              <NavItem>Dog Quilts</NavItem>
+            </LinkContainer>
+            <LinkContainer to="ovenMitt">
+              <NavItem>Oven Mitts</NavItem>
+            </LinkContainer>
+            <LinkContainer to="sling">
+              <NavItem>Sling</NavItem>
+            </LinkContainer>
+            <LinkContainer to="tortBag">
+              <NavItem>Tortilla Bags</NavItem>
+            </LinkContainer>
+            <LinkContainer to="toteBag">
+              <NavItem>Tote Bags</NavItem>
+            </LinkContainer>
+            <LinkContainer to="toteZip">
+              <NavItem>Zipper Totes</NavItem>
+            </LinkContainer>
+            <LinkContainer to="contact">
+              <NavItem>Contact Us</NavItem>
+            </LinkContainer> */}

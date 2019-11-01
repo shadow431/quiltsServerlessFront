@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { LinkContainer } from "react-router-bootstrap";
-import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Col, ListGroup, ListGroupItem } from "react-bootstrap";
 import "./Home.css";
 
 export default function Home(props) {
@@ -37,7 +37,6 @@ export default function Home(props) {
         <LinkContainer key={product._id} to={`/products/${product._id}`}>
           <ListGroupItem header={product.imgName.trim().split(".")[0]}>
             <img src={product.imgUrl} alt="Product View"></img>
-            {/* {"Created: " + new Date(product.createdAt).toLocaleString()} */}
           </ListGroupItem>
 
         </LinkContainer>
@@ -53,32 +52,20 @@ export default function Home(props) {
     );
   }
 
-  function renderLander() {
-    return (
-      <div className="lander">
-        <h1>Quilting and Embroidery</h1>
-        <p>A Quilts and Embroidery Provider</p>
-
-      </div>
-    );
-  }
-
   function renderProducts() {
     return (
-      <div className="products" className="row">
-        <PageHeader>Products Available!!</PageHeader>
-        <ListGroup className="col-md-6">
+      <Col id="homeHead" md={6}>
+        <ListGroup>
           {!isLoading && renderProductsList(products)}
         </ListGroup>
 
-      </div>
+      </Col>
     );
   }
 
   return (
     <div className="Home">
       {renderProducts()}
-
     </div>
   );
 }

@@ -20,6 +20,11 @@
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+
 .Home .notes p {
   color: #666;
 }
+
+/* #homeHead {
+  margin-left: 5%;
+} */
