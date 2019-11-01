@@ -69,7 +69,7 @@ function App(props) {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <NavDropdown>
+        {/* <NavDropdown> */}
           <Nav bsStyle="pills" fixed stacked pullLeft activeKey={1}>
             <NavItem eventKey={1} to="/">
               Home
@@ -114,7 +114,7 @@ function App(props) {
               Contact Us
             </NavItem>
           </Nav>
-        </NavDropdown>
+        {/* </NavDropdown> */}
         <Routes appProps={{ isAuthenticated, userHasAuthenticated }} />
       </div>
     )
