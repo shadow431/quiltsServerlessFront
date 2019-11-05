@@ -13,6 +13,7 @@ export default function NewProduct(props) {
   const file = useRef(null);
   const [imgName, setImgName] = useState("");
   const [imgType, setImgType] = useState("");
+  const [imgSubCat, setImgSubCat] = useState("");
   const [price, setPrice] = useState("");
   const imgHeight = "auto";
   const imgWidth = "30%";
@@ -28,7 +29,8 @@ export default function NewProduct(props) {
   function handleFileChange(event) {
     file.current = event.target.files[0];
     setImgName(file.current.name.split(".")[0]);
-    setImgType(file.current.name.substr(0,2));
+    setImgType(file.current.name.substr(0,3));
+    setImgSubCat(file.current.name.substr(3, 3));
     setImgUrl(imgLinkLocation + file.current.name);
   }
 
@@ -48,7 +50,7 @@ export default function NewProduct(props) {
     try {
       await s3Upload(file.current);
 
-      await createProduct({ imgName, imgType, price, imgHeight, imgWidth, imgUrl });
+      await createProduct({ imgName, imgType, imgSubCat, price, imgHeight, imgWidth, imgUrl });
       props.history.push("/");
     } catch (e) {
       alert(e);
