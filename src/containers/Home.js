@@ -79,10 +79,4 @@ export default function Home(props) {
 
 // {props.isAuthenticated ?  : renderLander()}
 // to={`/products/${product._id}`}
-{/* <LinkContainer key="new" to="/products/new">
-          <ListGroupItem>
-            <h4>
-              <b>{"\uFF0B"}</b> Create a new note
-            </h4>
-          </ListGroupItem>
-        </LinkContainer> */}
+{/*  */}

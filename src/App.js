@@ -51,8 +51,8 @@ function App(props) {
             <Nav pullRight>
               {isAuthenticated ? (
                 <>
-                  <LinkContainer to="/settings">
-                    <NavItem>Settings</NavItem>
+                  <LinkContainer to="/admin">
+                    <NavItem>Inventory</NavItem>
                   </LinkContainer>
                   <NavItem onClick={handleLogout}>Logout</NavItem>
                 </>
@@ -71,46 +71,46 @@ function App(props) {
         </Navbar>
         {/* <NavDropdown> */}
           <Nav bsStyle="pills" fixed stacked pullLeft activeKey={1}>
-            <NavItem eventKey={1} to="/">
+            <NavItem eventKey={1} href="/">
               Home
             </NavItem>
-            <NavItem eventKey={2} to="/schedule">
+            <NavItem eventKey={2} href="/schedule">
               Show Schedule
             </NavItem>
-            <NavItem eventKey={3} to="/baby">
+            <NavItem eventKey={3} href="/baby">
               Baby Quilts
             </NavItem>
-            <NavItem eventKey={4} to="/potato">
+            <NavItem eventKey={4} href="/potato">
               Baked Potato Bag
             </NavItem>
-            <NavItem eventKey={5} to="/bowlSmall">
+            <NavItem eventKey={5} href="/bowlSmall">
               Bowl Wrap Small
             </NavItem>
-            <NavItem eventKey={6} to="/bowlLarge">
+            <NavItem eventKey={6} href="/bowlLarge">
               Bowl Wrap Large
             </NavItem>
-            <NavItem eventKey={7} to="/caps">
+            <NavItem eventKey={7} href="/caps">
               Caps
             </NavItem>
-            <NavItem eventKey={8} to="/dog">
+            <NavItem eventKey={8} href="/dog">
               Dog Quilts
             </NavItem>
-            <NavItem eventKey={9} to="/ovenMitt">
+            <NavItem eventKey={9} href="/ovenMitt">
               Oven Mitts
             </NavItem>
-            <NavItem eventKey={10} to="/sling">
+            <NavItem eventKey={10} href="/sling">
               Sling
             </NavItem>
-            <NavItem eventKey={11} to="/tortBag">
+            <NavItem eventKey={11} href="/tortBag">
               Tortilla Bags
             </NavItem>
-            <NavItem eventKey={12} to="/toteBag">
+            <NavItem eventKey={12} href="/toteBag">
               Tote Bags
             </NavItem>
-            <NavItem eventKey={13} to="/toteZip">
+            <NavItem eventKey={13} href="/toteZip">
               Zipper Totes
             </NavItem>
-            <NavItem eventKey={14} to="/contact">
+            <NavItem eventKey={14} href="/contact">
               Contact Us
             </NavItem>
           </Nav>
@@ -122,47 +122,3 @@ function App(props) {
 }
 register();
 export default withRouter(App);
-
-
-{/* <LinkContainer to="/">
-              <NavItem>Home</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/schedule">
-              <NavItem>Show Schedule</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/baby">
-              <NavItem>Baby Quilts</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/potato">
-              <NavItem>Baked Potato Bag</NavItem>
-            </LinkContainer>
-            <LinkContainer to="bowlSmall">
-              <NavItem>Bowl Wrap Small</NavItem>
-            </LinkContainer>
-            <LinkContainer to="bowlLarge">
-              <NavItem>Bowl Wrap Large</NavItem>
-            </LinkContainer>
-            <LinkContainer to="/caps">
-              <NavItem>Caps</NavItem>
-            </LinkContainer>
-            <LinkContainer to="dog">
-              <NavItem>Dog Quilts</NavItem>
-            </LinkContainer>
-            <LinkContainer to="ovenMitt">
-              <NavItem>Oven Mitts</NavItem>
-            </LinkContainer>
-            <LinkContainer to="sling">
-              <NavItem>Sling</NavItem>
-            </LinkContainer>
-            <LinkContainer to="tortBag">
-              <NavItem>Tortilla Bags</NavItem>
-            </LinkContainer>
-            <LinkContainer to="toteBag">
-              <NavItem>Tote Bags</NavItem>
-            </LinkContainer>
-            <LinkContainer to="toteZip">
-              <NavItem>Zipper Totes</NavItem>
-            </LinkContainer>
-            <LinkContainer to="contact">
-              <NavItem>Contact Us</NavItem>
-            </LinkContainer> */}
