@@ -10,38 +10,38 @@ import {
 import "./Home.css";
 
 export default function Home(props) {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const products = props.products;
+  const isLoading = props.isLoading;
 
-  useEffect(() => {
-    async function onLoad() {
-      // if (!props.isAuthenticated) {
-      //   return;
-      // }
+  // useEffect(() => {
+  //   async function onLoad() {
+  //     // if (!props.isAuthenticated) {
+  //     //   return;
+  //     // }
 
-      try {
-        const products = await loadProducts();
-        setProducts(products);
-      } catch (e) {
-        alert(e);
-      }
+  //     try {
+  //       const products = await loadProducts();
+  //       setProducts(products);
+  //     } catch (e) {
+  //       alert(e);
+  //     }
 
-      setIsLoading(false);
-    }
+  //     setIsLoading(false);
+  //   }
 
-    onLoad();
-  }, [props.isAuthenticated]);
+  //   onLoad();
+  // }, [props.isAuthenticated]);
 
-  function loadProducts() {
-    return API.get("products", "/products");
-  }
+  // function loadProducts() {
+  //   return API.get("products", "/products");
+  // }
 
   function renderProductsList(products) {
     return [{}].concat(products).map((product, i) => {
       if(i !== 0) {
         return (
-          <Col md={3} align-self-start>
-            <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work...">
+          <Col key={i * 3} md={3}>
+            <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work..." style={{"width":product.width}}>
               <h3>{product.imgName}</h3>
               <Button bsStyle="primary">
                 Add to Cart!
@@ -51,7 +51,7 @@ export default function Home(props) {
         )
       }
     })
-}
+  }
 
   function renderProducts() {
     return (
@@ -75,8 +75,3 @@ export default function Home(props) {
     </div>
   );
 }
-
-
-// {props.isAuthenticated ?  : renderLander()}
-// to={`/products/${product._id}`}
-{/*  */}

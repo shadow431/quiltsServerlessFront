@@ -15,7 +15,7 @@ export default function NewProduct(props) {
   const [imgType, setImgType] = useState("");
   const [price, setPrice] = useState("");
   const imgHeight = "auto";
-  const imgWidth = "40%";
+  const imgWidth = "30%";
   const [imgUrl, setImgUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -57,10 +57,11 @@ export default function NewProduct(props) {
   }
 
   async function createProduct(product) {
-      const response = await API.post("products", "/products", {
-        body: product
-      });
-      return response.key;
+    console.log(product);
+    const response = await API.post("products", "/products", {
+      body: product
+    });
+    return response.key;
   }
 
   return (

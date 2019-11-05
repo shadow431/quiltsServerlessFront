@@ -11,16 +11,18 @@ import Signup from "./containers/Signup";
 import NewProduct from "./containers/NewProduct";
 import Admin from "./containers/Admin";
 import NotFound from "./containers/NotFound";
+import BakedPotatoBag from "./components/BakedPotatoBag";
 
 export default function Routes({ appProps }) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
+      <AppliedRoute path="/potato" exact component={BakedPotatoBag} appProps={appProps} />
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
       <AuthenticatedRoute path="/products/new" exact component={NewProduct} appProps={appProps} />
-      <UnauthenticatedRoute path="/products/:id" exact component={Products} appProps={appProps} />
+      <AuthenticatedRoute path="/products/:id" exact component={Products} appProps={appProps} />
       {/* Finally, catch all unmatched routes */}
       <Route component={NotFound} />
     </Switch>
