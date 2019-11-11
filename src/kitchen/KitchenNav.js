@@ -5,27 +5,27 @@ function KitchenNav (props) {
   return (
     <ul>
       <li>
-        <Link to='/potato'>
+        <Link to='/kitchen/potato'>
           Baked Potato Bag
         </Link>
       </li>
       <li>
-        <Link to='/bowl'>
+        <Link to='/kitchen/bowl'>
           Bowl Wraps
         </Link>
       </li>
       <li>
-        <Link to="/ovenmitt">
+        <Link to="/kitchen/ovenmitt">
           Oven Mitts
         </Link>
       </li>
       <li>
-        <Link to="/plate">
+        <Link to="/kitchen/plate">
           Plate Wraps
         </Link>
       </li>
       <li>
-        <Link to="/tortilla">
+        <Link to="/kitchen/tortilla">
           Tortilla Bags
         </Link>
       </li>

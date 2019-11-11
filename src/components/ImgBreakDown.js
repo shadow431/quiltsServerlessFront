@@ -6,11 +6,17 @@ const imgBreakDown = {
       A MUST FOR THAT PRECIOUS LITTLE ONE IN YOUR LIFE..&nbsp; These quilts are just perfect for the crib, or to send along to day care or pre school. Made by hand, each quilt has eight squares of machine embroidery. The back of the quilt is flannel for warmth. All fabric is 100% cotton with Warm &amp; Natural batting inside. The binding is hand sewn on the back side.&nbsp; Fabric has been prewashed. Quilts are about 37" wide X45"long.</p><p>Can't find the colors or embroidery designs&nbsp;you want?&nbsp; Call or e-mail me. Special orders gladly accepted.</p><p>Please allow 3 weeks for special orders.</p><p><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ALL BABY QUILTS</span></span></span></p><p>&nbsp;</p><p></p><p id="note">*Please note: Contrasting fabric may vary from image shown*</p>`,
       prodPrice: 0
     },
+    BKP: {
+      prodType: "Backpack",
+      prodDesc: "Self explanatory",
+      prodPrice: 35,
+      colors: ["charcoal", "black", "navy", "royal blue", "red"]
+    },
     BPB: {
       prodType: "Baked Potato Bag",
       prodDesc: `<p align="left"><b><font color="#800000" face="Verdana" size="5">THE BEST THING TO HAPPEN TO BAKED POTATOES!!!</font></b></p><p align="left"><b><font color="#111111" face="Verdana">Tired of over cooked ends on your microwave baked potatoes? Long for baked potatoes to be fluffy like when you used to bake them in the oven? </font></b></p><p align="left"><font color="#111111" face="Verdana">When you use my baked potato bag to bake your potatoes in the microwave, your potato will come out fluffy and evenly cooked just as if you baked them in the oven and used all that electricity. These bags are not only wonderful for potatoes, you can also use them to cook yams, corn on the cob, squash, sweet potatoes, artichokes and more.</font></p><p align="left"><span style="color: #0000ff"><font face="Verdana"><span style="font-size: 20px"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER.</span></span></font></span></p>`,
       prodPrice: 10,
-      color: "red"
+      colors: "red"
     },
     BWL: {
       prodType: "Large Bowl Wrap",
@@ -29,6 +35,8 @@ const imgBreakDown = {
     },
     COM: {
       prodType: "Computer Briefcase",
+      prodDesc: "",
+      prodPrice: 50,
       colors: ["heather grey", "navy"]
     },
     DOQ: {
@@ -46,10 +54,34 @@ const imgBreakDown = {
       prodPrice: 20,
       colors: ["red", "royal blue", "carolina blue", "navy", "lime green", "kelly green", "purple", "lavender", "light pink", "hot pink", "black", "charcoal grey", "turquoise", "tangerine", "stone"]
     },
+    HOO: {
+      prodType: "Hoodie",
+      prodDesc: "Regular Hoodie",
+      prodPrice: 40,
+      colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"]
+    },
+    HOZ: {
+      prodType: "Zipper Hoodie",
+      prodDesc: "Hoodie with a zipper",
+      prodPrice: 45,
+      colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"]
+    },
     OVM: {
       prodType: "Oven Mitt",
       prodDesc: `<p><u><b><i><font face="Verdana" size="5">ONE SIZE FITS ALL!!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></i></b></u></p><p><font face="Verdana">Finally an oven mitt that fits everyone, the perfect size. Well insulated to protect you from the heat.</font></p><p><font face="Verdana"><span style="font-size: 22px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER</span>.</span></span></span></font></p><p></p><p id="note">*Please note: Contrasting fabric may vary from image shown*</p>`,
       prodPrice: 10
+    },
+    SLN: {
+      prodType: "Sling",
+      prodDesc: "",
+      prodPrice: 15,
+      colors: ["red", "royal blue", "lime green", "navy", "black"]
+    },
+    SWT: {
+      prodType: "Sweatshirt",
+      prodDesc: "",
+      prodPrice: 30,
+      colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"]
     },
     TLB: {
       prodType: "Tortilla Bags",
@@ -60,10 +92,29 @@ const imgBreakDown = {
       prodType: "Kitchen Towel",
       colors: ["white", "stone", "blue", "light moss", "dark moss"]
     },
+    TSL: {
+      prodType: "Long Sleeve T-Shirt",
+      prodDesc: "",
+      prodPrice: 25,
+      colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"]
+    },
+    TSS: {
+      prodType: "Short Sleeve T-Shirt",
+      prodDesc: "",
+      prodPrice: 15,
+      colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"]
+    },
+    VES: {
+      prodType: "Vest",
+      prodDesc: "",
+      prodPrice: 30,
+      colors: ["red", "royal blue", "navy blue"]
+    },
     ZZT: {
       prodType: "Zipper Tote Bag",
       prodDesc: "Your all in one tote bag with a zipper for secure transportation.",
-      prodPrice: 10
+      prodPrice: 10,
+      colors: ["red", "royal blue", "hot pink", "black"]
     }
   },
   imgSubCat: {

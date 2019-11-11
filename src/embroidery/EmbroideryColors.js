@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import imgBreakDown from "../components/ImgBreakDown";
 
 export default function EmbroideryColors (props) {
   return (
-    <div>
-      <h1>{imgBreakDown.typeOutline.BPB.color}</h1>
-    </div>
+    <select>
+      {imgBreakDown.typeOutline.BPB.colors.map((color, i) => {
+        return (
+          <option key={i * 3} value={color}>{color}</option>
+        )
+      })}
+    </select>
   )
 }
