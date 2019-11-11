@@ -22,10 +22,10 @@ function App(props) {
 
   async function onLoad() {
     try {
-      await Auth.currentSession();
-      userHasAuthenticated(true);
       const products = await API.get("products", "/products");
       setProducts(products);
+      await Auth.currentSession();
+      userHasAuthenticated(true);
     }
     catch(e) {
       if (e !== 'No current user') {
@@ -50,7 +50,7 @@ function App(props) {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Wanda's Quilts and Embroidery</Link>
+              <Link to="/">Embroidery by Wanda</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -84,15 +84,16 @@ function App(props) {
             <NavItem eventKey={2} onClick={() => {props.history.push('/schedule'); setNavKey(2);}}>
               Show Schedule
             </NavItem>
-            <NavItem eventKey={3} onClick={() => {props.history.push('/baby'); setNavKey(3);}}>
-              Baby Quilts
+            <NavItem eventKey={3} onClick={() => {props.history.push('/embroidery'); setNavKey(3);}}>
+              Embroidery
             </NavItem>
-            <NavItem eventKey={4} onClick={() => {props.history.push('/potato'); setNavKey(4);}}>
-              Baked Potato Bag
+            <NavItem eventKey={4} onClick={() => {props.history.push('/kitchen'); setNavKey(4);}}>
+              Kitchen Items
             </NavItem>
-            <NavItem eventKey={5} onClick={() => {props.history.push('/bowlSmall'); setNavKey(5);}}>
-              Bowl Wrap Small
+            <NavItem eventKey={5} onClick={() => {props.history.push('/quilts'); setNavKey(5);}}>
+              Quilts
             </NavItem>
+            {/*
             <NavItem eventKey={6} onClick={() => {props.history.push('/bowlLarge'); setNavKey(6);}}>
               Bowl Wrap Large
             </NavItem>
@@ -119,7 +120,7 @@ function App(props) {
             </NavItem>
             <NavItem eventKey={14} onClick={() => {props.history.push('/contact'); setNavKey(14);}}>
               Contact Us
-            </NavItem>
+            </NavItem> */}
           </Nav>
         {/* </NavDropdown> */}
         <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />

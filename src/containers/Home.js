@@ -10,31 +10,25 @@ import {
 import "./Home.css";
 
 export default function Home(props) {
-  const products = props.products;
-  const isLoading = props.isLoading;
+  const [ products, setProducts] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(true);
 
-  // useEffect(() => {
-  //   async function onLoad() {
-  //     // if (!props.isAuthenticated) {
-  //     //   return;
-  //     // }
+  useEffect(() => {
+    onLoad();
+  }, []);
 
-  //     try {
-  //       const products = await loadProducts();
-  //       setProducts(products);
-  //     } catch (e) {
-  //       alert(e);
-  //     }
-
-  //     setIsLoading(false);
-  //   }
-
-  //   onLoad();
-  // }, [props.isAuthenticated]);
-
-  // function loadProducts() {
-  //   return API.get("products", "/products");
-  // }
+  async function onLoad() {
+    try {
+      const products = await API.get("products", "/products");
+      setProducts(products);
+    }
+    catch(e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+    setIsLoading(false);
+  }
 
   function renderProductsList(products) {
     return [{}].concat(products).map((product, i) => {
