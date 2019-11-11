@@ -15,7 +15,7 @@ export default function Products(props) {
 
   useEffect(() => {
     function loadProduct() {
-      return API.get("Products", `/Products/${props.match.params.id}`);
+      return API.get("quilts", `/products/${props.match.params.id}`);
     }
 
     async function onLoad() {
@@ -50,7 +50,7 @@ export default function Products(props) {
   }
 
   function saveProduct(product) {
-    return API.put("Products", `/Products/${props.match.params.id}`, {
+    return API.put("quilts", `/products/${props.match.params.id}`, {
       body: product
     });
   }
@@ -87,7 +87,7 @@ export default function Products(props) {
   }
 
   function deleteProduct() {
-    return API.del("Products", `/Products/${props.match.params.id}`);
+    return API.del("quilts", `/products/${props.match.params.id}`);
   }
 
   async function handleDelete(event) {

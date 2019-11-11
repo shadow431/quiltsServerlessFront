@@ -34,6 +34,7 @@ import ToteZip from "./embroidery/ToteZip";
 import TShirt from "./embroidery/TShirt";
 import TShirtLong from "./embroidery/TShirtLong";
 import Vest from "./embroidery/Vest";
+import NewSchedule from "./containers/NewSchedule";
 
 export default function Routes({ appProps }) {
   return (
@@ -67,6 +68,7 @@ export default function Routes({ appProps }) {
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
       <AuthenticatedRoute path="/products/new" exact component={NewProduct} appProps={appProps} />
       <AuthenticatedRoute path="/products/:id" exact component={Products} appProps={appProps} />
+      <AuthenticatedRoute path="/schedule/new" exact component={NewSchedule} appProps={appProps} />
       {/* Finally, catch all unmatched routes */}
       <Route component={NotFound} />
     </Switch>

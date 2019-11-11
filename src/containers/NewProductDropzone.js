@@ -87,7 +87,7 @@ export default class NewProduct extends Component() {
   }
 
   createProduct (product) {
-    return API.post("products", "/products", {
+    return API.post("quilts", "/products", {
       body: product
     });
   }

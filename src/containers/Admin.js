@@ -1,15 +1,19 @@
 import React from "react";
-import { ListGroupItem } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
+import { ListGroupItem, ListGroup } from "react-bootstrap";
 
 export default function Admin(props) {
   return (
-    <LinkContainer key="new" to="/products/new">
-      <ListGroupItem>
+    <ListGroup>
+      <ListGroupItem href="/products/new">
         <h4>
           <b>{"\uFF0B"}</b> Add Item
         </h4>
       </ListGroupItem>
-    </LinkContainer>
+      <ListGroupItem href="/schedule/new">
+        <h4>
+          <b>{"\uFF0B"}</b> Add Event
+        </h4>
+      </ListGroupItem>
+    </ListGroup>
   )
 }

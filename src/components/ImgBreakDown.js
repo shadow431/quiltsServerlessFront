@@ -16,7 +16,7 @@ const imgBreakDown = {
       prodType: "Baked Potato Bag",
       prodDesc: `<p align="left"><b><font color="#800000" face="Verdana" size="5">THE BEST THING TO HAPPEN TO BAKED POTATOES!!!</font></b></p><p align="left"><b><font color="#111111" face="Verdana">Tired of over cooked ends on your microwave baked potatoes? Long for baked potatoes to be fluffy like when you used to bake them in the oven? </font></b></p><p align="left"><font color="#111111" face="Verdana">When you use my baked potato bag to bake your potatoes in the microwave, your potato will come out fluffy and evenly cooked just as if you baked them in the oven and used all that electricity. These bags are not only wonderful for potatoes, you can also use them to cook yams, corn on the cob, squash, sweet potatoes, artichokes and more.</font></p><p align="left"><span style="color: #0000ff"><font face="Verdana"><span style="font-size: 20px"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER.</span></span></font></span></p>`,
       prodPrice: 10,
-      colors: "red"
+      colors: ["red"]
     },
     BWL: {
       prodType: "Large Bowl Wrap",

@@ -8,6 +8,7 @@ import {
   Thumbnail
 } from "react-bootstrap";
 import "./Home.css";
+import MainNav from "./MainNav";
 
 export default function Home(props) {
   const [ products, setProducts] = useState([]);
@@ -19,7 +20,7 @@ export default function Home(props) {
 
   async function onLoad() {
     try {
-      const products = await API.get("products", "/products");
+      const products = await API.get("quilts", "/products");
       setProducts(products);
     }
     catch(e) {
@@ -49,17 +50,20 @@ export default function Home(props) {
 
   function renderProducts() {
     return (
-      <Grid fluid>
-        <Row>
-          {
-            isLoading ?
-              (
-                <h3>Loading products now, please be patient :)</h3>
-              )
-            : renderProductsList(products)
-          }
-        </Row>
-      </Grid>
+      <div>
+        <MainNav props={props}/>
+        <Grid fluid>
+          <Row>
+            {
+              isLoading ?
+                (
+                  <h3>Loading products now, please be patient :)</h3>
+                )
+              : renderProductsList(products)
+            }
+          </Row>
+        </Grid>
+      </div>
     );
   }
 
