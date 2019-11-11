@@ -25,15 +25,31 @@ export default function Schedule (props) {
   return (
     <div>
       <MainNav props={props}/>
-        <ul>
-          {
-            eventItems.map((currEvent, i) => {
-              return (
-                <li key={i * 3}>{`${currEvent.date} ${currEvent.name} ${currEvent.location} `}</li>
-              )
-            })
-          }
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Date</td>
+              <td>Location</td>
+              <td>Hours of Operation</td>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              eventItems.map((currEvent, i) => {
+                return (
+                  <tr key={currEvent.name + currEvent.date}>
+                    <td>{currEvent.name}</td>
+                    <td>{currEvent.date}</td>
+                    <td>{currEvent.location}</td>
+                    <td> {currEvent.time}</td>
+                  </tr>
+                )
+              })
+            }
+          </tbody>
+
+        </table>
     </div>
   )
 }

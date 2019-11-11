@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { API } from "aws-amplify";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-// import DatePicker from "react-datepicker";
 import { Button } from "react-bootstrap";
-// import "react-datepicker/dist/react-datepicker.css"
 
 
 
 export default function NewSchedule(props) {
   const [name, setName] = useState("");
   const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
   const [location, setLocation] = useState("");
 
   function validateForm() {
@@ -30,12 +29,16 @@ export default function NewSchedule(props) {
     setDate(event.target.value);
   }
 
+  function handleTimeChange(event) {
+    setTime(event.target.value);
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
 
     if(validateForm()){
       try {
-        await createEvent({ name, date, location });
+        await createEvent({ name, date, time, location });
         props.history.push("/schedule");
       } catch (e) {
         alert(e);
@@ -60,15 +63,10 @@ export default function NewSchedule(props) {
         <FormGroup controlId="newevent">
           <ControlLabel>Date</ControlLabel>
           <FormControl onChange={handleDateChange} />
-          {/* <br /> */}
-          {/* <DatePicker
-            selected={eventDate}
-            showTimeSelect
-            timeFormat="HH:mm"
-            timeIntervals={15}
-            dateFormat="MMMM d, yyyy h:mm aa"
-            onChange={date => setEventDate(date.toString())}
-          /> */}
+        </FormGroup>
+        <FormGroup controlId="newevent">
+          <ControlLabel>Hours Open</ControlLabel>
+          <FormControl onChange={handleTimeChange} />
         </FormGroup>
         <FormGroup controlId="eventName">
           <ControlLabel>Name</ControlLabel>
