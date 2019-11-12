@@ -2,13 +2,9 @@ import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { Button } from "react-bootstrap";
 import MainNav from "../components/MainNav";
-import DeleteSchedule from "./DeleteSchedule";
-import EditSchedule from "./EditSchedule";
 
 export default function Schedule(props) {
-  const [eventItems, setEventItems] = useState([]);
-  const [editEvent, setEditEvent] = useState(false);
-  const [deleteEvent, setDeleteEvent] = useState(false);
+  const [eventItems, updateEventItems] = useState([]);
   // const [ isLoading, setIsLoading ] = useState(true);
 
   useEffect(() => {
@@ -18,7 +14,7 @@ export default function Schedule(props) {
   async function onLoad() {
     try {
       const schedule = await API.get("quilts", "/schedule");
-      setEventItems(schedule);
+      updateEventItems(schedule);
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -62,7 +58,7 @@ export default function Schedule(props) {
                 (
                   <React.Fragment>
                     <td><Button onClick={() => {props.history.push("/admin/schedule/edit", { props: currEvent })}}>Edit</Button></td>
-                    <td><Button onClick={async () => {await API.del("quilts", `/admin/schedule/${currEvent._id}`)}}>Delete</Button></td>
+                    <td><Button onClick={async () => {await API.del("quilts", `/admin/schedule/${currEvent._id}`); updateEventItems(eventItems.slice(eventItems.indexOf(currEvent._id, 1)));}}>Delete</Button></td>
                   </React.Fragment>
                 )
                 :
