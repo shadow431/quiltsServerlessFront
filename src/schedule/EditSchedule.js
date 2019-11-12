@@ -43,8 +43,17 @@ export default function EditSchedule (props) {
   async function handleChange (event) {
     event.preventDefault()
     if(validateForm()) {
+      const body = {
+        name: name,
+        time: time,
+        date: date,
+        location: location
+      }
       try {
-        await API.put("quilts", `/admin/schedule/${id}`);
+        console.log("body in update: ", body);
+        await API.put("quilts", `/admin/schedule/${id}`, {
+          body
+        });
         props.history.push("/schedule");
       }
       catch (e) {
@@ -58,19 +67,19 @@ export default function EditSchedule (props) {
       <form onSubmit={handleChange}>
         <FormGroup controlId="newevent">
           <ControlLabel>Date</ControlLabel>
-          <FormControl onChange={handleDateChange} type="text" value={date}/>
+          <FormControl onChange={handleDateChange} type="text" placeholder={date}/>
         </FormGroup>
         <FormGroup controlId="newevent">
           <ControlLabel>Hours Open</ControlLabel>
-          <FormControl onChange={handleTimeChange} type="text" value={time}/>
+          <FormControl onChange={handleTimeChange} type="text" placeholder={time}/>
         </FormGroup>
         <FormGroup controlId="eventName">
           <ControlLabel>Name</ControlLabel>
-          <FormControl onChange={handleNameChange} type="text" value={name}/>
+          <FormControl onChange={handleNameChange} type="text" placeholder={name}/>
         </FormGroup>
         <FormGroup controlId="eventLocation">
           <ControlLabel>Location</ControlLabel>
-          <FormControl onChange={handleLocationChange} type="text" value={location}/>
+          <FormControl onChange={handleLocationChange} type="text" placeholder={location}/>
         </FormGroup>
         <Button type="submit">Update</Button>
       </form>
