@@ -40,7 +40,8 @@ export default function EditSchedule (props) {
     setTime(event.target.value);
   }
 
-  async function handleChange () {
+  async function handleChange (event) {
+    event.preventDefault()
     if(validateForm()) {
       try {
         await API.put("quilts", `/admin/schedule/${id}`);
