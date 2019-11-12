@@ -53,7 +53,7 @@ export default function Schedule(props) {
         <tbody>
           {eventItems.map((currEvent, i) => {
             return (
-              <tr key={currEvent.name + currEvent.date}>
+              <tr key={currEvent._id}>
                 <td>{currEvent.name}</td>
                 <td>{currEvent.date}</td>
                 <td>{currEvent.location}</td>
@@ -61,7 +61,7 @@ export default function Schedule(props) {
                 {props.isAuthenticated ?
                 (
                   <React.Fragment>
-                    <td><Button onClick={() => setEditEvent(true)}>Edit</Button></td>
+                    <td><Button onClick={() => {props.history.push("/admin/schedule/edit", { props: currEvent })}}>Edit</Button></td>
                     <td><Button onClick={() => setDeleteEvent(true)}>Delete</Button></td>
                   </React.Fragment>
                 )
