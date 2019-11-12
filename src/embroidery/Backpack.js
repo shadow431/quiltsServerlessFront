@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Thumbnail } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
-import EmbroideryNav from "./EmbroideryNav";
+import EmbroideryNav from "../containers/EmbroideryNav";
 
 function Backpack (props) {
   const [prod, setProd] = useState("");

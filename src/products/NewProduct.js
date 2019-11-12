@@ -59,8 +59,7 @@ export default function NewProduct(props) {
   }
 
   async function createProduct(product) {
-    console.log(product);
-    const response = await API.post("quilts", "/products", {
+    const response = await API.post("quilts", "admin/products", {
       body: product
     });
     return response.key;

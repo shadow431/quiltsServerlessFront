@@ -8,7 +8,7 @@ import {
   Thumbnail
 } from "react-bootstrap";
 import "./Home.css";
-import MainNav from "./MainNav";
+import MainNav from "../components/MainNav";
 
 export default function Home(props) {
   const [ products, setProducts] = useState([]);

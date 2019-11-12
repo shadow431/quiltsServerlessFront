@@ -86,10 +86,6 @@ export default function Products(props) {
     }
   }
 
-  function deleteProduct() {
-    return API.del("quilts", `/products/${props.match.params.id}`);
-  }
-
   async function handleDelete(event) {
     event.preventDefault();
 
@@ -104,8 +100,9 @@ export default function Products(props) {
     setIsDeleting(true);
 
     try {
-      await deleteProduct();
-      props.history.push("/");
+      const response = await API.del("quilts", `admin/products/${props.match.params.id}`);
+      console.log(response);
+      props.history.push("/admin/inventory");
     } catch (e) {
       alert(e);
       setIsDeleting(false);
@@ -141,16 +138,6 @@ export default function Products(props) {
             {!product.attachment && <ControlLabel>Attachment</ControlLabel>}
             <FormControl onChange={handleFileChange} type="file" />
           </FormGroup>
-          <LoaderButton
-            block
-            type="submit"
-            bsSize="large"
-            bsStyle="primary"
-            isLoading={isLoading}
-            disabled={!validateForm()}
-          >
-            Save
-          </LoaderButton>
           <LoaderButton
             block
             bsSize="large"

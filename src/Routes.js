@@ -11,20 +11,21 @@ import BowlWrap from "./kitchen/BowlWrap";
 import CompBrief from "./embroidery/CompBrief";
 import EmbroideryColors from "./embroidery/EmbroideryColors";
 import EmbroideryHome from "./embroidery/EmbroideryHome";
-import EmbroideryNav from "./embroidery/EmbroideryNav";
+import EmbroideryNav from "./containers/EmbroideryNav";
 import Fabric from "./kitchen/Fabric";
 import Home from "./containers/Home";
 import Hoodies from "./embroidery/Hoodies";
 import KitchenNav from "./kitchen/KitchenNav";
 import KitchenTowel from "./embroidery/KitchenTowel";
 import Login from "./containers/Login";
-import NewProduct from "./containers/NewProduct";
+import NewProduct from "./products/NewProduct";
+import NewSchedule from "./schedule/NewSchedule";
 import NotFound from "./containers/NotFound";
 import OvenMitt from "./kitchen/OvenMitt";
 import Plate from "./kitchen/Plate";
-import Products from "./containers/Products";
+import Products from "./products/DeleteProduct";
 import Quilts from "./containers/Quilts";
-import Schedule from "./containers/Schedule"
+import Schedule from "./schedule/Schedule"
 import Signup from "./containers/Signup";
 import Sling from "./embroidery/Sling";
 import SweatShirt from "./embroidery/SweatShirt";
@@ -34,7 +35,6 @@ import ToteZip from "./embroidery/ToteZip";
 import TShirt from "./embroidery/TShirt";
 import TShirtLong from "./embroidery/TShirtLong";
 import Vest from "./embroidery/Vest";
-import NewSchedule from "./containers/NewSchedule";
 
 export default function Routes({ appProps }) {
   return (
@@ -66,9 +66,10 @@ export default function Routes({ appProps }) {
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
-      <AuthenticatedRoute path="/products/new" exact component={NewProduct} appProps={appProps} />
-      <AuthenticatedRoute path="/products/:id" exact component={Products} appProps={appProps} />
-      <AuthenticatedRoute path="/schedule/new" exact component={NewSchedule} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/schedule" exact component={Schedule} appProps={appProps} />
+      <AuthenticatedRoute path="admin/products/new" exact component={NewProduct} appProps={appProps} />
+      <AuthenticatedRoute path="admin/products/:id" exact component={Products} appProps={appProps} />
+      <AuthenticatedRoute path="admin/schedule/new" exact component={NewSchedule} appProps={appProps} />
       {/* Finally, catch all unmatched routes */}
       <Route component={NotFound} />
     </Switch>

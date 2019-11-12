@@ -1,19 +1,8 @@
 import React from "react";
-import { ListGroupItem, ListGroup } from "react-bootstrap";
+import AdminNav from "../components/AdminNav";
 
-export default function Admin(props) {
+export default function Admin () {
   return (
-    <ListGroup>
-      <ListGroupItem href="/products/new">
-        <h4>
-          <b>{"\uFF0B"}</b> Add Item
-        </h4>
-      </ListGroupItem>
-      <ListGroupItem href="/schedule/new">
-        <h4>
-          <b>{"\uFF0B"}</b> Add Event
-        </h4>
-      </ListGroupItem>
-    </ListGroup>
+    <AdminNav />
   )
 }
