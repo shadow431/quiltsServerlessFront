@@ -42,7 +42,7 @@ export default function NewSchedule(props) {
         props.history.push("/schedule");
       } catch (e) {
         alert(e);
-        props.history.push("/schedule/new");
+        props.history.push("admin/schedule/new");
       }
     }else {
       alert("Please fill out all fields!!");
@@ -50,7 +50,7 @@ export default function NewSchedule(props) {
   }
 
   async function createEvent(newevent) {
-    const response = await API.post("quilts", "/schedule", {
+    const response = await API.post("quilts", "/admin/schedule", {
       body: newevent
     });
     return response.key;

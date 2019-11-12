@@ -9,6 +9,7 @@ import Backpack from "./embroidery/Backpack";
 import BakedPotatoBag from "./kitchen/BakedPotatoBag";
 import BowlWrap from "./kitchen/BowlWrap";
 import CompBrief from "./embroidery/CompBrief";
+import DeleteSchedule from "./schedule/DeleteSchedule";
 import EditSchedule from "./schedule/EditSchedule";
 import EmbroideryColors from "./embroidery/EmbroideryColors";
 import EmbroideryHome from "./embroidery/EmbroideryHome";
@@ -67,8 +68,9 @@ export default function Routes({ appProps }) {
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
-      <AuthenticatedRoute path="/admin/schedule" exact component={Schedule} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/edit" exact component={EditSchedule} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/schedule/delete" exact component={DeleteSchedule} appProps={appProps} />
       <AuthenticatedRoute path="admin/products/new" exact component={NewProduct} appProps={appProps} />
       <AuthenticatedRoute path="admin/products/:id" exact component={Products} appProps={appProps} />
       <AuthenticatedRoute path="admin/schedule/new" exact component={NewSchedule} appProps={appProps} />

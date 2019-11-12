@@ -62,7 +62,7 @@ export default function Schedule(props) {
                 (
                   <React.Fragment>
                     <td><Button onClick={() => {props.history.push("/admin/schedule/edit", { props: currEvent })}}>Edit</Button></td>
-                    <td><Button onClick={() => setDeleteEvent(true)}>Delete</Button></td>
+                    <td><Button onClick={async () => {await API.del("quilts", `/admin/schedule/${currEvent._id}`)}}>Delete</Button></td>
                   </React.Fragment>
                 )
                 :
