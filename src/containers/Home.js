@@ -7,6 +7,7 @@ import Admin from "./Admin";
 import ProductHome from "../products/ProductHome";
 
 export default function Home(props) {
+  console.log("props at home", props)
   const [ products, setProducts] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
 
@@ -29,8 +30,7 @@ export default function Home(props) {
 
   return (
     <div className="Home">
-      {props.isAuthenticated ? <Admin /> : null}
-      {!isLoading ? <MainNav props={products}/> :  <h3>Loading products now, please be patient :)</h3>}
+      {!isLoading ? <MainNav props={products} admin={props}/> :  <h3>Loading products now, please be patient :)</h3>}
     </div>
   );
 }

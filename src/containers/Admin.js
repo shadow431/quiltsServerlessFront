@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Nav, NavItem } from "react-bootstrap";
 import NewProduct from "../products/NewProduct";
 import NewSchedule from "../schedule/NewSchedule";
+import Home from "./Home";
 
 export default function Admin () {
   const [ activePage, setActivePage ] = useState("");
