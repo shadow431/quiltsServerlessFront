@@ -12,6 +12,7 @@ function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  // let currentAdminComponent;
 
   const [products, setProducts] = useState([]);
 

@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import "./Home.css";
 import MainNav from "../components/MainNav";
+import Admin from "./Admin";
 
 export default function Home(props) {
   const [ products, setProducts] = useState([]);
@@ -69,6 +70,7 @@ export default function Home(props) {
 
   return (
     <div className="Home">
+      {props.isAuthenticated ? <Admin /> : null}
       {renderProducts()}
     </div>
   );

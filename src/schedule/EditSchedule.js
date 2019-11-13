@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import AdminNav from "../components/AdminNav";
 import { API } from "aws-amplify";
 import { FormGroup, FormControl, ControlLabel, Button } from "react-bootstrap";
 
@@ -63,7 +62,6 @@ export default function EditSchedule (props) {
   }
   return (
     <div>
-      <AdminNav />
       <form onSubmit={handleChange}>
         <FormGroup controlId="newevent">
           <ControlLabel>Date</ControlLabel>
