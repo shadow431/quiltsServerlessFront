@@ -41,7 +41,6 @@ export default function Routes({ appProps }) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
-      <AppliedRoute path="/kitchen/bowl" exact component={BowlWrap} appProps={appProps} />
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />
       <AppliedRoute path="/embroidery/backpack" exact component={Backpack} appProps={appProps} />
       <AppliedRoute path="/embroidery/colors" exact component={EmbroideryColors} appProps={appProps} />

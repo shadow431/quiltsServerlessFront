@@ -8,7 +8,6 @@ import Schedule from "../schedule/Schedule";
 import Admin from "../containers/Admin";
 
 export default function MainNav (props, admin) {
-  console.log("Admin in mainnav: ", admin)
   const [ navKey, setNavKey ] = useState(1);
   const [ activePage, setActivePage ] = useState("home");
   return (

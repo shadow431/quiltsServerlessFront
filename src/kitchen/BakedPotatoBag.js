@@ -12,7 +12,6 @@ export default function BakedPotatoBag(props) {
   // }
   return (
     <div>
-      <KitchenNav />
       <h1>This would be potato bags</h1>
     </div>
   )

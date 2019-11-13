@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, FormControl, Thumbnail } from "react-bootstrap";
-import KitchenNav from "./KitchenNav";
 import imgBreakDown from "../components/ImgBreakDown";
 
 export default function OvenMitt (props) {
+  const products = props.props.props.props;
   const [ prod, setProd ] = useState("");
   function handleFabricStage(e) {
     e.preventDefault();
@@ -13,8 +13,7 @@ export default function OvenMitt (props) {
   }
   return (
     <div>
-      <KitchenNav />
-      <Thumbnail key={props.products[3]._id} src={props.products[3].imgUrl} alt="Well, something didn't work...">
+      <Thumbnail key={products[3]._id} src={products[3].imgUrl} alt="Well, something didn't work...">
         <div>{imgBreakDown.typeOutline.OVM.prodType}</div>
         <h4>{imgBreakDown.typeOutline.OVM.prodDesc}</h4>
         <form onSubmit={handleFabricStage}>
