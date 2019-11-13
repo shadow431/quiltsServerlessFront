@@ -6,7 +6,7 @@ import KitchenNav from "../kitchen/KitchenNav";
 import Quilts from "../containers/Quilts";
 import Schedule from "../schedule/Schedule";
 
-export default function MainNav () {
+export default function MainNav (props) {
   const [navKey, setNavKey] = useState(1);
   const [ activePage, setActivePage ] = useState("home");
   return (
@@ -28,11 +28,11 @@ export default function MainNav () {
           Show Schedule
         </NavItem>
       </Nav>
-      {activePage === "home" ? <ProductHome /> : null}
-      {activePage === "embroidery" ? <EmbroideryHome /> : null}
-      {activePage === "kitchen" ? <KitchenNav /> : null}
-      {activePage === "quilts" ? <Quilts /> : null}
-      {activePage === "schedule" ? <Schedule /> : null}
+      {activePage === "home" ? <ProductHome props={props} /> : null}
+      {activePage === "embroidery" ? <EmbroideryHome props={props}  /> : null}
+      {activePage === "kitchen" ? <KitchenNav  props={props} /> : null}
+      {activePage === "quilts" ? <Quilts  props={props} /> : null}
+      {activePage === "schedule" ? <Schedule  props={props} /> : null}
     </React.Fragment>
   )
 }

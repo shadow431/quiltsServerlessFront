@@ -17,10 +17,7 @@ export default function Home(props) {
   async function onLoad() {
     try {
       const products = await API.get("quilts", "/products");
-      console.log("products on load: ", products)
-
       setProducts(products);
-
     }
     catch(e) {
       if (e !== 'No current user') {
@@ -30,30 +27,10 @@ export default function Home(props) {
     setIsLoading(false);
   }
 
-  function renderProducts() {
-    console.log("products at render: ", products)
-    return (
-      <div>
-        <Grid fluid>
-          <Row>
-            <ProductHome products={products} />
-          </Row>
-        </Grid>
-      </div>
-    );
-  }
-
   return (
     <div className="Home">
       {props.isAuthenticated ? <Admin /> : null}
-      {!isLoading ? <MainNav /> : null}
-      {
-        isLoading ?
-          (
-            <h3>Loading products now, please be patient :)</h3>
-          )
-        : renderProducts()
-      }
+      {!isLoading ? <MainNav props={products}/> :  <h3>Loading products now, please be patient :)</h3>}
     </div>
   );
 }
