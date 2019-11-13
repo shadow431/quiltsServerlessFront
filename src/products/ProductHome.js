@@ -7,7 +7,6 @@ export default function ProductHome (props) {
   console.log("props at producthome: ", props);
 
   return products.map((product, i) => {
-    console.log("product in map: ", product)
     if(i !== 0) {
       return (
         <Col key={i * 3} md={3}>

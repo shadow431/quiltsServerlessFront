@@ -7,7 +7,7 @@ import Quilts from "../containers/Quilts";
 import Schedule from "../schedule/Schedule";
 
 export default function MainNav (props) {
-  const [navKey, setNavKey] = useState(1);
+  const [ navKey, setNavKey ] = useState(1);
   const [ activePage, setActivePage ] = useState("home");
   return (
     <React.Fragment>
@@ -15,16 +15,16 @@ export default function MainNav (props) {
         <NavItem eventKey={1} onClick={() => {setActivePage("home"); setNavKey(1);}}>
           Home
         </NavItem>
-        <NavItem eventKey={3} onClick={() => {setActivePage("embroidery"); setNavKey(2);}}>
+        <NavItem eventKey={2} onClick={() => {setActivePage("embroidery"); setNavKey(2);}}>
           Embroidery
         </NavItem>
-        <NavItem eventKey={4} onClick={() => {setActivePage("kitchen"); setNavKey(3);}}>
+        <NavItem eventKey={3} onClick={() => {setActivePage("kitchen"); setNavKey(3);}}>
           Kitchen Items
         </NavItem>
-        <NavItem eventKey={5} onClick={() => {setActivePage("quilts"); setNavKey(4);}}>
+        <NavItem eventKey={4} onClick={() => {setActivePage("quilts"); setNavKey(4);}}>
           Quilts
         </NavItem>
-        <NavItem eventKey={2} onClick={() => {setActivePage("schedule"); setNavKey(5);}}>
+        <NavItem eventKey={5} onClick={() => {setActivePage("schedule"); setNavKey(5);}}>
           Show Schedule
         </NavItem>
       </Nav>
