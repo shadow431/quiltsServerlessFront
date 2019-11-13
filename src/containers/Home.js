@@ -46,7 +46,7 @@ export default function Home(props) {
   return (
     <div className="Home">
       {props.isAuthenticated ? <Admin /> : null}
-      <MainNav />
+      {!isLoading ? <MainNav /> : null}
       {
         isLoading ?
           (

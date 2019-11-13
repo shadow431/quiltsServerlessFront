@@ -3,7 +3,7 @@ import { Col, Button, Thumbnail } from "react-bootstrap";
 
 export default function ProductHome (products) {
   console.log("products at home: ", products)
-  return [{}].concat(products.products).map((product, i) => {
+  return [{}].concat(products).map((product, i) => {
     if(i !== 0) {
       return (
         <Col key={i * 3} md={3}>
