@@ -3,8 +3,6 @@ import { Col, Button, Thumbnail } from "react-bootstrap";
 
 export default function ProductHome (props) {
   const products = props.props.props;
-  console.log("props.props at product homehome: ", props.props);
-  console.log("props at producthome: ", props);
 
   return products.map((product, i) => {
     if(i !== 0) {
