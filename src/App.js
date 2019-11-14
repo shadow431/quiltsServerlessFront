@@ -12,14 +12,9 @@ import KitchenNav from "./kitchen/KitchenNav";
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
-
   const [isAuthenticated, userHasAuthenticated] = useState(false);
-
-
   const [isLoading, setIsLoading] = useState(true);
-  // let currentAdminComponent;
   const { history } = props;
-
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -53,13 +48,10 @@ function App(props) {
   return (
     !isAuthenticating && (
       <div className="App container">
-
-
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/"><div style={{color: 'white'}}>Embroidery by Wanda</div>
-</Link>
+              <Link to="/"><div style={{color: 'white'}}>Embroidery by Wanda</div></Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -72,7 +64,7 @@ function App(props) {
                   </LinkContainer>
                   <NavItem onClick={handleLogout}><div style={{color: 'white'}}>Logout</div></NavItem>
                 </>
-              ) : (
+                ) : (
                 <>
                   <LinkContainer to="/signup">
                     <NavItem><div style={{color: 'white'}}>Signup </div></NavItem>
@@ -81,11 +73,11 @@ function App(props) {
                     <NavItem><div style={{color: 'white'}}>Login</div></NavItem>
                   </LinkContainer>
                 </>
-              )}
+                )
+              }
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-
         <MainNav history={history} auth={isAuthenticated} />
         {window.location.pathname.includes("/kitchen") ? <KitchenNav history={history} auth={isAuthenticated} /> : null}
         {window.location.pathname.includes("/embroidery") ? <EmbroideryNav history={history} auth={isAuthenticated} />:null}
