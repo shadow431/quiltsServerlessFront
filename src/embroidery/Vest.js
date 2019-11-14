@@ -5,7 +5,7 @@ import EmbroideryNav from "../components/EmbroideryNav";
 export default function Vest (props) {
   return (
     <React.Fragment>
-      <MainNav props={props} />
+      {/* <MainNav props={props} /> */}
       <EmbroideryNav />
       <h1>This is the Vest</h1>
     </React.Fragment>

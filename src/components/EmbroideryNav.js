@@ -8,45 +8,45 @@ export default function EmbroideryNav (props) {
   return (
     <React.Fragment>
       <MediaQuery minWidth={786}>
-        {/* You can also use a function (render prop) as a child */}
         {(matches) =>
           matches
             ? (
-              <Nav bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
-                <NavItem eventKey={1} onClick={() => {props.props.history.push("/embroidery/backpack"); setNavKey(1);}}>
-                  Home
-                </NavItem>
-                <NavItem eventKey={2} onClick={() => {props.props.history.push("/embroidery/compbrief"); setNavKey(2);}}>
-                  Embroidery
-                </NavItem>
-                <NavItem eventKey={3} onClick={() => {props.props.history.push("/embroidery/hoodies"); setNavKey(3);}}>
-                  Kitchen Items
-                </NavItem>
-                <NavItem eventKey={4} onClick={() => {props.props.history.push("/embroidery/kitchentowel"); setNavKey(4);}}>
-                  Quilts
-                </NavItem>
-                <NavItem eventKey={5} onClick={() => {props.props.history.push("/embroidery/sling"); setNavKey(5);}}>
-                  Show Schedule
-                </NavItem>
-                <NavItem eventKey={6} onClick={() => {props.props.history.push("/embroidery/sweatshirt"); setNavKey(6);}}>
-                  Admin
-                </NavItem>
-                <NavItem eventKey={7} onClick={() => {props.props.history.push("/embroidery/tote"); setNavKey(7);}}>
-                  Home
-                </NavItem>
-                <NavItem eventKey={8} onClick={() => {props.props.history.push("/embroidery/totezip"); setNavKey(8);}}>
-                  Embroidery
-                </NavItem>
-                <NavItem eventKey={9} onClick={() => {props.props.history.push("/embroidery/tshirt"); setNavKey(9);}}>
-                  Kitchen Items
-                </NavItem>
-                <NavItem eventKey={10} onClick={() => {props.props.history.push("/embroidery/tshirtlong"); setNavKey(10);}}>
-                  Quilts
-                </NavItem>
-                <NavItem eventKey={11} onClick={() => {props.props.history.push("/embroidery/vest"); setNavKey(11);}}>
-                  Show Schedule
-                </NavItem>
-              </Nav>
+              // <Nav bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
+              //   <NavItem eventKey={1} onClick={() => {props.props.history.push("/embroidery/backpack"); setNavKey(1);}}>
+              //     Home
+              //   </NavItem>
+              //   <NavItem eventKey={2} onClick={() => {props.props.history.push("/embroidery/compbrief"); setNavKey(2);}}>
+              //     Embroidery
+              //   </NavItem>
+              //   <NavItem eventKey={3} onClick={() => {props.props.history.push("/embroidery/hoodies"); setNavKey(3);}}>
+              //     Kitchen Items
+              //   </NavItem>
+              //   <NavItem eventKey={4} onClick={() => {props.props.history.push("/embroidery/kitchentowel"); setNavKey(4);}}>
+              //     Quilts
+              //   </NavItem>
+              //   <NavItem eventKey={5} onClick={() => {props.props.history.push("/embroidery/sling"); setNavKey(5);}}>
+              //     Show Schedule
+              //   </NavItem>
+              //   <NavItem eventKey={6} onClick={() => {props.props.history.push("/embroidery/sweatshirt"); setNavKey(6);}}>
+              //     Admin
+              //   </NavItem>
+              //   <NavItem eventKey={7} onClick={() => {props.props.history.push("/embroidery/tote"); setNavKey(7);}}>
+              //     Home
+              //   </NavItem>
+              //   <NavItem eventKey={8} onClick={() => {props.props.history.push("/embroidery/totezip"); setNavKey(8);}}>
+              //     Embroidery
+              //   </NavItem>
+              //   <NavItem eventKey={9} onClick={() => {props.props.history.push("/embroidery/tshirt"); setNavKey(9);}}>
+              //     Kitchen Items
+              //   </NavItem>
+              //   <NavItem eventKey={10} onClick={() => {props.props.history.push("/embroidery/tshirtlong"); setNavKey(10);}}>
+              //     Quilts
+              //   </NavItem>
+              //   <NavItem eventKey={11} onClick={() => {props.props.history.push("/embroidery/vest"); setNavKey(11);}}>
+              //     Show Schedule
+              //   </NavItem>
+              // </Nav>
+              <div>yo</div>
               )
               : (
               <FormGroup controlId="formControlsSelect">

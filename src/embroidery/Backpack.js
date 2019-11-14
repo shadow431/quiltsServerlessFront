@@ -14,7 +14,7 @@ function Backpack (props) {
   }
   return (
     <React.Fragment>
-      <MainNav props={props} />
+      {/* <MainNav props={props} /> */}
       <EmbroideryNav />
       <form onSubmit={handleProductType}>
         <Button

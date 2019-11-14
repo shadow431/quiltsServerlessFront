@@ -36,7 +36,6 @@ import ToteZip from "./embroidery/ToteZip";
 import TShirt from "./embroidery/TShirt";
 import TShirtLong from "./embroidery/TShirtLong";
 import Vest from "./embroidery/Vest";
-import MainNav from "./components/MainNav";
 
 export default function Routes({ appProps }) {
   return (

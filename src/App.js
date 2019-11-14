@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
 import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, Navbar, NavItem, FormControl, ControlLabel, FormGroup } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
 import { API } from "aws-amplify";
 import "./App.css";
+import MainNav from "./components/MainNav";
 import { register } from "./serviceWorker";
+import { MediaQuery } from "react-responsive";
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
+  // const [isAuthenticating, setIsAuthenticating] = useState(false);
+
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+
+  const [ navKey, setNavKey ] = useState(1);
+
   const [isLoading, setIsLoading] = useState(true);
   // let currentAdminComponent;
+  const { history } = props;
 
   const [products, setProducts] = useState([]);
 
@@ -45,7 +53,7 @@ function App(props) {
   }
 
   return (
-    !isAuthenticating && (
+    // !isAuthenticating && (
       <div className="App container">
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
@@ -76,10 +84,12 @@ function App(props) {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+     
+        <MainNav history={history} />
         <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
       </div>
     )
-  );
+  // );
 }
-register();
+// register();
 export default withRouter(App);
