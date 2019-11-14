@@ -53,10 +53,13 @@ function App(props) {
   return (
     !isAuthenticating && (
       <div className="App container">
+
+
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/">Embroidery by Wanda</Link>
+              <Link to="/"><div style={{color: 'white'}}>Embroidery by Wanda</div>
+</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -65,28 +68,30 @@ function App(props) {
               {isAuthenticated ? (
                 <>
                   <LinkContainer to="/admin">
-                    <NavItem>Admin</NavItem>
+                    <NavItem><div style={{color: 'white'}}>Admin</div></NavItem>
                   </LinkContainer>
-                  <NavItem onClick={handleLogout}>Logout</NavItem>
+                  <NavItem onClick={handleLogout}><div style={{color: 'white'}}>Logout</div></NavItem>
                 </>
               ) : (
                 <>
                   <LinkContainer to="/signup">
-                    <NavItem>Signup</NavItem>
+                    <NavItem><div style={{color: 'white'}}>Signup </div></NavItem>
                   </LinkContainer>
                   <LinkContainer to="/login">
-                    <NavItem>Login</NavItem>
+                    <NavItem><div style={{color: 'white'}}>Login</div></NavItem>
                   </LinkContainer>
                 </>
               )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        {/* <div style={{display: 'flex'}}> */}
 
         <MainNav history={history} auth={isAuthenticated} />
         {window.location.pathname.includes("/kitchen") ? <KitchenNav history={history} auth={isAuthenticated} /> : null}
         {window.location.pathname.includes("/embroidery") ? <EmbroideryNav history={history} auth={isAuthenticated} />:null}
         <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
+        {/* </div> */}
       </div>
     )
   );

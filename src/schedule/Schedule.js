@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
-import { Button } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 export default function Schedule(props) {
   const [eventItems, updateEventItems] = useState([]);
@@ -25,7 +25,7 @@ export default function Schedule(props) {
 
   return (
     <div>
-      <table>
+      <Table striped bordered hover>
         <thead>
           <tr>
             <td>Name</td>
@@ -68,7 +68,7 @@ export default function Schedule(props) {
             ) : <tr><td>Loading Schedule...</td></tr>
           }
         </tbody>
-      </table>
+      </Table>
     </div>
   )
 }

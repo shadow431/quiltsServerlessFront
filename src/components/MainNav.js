@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Nav, NavItem } from "react-bootstrap";
 import MediaQuery from "react-responsive";
+import "./MainNav.css";
 
 export default function MainNav (props) {
 
@@ -13,58 +14,62 @@ export default function MainNav (props) {
         {(matches) =>
           matches
             ? (
-              <Nav bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
-                <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
-                  Home
-                </NavItem>
-                <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
-                  Embroidery
-                </NavItem>
-                <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
-                  Kitchen Items
-                </NavItem>
-                <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
-                  Quilts
-                </NavItem>
-                <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
-                  Show Schedule
-                </NavItem>
-                {auth ? (
-                  <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
-                    Admin
+              // <div style={{display:"flex", justifyContent:"space-between"}}>
+                <Nav bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
+                  <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
+                    Home
                   </NavItem>
-                ) : (
-                  null
-                )
-                }
-              </Nav>
+                  {/* <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
+                    Embroidery
+                  </NavItem> */}
+                  {/* <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
+                    Kitchen Items
+                  </NavItem> */}
+                  {/* <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
+                    Quilts
+                  </NavItem> */}
+                  <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
+                    Show Schedule
+                  </NavItem>
+                  {auth ? (
+                    <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
+                      Admin
+                    </NavItem>
+                  ) : (
+                    null
+                  )
+                  }
+                </Nav>
+              // </div>
               )
               : (
-                <Nav bsStyle="pills" fixed="false" pullLeft activeKey={navKey} >
-                <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
-                  Home
-                </NavItem>
-                <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
-                  Embroidery
-                </NavItem>
-                <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
-                  Kitchen Items
-                </NavItem>
-                <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
-                  Quilts
-                </NavItem>
-                <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
-                  Show Schedule
-                </NavItem>
-                {auth ? (
-                  <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
-                    Admin
-                  </NavItem>
-                ) : (
-                  null
-                )
-                }
-              </Nav>
+                // <div style={{display: "flex", justifyContent: "center"}}>
+                  <Nav bsStyle="pills" fluid activeKey={navKey} >
+                    <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
+                      Home
+                    </NavItem>
+                    {/* <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
+                      Embroidery
+                    </NavItem> */}
+                    {/* <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
+                      Kitchen Items
+                    </NavItem> */}
+                    {/* <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
+                      Quilts
+                    </NavItem> */}
+                    <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
+                      Show Schedule
+                    </NavItem>
+                  {auth ? (
+                    <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
+                      Admin
+                    </NavItem>
+                  ) : (
+                    null
+                  )
+                  }
+                </Nav>
+              // </div>
             )
         }
       </MediaQuery>
