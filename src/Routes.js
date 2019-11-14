@@ -13,7 +13,7 @@ import EditProduct from "./products/EditProduct";
 import EditSchedule from "./schedule/EditSchedule";
 import EmbroideryColors from "./embroidery/EmbroideryColors";
 import EmbroideryHome from "./embroidery/EmbroideryHome";
-import EmbroideryNav from "./containers/EmbroideryNav";
+import EmbroideryNav from "./components/EmbroideryNav";
 import Fabric from "./kitchen/Fabric";
 import Home from "./containers/Home";
 import Hoodies from "./embroidery/Hoodies";
@@ -36,11 +36,13 @@ import ToteZip from "./embroidery/ToteZip";
 import TShirt from "./embroidery/TShirt";
 import TShirtLong from "./embroidery/TShirtLong";
 import Vest from "./embroidery/Vest";
+import MainNav from "./components/MainNav";
 
 export default function Routes({ appProps }) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
+      <AppliedRoute path="/kitchen/bowl" exact component={BowlWrap} appProps={appProps} />
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />
       <AppliedRoute path="/embroidery/backpack" exact component={Backpack} appProps={appProps} />
       <AppliedRoute path="/embroidery/colors" exact component={EmbroideryColors} appProps={appProps} />

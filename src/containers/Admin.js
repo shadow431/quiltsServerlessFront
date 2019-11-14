@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import { Nav, NavItem } from "react-bootstrap";
-import NewProduct from "../products/NewProduct";
-import NewSchedule from "../schedule/NewSchedule";
+import MainNav from "../components/MainNav";
 
-export default function Admin () {
-  const [ activePage, setActivePage ] = useState("");
+export default function Admin (props) {
   const [ navKey, setNavKey ] = useState("");
   return (
     <React.Fragment>
+      <MainNav props={props} />
       <Nav bsStyle="pills" activeKey={navKey}>
-        <NavItem eventKey={1} onClick={() => {setActivePage("product"); setNavKey(1);}}>Add A Product</NavItem>
-        <NavItem eventKey={1} onClick={() => {setActivePage("schedule"); setNavKey(2);}}>Add A Show/Schedule</NavItem>
+        <NavItem eventKey={1} onClick={() => {props.history.push("/admin/products/new"); setNavKey(1);}}>Add A Product</NavItem>
+        <NavItem eventKey={1} onClick={() => {props.history.push("/admin/schedule/new"); setNavKey(2);}}>Add A Show/Schedule</NavItem>
       </Nav>
-      {activePage === "product" ? <NewProduct /> : null}
-      {activePage === "schedule" ? <NewSchedule /> : null}
     </React.Fragment>
   )
 }

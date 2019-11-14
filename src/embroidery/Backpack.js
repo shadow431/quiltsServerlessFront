@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Thumbnail } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
-import EmbroideryNav from "../containers/EmbroideryNav";
+import EmbroideryNav from "../components/EmbroideryNav";
+import MainNav from "../components/MainNav";
 
 function Backpack (props) {
   const [prod, setProd] = useState("");
@@ -12,14 +13,18 @@ function Backpack (props) {
     console.log(prod);
   }
   return (
-    <form onSubmit={handleProductType}>
-      <Button
-        type="submit"
-        bsStyle="primary"
-      >
-        Choose Your Color
-      </Button>
-    </form>
+    <React.Fragment>
+      <MainNav props={props} />
+      <EmbroideryNav />
+      <form onSubmit={handleProductType}>
+        <Button
+          type="submit"
+          bsStyle="primary"
+        >
+          Choose Your Color
+        </Button>
+      </form>
+    </React.Fragment>
   )
 }
 

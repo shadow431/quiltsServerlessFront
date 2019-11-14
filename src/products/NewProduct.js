@@ -15,8 +15,6 @@ export default function NewProduct(props) {
   const [imgType, setImgType] = useState("");
   const [imgSubCat, setImgSubCat] = useState("");
   const [price, setPrice] = useState("");
-  const imgHeight = "auto";
-  const imgWidth = "30%";
   const [imgUrl, setImgUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -50,7 +48,7 @@ export default function NewProduct(props) {
     try {
       await s3Upload(file.current);
 
-      await createProduct({ imgName, imgType, imgSubCat, price, imgHeight, imgWidth, imgUrl });
+      await createProduct({ imgName, imgType, imgSubCat, price, imgUrl });
       props.history.push("/");
     } catch (e) {
       alert(e);

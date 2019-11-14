@@ -1,21 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
-import { Grid, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Grid,
+  Row,
+  Thumbnail
+} from "react-bootstrap";
 import "./Home.css";
 import MainNav from "../components/MainNav";
 import Admin from "./Admin";
-import ProductHome from "../products/ProductHome";
 
 export default function Home(props) {
-  console.log("props at home", props)
   const [ products, setProducts] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
 
   useEffect(() => {
+
     onLoad();
   }, []);
 
   async function onLoad() {
+    console.log("props at home: ", props)
+
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
@@ -28,9 +35,45 @@ export default function Home(props) {
     setIsLoading(false);
   }
 
+  function renderProductsList(products) {
+    return [{}].concat(products).map((product, i) => {
+      if(i !== 0) {
+        return (
+          <Col key={i} xs={12} sm={4} md={3}>
+            <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work..." style={{"width":product.width}}>
+              <h3>{product.imgName}</h3>
+              <Button bsStyle="primary">
+                Add to Cart!
+              </Button>
+            </Thumbnail>
+          </Col>
+        )
+      }
+    })
+  }
+
+  function renderProducts() {
+    return (
+      <div>
+        <Grid fluid>
+          <Row>
+            {
+              isLoading ?
+                (
+                  <h3>Loading products now, please be patient :)</h3>
+                )
+              : renderProductsList(products)
+            }
+          </Row>
+        </Grid>
+      </div>
+    );
+  }
+
   return (
     <div className="Home">
-      {!isLoading ? <MainNav props={products} admin={props}/> :  <h3>Loading products now, please be patient :)</h3>}
+      {props.isAuthenticated ? <Admin /> : null}
+      {renderProducts()}
     </div>
   );
 }
