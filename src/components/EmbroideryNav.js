@@ -4,7 +4,6 @@ import { Nav, NavItem } from "react-bootstrap";
 
 
 export default function EmbroideryNav (props) {
-  console.log("Props at embroidery nav: ", props)
   const [ navKey, setNavKey ] = useState(1);
   const { history } = props;
   return (
@@ -23,7 +22,7 @@ export default function EmbroideryNav (props) {
                 <NavItem eventKey={3} onClick={() => {history.push("/embroidery/hoodies"); setNavKey(3);}}>
                   Hoodies
                 </NavItem>
-                <NavItem eventKey={4} onClick={() => {history.push("/embroidery/kitchentowel"); setNavKey(4);}}>
+                <NavItem eventKey={4} onClick={() => {history.push("/embroidery/kittowel"); setNavKey(4);}}>
                   Kitchen Towels
                 </NavItem>
                 <NavItem eventKey={5} onClick={() => {history.push("/embroidery/sling"); setNavKey(5);}}>
@@ -60,7 +59,7 @@ export default function EmbroideryNav (props) {
                 <NavItem eventKey={3} onClick={() => {history.push("/embroidery/hoodies"); setNavKey(3);}}>
                   Hoodies
                 </NavItem>
-                <NavItem eventKey={4} onClick={() => {history.push("/embroidery/kitchentowel"); setNavKey(4);}}>
+                <NavItem eventKey={4} onClick={() => {history.push("/embroidery/kittowel"); setNavKey(4);}}>
                   Kitchen Towels
                 </NavItem>
                 <NavItem eventKey={5} onClick={() => {history.push("/embroidery/sling"); setNavKey(5);}}>

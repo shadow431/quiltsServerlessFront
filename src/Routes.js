@@ -17,8 +17,7 @@ import EmbroideryNav from "./components/EmbroideryNav";
 import Fabric from "./kitchen/Fabric";
 import Home from "./containers/Home";
 import Hoodies from "./embroidery/Hoodies";
-import KitchenNav from "./kitchen/KitchenNav";
-import KitchenTowel from "./embroidery/KitchenTowel";
+import KitchenTowel from "./embroidery/KitTowel";
 import Login from "./containers/Login";
 import NewProduct from "./products/NewProduct";
 import NewSchedule from "./schedule/NewSchedule";
@@ -47,7 +46,7 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/embroidery/colors" exact component={EmbroideryColors} appProps={appProps} />
       <AppliedRoute path="/embroidery/compbrief" exact component={CompBrief} appProps={appProps} />
       <AppliedRoute path="/embroidery/hoodies" exact component={Hoodies} appProps={appProps} />
-      <AppliedRoute path="/embroidery/kitchentowel" exact component={KitchenTowel} appProps={appProps} />
+      <AppliedRoute path="/embroidery/kittowel" exact component={KitchenTowel} appProps={appProps} />
       <AppliedRoute path="/embroidery/prodoptions" exact component={EmbroideryNav} appProps={appProps} />
       <AppliedRoute path="/embroidery/sling" exact component={Sling} appProps={appProps} />
       <AppliedRoute path="/embroidery/sweatshirt" exact component={SweatShirt} appProps={appProps} />
@@ -56,7 +55,6 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/embroidery/tshirt" exact component={TShirt} appProps={appProps} />
       <AppliedRoute path="/embroidery/tshirtlong" exact component={TShirtLong} appProps={appProps} />
       <AppliedRoute path="/embroidery/vest" exact component={Vest} appProps={appProps} />
-      <AppliedRoute path="/kitchen" exact component={KitchenNav} appProps={appProps} />
       <AppliedRoute path="/kitchen/ovenmitt" exact component={OvenMitt} appProps={appProps} />
       <AppliedRoute path="/kitchen/ovenmitt/fabric" exact component={Fabric} appProps={appProps} />
       <AppliedRoute path="/kitchen/plate" exact component={Plate} appProps={appProps} />

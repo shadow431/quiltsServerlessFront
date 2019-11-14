@@ -1,7 +1,6 @@
 import React from "react";
 // import { FormControl } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
-import KitchenNav from "./KitchenNav";
 
 export default function BakedPotatoBag(props) {
   // const currentList = [{}].concat(imgBreakDown.typeOutline).map((product, i) => {
@@ -12,7 +11,6 @@ export default function BakedPotatoBag(props) {
   // }
   return (
     <div>
-      <KitchenNav />
       <h1>This would be potato bags</h1>
     </div>
   )

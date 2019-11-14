@@ -7,6 +7,8 @@ import Routes from "./Routes";
 import { API } from "aws-amplify";
 import "./App.css";
 import MainNav from "./components/MainNav";
+import EmbroideryNav from "./components/EmbroideryNav";
+import KitchenNav from "./kitchen/KitchenNav";
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -82,6 +84,8 @@ function App(props) {
         </Navbar>
 
         <MainNav history={history} />
+        {window.location.pathname.includes("/kitchen") ? <KitchenNav history={history} /> : null}
+        {window.location.pathname.includes("/embroidery") ? <EmbroideryNav history={history}/>:null}
         <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
       </div>
     )

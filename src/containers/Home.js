@@ -42,6 +42,19 @@ export default function Home(props) {
               <Button bsStyle="primary">
                 Add to Cart!
               </Button>
+              {props.isAuthenticated ? (
+                <React.Fragment>
+                  <Button bsStyle="secondary">
+                    Edit
+                  </Button>
+                  <Button bsStyle="danger">
+                    Remove
+                  </Button>
+                </React.Fragment>
+              )
+              : (
+                null
+              )}
             </Thumbnail>
           </Col>
         )

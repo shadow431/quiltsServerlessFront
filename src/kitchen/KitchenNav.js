@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { NavItem, Nav, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
+import { NavItem, Nav } from "react-bootstrap";
 import MediaQuery from "react-responsive";
 
 function KitchenNav (props) {
   const [ navKey, setNavKey ] = useState(1);
-  console.log("kitchennav: ", props)
   const { history } = props;
 
   return (
