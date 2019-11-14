@@ -5,7 +5,7 @@ import EmbroideryNav from "../components/EmbroideryNav";
 export default function TShirtLong (props) {
   return (
     <React.Fragment>
-      <MainNav props={props} />
+      {/* <MainNav props={props} /> */}
       <EmbroideryNav />
       <h1>This is the Long Sleeve T-Shirt</h1>
     </React.Fragment>

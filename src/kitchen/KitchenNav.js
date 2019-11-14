@@ -9,9 +9,8 @@ function KitchenNav (props) {
 
   return (
     <React.Fragment>
-      <MainNav props={props}/>
-      <MediaQuery minWidth={786}>
-        {/* You can also use a function (render prop) as a child */}
+      {/* <MainNav props={props}/> */}
+      {/* <MediaQuery minWidth={786}>
         {(matches) =>
           matches
             ? (
@@ -46,7 +45,7 @@ function KitchenNav (props) {
               </FormGroup>
             )
         }
-      </MediaQuery>
+      </MediaQuery> */}
     </React.Fragment>
   )
 };

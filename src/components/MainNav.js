@@ -4,47 +4,56 @@ import MediaQuery from "react-responsive";
 
 export default function MainNav (props) {
   const [ navKey, setNavKey ] = useState(1);
-  console.log("props at mainnav: ", props);
+  const { history } = props;
+
   return (
     <React.Fragment>
       <MediaQuery minWidth={786}>
-        {/* You can also use a function (render prop) as a child */}
         {(matches) =>
           matches
             ? (
               <Nav bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
-                <NavItem eventKey={1} onClick={() => {props.props.history.push("/"); setNavKey(1);}}>
+                <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
                   Home
                 </NavItem>
-                <NavItem eventKey={2} onClick={() => {props.props.history.push("/embroidery"); setNavKey(2);}}>
+                <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
                   Embroidery
                 </NavItem>
-                <NavItem eventKey={3} onClick={() => {props.props.history.push("/kitchen"); setNavKey(3);}}>
+                <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
                   Kitchen Items
                 </NavItem>
-                <NavItem eventKey={4} onClick={() => {props.props.history.push("/quilts"); setNavKey(4);}}>
+                <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
                   Quilts
                 </NavItem>
-                <NavItem eventKey={5} onClick={() => {props.props.history.push("/schedule"); setNavKey(5);}}>
+                <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
                   Show Schedule
                 </NavItem>
-                <NavItem eventKey={6} onClick={() => {props.props.history.push("/admin"); setNavKey(6);}}>
+                <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
                   Admin
                 </NavItem>
               </Nav>
               )
               : (
-              <FormGroup controlId="formControlsSelect">
-                <ControlLabel>Select</ControlLabel>
-                <FormControl componentClass="select" placeholder="NavMenu">
-                  <option onSelect={() => {props.props.history.push("/"); setNavKey(1);}} value="home">Home</option>
-                  <option onSelect={() => {props.props.history.push("/embroidery"); setNavKey(2);}} value="embroidery">Embroidery</option>
-                  <option onSelect={() => {props.props.history.push("/kitchen"); setNavKey(3);}} value="kitchen">Kitchen Items</option>
-                  <option onSelect={() => {props.props.history.push("/quilts"); setNavKey(4);}} value="quilts">Quilts</option>
-                  <option onSelect={() => {props.props.history.push("/schedule"); setNavKey(5);}} value="schedule">Schedule</option>
-                  <option onSelect={() => {props.props.history.push("/admin"); setNavKey(6);}} value="admin">Admin</option>
-                </FormControl>
-              </FormGroup>
+                <Nav bsStyle="pills" fixed="false" pills pullLeft activeKey={navKey} >
+                <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
+                  Home
+                </NavItem>
+                <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
+                  Embroidery
+                </NavItem>
+                <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
+                  Kitchen Items
+                </NavItem>
+                <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
+                  Quilts
+                </NavItem>
+                <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
+                  Show Schedule
+                </NavItem>
+                <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
+                  Admin
+                </NavItem>
+              </Nav>
             )
         }
       </MediaQuery>

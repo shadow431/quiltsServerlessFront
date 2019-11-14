@@ -40,7 +40,7 @@ export default function EmbroideryHome (props) {
 
   return (
     <React.Fragment>
-      <MainNav props={props}/>
+      {/* <MainNav props={props}/> */}
       <EmbroideryNav />
       <Grid>
         <Row>

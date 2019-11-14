@@ -5,7 +5,7 @@ import EmbroideryNav from "../components/EmbroideryNav";
 export default function ToteZip (props) {
   return (
     <React.Fragment>
-      <MainNav props={props} />
+      {/* <MainNav props={props} /> */}
       <EmbroideryNav />
       <h1>This is the Tote Zipper</h1>
     </React.Fragment>

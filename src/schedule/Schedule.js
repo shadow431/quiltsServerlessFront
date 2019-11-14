@@ -26,7 +26,7 @@ export default function Schedule(props) {
 
   return (
     <div>
-      <MainNav props={props} />
+      {/* <MainNav props={props} /> */}
       <table>
         <thead>
           <tr>

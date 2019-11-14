@@ -70,7 +70,7 @@ export default function Home(props) {
 
   return (
     <div className="Home">
-      <MainNav />
+      {/* <MainNav /> */}
       {props.isAuthenticated ? <Admin /> : null}
       {renderProducts()}
     </div>
