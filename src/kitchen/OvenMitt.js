@@ -4,17 +4,16 @@ import imgBreakDown from "../components/ImgBreakDown";
 import renderHTML from "react-render-html";
 
 export default function OvenMitt (props) {
-  const products = props.props.props.props;
   const [ prod, setProd ] = useState("");
   function handleFabricStage(e) {
     e.preventDefault();
-    setProd(props.products[3].prodType);
+    setProd(props.products[3]);
     props.history.push("/ovenmitt/fabric");
     console.log("current prod to work with: " + prod);
   }
   return (
     <div>
-      <Thumbnail key={products[3]._id} src={products[3].imgUrl} alt="Well, something didn't work...">
+      <Thumbnail key={prod._id} src={prod.imgUrl} alt="Well, something didn't work...">
         <div>{imgBreakDown.typeOutline.OVM.prodType}</div>
         {renderHTML(imgBreakDown.typeOutline.OVM.prodDesc)}
         <form onSubmit={handleFabricStage}>
