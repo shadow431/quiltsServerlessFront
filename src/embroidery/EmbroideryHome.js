@@ -6,6 +6,7 @@ import EmbroideryNav from "../components/EmbroideryNav";
 export default function EmbroideryHome (props) {
   console.log("props at embroidery: ", props)
   const [ prod, setProd ] = useState("");
+  const { history } = props;
 
   function handleProductType (e) {
     e.preventDefault();
@@ -39,7 +40,7 @@ export default function EmbroideryHome (props) {
 
   return (
     <React.Fragment>
-      <EmbroideryNav />
+      <EmbroideryNav history={history}/>
       <Grid>
         <Row>
           {populateProducts()}
