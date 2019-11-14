@@ -21,8 +21,6 @@ export default function Home(props) {
   }, []);
 
   async function onLoad() {
-    console.log("props at home: ", props)
-
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
@@ -72,6 +70,7 @@ export default function Home(props) {
 
   return (
     <div className="Home">
+      <MainNav />
       {props.isAuthenticated ? <Admin /> : null}
       {renderProducts()}
     </div>

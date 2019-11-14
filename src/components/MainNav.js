@@ -36,9 +36,13 @@ export default function MainNav (props) {
               : (
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Select</ControlLabel>
-                <FormControl componentClass="select" placeholder="select">
-                  <option value="select">select</option>
-                  <option value="other">...</option>
+                <FormControl componentClass="select" placeholder="NavMenu">
+                  <option onSelect={() => {props.props.history.push("/"); setNavKey(1);}} value="home">Home</option>
+                  <option onSelect={() => {props.props.history.push("/embroidery"); setNavKey(2);}} value="embroidery">Embroidery</option>
+                  <option onSelect={() => {props.props.history.push("/kitchen"); setNavKey(3);}} value="kitchen">Kitchen Items</option>
+                  <option onSelect={() => {props.props.history.push("/quilts"); setNavKey(4);}} value="quilts">Quilts</option>
+                  <option onSelect={() => {props.props.history.push("/schedule"); setNavKey(5);}} value="schedule">Schedule</option>
+                  <option onSelect={() => {props.props.history.push("/admin"); setNavKey(6);}} value="admin">Admin</option>
                 </FormControl>
               </FormGroup>
             )
