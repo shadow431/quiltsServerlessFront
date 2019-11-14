@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 export default function Schedule(props) {
   const [eventItems, updateEventItems] = useState([]);
-  // const [ isLoading, setIsLoading ] = useState(true);
+  const [ isLoading, setIsLoading ] = useState(true);
 
   useEffect(() => {
     onLoad();
@@ -20,7 +20,7 @@ export default function Schedule(props) {
         alert(e);
       }
     }
-    // setIsLoading(false);
+    setIsLoading(false);
   }
 
   return (
@@ -40,31 +40,32 @@ export default function Schedule(props) {
                 </React.Fragment>
               )
               :
-              (<React.Fragment />)
+              (null)
             }
           </tr>
         </thead>
         <tbody>
-          {eventItems.map((currEvent, i) => {
-            return (
-              <tr key={currEvent._id}>
-                <td>{currEvent.name}</td>
-                <td>{currEvent.date}</td>
-                <td>{currEvent.location}</td>
-                <td> {currEvent.time}</td>
-                {props.isAuthenticated ?
-                (
-                  <React.Fragment>
-                    <td><Button onClick={() => {props.history.push("/admin/schedule/edit", { props: currEvent })}}>Edit</Button></td>
-                    <td><Button onClick={async () => {await API.del("quilts", `/admin/schedule/${currEvent._id}`); updateEventItems(eventItems.slice(eventItems.indexOf(currEvent._id, 1)));}}>Delete</Button></td>
-                  </React.Fragment>
-                )
-                :
-                (<React.Fragment />)
-                }
-              </tr>
-            )
-          })
+          {!isLoading ? (
+            eventItems.map((currEvent, i) => {
+              return (
+                <tr key={currEvent._id}>
+                  <td>{currEvent.name}</td>
+                  <td>{currEvent.date}</td>
+                  <td>{currEvent.location}</td>
+                  <td> {currEvent.time}</td>
+                  {props.isAuthenticated ?
+                    (
+                      <React.Fragment>
+                        <td><Button onClick={() => {props.history.push("/admin/schedule/edit", { props: currEvent })}}>Edit</Button></td>
+                        <td><Button onClick={async () => {await API.del("quilts", `/admin/schedule/${currEvent._id}`); updateEventItems(eventItems.slice(eventItems.indexOf(currEvent._id, 1)));}}>Delete</Button></td>
+                      </React.Fragment>
+                    )
+                    : null
+                  }
+                </tr>
+              )
+            })
+            ) : <tr>Loading Schedule...</tr>
           }
         </tbody>
       </table>

@@ -3,8 +3,9 @@ import { Nav, NavItem } from "react-bootstrap";
 import MediaQuery from "react-responsive";
 
 export default function MainNav (props) {
+
   const [ navKey, setNavKey ] = useState(1);
-  const { history } = props;
+  const { history, auth } = props;
 
   return (
     <React.Fragment>
@@ -28,13 +29,18 @@ export default function MainNav (props) {
                 <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
                   Show Schedule
                 </NavItem>
-                <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
-                  Admin
-                </NavItem>
+                {auth ? (
+                  <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
+                    Admin
+                  </NavItem>
+                ) : (
+                  null
+                )
+                }
               </Nav>
               )
               : (
-                <Nav bsStyle="pills" fixed="false" pills pullLeft activeKey={navKey} >
+                <Nav bsStyle="pills" fixed="false" pullLeft activeKey={navKey} >
                 <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
                   Home
                 </NavItem>
@@ -50,9 +56,14 @@ export default function MainNav (props) {
                 <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
                   Show Schedule
                 </NavItem>
-                <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
-                  Admin
-                </NavItem>
+                {auth ? (
+                  <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
+                    Admin
+                  </NavItem>
+                ) : (
+                  null
+                )
+                }
               </Nav>
             )
         }

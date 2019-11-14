@@ -68,7 +68,7 @@ export default function Routes({ appProps }) {
       <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/edit" exact component={EditSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/products/new" exact component={NewProduct} appProps={appProps} />
-      <AuthenticatedRoute path="/admin/products/edit" exact component={EditProduct} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/product/edit" exact component={EditProduct} appProps={appProps} />
       {/* Finally, catch all unmatched routes */}
       <Route component={NotFound} />
     </Switch>

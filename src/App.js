@@ -83,9 +83,9 @@ function App(props) {
           </Navbar.Collapse>
         </Navbar>
 
-        <MainNav history={history} />
-        {window.location.pathname.includes("/kitchen") ? <KitchenNav history={history} /> : null}
-        {window.location.pathname.includes("/embroidery") ? <EmbroideryNav history={history}/>:null}
+        <MainNav history={history} auth={isAuthenticated} />
+        {window.location.pathname.includes("/kitchen") ? <KitchenNav history={history} auth={isAuthenticated} /> : null}
+        {window.location.pathname.includes("/embroidery") ? <EmbroideryNav history={history} auth={isAuthenticated} />:null}
         <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
       </div>
     )

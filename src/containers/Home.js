@@ -37,24 +37,21 @@ export default function Home(props) {
       if(i !== 0) {
         return (
           <Col key={i} xs={12} sm={4} md={3}>
-            <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work..." style={{"width":product.width}}>
+            <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work...">
               <h3>{product.imgName}</h3>
               <Button bsStyle="primary">
                 Add to Cart!
               </Button>
-              {props.isAuthenticated ? (
-                <React.Fragment>
-                  <Button bsStyle="secondary">
-                    Edit
-                  </Button>
-                  <Button bsStyle="danger">
-                    Remove
-                  </Button>
-                </React.Fragment>
-              )
-              : (
+              {props.isAuthenticated ?
+                (
+                  <React.Fragment>
+                    <Button onClick={() => {props.history.push("/admin/product/edit", { props: product })}}>Edit</Button>
+                    <Button onClick={async () => {await API.del("quilts", `/admin/products/${product._id}`); setProducts(products.slice(products.indexOf(product._id, 1)));}}>Delete</Button>
+                  </React.Fragment>
+                )
+                :
                 null
-              )}
+                }
             </Thumbnail>
           </Col>
         )
