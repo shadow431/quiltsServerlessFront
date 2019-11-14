@@ -7,8 +7,8 @@ export default function ProductHome (props) {
   return products.map((product, i) => {
     if(i !== 0) {
       return (
-        <Col key={i * 3} md={3}>
-          <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work..." style={{"width":product.imgWidth}}>
+        <Col xs={12} sm={4} md={3}>
+          <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work...">
             <h3>{product.imgName}</h3>
             <Button bsStyle="primary">
               Add to Cart!

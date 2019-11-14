@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, FormControl, Thumbnail } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
+import renderHTML from "react-render-html";
 
 export default function OvenMitt (props) {
   const products = props.props.props.props;
@@ -15,7 +16,7 @@ export default function OvenMitt (props) {
     <div>
       <Thumbnail key={products[3]._id} src={products[3].imgUrl} alt="Well, something didn't work...">
         <div>{imgBreakDown.typeOutline.OVM.prodType}</div>
-        <h4>{imgBreakDown.typeOutline.OVM.prodDesc}</h4>
+        {renderHTML(imgBreakDown.typeOutline.OVM.prodDesc)}
         <form onSubmit={handleFabricStage}>
           <Button
             type="submit"
