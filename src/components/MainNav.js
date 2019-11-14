@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Nav, NavItem, FormGroup, ControlLabel, FormControl } from "react-bootstrap";
+import { Nav, NavItem } from "react-bootstrap";
 import MediaQuery from "react-responsive";
 
 export default function MainNav (props) {

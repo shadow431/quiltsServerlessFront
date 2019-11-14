@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Thumbnail } from "react-bootstrap";
+import { Button, } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import EmbroideryNav from "../components/EmbroideryNav";
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, FormControl, Thumbnail } from "react-bootstrap";
+import { Button, Thumbnail } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import renderHTML from "react-render-html";
 
