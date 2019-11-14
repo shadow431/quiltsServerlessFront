@@ -65,7 +65,7 @@ export default function Schedule(props) {
                 </tr>
               )
             })
-            ) : <tr>Loading Schedule...</tr>
+            ) : <tr><td>Loading Schedule...</td></tr>
           }
         </tbody>
       </table>

@@ -49,7 +49,6 @@ export default function EditSchedule (props) {
         location: location
       }
       try {
-        console.log("body in update: ", body);
         await API.put("quilts", `/admin/schedule/${id}`, {
           body
         });

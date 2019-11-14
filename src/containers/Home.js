@@ -46,12 +46,21 @@ export default function Home(props) {
                 (
                   <React.Fragment>
                     <Button onClick={() => {props.history.push("/admin/product/edit", { props: product })}}>Edit</Button>
-                    <Button onClick={async () => {await API.del("quilts", `/admin/products/${product._id}`); setProducts(products.slice(products.indexOf(product._id, 1)));}}>Delete</Button>
+                    <Button onClick={
+                      async () => {
+                        await API.del("quilts", `/admin/products/${product._id}`);
+                        setProducts(products.slice(products.indexOf(product._id, 1)));
+                        onLoad();
+                      }
+                      }
+                    >
+                      Delete
+                    </Button>
                   </React.Fragment>
                 )
                 :
                 null
-                }
+              }
             </Thumbnail>
           </Col>
         )
@@ -79,7 +88,6 @@ export default function Home(props) {
 
   return (
     <div className="Home">
-      {props.isAuthenticated ? <Admin /> : null}
       {renderProducts()}
     </div>
   );
