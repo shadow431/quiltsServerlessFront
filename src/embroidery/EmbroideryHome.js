@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Thumbnail, Button } from "react-bootstrap";
+import { Thumbnail, Button, Col } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import EmbroideryNav from "../containers/EmbroideryNav";
 import MainNav from "../components/MainNav";
@@ -14,9 +14,11 @@ export default function EmbroideryHome (props) {
     props.history.push("/embroidery/prodoptions");
 
   }
-  return (
-    <React.Fragment>
-      <Thumbnail key={products[0]._id} src={products[0].imgUrl} alt="Well, something didn't work...">
+    return products.map((product, i) => {
+      if(i !== 0) {
+        return(
+          <Col xs={12} sm={4} md={3}>
+            <Thumbnail key={products[0]._id} src={products[0].imgUrl} alt="Well, something didn't work...">
         <div>{imgBreakDown.typeOutline.FAB.prodType}</div>
         <h4>{imgBreakDown.imgSubCat.abd}</h4>
         <form onSubmit={handleProductType}>
@@ -28,6 +30,8 @@ export default function EmbroideryHome (props) {
           </Button>
         </form>
       </Thumbnail>
-    </React.Fragment>
-  )
+          </Col>
+        )
+      }
+    })
 }
