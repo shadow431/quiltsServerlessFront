@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Thumbnail, Button, Col, Grid, Row } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import EmbroideryNav from "../components/EmbroideryNav";
-import MainNav from "../components/MainNav";
 
 export default function EmbroideryHome (props) {
   console.log("props at embroidery: ", props)
@@ -40,7 +39,6 @@ export default function EmbroideryHome (props) {
 
   return (
     <React.Fragment>
-      {/* <MainNav props={props}/> */}
       <EmbroideryNav />
       <Grid>
         <Row>

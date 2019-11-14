@@ -8,7 +8,6 @@ import {
   Thumbnail
 } from "react-bootstrap";
 import "./Home.css";
-import MainNav from "../components/MainNav";
 import Admin from "./Admin";
 
 export default function Home(props) {
@@ -70,7 +69,6 @@ export default function Home(props) {
 
   return (
     <div className="Home">
-      {/* <MainNav /> */}
       {props.isAuthenticated ? <Admin /> : null}
       {renderProducts()}
     </div>

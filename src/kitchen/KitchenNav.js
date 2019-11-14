@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavItem, Nav, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import MediaQuery from "react-responsive";
-import MainNav from "../components/MainNav";
 
 function KitchenNav (props) {
   const [ navKey, setNavKey ] = useState(1);
@@ -9,7 +8,6 @@ function KitchenNav (props) {
 
   return (
     <React.Fragment>
-      {/* <MainNav props={props}/> */}
       {/* <MediaQuery minWidth={786}>
         {(matches) =>
           matches

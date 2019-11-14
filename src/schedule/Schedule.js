@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { Button } from "react-bootstrap";
-import MainNav from "../components/MainNav";
 
 export default function Schedule(props) {
   const [eventItems, updateEventItems] = useState([]);
@@ -26,7 +25,6 @@ export default function Schedule(props) {
 
   return (
     <div>
-      {/* <MainNav props={props} /> */}
       <table>
         <thead>
           <tr>

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Button, Thumbnail } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import EmbroideryNav from "../components/EmbroideryNav";
-import MainNav from "../components/MainNav";
 
 function Backpack (props) {
   const [prod, setProd] = useState("");
@@ -14,7 +13,6 @@ function Backpack (props) {
   }
   return (
     <React.Fragment>
-      {/* <MainNav props={props} /> */}
       <EmbroideryNav />
       <form onSubmit={handleProductType}>
         <Button
