@@ -31,7 +31,7 @@ export default function Login(props) {
   }
 
   return (
-    <div className="Login">
+    <div className="Login" style={{marginBottom: 160}}>
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>

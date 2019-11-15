@@ -5,9 +5,11 @@ import {
   Col,
   Grid,
   Row,
-  Thumbnail
+  Thumbnail,
+  Glyphicon
 } from "react-bootstrap";
 import "./Home.css";
+import "../components/LoaderButton.css";
 
 export default function Home(props) {
   const [ products, setProducts] = useState([]);
@@ -76,7 +78,11 @@ export default function Home(props) {
             {
               isLoading ?
                 (
-                  <h3>Loading products now, please be patient :)</h3>
+                  // <div style={{height: 500, width: 500}}>
+
+                  // <Glyphicon glyph="refresh" className="spinning" />
+                  // </div>
+                  <h4 style={{paddingLeft: 15}}>    loading...</h4>
                 )
               : renderProductsList(products)
             }

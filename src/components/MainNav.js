@@ -10,11 +10,13 @@ export default function MainNav (props) {
 
   return (
     <React.Fragment>
+      {window.location.pathname.includes("/admin") || window.location.pathname.includes("/login") ? null : (
+
       <MediaQuery minWidth={786}>
         {(matches) =>
           matches
             ? (
-              // <div style={{display:"flex", justifyContent:"space-between"}}>
+              <div style={{}}>
                 <Nav bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
                   <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
                     Home
@@ -40,10 +42,10 @@ export default function MainNav (props) {
                   )
                   }
                 </Nav>
-              // </div>
+             </div>
               )
               : (
-                // <div style={{display: "flex", justifyContent: "center"}}>
+                <div style={{display: "flex", justifyContent: "center"}}>
                   <Nav bsStyle="pills" fluid activeKey={navKey} >
                     <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
                       Home
@@ -69,10 +71,11 @@ export default function MainNav (props) {
                   )
                   }
                 </Nav>
-              // </div>
+              </div>
             )
         }
       </MediaQuery>
+      )}
     </React.Fragment>
   )
 }
