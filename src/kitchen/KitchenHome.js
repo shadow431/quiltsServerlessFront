@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
+import ColorPopulater from "../components/ColorPopulater";
 
 export default function KitchenHome (props) {
   const [ fabricChoice, setFabricChoice ] = useState([]);
@@ -8,6 +9,8 @@ export default function KitchenHome (props) {
   const [ productChoice, setProductChoice ] = useState("");
   const [ productChosen, setProductChosen ] = useState(false);
   const [ prodTypeChosen, setProductTypeChosen ] = useState("");
+  // const [ colorChoice, setColorChoice ] = useState("");
+  // const [ colorChosen, setColorChosen ] = useState(false);
 
   function handleFabricChoice (e) {
     e.preventDefault();
@@ -95,6 +98,8 @@ export default function KitchenHome (props) {
       }
       {productChosen && fabricChosen ? (
         <React.Fragment>
+          {/* <ColorPopulater product={prodTypeChosen} /> */}
+          <h2>The product you have put together today is: </h2>
           <Thumbnail style={{overflow:"auto"}} key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
             <h3>Fabric Chosen</h3>
           </Thumbnail>

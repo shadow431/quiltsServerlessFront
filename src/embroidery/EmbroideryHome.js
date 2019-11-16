@@ -46,3 +46,17 @@ export default function EmbroideryHome (props) {
     </React.Fragment>
   )
 }
+
+// {colorChosen ? (
+//   <React.Fragment>
+//     {/* <h3>{colorChoice}</h3> */}
+//     <Thumbnail style={{overflow:"auto"}} key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
+//       <h3>Fabric Chosen</h3>
+//     </Thumbnail>
+//     <Thumbnail style={{overflow:"auto"}} key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation} alt="Well, something didn't work...">
+//       <h3>Product Chosen</h3>
+//       <h3>{imgBreakDown.typeOutline[prodTypeChosen].prodType}</h3>
+//     </Thumbnail>
+//   </React.Fragment>
+//   ) : null
+// }
