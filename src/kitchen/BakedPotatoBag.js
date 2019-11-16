@@ -3,6 +3,7 @@ import React from "react";
 import imgBreakDown from "../components/ImgBreakDown";
 
 export default function BakedPotatoBag(props) {
+  console.log(props);
   // const currentList = [{}].concat(imgBreakDown.typeOutline).map((product, i) => {
   //   return <h1 key={product}>{product[i]}</h1>
   // });

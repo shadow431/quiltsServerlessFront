@@ -40,6 +40,7 @@ import Vest from "./embroidery/Vest";
 export default function Routes({ appProps }) {
   return (
     <Switch>
+      <AppliedRoute path="/" exact component={Home} appProps={appProps} />
       <AppliedRoute path="/home" exact component={Home} appProps={appProps} />
       <AppliedRoute path="/kitchen/bowl" exact component={BowlWrap} appProps={appProps} />
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />

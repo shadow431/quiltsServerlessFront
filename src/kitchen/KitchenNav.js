@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 function KitchenNav (props) {
-  const { history } = props;
+  const { history } = props.history;
 
   function handleProductSelection(e) {
-    console.log(e.target.value);
     history.push(`/kitchen/${e.target.value}`);
   }
 

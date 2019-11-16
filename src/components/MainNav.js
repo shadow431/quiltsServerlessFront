@@ -24,9 +24,9 @@ export default function MainNav (props) {
               {/* <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
                 Embroidery
               </NavItem> */}
-              {/* <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
+              <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
                 Kitchen Items
-              </NavItem> */}
+              </NavItem>
               {/* <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
                 Quilts
               </NavItem> */}
@@ -50,7 +50,7 @@ export default function MainNav (props) {
                   <option value="select">Select</option>
                   <option value="home">Home</option>
                   {/* <option value="embroidery">Embroidery</option> */}
-                  {/* <option value="kitchen">Kitchen</option> */}
+                  <option value="kitchen">Kitchen</option>
                   {/* <option value="quilts">Quilts</option> */}
                   <option value="schedule">Schedule</option>
                   {auth ? (
