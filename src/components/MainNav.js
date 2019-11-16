@@ -12,6 +12,7 @@ export default function MainNav (props) {
   }
   return (
     <React.Fragment>
+      {window.location.pathname.includes("/admin") || window.location.pathname.includes("/login") ? null : (
       <MediaQuery minWidth={786}>
         {(matches) =>
           matches
@@ -58,10 +59,11 @@ export default function MainNav (props) {
                     null
                   }
                 </FormControl>
-              </FormGroup>
+            </FormGroup>
           )
         }
       </MediaQuery>
+      )}
     </React.Fragment>
   )
 }
