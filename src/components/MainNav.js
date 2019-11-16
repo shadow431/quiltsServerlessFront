@@ -8,7 +8,7 @@ export default function MainNav (props) {
   const { history, auth } = props;
 
   function handleNavSelection (e) {
-    history.push(`/${e.target.value}`);
+    history.push(`${e.target.value}`);
   }
   return (
     <React.Fragment>
@@ -18,7 +18,7 @@ export default function MainNav (props) {
           matches
             ? (
             <Nav bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
-              <NavItem eventKey={1} onClick={() => {history.push("/home"); setNavKey(1);}}>
+              <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
                 Home
               </NavItem>
               {/* <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
@@ -48,11 +48,11 @@ export default function MainNav (props) {
               <ControlLabel>Select</ControlLabel>
                 <FormControl componentClass="select" placeholder="select" onChange={handleNavSelection}>
                   <option value="select">Select</option>
-                  <option value="home">Home</option>
+                  <option value="/">Home</option>
                   {/* <option value="embroidery">Embroidery</option> */}
-                  <option value="kitchen">Kitchen</option>
+                  <option value="/kitchen">Kitchen</option>
                   {/* <option value="quilts">Quilts</option> */}
-                  <option value="schedule">Schedule</option>
+                  <option value="/schedule">Schedule</option>
                   {auth ? (
                     <option value="admin">Admin</option>
                     ) :
