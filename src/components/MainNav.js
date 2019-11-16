@@ -22,9 +22,9 @@ export default function MainNav (props) {
                   {/* <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
                     Embroidery
                   </NavItem> */}
-                  {/* <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
+                  <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
                     Kitchen Items
-                  </NavItem> */}
+                  </NavItem>
                   {/* <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
                     Quilts
                   </NavItem> */}
