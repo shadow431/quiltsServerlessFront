@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
-import ColorPopulater from "../components/ColorPopulater";
+// import ColorPopulater from "../components/ColorPopulater";
 
 export default function KitchenHome (props) {
   const [ fabricChoice, setFabricChoice ] = useState([]);
