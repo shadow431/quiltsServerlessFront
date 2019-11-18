@@ -60,19 +60,21 @@ export default function KitchenHome (props) {
 
   function renderProductsList(products) {
     return products.map((product, i) => {
-      return (
-        <Col key={i} xs={12} sm={5} md={3}>
-          <Thumbnail style={{overflow:"auto"}} key={i} src={product.imgUrl} alt="Well, something didn't work...">
-            <h3>{product.imgName}</h3>
-            {/* <h3>${product.price}</h3> */}
-            <form onSubmit={handleFabricChoice}>
-              <Button type="submit" onClick={() => {setFabricChoice(product); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
-                Choose This Fabric!
-              </Button>
-            </form>
-          </Thumbnail>
-        </Col>
-      )
+      if(product.imgType === "FAB"){
+        return (
+          <Col key={i} xs={12} sm={5} md={3}>
+            <Thumbnail style={{overflow:"auto"}} key={i} src={product.imgUrl} alt="Well, something didn't work...">
+              <h3>{product.imgName}</h3>
+              {/* <h3>${product.price}</h3> */}
+              <form onSubmit={handleFabricChoice}>
+                <Button type="submit" onClick={() => {setFabricChoice(product); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
+                  Choose This Fabric!
+                </Button>
+              </form>
+            </Thumbnail>
+          </Col>
+        )
+      }
     })
   }
 
@@ -101,7 +103,7 @@ export default function KitchenHome (props) {
         ) : (
           <React.Fragment>
             <FormGroup controlId="formControlsSelect">
-              <ControlLabel>Select</ControlLabel>
+              <ControlLabel>Product Type</ControlLabel>
               <FormControl componentClass="select" placeholder="select" onChange={handleProductSelection}>
                 <option value="select">select</option>
                 <option value="potato">Baked Potato Bags</option>

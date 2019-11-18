@@ -12,7 +12,9 @@
   color: #999;
 }
 
-.thumbnail {
+.HomePhotos {
+  align-items: center;
+  height: 450px;
 }
 
 .Home .notes h4 {
