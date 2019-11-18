@@ -33,6 +33,29 @@ export default function Home(props) {
     setIsLoading(false);
   }
 
+  paypal.Buttons({
+    style: {
+        shape: 'rect',
+        color: 'gold',
+        layout: 'vertical',
+        label: 'paypal'
+    },
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: '1'
+                }
+            }]
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            alert('Transaction completed by ' + details.payer.name.given_name + '!');
+        });
+    }
+  }).render('#paypal-button-container');
+
   function renderProductsList(products) {
     return [{}].concat(products).map((product, i) => {
       if(i !== 0) {
@@ -41,9 +64,8 @@ export default function Home(props) {
             <Thumbnail style={{overflow:"auto"}} key={product._id} src={product.imgUrl} alt="Well, something didn't work...">
               {/* <h3>{product.imgName}</h3> */}
               <h3>${product.price}</h3>
-              <Button style={{backgroundColor:"#5b5f97", color:"white"}}>
-                Add to Cart!
-              </Button>
+              <div id="paypal-button-container"></div>
+              <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script>
               {props.isAuthenticated ?
                 (
                   <React.Fragment>
