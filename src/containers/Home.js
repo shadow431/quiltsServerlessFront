@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { API } from "aws-amplify";
 import {
   Button,
   Col,
@@ -12,26 +11,7 @@ import "./Home.css";
 import "../components/LoaderButton.css";
 
 export default function Home(props) {
-  const [ products, setProducts] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true);
 
-  useEffect(() => {
-
-    onLoad();
-  }, []);
-
-  async function onLoad() {
-    try {
-      const products = await API.get("quilts", "/products");
-      setProducts(products);
-    }
-    catch(e) {
-      if (e !== 'No current user') {
-        alert(e);
-      }
-    }
-    setIsLoading(false);
-  }
 
   // paypal.Buttons({
   //   style: {
@@ -88,7 +68,7 @@ export default function Home(props) {
       <div>
         <Grid fluid>
           <Row>
-            {
+            {/* {
               isLoading ?
                 (
                   // <div style={{height: 500, width: 500}}>
@@ -97,8 +77,9 @@ export default function Home(props) {
                   // </div>
                   <h4 style={{paddingLeft: 15}}>    loading...</h4>
                 )
-              : renderProductsList(products)
-            }
+              :
+            } */}
+            renderProductsList(products)
           </Row>
         </Grid>
       </div>
