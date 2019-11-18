@@ -61,8 +61,8 @@ export default function Home(props) {
       if(i !== 0) {
         return (
           <Col key={i} xs={12} sm={5} md={3}>
-            <Thumbnail style={{overflow:"auto"}} key={product._id} src={product.imgUrl} alt="Well, something didn't work...">
-              {/* <h3>{product.imgName}</h3> */}
+            <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something didn't work...">
+              <h3>{product.imgName}</h3>
               <h3>${product.price}</h3>
               {/* <div id="paypal-button-container"></div>
               <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD" data-sdk-integration-source="button-factory"></script> */}

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
+import { API } from "aws-amplify";
 import imgBreakDown from "../components/ImgBreakDown";
 // import ColorPopulater from "../components/ColorPopulater";
 
@@ -11,6 +12,27 @@ export default function KitchenHome (props) {
   const [ prodTypeChosen, setProductTypeChosen ] = useState("");
   // const [ colorChoice, setColorChoice ] = useState("");
   // const [ colorChosen, setColorChosen ] = useState(false);
+
+  const [ products, setProducts] = useState([]);
+  const [ isLoading, setIsLoading ] = useState(true);
+
+  useEffect(() => {
+
+    onLoad();
+  }, []);
+
+  async function onLoad() {
+    try {
+      const products = await API.get("quilts", "/products");
+      setProducts(products);
+    }
+    catch(e) {
+      if (e !== 'No current user') {
+        alert(e);
+      }
+    }
+    setIsLoading(false);
+  }
 
   function handleFabricChoice (e) {
     e.preventDefault();
@@ -35,22 +57,20 @@ export default function KitchenHome (props) {
   }
 
   function renderProductsList(products) {
-    return [{}].concat(products).map((product, i) => {
-      if(i !== 0) {
-        return (
-          <Col key={i} xs={12} sm={5} md={3}>
-            <Thumbnail style={{overflow:"auto"}} key={i} src={product.imgUrl} alt="Well, something didn't work...">
-              {/* <h3>{product.imgName}</h3> */}
-              <h3>${product.price}</h3>
-              <form onSubmit={handleFabricChoice}>
-                <Button type="submit" onClick={() => {setFabricChoice(product); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
-                  Choose This Fabric!
-                </Button>
-              </form>
-            </Thumbnail>
-          </Col>
-        )
-      }
+    return products.map((product, i) => {
+      return (
+        <Col key={i} xs={12} sm={5} md={3}>
+          <Thumbnail style={{overflow:"auto"}} key={i} src={product.imgUrl} alt="Well, something didn't work...">
+            <h3>{product.imgName}</h3>
+            {/* <h3>${product.price}</h3> */}
+            <form onSubmit={handleFabricChoice}>
+              <Button type="submit" onClick={() => {setFabricChoice(product); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
+                Choose This Fabric!
+              </Button>
+            </form>
+          </Thumbnail>
+        </Col>
+      )
     })
   }
 
@@ -59,7 +79,7 @@ export default function KitchenHome (props) {
       <div>
         <Grid fluid>
           <Row>
-            {renderProductsList(props.products)}
+            {renderProductsList(products)}
           </Row>
         </Grid>
       </div>
@@ -90,6 +110,7 @@ export default function KitchenHome (props) {
             {!productChosen ? (
               <Thumbnail style={{overflow:"auto"}} key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
                 <h3>Fabric Chosen</h3>
+                <h3>{fabricChoice.imgName}</h3>
               </Thumbnail>
             ) : null
             }
@@ -102,6 +123,7 @@ export default function KitchenHome (props) {
           <h2>The product you have put together today is: </h2>
           <Thumbnail style={{overflow:"auto"}} key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
             <h3>Fabric Chosen</h3>
+            <h3>{fabricChoice.imgName}</h3>
           </Thumbnail>
           <Thumbnail style={{overflow:"auto"}} key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation} alt="Well, something didn't work...">
             <h3>Product Chosen</h3>

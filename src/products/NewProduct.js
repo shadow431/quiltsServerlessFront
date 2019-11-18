@@ -20,8 +20,8 @@ export default function NewProduct(props) {
 
   function validateForm() {
     return imgName.length > 0 &&
-      imgType.length > 0 &&
-      price.length > 0;
+      imgType.length > 0 ;
+      // price.length > 0;
   }
 
   function handleFileChange(event) {
