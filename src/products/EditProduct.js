@@ -21,25 +21,25 @@ export default function EditSchedule (props) {
     setImgUrl(props.location.state.props.imgUrl);
   }, []);
 
-  function handleNameChange(event) {
-    setImgName(event.target.value);
-  }
+  // function handleNameChange(event) {
 
-  function handleTypeChange(event) {
-    setImgType(event.target.value);
-  }
+  // }
 
-  function handleSubCatChange(event) {
-    setImgSubCat(event.target.value);
-  }
+  // function handleTypeChange(event) {
+  //   ;
+  // }
 
-  function handlePriceChange(event) {
-    setPrice(event.target.value);
-  }
+  // function handleSubCatChange(event) {
+  //   ;
+  // }
 
-  function handleUrlChange(event) {
-    setImgUrl(event.target.value);
-  }
+  // function handlePriceChange(event) {
+  //   ;
+  // }
+
+  // function handleUrlChange(event) {
+  //   ;
+  // }
 
   async function handleChange (event) {
     event.preventDefault()
@@ -70,23 +70,23 @@ export default function EditSchedule (props) {
       <form onSubmit={handleChange}>
         <FormGroup controlId="newevent">
           <ControlLabel>Product Name</ControlLabel>
-          <FormControl onChange={handleNameChange} type="text" placeholder={imgName}/>
+          <FormControl onChange={(event) => setImgName(event.target.value)} type="text" placeholder={imgName}/>
         </FormGroup>
         <FormGroup controlId="newevent">
           <ControlLabel>Product Type</ControlLabel>
-          <FormControl onChange={handleTypeChange} type="text" placeholder={imgType}/>
+          <FormControl onChange={(event) => setImgType(event.target.value)} type="text" placeholder={imgType}/>
         </FormGroup>
         <FormGroup controlId="eventName">
           <ControlLabel>Sub Category</ControlLabel>
-          <FormControl onChange={handleSubCatChange} type="text" placeholder={imgSubCat}/>
+          <FormControl onChange={(event) => setImgSubCat(event.target.value)} type="text" placeholder={imgSubCat}/>
         </FormGroup>
         <FormGroup controlId="eventLocation">
           <ControlLabel>Price</ControlLabel>
-          <FormControl onChange={handlePriceChange} type="text" placeholder={price}/>
+          <FormControl onChange={(event) => setPrice(event.target.value)} type="text" placeholder={price}/>
         </FormGroup>
         <FormGroup controlId="eventLocation">
           <ControlLabel>Image Location</ControlLabel>
-          <FormControl onChange={handleUrlChange} type="text" placeholder={imgUrl}/>
+          <FormControl onChange={(event) => setImgUrl(event.target.value)} type="text" placeholder={imgUrl}/>
         </FormGroup>
         <Button type="submit">Update</Button>
       </form>

@@ -51,7 +51,7 @@ function App(props) {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/home"><div style={{color: 'white'}}>Embroidery by Wanda</div></Link>
+              <Link to="/"><div style={{color: 'white'}}>Embroidery by Wanda</div></Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -68,7 +68,7 @@ function App(props) {
                 <>
 
                   <LinkContainer to="/login">
-                    <NavItem><div style={{color: 'white'}}>Login</div></NavItem>
+                    <NavItem><div style={{color: 'white'}}>Admin</div></NavItem>
                   </LinkContainer>
                 </>
                 )

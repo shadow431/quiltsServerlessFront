@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
-import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
-import LoaderButton from "../components/LoaderButton";
+import { Thumbnail, Button } from "react-bootstrap";
 import { s3Upload } from "../libs/awsLib";
+import S3FileUpload from "react-s3";
 import config from "../config";
-import "./Products.css";
 
 export default function Products(props) {
   const file = useRef(null);
@@ -13,9 +12,17 @@ export default function Products(props) {
   const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
+  const configS3FileUpload = {
+    bucketName: "wandaquilts",
+    dirName: "private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4",
+    region: "us-east-2",
+    accessKeyId: "AKIAQDVBB57LG7LOIVX7",
+    secretAccessKey: process.env.S3
+  }
+
   useEffect(() => {
     function loadProduct() {
-      return API.get("quilts", `/products/${props.match.params.id}`);
+      return API.get("quilts", `/products/${props.location.state.props._id}`);
     }
 
     async function onLoad() {
@@ -37,57 +44,55 @@ export default function Products(props) {
     onLoad();
   }, [props.match.params.id]);
 
-  function validateForm() {
-    return content.length > 0;
-  }
 
-  function formatFilename(str) {
-    return str.replace(/^\w+-/, "");
-  }
+  // function formatFilename(str) {
+  //   return str.replace(/^\w+-/, "");
+  // }
 
-  function handleFileChange(event) {
-    file.current = event.target.files[0];
-  }
+  // function handleFileChange(event) {
+  //   file.current = event.target.files[0];
+  // }
 
-  function saveProduct(product) {
-    return API.put("quilts", `/products/${props.match.params.id}`, {
-      body: product
-    });
-  }
+  // function saveProduct(product) {
+  //   return API.put("quilts", `/products/${props.match.params.id}`, {
+  //     body: product
+  //   });
+  // }
 
-  async function handleSubmit(event) {
-    let attachment;
+  // async function handleSubmit(event) {
+  //   let attachment;
 
-    event.preventDefault();
+  //   event.preventDefault();
 
-    if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
-      alert(
-        `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE /
-          1000000} MB.`
-      );
-      return;
-    }
+  //   if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
+  //     alert(
+  //       `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE /
+  //         1000000} MB.`
+  //     );
+  //     return;
+  //   }
 
-    setIsLoading(true);
+  //   setIsLoading(true);
 
-    try {
-      if (file.current) {
-        attachment = await s3Upload(file.current);
-      }
+  //   try {
+  //     if (file.current) {
+  //       attachment = await s3Upload(file.current);
+  //     }
 
-      await saveProduct({
-        content,
-        attachment: attachment || product.attachment
-      });
-      props.history.push("/");
-    } catch (e) {
-      alert(e);
-      setIsLoading(false);
-    }
-  }
+  //     await saveProduct({
+  //       content,
+  //       attachment: attachment || product.attachment
+  //     });
+  //     props.history.push("/");
+  //   } catch (e) {
+  //     alert(e);
+  //     setIsLoading(false);
+  //   }
+  // }
 
   async function handleDelete(event) {
     event.preventDefault();
+    const fileUrl = product.imgUrl.split("/")[5];
 
     const confirmed = window.confirm(
       "Are you sure you want to delete this product?"
@@ -100,8 +105,12 @@ export default function Products(props) {
     setIsDeleting(true);
 
     try {
-      const response = await API.del("quilts", `admin/products/${props.match.params.id}`);
-      console.log(response);
+      await S3FileUpload
+        .deleteFile(fileUrl, configS3FileUpload)
+        .then(response => console.log(response))
+        .catch(err => console.error(err))
+      await API.del("quilts", `/admin/products/${product._id}`);
+
       props.history.push("/admin/inventory");
     } catch (e) {
       alert(e);
@@ -112,41 +121,11 @@ export default function Products(props) {
   return (
     <div className="Products">
       {product && (
-        <form onSubmit={handleSubmit}>
-          <FormGroup controlId="content">
-            <FormControl
-              value={content}
-              componentClass="textarea"
-              onChange={e => setContent(e.target.value)}
-            />
-          </FormGroup>
-          {product.attachment && (
-            <FormGroup>
-              <ControlLabel>Attachment</ControlLabel>
-              <FormControl.Static>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={product.attachmentURL}
-                >
-                  {formatFilename(product.attachment)}
-                </a>
-              </FormControl.Static>
-            </FormGroup>
-          )}
-          <FormGroup controlId="file">
-            {!product.attachment && <ControlLabel>Attachment</ControlLabel>}
-            <FormControl onChange={handleFileChange} type="file" />
-          </FormGroup>
-          <LoaderButton
-            block
-            bsSize="large"
-            bsStyle="danger"
-            onClick={handleDelete}
-            isLoading={isDeleting}
-          >
-            Delete
-          </LoaderButton>
+        <form onSubmit={handleDelete}>
+          <Thumbnail key={product._id} src={product.imgUrl} alt="Well, something went wrong....">
+            <h1>{product.imgName}</h1>
+            <Button type="submit">Delete</Button>
+          </Thumbnail>
         </form>
       )}
     </div>

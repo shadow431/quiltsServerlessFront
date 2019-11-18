@@ -9,6 +9,7 @@ import Backpack from "./embroidery/Backpack";
 import BakedPotatoBag from "./kitchen/BakedPotatoBag";
 import BowlWrap from "./kitchen/BowlWrap";
 import CompBrief from "./embroidery/CompBrief";
+import DeleteProduct from "./products/DeleteProduct";
 import EditProduct from "./products/EditProduct";
 import EditSchedule from "./schedule/EditSchedule";
 import EmbroideryColors from "./embroidery/EmbroideryColors";
@@ -70,6 +71,7 @@ export default function Routes({ appProps }) {
       <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/edit" exact component={EditSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/products/new" exact component={NewProduct} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/product/delete" exact component={DeleteProduct} appProps={appProps} />
       <AuthenticatedRoute path="/admin/product/edit" exact component={EditProduct} appProps={appProps} />
       {/* Finally, catch all unmatched routes */}
       <Route component={NotFound} />
