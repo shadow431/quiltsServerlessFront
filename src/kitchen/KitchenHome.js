@@ -16,6 +16,8 @@ export default function KitchenHome (props) {
   const [ products, setProducts] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
 
+  const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
+
   useEffect(() => {
 
     onLoad();
@@ -87,11 +89,13 @@ export default function KitchenHome (props) {
   }
 
   return (
-    <div className="KitchenHome">
+    <div className="KitchenHome container">
       {!fabricChosen ? (
         <React.Fragment>
-          <h3>Welcome to the Kitchen Items!!!</h3>
-          <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
+          <div className="KitchenHomeHeader" style={{paddingLeft: "20px"}}>
+            <h3>Welcome to the Kitchen Items!!!</h3>
+            <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
+          </div>
           {renderProducts()}
         </React.Fragment>
         ) : (
@@ -108,7 +112,7 @@ export default function KitchenHome (props) {
               </FormControl>
             </FormGroup>
             {!productChosen ? (
-              <Thumbnail style={{overflow:"auto"}} key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
+              <Thumbnail key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
                 <h3>Fabric Chosen</h3>
                 <h3>{fabricChoice.imgName}</h3>
               </Thumbnail>
@@ -121,11 +125,11 @@ export default function KitchenHome (props) {
         <React.Fragment>
           {/* <ColorPopulater product={prodTypeChosen} /> */}
           <h2>The product you have put together today is: </h2>
-          <Thumbnail style={{overflow:"auto"}} key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
+          <Thumbnail key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
             <h3>Fabric Chosen</h3>
             <h3>{fabricChoice.imgName}</h3>
           </Thumbnail>
-          <Thumbnail style={{overflow:"auto"}} key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation} alt="Well, something didn't work...">
+          <Thumbnail key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
             <h3>Product Chosen</h3>
             <h3>{imgBreakDown.typeOutline[prodTypeChosen].prodType}</h3>
           </Thumbnail>

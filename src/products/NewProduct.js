@@ -49,7 +49,7 @@ export default function NewProduct(props) {
       await s3Upload(file.current);
 
       await createProduct({ imgName, imgType, imgSubCat, price, imgUrl });
-      props.history.push("/");
+      props.history.push("/admin");
     } catch (e) {
       alert(e);
       setIsLoading(false);

@@ -66,22 +66,7 @@ export default function Home(props) {
   function renderProducts() {
     return (
       <div>
-        <Grid fluid>
-          <Row>
-            {/* {
-              isLoading ?
-                (
-                  // <div style={{height: 500, width: 500}}>
 
-                  // <Glyphicon glyph="refresh" className="spinning" />
-                  // </div>
-                  <h4 style={{paddingLeft: 15}}>    loading...</h4>
-                )
-              :
-            } */}
-            renderProductsList(products)
-          </Row>
-        </Grid>
       </div>
     );
   }

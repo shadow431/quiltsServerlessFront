@@ -18,26 +18,26 @@ const imgBreakDown = {
       prodType: "Baked Potato Bag",
       prodDesc: `<p align="left"><b><font color="#800000" face="Verdana" size="5">THE BEST THING TO HAPPEN TO BAKED POTATOES!!!</font></b></p><p align="left"><b><font color="#111111" face="Verdana">Tired of over cooked ends on your microwave baked potatoes? Long for baked potatoes to be fluffy like when you used to bake them in the oven? </font></b></p><p align="left"><font color="#111111" face="Verdana">When you use my baked potato bag to bake your potatoes in the microwave, your potato will come out fluffy and evenly cooked just as if you baked them in the oven and used all that electricity. These bags are not only wonderful for potatoes, you can also use them to cook yams, corn on the cob, squash, sweet potatoes, artichokes and more.</font></p><p align="left"><span style="color: #0000ff"><font face="Verdana"><span style="font-size: 20px"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER.</span></span></font></span></p>`,
       prodPrice: 10,
-      prodImgLocation: "../img/home/BakedPotatoBag.jpg"
+      prodImgLocation: "BakedPotatoBag.jpg"
     },
     BWL: {
       prodType: "Large Bowl Wrap",
       prodDesc: `<p style="font-size: 20px">The perfect companion for that bowl of soup or hot cereal you heat in the microwave. Never burn your hands again trying to pick up that bowl. Like ice cream? Tired of freezing your hands?&nbsp;&nbsp;Sit your dish in THE BOWL WRAP! Entertaining?&nbsp;Set that bowl of candy or peanuts in THE BOWL WRAP!&nbsp;Each&nbsp;BOWL WRAP&nbsp;is&nbsp;handmade of 100% cotton, shaped like a bowl and&nbsp;pre-washed to prevent shrinkage.&nbsp;Pick from the many selections below.&nbsp;</p><p><span style="font-size: 20px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER.</span></span></span></span></p><p id="note">*Please note: Contrasting fabric may vary from image shown*</p>`,
       prodPrice: 20,
-      prodImgLocation: "../img/home/BowlWrap.jpg"
+      prodImgLocation: "BowlWrap.jpg"
     },
     BWS: {
       prodType: "Small Bowl Wrap",
       prodDesc: `<p style="font-size: 20px">The perfect companion for that bowl of soup or hot cereal you heat in the microwave. Never burn your hands again trying to pick up that bowl. Like ice cream? Tired of freezing your hands?&nbsp;&nbsp;Sit your dish in THE BOWL WRAP! Entertaining?&nbsp;Set that bowl of candy or peanuts in THE BOWL WRAP!&nbsp;Each&nbsp;BOWL WRAP&nbsp;is&nbsp;handmade of 100% cotton, shaped like a bowl and&nbsp;pre-washed to prevent shrinkage.&nbsp;Pick from the many selections below.&nbsp;</p><p><span style="font-size: 20px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER.</span></span></span></span></p>`,
       prodPrice: 10,
-      prodImgLocation: "../img/home/BowlWrap.jpg"
+      prodImgLocation: "BowlWrap.jpg"
     },
     CAP: {
       prodType: "Caps",
       prodDesc: `<p><span style="font-size: 18px">Time to replace that worn out cap??&nbsp; Why not wear one with man's best friend on it.&nbsp; Two styles to choose from, like the unstructured type, order CP78, for those that like the firmer cap, order the structured CP80.&nbsp; 100% cotton twill. Both styles are adjustable.</span><span style="font-size: 18px">Four colors to choose from, hunter green, red, blue and khaki.&nbsp; These caps make a great Father's Day gift. If you don't see you favorite dog breed, just give us a call or send an e-mail.</span></p><p>&nbsp;</p><p><span style="font-size: 18px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp;FREE SHIPPING ON ORDERS $60.00 AND OVER</span></span></span></span></p>`,
       prodPrice: 20,
       colors: [],
-      prodImgLocation: "../img/home/Cap2.jpg"
+      prodImgLocation: "Cap2.jpg"
     },
     COM: {
       prodType: "Computer Briefcase",
@@ -82,7 +82,7 @@ const imgBreakDown = {
       prodType: "Oven Mitt",
       prodDesc: `<p><u><b><i><font face="Verdana" size="5">ONE SIZE FITS ALL!!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font></i></b></u></p><p><font face="Verdana">Finally an oven mitt that fits everyone, the perfect size. Well insulated to protect you from the heat.</font></p><p><font face="Verdana"><span style="font-size: 22px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER</span>.</span></span></span></font></p><p></p><p id="note">*Please note: Contrasting fabric may vary from image shown*</p>`,
       prodPrice: 10,
-      prodImgLocation: "../img/home/OvenMitt.jpg"
+      prodImgLocation: "OvenMitt.jpg"
     },
     PLT: {
       prodType: "Plate Wrap",
@@ -106,8 +106,8 @@ const imgBreakDown = {
     TLB: {
       prodType: "Tortilla Bags",
       prodDesc: `<p><span style="font-size: 22px">The perfect bag for heating your tortilla's or rolls in the microwave.&nbsp; Bag is 10" across so the small and medium tortilla's fit perfectly,&nbsp;you can then&nbsp;put the bag on the table to keep them warm. Can also be used for that extra waffle or pancakes. Bags are all handmade from 100% cotton that has been prewashed to prevent shrinkage. Lots of designs to choose from.</span></p><p>&nbsp;</p><p><span style="font-size: 22px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER</span></span></span></span></p>`,
-      prodPrice: 7.5,
-      prodImgLocation: "../img/home/TortillaBag.jpg"
+      prodPrice: 7.50,
+      prodImgLocation: "TortillaBag.jpg"
     },
     TOW: {
       prodType: "Kitchen Towel",
