@@ -1,8 +1,13 @@
-/* body {
-} */
+body {
+  background-color: #D57995;
+}
 
 .App {
   margin-top: 15px;
+}
+
+.NavHeaderBar {
+  color: white;
 }
 
 .App .navbar-brand {

@@ -7,6 +7,13 @@
   background-color: #D57995;
 }
 
+.HomeBlurb {
+  width: 80vw;
+  padding-right: 10vw;
+  text-align: justify;
+}
+
+
 /* Secondary background-color: #fe938c */
 
 .Home .lander h1 {

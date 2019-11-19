@@ -51,7 +51,7 @@ function App(props) {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/"><div style={{color: 'white'}}>Embroidery by Wanda</div></Link>
+              <Link to="/"><span className="NavHeaderBar">Embroidery by Wanda</span></Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -60,15 +60,15 @@ function App(props) {
               {isAuthenticated ? (
                 <>
                   <LinkContainer to="/admin">
-                    <NavItem><div style={{color: 'white'}}>Admin</div></NavItem>
+                    <NavItem><span className="NavHeaderBar">Admin</span></NavItem>
                   </LinkContainer>
-                  <NavItem onClick={handleLogout}><div style={{color: 'white'}}>Logout</div></NavItem>
+                  <NavItem onClick={handleLogout}><span style={{color: 'white'}}>Logout</span></NavItem>
                 </>
                 ) : (
                 <>
 
                   <LinkContainer to="/login">
-                    <NavItem><div style={{color: 'white'}}>Admin</div></NavItem>
+                    <NavItem><span className="NavHeaderBar">Admin</span></NavItem>
                   </LinkContainer>
                 </>
                 )
