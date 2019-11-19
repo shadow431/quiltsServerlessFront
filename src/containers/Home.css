@@ -3,6 +3,12 @@
   text-align: center;
 }
 
+.Home {
+  background-color: #D57995;
+}
+
+/* Secondary background-color: #fe938c */
+
 .Home .lander h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;

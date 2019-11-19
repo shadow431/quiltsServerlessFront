@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { API } from "aws-amplify";
 import { Button, Table } from "react-bootstrap";
+import "./Schedule.css";
 
 export default function Schedule(props) {
   const [eventItems, updateEventItems] = useState([]);
@@ -24,7 +25,7 @@ export default function Schedule(props) {
   }
 
   return (
-    <div>
+    <div className="ScheduleHome">
       <Table striped bordered hover>
         <thead>
           <tr>
