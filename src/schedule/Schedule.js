@@ -29,8 +29,8 @@ export default function Schedule(props) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <td>Name</td>
             <td>Date</td>
+            <td>Name</td>
             <td>Location</td>
             <td>Hours of Operation</td>
             {props.isAuthenticated ?
