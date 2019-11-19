@@ -15,7 +15,6 @@ import EditSchedule from "./schedule/EditSchedule";
 import EmbroideryColors from "./embroidery/EmbroideryColors";
 import EmbroideryHome from "./embroidery/EmbroideryHome";
 import EmbroideryNav from "./components/EmbroideryNav";
-import Fabric from "./kitchen/Fabric";
 import Home from "./containers/Home";
 import Hoodies from "./embroidery/Hoodies";
 import KitchenHome from "./kitchen/KitchenHome";
@@ -59,7 +58,6 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/embroidery/vest" exact component={Vest} appProps={appProps} />
       <AppliedRoute path="/kitchen" exact component={KitchenHome} appProps={appProps} />
       <AppliedRoute path="/kitchen/ovenmitt" exact component={OvenMitt} appProps={appProps} />
-      <AppliedRoute path="/kitchen/ovenmitt/fabric" exact component={Fabric} appProps={appProps} />
       <AppliedRoute path="/kitchen/plate" exact component={Plate} appProps={appProps} />
       <AppliedRoute path="/kitchen/potato" exact component={BakedPotatoBag} appProps={appProps} />
       <AppliedRoute path="/quilts" exact component={Quilts} appProps={appProps} />

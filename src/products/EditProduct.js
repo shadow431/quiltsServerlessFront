@@ -21,26 +21,6 @@ export default function EditSchedule (props) {
     setImgUrl(props.location.state.props.imgUrl);
   }, []);
 
-  // function handleNameChange(event) {
-
-  // }
-
-  // function handleTypeChange(event) {
-  //   ;
-  // }
-
-  // function handleSubCatChange(event) {
-  //   ;
-  // }
-
-  // function handlePriceChange(event) {
-  //   ;
-  // }
-
-  // function handleUrlChange(event) {
-  //   ;
-  // }
-
   async function handleChange (event) {
     event.preventDefault()
 
@@ -54,7 +34,6 @@ export default function EditSchedule (props) {
     }
 
     try {
-      console.log("body in update: ", body);
       await API.put("quilts", `/admin/products/${id}`, {
         body
       });

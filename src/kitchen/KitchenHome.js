@@ -14,7 +14,8 @@ export default function KitchenHome (props) {
   // const [ colorChoice, setColorChoice ] = useState("");
   // const [ colorChosen, setColorChosen ] = useState(false);
 
-  const [ products, setProducts] = useState([]);
+  const [ fabric, setFabric] = useState([]);
+  const [ products, setProducts ] = useState([]);
   const [ isLoading, setIsLoading ] = useState(true);
 
   const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
@@ -26,6 +27,8 @@ export default function KitchenHome (props) {
 
   async function onLoad() {
     try {
+      const fabric = await API.get("quilts", "/fabric");
+      setFabric(fabric);
       const products = await API.get("quilts", "/products");
       setProducts(products);
     }
@@ -42,42 +45,32 @@ export default function KitchenHome (props) {
     setFabricView(e.target.value);
   }
 
-  function handleProductSelection(e) {
-    e.preventDefault();
-    // const choice = e.target.value;
-    // if(choice === "potato"){
-    //   setProductTypeChosen("BPB");
-    // } else if(choice === "bowl") {
-    //   setProductTypeChosen("BWL");
-    // } else if(choice === "ovenmitt") {
-    //   setProductTypeChosen("OVM");
-    // } else if(choice === "plate") {
-    //   setProductTypeChosen("PLT");
-    // } else if(choice === "tortilla") {
-    //   setProductTypeChosen("TLB");
-    // }
-    setProductChoice(e.target.value);
-    setProductChosen(true);
+  function renderFabricList(fabric) {
+    return fabric.fabricType.includes(fabricView).map((fabric, i) => {
+      return (
+        <Col key={i} xs={12} sm={5} md={3}>
+          <form>
+            <Button type="submit" onClick={() => {setFabricChoice(fabric); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
+              <Thumbnail key={i} src={fabric.fabricImgUrl} alt="Well, something didn't work...">
+                <h3>{fabric.fabricName}</h3>
+              </Thumbnail>
+            </Button>
+          </form>
+        </Col>
+      )
+    })
   }
 
-  function renderProductsList(products) {
-    return products.map((product, i) => {
-      if(product.imgType === "FAB"){
-        if(product.imgSubCat === fabricView){
-          return (
-            <Col key={i} xs={12} sm={5} md={3}>
-              <form>
-                <Button type="submit" onClick={() => {setFabricChoice(product); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
-                  <Thumbnail key={i} src={product.imgUrl} alt="Well, something didn't work...">
-                    <h3>{product.imgName}</h3>
-                  </Thumbnail>
-                </Button>
-              </form>
-            </Col>
-          )
-        }
-      }
-    })
+  function renderFabric() {
+    return (
+      <div>
+        <Grid fluid>
+          <Row>
+            {renderFabricList(fabric)}
+          </Row>
+        </Grid>
+      </div>
+    );
   }
 
   function renderProducts() {
@@ -85,7 +78,17 @@ export default function KitchenHome (props) {
       <div>
         <Grid fluid>
           <Row>
-            {renderProductsList(products)}
+            <Col>
+              {products.map((product, i) => {
+                return(
+                  <Thumbnail key={product._id} src={product.imgUrl} onClick={() => {setProductChoice(product); setProductChosen(true);}} alt="Well, Something didn't work...">
+                    <h2>{product.imgName}</h2>
+                    <h4>{product.prodDesc}</h4>
+                    <h4>{product.price}</h4>
+                  </Thumbnail>
+                )
+              })}
+            </Col>
           </Row>
         </Grid>
       </div>
@@ -94,57 +97,48 @@ export default function KitchenHome (props) {
 
   return (
     <div className="KitchenHome container">
-      {!fabricChosen ? (
+      {!productChosen ? (
         <React.Fragment>
           <div className="KitchenHomeHeader" style={{paddingLeft: "20px"}}>
             <h3>Welcome to the Kitchen Items!!!</h3>
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
           </div>
-          <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Fabric Category</ControlLabel>
-            <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
-              <option value="select">select</option>
-              <option value="bir">Birds</option>
-              <option value="bug">Bugs and Frogs</option>
-              <option value="cdo">Cats and Dogs</option>
-              <option value="fdk">Food</option>
-              <option value="flr">Flowers</option>
-              <option value="frm">Farm</option>
-              <option value="hol">Holidays</option>
-              <option value="mil">Military</option>
-              <option value="mis">Miscelanneous</option>
-              <option value="nat">Nautical</option>
-              <option value="wdl">Wild Animals</option>
-            </FormControl>
-          </FormGroup>
-          {renderProducts()}
+          {renderProducts}
         </React.Fragment>
         ) : (
           <React.Fragment>
             <FormGroup controlId="formControlsSelect">
-              <ControlLabel>Product Type</ControlLabel>
-              <FormControl componentClass="select" placeholder="select" onChange={handleProductSelection}>
+              <ControlLabel>Fabric Category</ControlLabel>
+              <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
                 <option value="select">select</option>
-                <option value="BPB">Baked Potato Bags</option>
-                <option value="BWS">Bowl Wraps Small</option>
-                <option value="BWL">Bowl Wraps Large</option>
-                <option value="OVM">Oven Mitts</option>
-                <option value="PLT">Plate Wraps</option>
-                <option value="TLB">Tortilla Bags</option>
+                <option value="bir">Birds</option>
+                <option value="bug">Bugs and Frogs</option>
+                <option value="cdo">Cats and Dogs</option>
+                <option value="fdk">Food</option>
+                <option value="flr">Flowers</option>
+                <option value="frm">Farm</option>
+                <option value="hol">Holidays</option>
+                <option value="mil">Military</option>
+                <option value="mis">Miscelanneous</option>
+                <option value="nat">Nautical</option>
+                <option value="wdl">Wild Animals</option>
               </FormControl>
             </FormGroup>
-            {!productChosen ? (
-              <Thumbnail key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
-                <h3>Fabric Chosen</h3>
-                <h3>{fabricChoice.imgName}</h3>
-              </Thumbnail>
+
+            {productChosen ? (
+              <React.Fragment>
+                <Thumbnail key={productChoice._id} src={productChoice.imgUrl} alt="Well, something didn't work...">
+                  <h3>Product Chosen</h3>
+                  <h3>{productChoice.imgName}</h3>
+                </Thumbnail>
+                {renderFabric}
+              </React.Fragment>
             ) : null
             }
           </React.Fragment>
         )
       }
       {productChosen && fabricChosen ? (
-
         <React.Fragment>
           <h2>The product you have put together today is: </h2>
           <div style={{display: "flex"}}>
@@ -157,12 +151,6 @@ export default function KitchenHome (props) {
               <h3>{imgBreakDown.typeOutline[prodTypeChosen].prodType}</h3>
             </Thumbnail>
           </div>
-          {/* <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="XJV6YRPASBAPG" />
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" alt="Add to Cart" />
-          </form> */}
         </React.Fragment>
       ): null
       }
@@ -170,7 +158,14 @@ export default function KitchenHome (props) {
   )
 }
 
-/* <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+/*
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+            <input type="hidden" name="cmd" value="_s-xclick" />
+            <input type="hidden" name="hosted_button_id" value="XJV6YRPASBAPG" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" alt="Add to Cart" />
+          </form>
+          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
 								<input type="hidden" name="cmd" value="_cart">
 								<input type="hidden" name="business" value="UF9VSSKARLZY6">
 								<input type="hidden" name="lc" value="US">
