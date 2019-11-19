@@ -63,7 +63,7 @@ export default function KitchenHome (props) {
       if(product.imgType === "FAB"){
         return (
           <Col key={i} xs={12} sm={5} md={3}>
-            <Thumbnail style={{overflow:"auto"}} key={i} src={product.imgUrl} alt="Well, something didn't work...">
+            <Thumbnail key={i} src={product.imgUrl} alt="Well, something didn't work...">
               <h3>{product.imgName}</h3>
               {/* <h3>${product.price}</h3> */}
               <form onSubmit={handleFabricChoice}>
@@ -124,20 +124,25 @@ export default function KitchenHome (props) {
         )
       }
       {productChosen && fabricChosen ? (
+
         <React.Fragment>
-          {/* <ColorPopulater product={prodTypeChosen} /> */}
           <h2>The product you have put together today is: </h2>
-          <Thumbnail key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
-            <h3>Fabric Chosen</h3>
-            <h3>{fabricChoice.imgName}</h3>
-          </Thumbnail>
-          <Thumbnail key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
-            <h3>Product Chosen</h3>
-            <h3>{imgBreakDown.typeOutline[prodTypeChosen].prodType}</h3>
-          </Thumbnail>
+          <div style={{display: "flex"}}>
+            <Thumbnail key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
+              <h3>Fabric Chosen</h3>
+              <h3>{fabricChoice.imgName}</h3>
+            </Thumbnail>
+            <Thumbnail key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
+              <h3>Product Chosen</h3>
+              <h3>{imgBreakDown.typeOutline[prodTypeChosen].prodType}</h3>
+            </Thumbnail>
+          </div>
         </React.Fragment>
       ): null
       }
+
+                {/* <ColorPopulater product={prodTypeChosen} /> */}
+
     </div>
   );
 }
