@@ -45,7 +45,7 @@ export default function MainNav (props) {
           )
           : (
             <FormGroup controlId="formControlsSelect">
-              <ControlLabel>Select</ControlLabel>
+              <ControlLabel>Page Nav</ControlLabel>
                 <FormControl componentClass="select" placeholder="select" onChange={handleNavSelection}>
                   <option value="select">Select</option>
                   <option value="/">Home</option>
