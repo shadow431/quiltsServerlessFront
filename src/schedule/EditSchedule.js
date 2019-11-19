@@ -66,10 +66,6 @@ export default function EditSchedule (props) {
           <ControlLabel>Date</ControlLabel>
           <FormControl onChange={handleDateChange} type="text" placeholder={date}/>
         </FormGroup>
-        <FormGroup controlId="newevent">
-          <ControlLabel>Hours Open</ControlLabel>
-          <FormControl onChange={handleTimeChange} type="text" placeholder={time}/>
-        </FormGroup>
         <FormGroup controlId="eventName">
           <ControlLabel>Name</ControlLabel>
           <FormControl onChange={handleNameChange} type="text" placeholder={name}/>
@@ -77,6 +73,10 @@ export default function EditSchedule (props) {
         <FormGroup controlId="eventLocation">
           <ControlLabel>Location</ControlLabel>
           <FormControl onChange={handleLocationChange} type="text" placeholder={location}/>
+        </FormGroup>
+        <FormGroup controlId="newevent">
+          <ControlLabel>Hours Open</ControlLabel>
+          <FormControl onChange={handleTimeChange} type="text" placeholder={time}/>
         </FormGroup>
         <Button type="submit">Update</Button>
       </form>
