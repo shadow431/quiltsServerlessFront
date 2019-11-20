@@ -3,6 +3,12 @@
   text-align: center;
 }
 
+.construction {
+  color: red;
+  font-size: 36pt;
+  font-weight: bold;
+}
+
 .Home {
   background-color: #D57995;
 }
