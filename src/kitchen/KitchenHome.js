@@ -64,7 +64,7 @@ export default function KitchenHome (props) {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
                   <form>
-                    <Button type="submit" onClick={() => {setFabricChoice(fabric); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
+                    <Button type="submit" onClick={() => {setFabricChoice(fabric); setFabricChosen(true);}} style={{backgroundColor:"#5b5f97", color:"white"}}>
                       <Thumbnail key={i} src={fabric.fabricImgUrl} alt="Well, something didn't work...">
                         <h3>{fabric.fabricName}</h3>
                       </Thumbnail>
@@ -91,7 +91,6 @@ export default function KitchenHome (props) {
                   <Col style={{overflow:"auto"}} key={i} xs={12} sm={5} md={3}>
                     <Thumbnail key={product._id} src={product.prodImgUrl} onClick={() => {setProductChoice(product); setProductTypeChosen(product.prodSubCat); setProductChosen(true);}} alt="Well, Something didn't work...">
                       <h2>{product.prodName}</h2>
-                      <h4>{product.prodDesc}</h4>
                       <h4>{`$${product.price}`}</h4>
                     </Thumbnail>
                   </Col>
@@ -145,7 +144,7 @@ export default function KitchenHome (props) {
               <React.Fragment>
                 <Thumbnail key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
                   <h3>Product Chosen</h3>
-                  <h3>{productChoice.prodName}</h3>
+                  <h3>{productChoice.prodDesc}</h3>
                 </Thumbnail>
                 {renderFabric()}
               </React.Fragment>
