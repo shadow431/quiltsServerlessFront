@@ -42,7 +42,6 @@ export default function KitchenHome (props) {
   async function loadFabric() {
     try {
       const fabric = await API.get("quilts", "/fabric");
-      console.log("Fabric List: ", fabric)
       setFabric(fabric);
     }
     catch(e) {
@@ -53,7 +52,6 @@ export default function KitchenHome (props) {
   }
 
   function handleFabricView(e) {
-    console.log("fabric to view: ", e.target.value)
     setFabricView(e.target.value);
   }
 
@@ -61,8 +59,8 @@ export default function KitchenHome (props) {
     return (
       <Grid fluid>
         <Row>
-          {fabric.fabricType === fabricView ? (
-            fabric.map((fabric, i) => {
+          {fabric.map((fabric, i) => {
+            if(fabric.fabricSubCat === fabricView) {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
                   <form>
@@ -74,8 +72,8 @@ export default function KitchenHome (props) {
                   </form>
                 </Col>
               )
-            })
-          ) : null
+            }
+          })
           }
         </Row>
       </Grid>
