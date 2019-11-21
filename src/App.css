@@ -7,8 +7,8 @@ body {
 }
 
 .NavHeaderBar {
-  color: white;
-  font-size: 28pt;
+  margin-top: -25px;
+  width: 350px;
 }
 
 .App .navbar-brand {

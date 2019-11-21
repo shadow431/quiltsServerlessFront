@@ -34,7 +34,7 @@ export default function Home(props) {
     <div className="Home">
       <div className="container">
         <h1 className="construction">THIS SITE IS STILL UNDER CONSTRUCTION, FEEL FREE TO BROWSE THROUGH THE NEW FUNCTIONS</h1>
-        <Carousel interval={1500}>
+        <Carousel interval={5000}>
           {homeImgs.map((img, i) => {
             return (
               <Carousel.Item key={i}>
