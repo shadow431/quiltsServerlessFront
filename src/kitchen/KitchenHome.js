@@ -10,7 +10,7 @@ export default function KitchenHome (props) {
   const [ fabricChosen, setFabricChosen ] = useState(false);
   const [ productChoice, setProductChoice ] = useState("");
   const [ productChosen, setProductChosen ] = useState(false);
-  const [ prodTypeChosen, setProductTypeChosen ] = useState("");
+  const [ productTypeChosen, setProductTypeChosen ] = useState("");
   const [ fabricView, setFabricView ] = useState("");
   // const [ colorChoice, setColorChoice ] = useState("");
   // const [ colorChosen, setColorChosen ] = useState(false);
@@ -85,17 +85,19 @@ export default function KitchenHome (props) {
       <div>
         <Grid fluid>
           <Row>
-            <Col>
-              {products.map((product, i) => {
+            {products.map((product, i) => {
+              if(product.prodType === "PRO") {
                 return(
-                  <Thumbnail key={product._id} src={product.imgUrl} onClick={() => {setProductChoice(product); setProductChosen(true);}} alt="Well, Something didn't work...">
-                    <h2>{product.imgName}</h2>
-                    <h4>{product.prodDesc}</h4>
-                    <h4>{product.price}</h4>
-                  </Thumbnail>
+                  <Col style={{overflow:"auto"}} key={i} xs={12} sm={5} md={3}>
+                    <Thumbnail key={product._id} src={product.prodImgUrl} onClick={() => {setProductChoice(product); setProductTypeChosen(product.prodSubCat); setProductChosen(true);}} alt="Well, Something didn't work...">
+                      <h2>{product.prodName}</h2>
+                      <h4>{product.prodDesc}</h4>
+                      <h4>{`$${product.price}`}</h4>
+                    </Thumbnail>
+                  </Col>
                 )
-              })}
-            </Col>
+              }
+            })}
           </Row>
         </Grid>
       </div>
@@ -109,6 +111,7 @@ export default function KitchenHome (props) {
           <div className="KitchenHomeHeader" style={{paddingLeft: "20px"}}>
             <h3>Welcome to the Kitchen Items!!!</h3>
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
+            <p>Simply click on the product you want to continue!!</p>
           </div>
           {renderProducts()}
           {/* <Connect query={graphqlOperation(queries.listProducts)}>
@@ -122,7 +125,7 @@ export default function KitchenHome (props) {
         ) : (
           <React.Fragment>
             <FormGroup controlId="formControlsSelect">
-              <ControlLabel>Fabric Category</ControlLabel>
+              <ControlLabel>Choose a fabric family from this drop-down and click one to continue.</ControlLabel>
               <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
                 <option value="select">select</option>
                 <option value="bir">Birds</option>
@@ -140,9 +143,9 @@ export default function KitchenHome (props) {
             </FormGroup>
             {productChosen ? (
               <React.Fragment>
-                <Thumbnail key={productChoice._id} src={productChoice.imgUrl} alt="Well, something didn't work...">
+                <Thumbnail key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
                   <h3>Product Chosen</h3>
-                  <h3>{productChoice.imgName}</h3>
+                  <h3>{productChoice.prodName}</h3>
                 </Thumbnail>
                 {renderFabric()}
               </React.Fragment>
@@ -155,13 +158,13 @@ export default function KitchenHome (props) {
         <React.Fragment>
           <h2>The product you have put together today is: </h2>
           <div style={{display: "flex"}}>
-            <Thumbnail key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
+            <Thumbnail key={fabricChoice._id} src={fabricChoice.fabricImgUrl} alt="Well, something didn't work...">
               <h3>Fabric Chosen</h3>
-              <h3>{fabricChoice.imgName}</h3>
+              <h3>{fabricChoice.fabricName}</h3>
             </Thumbnail>
-            <Thumbnail key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
+            <Thumbnail key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
               <h3>Product Chosen</h3>
-              <h3>{imgBreakDown.typeOutline[prodTypeChosen].prodType}</h3>
+              <h3>{imgBreakDown.typeOutline[productTypeChosen].prodType}</h3>
             </Thumbnail>
           </div>
         </React.Fragment>
