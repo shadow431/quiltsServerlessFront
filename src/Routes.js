@@ -20,6 +20,7 @@ import Hoodies from "./embroidery/Hoodies";
 import KitchenHome from "./kitchen/KitchenHome";
 import KitchenTowel from "./embroidery/KitTowel";
 import Login from "./containers/Login";
+import NewFabric from "./Fabric/NewFabric";
 import NewProduct from "./products/NewProduct";
 import NewSchedule from "./schedule/NewSchedule";
 import NotFound from "./containers/NotFound";
@@ -66,6 +67,7 @@ export default function Routes({ appProps }) {
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/fabric/new" exact component={NewFabric} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/edit" exact component={EditSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/products/new" exact component={NewProduct} appProps={appProps} />

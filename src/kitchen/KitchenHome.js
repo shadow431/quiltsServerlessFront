@@ -22,13 +22,12 @@ export default function KitchenHome (props) {
   const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
 
   useEffect(() => {
-    loadFabric();
+    loadProducts();
   }, []);
 
   async function loadProducts() {
     try {
       const products = await API.get("quilts", "/products");
-      console.log(products);
       setProducts(products);
     }
     catch(e) {
@@ -36,12 +35,14 @@ export default function KitchenHome (props) {
         alert(e);
       }
     }
+    loadFabric();
     setIsLoading(false);
   }
 
   async function loadFabric() {
     try {
       const fabric = await API.get("quilts", "/fabric");
+      console.log("Fabric List: ", fabric)
       setFabric(fabric);
     }
     catch(e) {
@@ -49,46 +50,39 @@ export default function KitchenHome (props) {
         alert(e);
       }
     }
-    loadProducts();
   }
 
   function handleFabricView(e) {
-    e.preventDefault();
+    console.log("fabric to view: ", e.target.value)
     setFabricView(e.target.value);
-  }
-
-  function renderFabricList(fabric) {
-    loadFabric();
-    if(fabric.fabricType === fabricView) {
-      return fabric.map((fabric, i) => {
-        return (
-          <Col key={i} xs={12} sm={5} md={3}>
-            <form>
-              <Button type="submit" onClick={() => {setFabricChoice(fabric); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
-                <Thumbnail key={i} src={fabric.fabricImgUrl} alt="Well, something didn't work...">
-                  <h3>{fabric.fabricName}</h3>
-                </Thumbnail>
-              </Button>
-            </form>
-          </Col>
-        )
-      })
-    }
   }
 
   function renderFabric() {
     return (
-      <div>
-        <Grid fluid>
-          <Row>
-            {renderFabricList}
-          </Row>
-        </Grid>
-      </div>
+      <Grid fluid>
+        <Row>
+          {fabric.fabricType === fabricView ? (
+            fabric.map((fabric, i) => {
+              return (
+                <Col key={i} xs={12} sm={5} md={3}>
+                  <form>
+                    <Button type="submit" onClick={() => {setFabricChoice(fabric); setFabricChosen(true)}} style={{backgroundColor:"#5b5f97", color:"white"}}>
+                      <Thumbnail key={i} src={fabric.fabricImgUrl} alt="Well, something didn't work...">
+                        <h3>{fabric.fabricName}</h3>
+                      </Thumbnail>
+                    </Button>
+                  </form>
+                </Col>
+              )
+            })
+          ) : null
+          }
+        </Row>
+      </Grid>
     );
   }
 
-  const RenderProducts = (products) => {
+  function renderProducts() {
     return (
       <div>
         <Grid fluid>
@@ -118,7 +112,7 @@ export default function KitchenHome (props) {
             <h3>Welcome to the Kitchen Items!!!</h3>
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
           </div>
-          {RenderProducts}
+          {renderProducts()}
           {/* <Connect query={graphqlOperation(queries.listProducts)}>
             {({ data: { listProducts }, loading, errors }) => {
               if(errors) return (<h3>Error</h3>);
@@ -152,7 +146,7 @@ export default function KitchenHome (props) {
                   <h3>Product Chosen</h3>
                   <h3>{productChoice.imgName}</h3>
                 </Thumbnail>
-                {renderFabric}
+                {renderFabric()}
               </React.Fragment>
             ) : null
             }

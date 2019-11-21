@@ -11,25 +11,25 @@ import "./NewProduct.css";
 export default function NewProduct(props) {
   const imgLinkLocation = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
   const file = useRef(null);
-  const [imgName, setImgName] = useState("");
-  const [imgType, setImgType] = useState("");
-  const [imgSubCat, setImgSubCat] = useState("");
+  const [prodName, setProdName] = useState("");
+  const [prodType, setProdType] = useState("");
+  const [prodColors, setProdColors] = useState("");
   const [price, setPrice] = useState("");
-  const [imgUrl, setImgUrl] = useState("");
+  const [prodImgUrl, setProdImgUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function validateForm() {
-    return imgName.length > 0 &&
-      imgType.length > 0 ;
-      // price.length > 0;
+    return prodName.length > 0 &&
+      prodType.length > 0 &&
+      prodColors.length > 0 &&
+      price.length > 0;
   }
 
   function handleFileChange(event) {
     file.current = event.target.files[0];
-    setImgName(file.current.name.split(".")[0]);
-    setImgType(file.current.name.substr(0,3));
-    setImgSubCat(file.current.name.substr(3, 3));
-    setImgUrl(imgLinkLocation + file.current.name);
+    setProdName(file.current.name.split(".")[0]);
+    setProdType(file.current.name.substr(0,3));
+    setProdImgUrl(imgLinkLocation + file.current.name);
   }
 
   async function handleSubmit(event) {
@@ -48,7 +48,7 @@ export default function NewProduct(props) {
     try {
       await s3Upload(file.current);
 
-      await createProduct({ imgName, imgType, imgSubCat, price, imgUrl });
+      await createProduct({ prodName, prodType, prodColors, price, prodImgUrl });
       props.history.push("/admin");
     } catch (e) {
       alert(e);
@@ -67,8 +67,8 @@ export default function NewProduct(props) {
     <div className="NewProduct">
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="content">
-          <h4>{imgName}</h4>
-          <h4>{imgType}</h4>
+          <h4>{prodName}</h4>
+          <h4>{prodType}</h4>
           <ControlLabel>Price</ControlLabel>
           <FormControl
             value={price}
