@@ -28,8 +28,21 @@ export default function PayPalButton () {
           createOrder={(data, actions) => {
             return actions.order.create({
               purchase_units: [{
+                description: "This is a test sale",
+                // item: [
+                //   {
+                //     name: "OVM",
+                //     description: "Testing multiple items",
+                //     unit_amount: "0.03"
+                //   },
+                //   {
+                //     name: "CAP",
+                //     description: "You wear it",
+                //     unit_amount: "0.01"
+                //   }
+                // ],
                 amount: {
-                  value: "0.01"
+                  value: "0.04"
                 }
               }]
             })
