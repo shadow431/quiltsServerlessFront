@@ -3,21 +3,22 @@ import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel
 import { API } from "aws-amplify";
 // import { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } from "graphql";
 import imgBreakDown from "../components/ImgBreakDown";
+import PayPalButton from "../components/PaypalButton";
 // import ColorPopulater from "../components/ColorPopulater";
 
-export default function KitchenHome (props) {
-  const [ fabricChoice, setFabricChoice ] = useState([]);
-  const [ fabricChosen, setFabricChosen ] = useState(false);
-  const [ productChoice, setProductChoice ] = useState("");
-  const [ productChosen, setProductChosen ] = useState(false);
-  const [ productTypeChosen, setProductTypeChosen ] = useState("");
-  const [ fabricView, setFabricView ] = useState("");
+export default function KitchenHome(props) {
+  const [fabricChoice, setFabricChoice] = useState([]);
+  const [fabricChosen, setFabricChosen] = useState(false);
+  const [productChoice, setProductChoice] = useState("");
+  const [productChosen, setProductChosen] = useState(false);
+  const [productTypeChosen, setProductTypeChosen] = useState("");
+  const [fabricView, setFabricView] = useState("");
   // const [ colorChoice, setColorChoice ] = useState("");
   // const [ colorChosen, setColorChosen ] = useState(false);
 
-  const [ fabric, setFabric] = useState([]);
-  const [ products, setProducts ] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [fabric, setFabric] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
 
@@ -29,13 +30,13 @@ export default function KitchenHome (props) {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
+      loadFabric();
     }
-    catch(e) {
+    catch (e) {
       if (e !== 'No current user') {
         alert(e);
       }
     }
-    loadFabric();
     setIsLoading(false);
   }
 
@@ -44,7 +45,7 @@ export default function KitchenHome (props) {
       const fabric = await API.get("quilts", "/fabric");
       setFabric(fabric);
     }
-    catch(e) {
+    catch (e) {
       if (e !== 'No current user') {
         alert(e);
       }
@@ -60,16 +61,12 @@ export default function KitchenHome (props) {
       <Grid fluid>
         <Row>
           {fabric.map((fabric, i) => {
-            if(fabric.fabricSubCat === fabricView) {
+            if (fabric.fabricSubCat === fabricView) {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <form>
-                    <Button type="submit" onClick={() => {setFabricChoice(fabric); setFabricChosen(true);}} style={{backgroundColor:"#5b5f97", color:"white"}}>
-                      <Thumbnail key={i} src={fabric.fabricImgUrl} alt="Well, something didn't work...">
-                        <h3>{fabric.fabricName}</h3>
-                      </Thumbnail>
-                    </Button>
-                  </form>
+                  <Thumbnail key={i} src={fabric.fabricImgUrl} onClick={() => { setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
+                    <h3>{fabric.fabricName}</h3>
+                  </Thumbnail>
                 </Col>
               )
             }
@@ -86,10 +83,10 @@ export default function KitchenHome (props) {
         <Grid fluid>
           <Row>
             {products.map((product, i) => {
-              if(product.prodType === "PRO") {
-                return(
-                  <Col style={{overflow:"auto"}} key={i} xs={12} sm={5} md={3}>
-                    <Thumbnail key={product._id} src={product.prodImgUrl} onClick={() => {setProductChoice(product); setProductTypeChosen(product.prodSubCat); setProductChosen(true);}} alt="Well, Something didn't work...">
+              if (product.prodType === "PRO") {
+                return (
+                  <Col key={i} xs={12} sm={5} md={3}>
+                    <Thumbnail key={product._id} src={product.prodImgUrl} onClick={() => { setProductChoice(product); setProductTypeChosen(product.prodSubCat); setProductChosen(true); }} alt="Well, Something didn't work...">
                       <h2>{product.prodName}</h2>
                       <h4>{`$${product.price}`}</h4>
                     </Thumbnail>
@@ -107,7 +104,7 @@ export default function KitchenHome (props) {
     <div className="KitchenHome container">
       {!productChosen ? (
         <React.Fragment>
-          <div className="KitchenHomeHeader" style={{paddingLeft: "20px"}}>
+          <div className="KitchenHomeHeader" style={{ paddingLeft: "20px" }}>
             <h3>Welcome to the Kitchen Items!!!</h3>
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
             <p>Simply click on the product you want to continue!!</p>
@@ -121,7 +118,7 @@ export default function KitchenHome (props) {
             }}
           </Connect> */}
         </React.Fragment>
-        ) : (
+      ) : (
           <React.Fragment>
             <FormGroup controlId="formControlsSelect">
               <ControlLabel>Choose a fabric family from this drop-down and click one to continue.</ControlLabel>
@@ -140,7 +137,7 @@ export default function KitchenHome (props) {
                 <option value="wdl">Wild Animals</option>
               </FormControl>
             </FormGroup>
-            {productChosen ? (
+            {productChosen && !fabricChosen ? (
               <React.Fragment>
                 <Thumbnail key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
                   <h3>Product Chosen</h3>
@@ -156,7 +153,7 @@ export default function KitchenHome (props) {
       {productChosen && fabricChosen ? (
         <React.Fragment>
           <h2>The product you have put together today is: </h2>
-          <div style={{display: "flex"}}>
+          <div style={{ display: "flex" }}>
             <Thumbnail key={fabricChoice._id} src={fabricChoice.fabricImgUrl} alt="Well, something didn't work...">
               <h3>Fabric Chosen</h3>
               <h3>{fabricChoice.fabricName}</h3>
@@ -165,9 +162,10 @@ export default function KitchenHome (props) {
               <h3>Product Chosen</h3>
               <h3>{imgBreakDown.typeOutline[productTypeChosen].prodType}</h3>
             </Thumbnail>
+            <PayPalButton />
           </div>
         </React.Fragment>
-      ): null
+      ) : null
       }
     </div>
   )
