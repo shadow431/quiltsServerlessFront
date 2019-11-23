@@ -14,7 +14,7 @@ export default function NewProduct(props) {
   const file = useRef(null);
   const [prodName, setProdName] = useState("");
   const [prodType, setProdType] = useState("");
-  const [prodDesc, setProdDesc] = useState("");
+  const [prodDescription, setProdDescription] = useState("");
   const [prodColors, setProdColors] = useState("");
   const [price, setPrice] = useState("");
   const [prodImgUrl, setProdImgUrl] = useState("");
@@ -23,7 +23,7 @@ export default function NewProduct(props) {
   function validateForm() {
     return prodName.length > 0 &&
       prodType.length > 0 &&
-      prodColors.length > 0 &&
+      prodDesc.length > 0 &&
       price.length > 0;
   }
 
@@ -31,7 +31,7 @@ export default function NewProduct(props) {
     file.current = event.target.files[0];
     setProdName(imgBreakDown.typeOutline[file.current.name.split(".")[0]].prodType);
     setProdType(file.current.name.substr(0,3));
-    setProdColors(imgBreakDown.typeOutline[prodType].colors.toString());
+    setProdColors(imgBreakDown.typeOutline[prodType].colors.toString() || "");
     setProdImgUrl(imgLinkLocation + file.current.name);
   }
 
@@ -51,7 +51,7 @@ export default function NewProduct(props) {
     try {
       await s3Upload(file.current);
 
-      await createProduct({ prodName, prodType, prodColors, prodDesc, price, prodImgUrl });
+      await createProduct({ prodName, prodType, prodColors, prodDescription, price, prodImgUrl });
       props.history.push("/admin");
     } catch (e) {
       alert(e);
@@ -74,9 +74,9 @@ export default function NewProduct(props) {
           <h4>{`Type: ${prodType}`}</h4>
           <ControlLabel>Description</ControlLabel>
           <FormControl
-            value={prodDesc}
+            value={prodDescription}
             type="text"
-            onChange={e => setProdDesc(e.target.value)}
+            onChange={e => setProdDescription(e.target.value)}
           />
           <h4>{`Colors: ${prodColors}`}</h4>
           <ControlLabel>Price</ControlLabel>
