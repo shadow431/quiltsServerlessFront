@@ -4,8 +4,9 @@
 }
 
 .construction {
+  max-width: 100%;
   color: red;
-  font-size: 36pt;
+  font-size: 28pt;
   font-weight: bold;
 }
 
