@@ -22,25 +22,13 @@ export default function PayPalButton () {
 
   return (
     <div>
-      <h1>Checkout</h1>
+      <h1>Single Purchase Checkout</h1>
       <PayPalSDKWrapper clientId={CLIENT.sandbox}>
         <SmartPaymentButtons
           createOrder={(data, actions) => {
             return actions.order.create({
               purchase_units: [{
                 description: "This is a test sale",
-                // item: [
-                //   {
-                //     name: "OVM",
-                //     description: "Testing multiple items",
-                //     unit_amount: "0.03"
-                //   },
-                //   {
-                //     name: "CAP",
-                //     description: "You wear it",
-                //     unit_amount: "0.01"
-                //   }
-                // ],
                 amount: {
                   value: "0.04"
                 }
