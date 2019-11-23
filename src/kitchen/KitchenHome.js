@@ -24,13 +24,13 @@ export default function KitchenHome(props) {
 
   useEffect(() => {
     loadProducts();
-    loadFabric();
   }, []);
 
   async function loadProducts() {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
+      loadFabric();
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -60,11 +60,16 @@ export default function KitchenHome(props) {
     return (
       <Grid fluid>
         <Row>
+          <Col className="fabricHeader" xs={12} sm={5} md={3}>
+            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.imgSubCat[fabricView]}</strong></h2>
+          </Col>
+        </Row>
+        <Row>
           {fabric.map((fabric, i) => {
             if (fabric.fabricSubCat === fabricView) {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail key={i} src={fabric.fabricImgUrl} onClick={() => { setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
+                  <Thumbnail key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
                     <h3>{fabric.fabricName}</h3>
                   </Thumbnail>
                 </Col>
@@ -109,14 +114,11 @@ export default function KitchenHome(props) {
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
             <p>Simply click on the product you want to continue!!</p>
           </div>
+          {isLoading ? (
+            <h4>Loading, please be patient... If network error, please refresh.</h4>
+            ) : null
+          }
           {renderProducts()}
-          {/* <Connect query={graphqlOperation(queries.listProducts)}>
-            {({ data: { listProducts }, loading, errors }) => {
-              if(errors) return (<h3>Error</h3>);
-              if(loading || !listProducts) return (<h3>Loading...</h3>);
-              return (<RenderProducts products={listProducts.items} />)
-            }}
-          </Connect> */}
         </React.Fragment>
       ) : (
           <React.Fragment>

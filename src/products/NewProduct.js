@@ -5,6 +5,7 @@ import LoaderButton from "../components/LoaderButton";
 import { s3Upload } from "../libs/awsLib";
 import config from "../config";
 import "./NewProduct.css";
+import imgBreakDown from "../components/ImgBreakDown";
 
 
 
@@ -13,6 +14,7 @@ export default function NewProduct(props) {
   const file = useRef(null);
   const [prodName, setProdName] = useState("");
   const [prodType, setProdType] = useState("");
+  const [prodDesc, setProdDesc] = useState("");
   const [prodColors, setProdColors] = useState("");
   const [price, setPrice] = useState("");
   const [prodImgUrl, setProdImgUrl] = useState("");
@@ -27,8 +29,9 @@ export default function NewProduct(props) {
 
   function handleFileChange(event) {
     file.current = event.target.files[0];
-    setProdName(file.current.name.split(".")[0]);
+    setProdName(imgBreakDown.typeOutline[file.current.name.split(".")[0]].prodType);
     setProdType(file.current.name.substr(0,3));
+    setProdColors(imgBreakDown.typeOutline[prodType].colors.toString());
     setProdImgUrl(imgLinkLocation + file.current.name);
   }
 
@@ -48,7 +51,7 @@ export default function NewProduct(props) {
     try {
       await s3Upload(file.current);
 
-      await createProduct({ prodName, prodType, prodColors, price, prodImgUrl });
+      await createProduct({ prodName, prodType, prodColors, prodDesc, price, prodImgUrl });
       props.history.push("/admin");
     } catch (e) {
       alert(e);
@@ -67,8 +70,15 @@ export default function NewProduct(props) {
     <div className="NewProduct">
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="content">
-          <h4>{prodName}</h4>
-          <h4>{prodType}</h4>
+          <h4>{`Name: ${prodName}`}</h4>
+          <h4>{`Type: ${prodType}`}</h4>
+          <ControlLabel>Description</ControlLabel>
+          <FormControl
+            value={prodDesc}
+            type="text"
+            onChange={e => setProdDesc(e.target.value)}
+          />
+          <h4>{`Colors: ${prodColors}`}</h4>
           <ControlLabel>Price</ControlLabel>
           <FormControl
             value={price}
