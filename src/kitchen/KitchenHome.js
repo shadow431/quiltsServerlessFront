@@ -125,7 +125,7 @@ export default function KitchenHome(props) {
             <Button onClick={() => {setProductChosen(false); setProductChoice([])}}>Change Product</Button>
             {!fabricChosen ? (
               <FormGroup controlId="formControlsSelect">
-                <ControlLabel>Choose a fabric family from this drop-down and click one to continue.</ControlLabel>
+                <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>
                 <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
                   <option value="select">select</option>
                   <option value="bir">Birds</option>
