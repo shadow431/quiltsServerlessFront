@@ -38,7 +38,7 @@ export default function Home(props) {
         </Col>
       </Row>
       <Row>
-        <Col>
+        <Col xs={12} sm={9} md={10}>
           <Carousel interval={5000}>
             {homeImgs.map((img, i) => {
               return (
