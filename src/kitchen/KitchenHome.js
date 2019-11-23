@@ -9,7 +9,7 @@ import PayPalButton from "../components/PaypalButton";
 export default function KitchenHome(props) {
   const [fabricChoice, setFabricChoice] = useState([]);
   const [fabricChosen, setFabricChosen] = useState(false);
-  const [productChoice, setProductChoice] = useState("");
+  const [productChoice, setProductChoice] = useState([]);
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");
   const [fabricView, setFabricView] = useState("");
@@ -24,13 +24,13 @@ export default function KitchenHome(props) {
 
   useEffect(() => {
     loadProducts();
+    loadFabric();
   }, []);
 
   async function loadProducts() {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
-      loadFabric();
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -120,23 +120,27 @@ export default function KitchenHome(props) {
         </React.Fragment>
       ) : (
           <React.Fragment>
-            <FormGroup controlId="formControlsSelect">
-              <ControlLabel>Choose a fabric family from this drop-down and click one to continue.</ControlLabel>
-              <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
-                <option value="select">select</option>
-                <option value="bir">Birds</option>
-                <option value="bug">Bugs and Frogs</option>
-                <option value="cdo">Cats and Dogs</option>
-                <option value="fdk">Food</option>
-                <option value="flr">Flowers</option>
-                <option value="frm">Farm</option>
-                <option value="hol">Holidays</option>
-                <option value="mil">Military</option>
-                <option value="mis">Miscelanneous</option>
-                <option value="nat">Nautical</option>
-                <option value="wdl">Wild Animals</option>
-              </FormControl>
-            </FormGroup>
+            <Button onClick={() => {setProductChosen(false); setProductChoice([])}}>Change Product</Button>
+            {!fabricChosen ? (
+              <FormGroup controlId="formControlsSelect">
+                <ControlLabel>Choose a fabric family from this drop-down and click one to continue.</ControlLabel>
+                <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
+                  <option value="select">select</option>
+                  <option value="bir">Birds</option>
+                  <option value="bug">Bugs and Frogs</option>
+                  <option value="cdo">Cats and Dogs</option>
+                  <option value="fdk">Food</option>
+                  <option value="flr">Flowers</option>
+                  <option value="frm">Farm</option>
+                  <option value="hol">Holidays</option>
+                  <option value="mil">Military</option>
+                  <option value="mis">Miscelanneous</option>
+                  <option value="nat">Nautical</option>
+                  <option value="wdl">Wild Animals</option>
+                </FormControl>
+              </FormGroup>
+              ) : (<Button onClick={() => {setFabricChosen(false); setFabricChoice([])}}>Change Fabric</Button>)
+            }
             {productChosen && !fabricChosen ? (
               <React.Fragment>
                 <Thumbnail key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
