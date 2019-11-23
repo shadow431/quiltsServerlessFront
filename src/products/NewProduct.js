@@ -23,7 +23,7 @@ export default function NewProduct(props) {
   function validateForm() {
     return prodName.length > 0 &&
       prodType.length > 0 &&
-      prodDesc.length > 0 &&
+      prodDescription.length > 0 &&
       price.length > 0;
   }
 
