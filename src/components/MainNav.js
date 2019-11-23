@@ -18,23 +18,20 @@ export default function MainNav (props) {
           matches
             ? (
             <Nav className="Home KitchenHomeNav Schedule" bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
-              <NavItem eventKey={1} onClick={() => {history.push("/"); setNavKey(1);}}>
-                Home
-              </NavItem>
-              {/* <NavItem eventKey={2} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
+              {/* <NavItem eventKey={1} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
                 Embroidery
               </NavItem> */}
-              <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
+              <NavItem eventKey={2} onClick={() => {history.push("/kitchen"); setNavKey(2);}}>
                 Kitchen Items
               </NavItem>
-              {/* <NavItem eventKey={4} onClick={() => {history.push("/quilts"); setNavKey(4);}}>
+              {/* <NavItem eventKey={3} onClick={() => {history.push("/quilts"); setNavKey(3);}}>
                 Quilts
               </NavItem> */}
-              <NavItem eventKey={5} onClick={() => {history.push("/schedule"); setNavKey(5);}}>
+              <NavItem eventKey={4} onClick={() => {history.push("/schedule"); setNavKey(4);}}>
                 Show Schedule
               </NavItem>
               {auth ? (
-                <NavItem eventKey={6} onClick={() => {history.push("/admin"); setNavKey(6);}}>
+                <NavItem eventKey={5} onClick={() => {history.push("/admin"); setNavKey(5);}}>
                   Admin
                 </NavItem>
               ) : (
