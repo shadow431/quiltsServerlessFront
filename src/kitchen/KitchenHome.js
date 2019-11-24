@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import { API } from "aws-amplify";
-// import { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString } from "graphql";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
+import "./KitchenHome.css";
 // import ColorPopulater from "../components/ColorPopulater";
 
 export default function KitchenHome(props) {
@@ -69,7 +69,7 @@ export default function KitchenHome(props) {
             if (fabric.fabricSubCat === fabricView) {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
+                  <Thumbnail id="FabricBackground" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
                     <h3>{fabric.fabricName}</h3>
                   </Thumbnail>
                 </Col>
@@ -91,7 +91,7 @@ export default function KitchenHome(props) {
               if (product.prodType === "PRO") {
                 return (
                   <Col key={i} xs={12} sm={5} md={3}>
-                    <Thumbnail key={product._id} src={product.prodImgUrl} onClick={() => { setProductChoice(product); setProductTypeChosen(product.prodSubCat); setProductChosen(true); }} alt="Well, Something didn't work...">
+                    <Thumbnail id="ProductBackground" key={product._id} src={product.prodImgUrl} onClick={() => { setProductChoice(product); setProductTypeChosen(product.prodSubCat); setProductChosen(true); }} alt="Well, Something didn't work...">
                       <h2>{product.prodName}</h2>
                       <h4>{`$${product.price}`}</h4>
                     </Thumbnail>
@@ -176,53 +176,3 @@ export default function KitchenHome(props) {
     </div>
   )
 }
-
-/*
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-            <input type="hidden" name="cmd" value="_s-xclick" />
-            <input type="hidden" name="hosted_button_id" value="XJV6YRPASBAPG" />
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" alt="Add to Cart" />
-          </form>
-          <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
-								<input type="hidden" name="cmd" value="_cart">
-								<input type="hidden" name="business" value="UF9VSSKARLZY6">
-								<input type="hidden" name="lc" value="US">
-								<input type="hidden" name="item_name" value="BWbd143">
-								<input type="hidden" name="on1" value="Color">
-								<input type="hidden" name="on2" value="Style">
-								<input type="hidden" name="on3" value="Where did you hear about us?">
-								<input type="hidden" name="button_subtype" value="products">
-								<input type="hidden" name="no_note" value="0">
-								<input type="hidden" name="cn" value="Add special instructions to the seller">
-								<input type="hidden" name="no_shipping" value="2">
-								<input type="hidden" name="currency_code" value="USD">
-								<input type="hidden" name="weight_unit" value="lbs">
-								<input type="hidden" name="add" value="1">
-								<input type="hidden" name="bn" value="PP-ShopCartBF:btn_cart_LG.gif:NonHosted">
-								<table>
-									<tbody><tr>
-										<td>
-											<input type="hidden" name="on0" value="BWbd143">BWbd143
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<select name="os0">
-												<option value="Qty 1">Qty 1 $10.00</option>
-												<option value="Qty 2">Qty 2 $20.00</option>
-												<option value="Qty 3">Qty 3 $30.00</option>
-											</select><br><select name="os3"><option>How Did you hear about us?</option><option value="friend_family">Friend/Family</option><option value="craft_show">Craft Show</option><option value="ad">Ad</option><option value="web_search">Web Search</option><option value="other">Other</option></select></td>
-									</tr>
-								</tbody></table>
-								<input type="hidden" name="currency_code" value="USD">
-								<input type="hidden" name="option_select0" value="Qty 1">
-								<input type="hidden" name="option_amount0" value="10.00">
-								<input type="hidden" name="option_select1" value="Qty 2">
-								<input type="hidden" name="option_amount1" value="20.00">
-								<input type="hidden" name="option_select2" value="Qty 3">
-								<input type="hidden" name="option_amount2" value="30.00">
-								<input type="hidden" name="option_index" value="0">
-								<input type="image" src="https://www.paypal.com/en_US/i/btn/btn_cart_LG.gif" name="submit" alt="PayPal - The safer, easier way to pay online!" border="0">
-								<img alt="" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" border="0">
-								</form> */

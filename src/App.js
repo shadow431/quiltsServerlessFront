@@ -8,7 +8,6 @@ import { API } from "aws-amplify";
 import "./App.css";
 import MainNav from "./components/MainNav";
 import EmbroideryNav from "./components/EmbroideryNav";
-import KitchenNav from "./kitchen/KitchenNav";
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
