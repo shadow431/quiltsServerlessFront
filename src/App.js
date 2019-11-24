@@ -50,7 +50,7 @@ function App(props) {
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
-              <Link to="/"><img className="NavHeaderBar" src="https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/top.ht2-trans.gif" alt="Embroidery by Wanda" /></Link>
+              <Link to="/"><img className="NavHeaderBarLogo" src="https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/top.ht2-trans.gif" alt="Embroidery by Wanda" /></Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
@@ -61,13 +61,13 @@ function App(props) {
                   <LinkContainer to="/admin">
                     <NavItem><span className="NavHeaderBarSecondary">Admin</span></NavItem>
                   </LinkContainer>
-                  <NavItem onClick={handleLogout}><span style={{color: 'white'}}>Logout</span></NavItem>
+                  <NavItem onClick={handleLogout}><span style={{color: '#00cc44'}}>Logout</span></NavItem>
                 </>
                 ) : (
                 <>
 
                   <LinkContainer to="/login">
-                    <NavItem><span style={{color: "white", fontSize: "16pt"}}>Admin</span></NavItem>
+                    <NavItem><span style={{color: "#00cc44", fontSize: "16pt"}}>Admin</span></NavItem>
                   </LinkContainer>
                 </>
                 )
@@ -77,7 +77,6 @@ function App(props) {
         </Navbar>
 
         <MainNav history={history} auth={isAuthenticated} />
-        {/* {window.location.pathname.includes("/kitchen/") ? <KitchenNav history={history} auth={isAuthenticated} /> : null} */}
         {window.location.pathname.includes("/embroidery") ? <EmbroideryNav history={history} auth={isAuthenticated} />:null}
         <div style={{display: 'flex'}}>
           <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
