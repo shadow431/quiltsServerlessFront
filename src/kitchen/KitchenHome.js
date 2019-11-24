@@ -113,6 +113,7 @@ export default function KitchenHome(props) {
             <h3>Welcome to the Kitchen Items!!!</h3>
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
             <p>Simply click on the product you want to continue!!</p>
+            <span>FREE SHIPPING ON ORDERS $60.00 AND OVER.</span>
           </div>
           {isLoading ? (
             <h4>Loading, please be patient... If network error, please refresh.</h4>
@@ -146,7 +147,7 @@ export default function KitchenHome(props) {
             {productChosen && !fabricChosen ? (
               <React.Fragment>
                 <Thumbnail key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
-                  <h3>Product Chosen</h3>
+                  <h3>{productChoice.prodName}</h3>
                   <h3>{productChoice.prodDesc}</h3>
                 </Thumbnail>
                 {renderFabric()}
@@ -165,10 +166,10 @@ export default function KitchenHome(props) {
               <h3>{fabricChoice.fabricName}</h3>
             </Thumbnail>
             <Thumbnail key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
-              <h3>Product Chosen</h3>
-              <h3>{imgBreakDown.typeOutline[productTypeChosen].prodType}</h3>
+              <h3>{productChoice.prodName}</h3>
+              <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
-            <PayPalButton />
+            <PayPalButton paypalId={productChoice.paypalId} />
           </div>
         </React.Fragment>
       ) : null
