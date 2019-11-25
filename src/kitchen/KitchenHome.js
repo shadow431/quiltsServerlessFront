@@ -86,6 +86,14 @@ export default function KitchenHome(props) {
                   </Thumbnail>
                 </Col>
               )
+            } else {
+              return (
+                <Col key={i} xs={12} sm={5} md={3}>
+                  <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
+                    <h3>{fabric.fabricName}</h3>
+                  </Thumbnail>
+                </Col>
+              )
             }
           })
           }
@@ -144,6 +152,7 @@ export default function KitchenHome(props) {
                 <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>
                 <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
                   <option value="select">Fabric Choice</option>
+                  <option value="all">All Fabrics</option>
                   <option value="bir">Birds</option>
                   <option value="bug">Bugs and Frogs</option>
                   <option value="cdo">Cats and Dogs</option>
