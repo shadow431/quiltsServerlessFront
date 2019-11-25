@@ -1,6 +1,6 @@
 import React from "react";
 import SmartPaymentButtons, { PayPalSDKWrapper } from "react-smart-payment-buttons";
-
+import "./PaypalButton.css";
 
 export default function PayPalButton (props) {
   console.log(props);

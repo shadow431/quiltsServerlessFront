@@ -81,7 +81,7 @@ export default function KitchenHome(props) {
             if (fabric.fabricSubCat === fabricView) {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail id="FabricBackground" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
+                  <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
                     <h3>{fabric.fabricName}</h3>
                   </Thumbnail>
                 </Col>
@@ -103,7 +103,7 @@ export default function KitchenHome(props) {
               if (product.prodType === "PRO") {
                 return (
                   <Col key={i} xs={12} sm={5} md={3}>
-                    <Thumbnail id="ProductBackground" key={product._id} src={product.prodImgUrl} onClick={() => handleProductChoice(product)} alt="Well, Something didn't work...">
+                    <Thumbnail className="ProductThumb" key={product._id} src={product.prodImgUrl} onClick={() => handleProductChoice(product)} alt="Well, Something didn't work...">
                       <h2>{product.prodName}</h2>
                       <h4>{`$${product.price}`}</h4>
                     </Thumbnail>
@@ -128,7 +128,10 @@ export default function KitchenHome(props) {
             <span>FREE SHIPPING ON ORDERS $60.00 AND OVER.</span>
           </div>
           {isLoading ? (
-            <h4>Loading, please be patient... If network error, please refresh.</h4>
+            <React.Fragment>
+              <h4>Loading, please be patient... If network error, please refresh.</h4>
+              <Button onClick={() => renderProducts}>REFRESH</Button>
+            </React.Fragment>
             ) : null
           }
           {renderProducts()}
@@ -158,7 +161,7 @@ export default function KitchenHome(props) {
             }
             {productChosen && !fabricChosen ? (
               <React.Fragment>
-                <Thumbnail key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
+                <Thumbnail className="ProductThumb" key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
                   <h3>{productChoice.prodName}</h3>
                   <h3>{productChoice.prodDesc}</h3>
                 </Thumbnail>
@@ -173,11 +176,11 @@ export default function KitchenHome(props) {
         <React.Fragment>
           <h2>The product you have put together today is: </h2>
           <div style={{ display: "flex" }}>
-            <Thumbnail key={fabricChoice._id} src={fabricChoice.fabricImgUrl} alt="Well, something didn't work...">
+            <Thumbnail className="FabricThumb" key={fabricChoice._id} src={fabricChoice.fabricImgUrl} alt="Well, something didn't work...">
               <h3>Fabric Chosen</h3>
               <h3>{fabricChoice.fabricName}</h3>
             </Thumbnail>
-            <Thumbnail key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
+            <Thumbnail className="ProductThumb" key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
               <h3>{productChoice.prodName}</h3>
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
