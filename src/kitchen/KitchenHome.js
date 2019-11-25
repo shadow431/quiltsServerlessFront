@@ -86,7 +86,7 @@ export default function KitchenHome(props) {
                   </Thumbnail>
                 </Col>
               )
-            } else {
+            } else if(fabricView === "all"){
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
                   <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
