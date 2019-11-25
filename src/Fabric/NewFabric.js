@@ -15,6 +15,7 @@ export default function NewFabric(props) {
   const [fabricType, setFabricType] = useState("");
   const [fabricSubCat, setFabricSubCat] = useState("");
   const [fabricImgUrl, setFabricImgUrl] = useState("");
+  const [newFabric, setNewFabric] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
   function validateForm() {
@@ -34,6 +35,8 @@ export default function NewFabric(props) {
   async function handleSubmit(event) {
     event.preventDefault();
 
+
+
     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
       alert(
         `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE /
@@ -47,7 +50,7 @@ export default function NewFabric(props) {
     try {
       await s3Upload(file.current);
 
-      await createFabric({ fabricName, fabricType, fabricSubCat, fabricImgUrl });
+      await createFabric({ fabricName, fabricType, fabricSubCat, fabricImgUrl, newFabric });
       props.history.push("/admin");
     } catch (e) {
       alert(e);
@@ -69,6 +72,8 @@ export default function NewFabric(props) {
         <h4>{fabricType}</h4>
         <h4>{fabricSubCat}</h4>
         <FormGroup controlId="file">
+          <ControlLabel>New Fabric? Please enter yes or no</ControlLabel>
+          <FormControl onChange={(e) => setNewFabric(e.target.value.toLowerCase().trim())} type="text"></FormControl>
           <ControlLabel>Attachment</ControlLabel>
           <FormControl onChange={handleFileChange} type="file" />
         </FormGroup>
