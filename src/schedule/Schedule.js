@@ -50,8 +50,8 @@ export default function Schedule(props) {
             eventItems.map((currEvent, i) => {
               return (
                 <tr key={currEvent._id}>
-                  <td>{currEvent.name}</td>
                   <td>{currEvent.date}</td>
+                  <td>{currEvent.name}</td>
                   <td>{currEvent.location}</td>
                   <td> {currEvent.time}</td>
                   {props.isAuthenticated ?

@@ -13,6 +13,9 @@ export default function KitchenHome(props) {
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");
   const [fabricView, setFabricView] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [purchasePrice, setPurchasePrice] = useState("");
   // const [ colorChoice, setColorChoice ] = useState("");
   // const [ colorChosen, setColorChosen ] = useState(false);
 
@@ -56,6 +59,15 @@ export default function KitchenHome(props) {
     setFabricView(e.target.value);
   }
 
+  function handleProductChoice (product) {
+    setProductChoice(product);
+    setProductTypeChosen(product.prodSubCat);
+    setProductChosen(true);
+    setPrice(product.price);
+    setPurchasePrice(Number(product.price));
+    setQuantity(1);
+  }
+
   function renderFabric() {
     return (
       <Grid fluid>
@@ -91,7 +103,7 @@ export default function KitchenHome(props) {
               if (product.prodType === "PRO") {
                 return (
                   <Col key={i} xs={12} sm={5} md={3}>
-                    <Thumbnail id="ProductBackground" key={product._id} src={product.prodImgUrl} onClick={() => { setProductChoice(product); setProductTypeChosen(product.prodSubCat); setProductChosen(true); }} alt="Well, Something didn't work...">
+                    <Thumbnail id="ProductBackground" key={product._id} src={product.prodImgUrl} onClick={() => handleProductChoice(product)} alt="Well, Something didn't work...">
                       <h2>{product.prodName}</h2>
                       <h4>{`$${product.price}`}</h4>
                     </Thumbnail>
@@ -128,7 +140,7 @@ export default function KitchenHome(props) {
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>
                 <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
-                  <option value="select">select</option>
+                  <option value="select">Fabric Choice</option>
                   <option value="bir">Birds</option>
                   <option value="bug">Bugs and Frogs</option>
                   <option value="cdo">Cats and Dogs</option>
@@ -169,8 +181,19 @@ export default function KitchenHome(props) {
               <h3>{productChoice.prodName}</h3>
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
-            <PayPalButton paypalId={productChoice.paypalId} />
           </div>
+          <FormGroup controlId="formControlsSelect">
+            <ControlLabel>Select</ControlLabel>
+            <FormControl componentClass="select" placeholder="select" onChange={(e) => {setQuantity(e.target.value); setPurchasePrice(price * e.target.value);}}>
+              <option value="select">Choose Quantity</option>
+              <option value="1">{`1 = $${price * 1}`}</option>
+              <option value="2">{`2 = $${price * 2}`}</option>
+              <option value="3">{`3 = $${price * 3}`}</option>
+              <option value="4">{`4 = $${price * 4}`}</option>
+              <option value="5">{`5 = $${price * 5}`}</option>
+            </FormControl>
+          </FormGroup>
+          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={fabricChoice.fabricName} product={productTypeChosen} />
         </React.Fragment>
       ) : null
       }
