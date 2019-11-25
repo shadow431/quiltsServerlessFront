@@ -6,7 +6,6 @@ import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 import Admin from "./containers/Admin";
 import Backpack from "./embroidery/Backpack";
-import BakedPotatoBag from "./kitchen/BakedPotatoBag";
 import BowlWrap from "./kitchen/BowlWrap";
 import CompBrief from "./embroidery/CompBrief";
 import DeleteProduct from "./products/DeleteProduct";
@@ -24,14 +23,11 @@ import NewFabric from "./Fabric/NewFabric";
 import NewProduct from "./products/NewProduct";
 import NewSchedule from "./schedule/NewSchedule";
 import NotFound from "./containers/NotFound";
-import OvenMitt from "./kitchen/OvenMitt";
-import Plate from "./kitchen/Plate";
 import Quilts from "./containers/Quilts";
 import Schedule from "./schedule/Schedule"
 import Signup from "./containers/Signup";
 import Sling from "./embroidery/Sling";
 import SweatShirt from "./embroidery/SweatShirt";
-import TortillaBags from "./kitchen/Tortilla";
 import Tote from "./embroidery/Tote";
 import ToteZip from "./embroidery/ToteZip";
 import TShirt from "./embroidery/TShirt";
@@ -58,12 +54,8 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/embroidery/tshirtlong" exact component={TShirtLong} appProps={appProps} />
       <AppliedRoute path="/embroidery/vest" exact component={Vest} appProps={appProps} />
       <AppliedRoute path="/kitchen" exact component={KitchenHome} appProps={appProps} />
-      <AppliedRoute path="/kitchen/ovenmitt" exact component={OvenMitt} appProps={appProps} />
-      <AppliedRoute path="/kitchen/plate" exact component={Plate} appProps={appProps} />
-      <AppliedRoute path="/kitchen/potato" exact component={BakedPotatoBag} appProps={appProps} />
       <AppliedRoute path="/quilts" exact component={Quilts} appProps={appProps} />
       <AppliedRoute path="/schedule" exact component={Schedule} appProps={appProps} />
-      <AppliedRoute path="/kitchen/tortilla" exact component={TortillaBags} appProps={appProps} />
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />

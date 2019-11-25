@@ -133,12 +133,12 @@ export default function KitchenHome(props) {
             <h3>Welcome to the Kitchen Items!!!</h3>
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
             <p>Simply click on the product you want to continue!!</p>
-            <span>FREE SHIPPING ON ORDERS $60.00 AND OVER.</span>
+            <span>FREE SHIPPING ON ORDERS $60.00 AND OVER.</span><br />
+            <Button onClick={() => renderProducts}>REFRESH</Button>
           </div>
           {isLoading ? (
             <React.Fragment>
               <h4>Loading, please be patient... If network error, please refresh.</h4>
-              <Button onClick={() => renderProducts}>REFRESH</Button>
             </React.Fragment>
             ) : null
           }
@@ -146,6 +146,7 @@ export default function KitchenHome(props) {
         </React.Fragment>
       ) : (
           <React.Fragment>
+            <Button onClick={() => {setProductChosen(false); setProductChoice([]); setFabricChosen(false); setFabricChoice([]);}}>Start Over</Button>
             <Button onClick={() => {setProductChosen(false); setProductChoice([])}}>Change Product</Button>
             {!fabricChosen ? (
               <FormGroup controlId="formControlsSelect">
@@ -166,7 +167,12 @@ export default function KitchenHome(props) {
                   <option value="wdl">Wild Animals</option>
                 </FormControl>
               </FormGroup>
-              ) : (<Button onClick={() => {setFabricChosen(false); setFabricChoice([])}}>Change Fabric</Button>)
+              ) :
+              (
+                <React.Fragment>
+                  <Button onClick={() => {setFabricChosen(false); setFabricChoice([])}}>Change Fabric</Button>
+                </React.Fragment>
+              )
             }
             {productChosen && !fabricChosen ? (
               <React.Fragment>
