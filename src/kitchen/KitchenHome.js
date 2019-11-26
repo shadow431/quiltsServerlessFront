@@ -211,7 +211,7 @@ export default function KitchenHome(props) {
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
           </FormGroup>
-          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={fabricChoice.fabricName} product={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={fabricChoice.fabricName} productName={productChoice.prodName} productType={productTypeChosen} />
         </React.Fragment>
       ) : null
       }

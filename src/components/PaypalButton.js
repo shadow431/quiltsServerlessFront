@@ -8,6 +8,7 @@ export default function PayPalButton (props) {
     sandbox: "ASXEP2SpZf1QwO6SDyVEBgB_pOxIKC5fgNnrF4s-0RhkGLYhJnGx8fVRaZKnaICEIbJsvEmkVHQHGL8t",
     production: "AfdNscFujmkXKAenL1jP5Xo8RmTplWtmoml-toowjWOSmMxgg0as-sq5M7m4VxixSZEzgkZD9xWbmx4C"
   }
+  let quantity = props.quantity;
   console.log(Number(props.price))
 
   return (
@@ -40,7 +41,7 @@ export default function PayPalButton (props) {
           <thead>
             <tr>
               <td>
-                <input type="hidden" name="on0" value={`${props.product},${props.fabric},${props.quantity}`} />Quantity
+                <input type="hidden" name="on0" value={`${props.product},${props.fabric}`} />Quantity
               </td>
             </tr>
           </thead>
