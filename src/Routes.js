@@ -33,6 +33,7 @@ import ToteZip from "./embroidery/ToteZip";
 import TShirt from "./embroidery/TShirt";
 import TShirtLong from "./embroidery/TShirtLong";
 import Vest from "./embroidery/Vest";
+import Sandbox from "./containers/Sandbox";
 
 export default function Routes({ appProps }) {
   return (
@@ -56,6 +57,7 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/kitchen" exact component={KitchenHome} appProps={appProps} />
       <AppliedRoute path="/quilts" exact component={Quilts} appProps={appProps} />
       <AppliedRoute path="/schedule" exact component={Schedule} appProps={appProps} />
+      <AppliedRoute path="/sandbox" exact component={Sandbox} appProps={appProps} />
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
