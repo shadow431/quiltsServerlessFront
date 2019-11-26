@@ -12,7 +12,7 @@ export default function PayPalButton (props) {
 
   return (
     <div>
-      <h1>Single Purchase Checkout</h1>
+      {/* <h1>Single Purchase Checkout</h1>
       <PayPalSDKWrapper disable-funding="credit,card" clientId={CLIENT.production}>
         <SmartPaymentButtons
           createOrder={(data, actions) => {
@@ -32,7 +32,7 @@ export default function PayPalButton (props) {
             })
           }}
         />
-      </PayPalSDKWrapper>
+      </PayPalSDKWrapper> */}
       <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_s-xclick" />
         <input type="hidden" name="hosted_button_id" value={props.paypalId} />

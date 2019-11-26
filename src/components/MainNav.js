@@ -30,9 +30,9 @@ export default function MainNav (props) {
               <NavItem eventKey={4} onClick={() => {history.push("/schedule"); setNavKey(4);}}>
                 Show Schedule
               </NavItem>
-              <NavItem eventKey={4} onClick={() => {history.push("/newFabrics"); setNavKey(4);}}>
+              {/* <NavItem eventKey={4} onClick={() => {history.push("/newFabrics"); setNavKey(4);}}>
                 New Items!!
-              </NavItem>
+              </NavItem> */}
               {auth ? (
                 <NavItem eventKey={5} onClick={() => {history.push("/admin"); setNavKey(5);}}>
                   Admin
