@@ -35,12 +35,12 @@ export default function PayPalButton (props) {
       </PayPalSDKWrapper>
       <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_s-xclick" />
-        <input type="hidden" name="hosted_button_id" value={CLIENT.production} />
+        <input type="hidden" name="hosted_button_id" value={props.paypalId} />
         <table>
           <thead>
             <tr>
               <td>
-                <input type="hidden" name="on0" value="Quantity" />Quantity
+                <input type="hidden" name="on0" value={`${props.product},${props.fabric},${props.quantity}`} />Quantity
               </td>
             </tr>
           </thead>
