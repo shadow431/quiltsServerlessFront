@@ -81,7 +81,7 @@ export default function KitchenHome(props) {
             if (fabricView === "all") {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
+                  <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Image to be added soon....">
                     <h3>{fabric.fabricName}</h3>
                   </Thumbnail>
                 </Col>
@@ -89,7 +89,7 @@ export default function KitchenHome(props) {
             } else if(fabric.fabricSubCat === fabricView){
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Well, something didn't work...">
+                  <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Image to be added soon....">
                     <h3>{fabric.fabricName}</h3>
                   </Thumbnail>
                 </Col>
@@ -111,7 +111,7 @@ export default function KitchenHome(props) {
               if (product.prodType === "PRO") {
                 return (
                   <Col key={i} xs={12} sm={5} md={3}>
-                    <Thumbnail className="ProductThumb" key={product._id} src={product.prodImgUrl} onClick={() => handleProductChoice(product)} alt="Well, Something didn't work...">
+                    <Thumbnail className="ProductThumb" key={product._id} src={product.prodImgUrl} onClick={() => handleProductChoice(product)} alt="Image to be added soon....">
                       <h3>{product.prodName}</h3>
                       <h4>{`$${product.price}`}</h4>
                     </Thumbnail>
@@ -176,7 +176,7 @@ export default function KitchenHome(props) {
             }
             {productChosen && !fabricChosen ? (
               <React.Fragment>
-                <Thumbnail className="ProductThumb" key={productChoice._id} src={productChoice.prodImgUrl} alt="Well, something didn't work...">
+                <Thumbnail className="ProductThumb" key={productChoice._id} src={productChoice.prodImgUrl} alt="Image to be added soon....">
                   <h5>{productChoice.prodName}</h5>
                   <h5>{productChoice.prodDesc}</h5>
                 </Thumbnail>
@@ -191,11 +191,11 @@ export default function KitchenHome(props) {
         <React.Fragment>
           <h2>The product you have put together today is: </h2>
           <div style={{ display: "flex" }}>
-            <Thumbnail className="FabricThumb" key={fabricChoice._id} src={fabricChoice.fabricImgUrl} alt="Well, something didn't work...">
+            <Thumbnail className="FabricThumb" key={fabricChoice._id} src={fabricChoice.fabricImgUrl} alt="Image to be added soon....">
               <h5>Fabric Chosen</h5>
               <h3>{fabricChoice.fabricName}</h3>
             </Thumbnail>
-            <Thumbnail className="ProductThumb" key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Well, something didn't work...">
+            <Thumbnail className="ProductThumb" key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Image to be added soon....">
               <h5>{productChoice.prodName}</h5>
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
