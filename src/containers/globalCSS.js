@@ -12,7 +12,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: "Open Sans", sans-serif;
     font-size: 16px;
-    color: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.text};
     background: ${({ theme }) => theme.body};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -41,6 +41,7 @@ export const GlobalStyles = createGlobalStyle`
 
   .appNav {
     background: ${({ theme }) => theme.body};
+    color: ${({ theme }) => theme.sideNavText};
   }
 
   .freeShip {
@@ -87,7 +88,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .KitchenHomeNav a {
-    color: #0b7930;
+    color: ${({ theme }) => theme.sideNavText};
   }
 
   li.active {
@@ -110,7 +111,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .renderThumb {
-    background: ${({ theme }) => theme.body};
+    background: ${({ theme }) => theme.thumbBackground};
     text-align: center;
   }
 
