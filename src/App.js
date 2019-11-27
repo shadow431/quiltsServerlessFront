@@ -12,6 +12,7 @@ import EmbroideryNav from "./components/EmbroideryNav";
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [primaryColor, setPrimaryColor] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const { history } = props;
   const [products, setProducts] = useState([]);
@@ -44,9 +45,22 @@ function App(props) {
     props.history.push("/login");
   }
 
+  const primaryStyles = {
+    backgroundColor: 'pink',
+    color: 'green'
+  }
+
+  const secondaryStyles = {
+    backgroundColor: 'purple',
+    color: 'black'
+  }
+
   return (
     !isAuthenticating && (
       <div className="App container">
+        {/* <div style={primaryColor ? primaryStyles : secondaryStyles }> */}
+
+
         <Navbar fluid collapseOnSelect>
           <Navbar.Header>
             <Navbar.Brand>
@@ -81,6 +95,7 @@ function App(props) {
         <div style={{display: 'flex'}}>
           <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
         </div>
+        {/* </div> */}
       </div>
     )
   );
