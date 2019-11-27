@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Carousel, Grid, Row, Col } from "react-bootstrap";
-import "./global.css";
+import "./globalCSS.js";
 import "../components/LoaderButton.css";
 
 export default function Home(props) {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Nav, NavItem, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import MediaQuery from "react-responsive";
-import "../containers/global.css";
+import "../containers/globalCSS.js";
 
 export default function MainNav (props) {
   const [ navKey, setNavKey ] = useState(1);

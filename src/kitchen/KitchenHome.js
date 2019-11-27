@@ -3,7 +3,7 @@ import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel
 import { API } from "aws-amplify";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
-import "../containers/global.css";
+import "../containers/globalCSS.js";
 import { ToastDemo } from "../components/ToastDemo";
 // import ColorPopulater from "../components/ColorPopulater";
 

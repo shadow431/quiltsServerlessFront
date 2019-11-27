@@ -3,27 +3,30 @@ import { Auth } from "aws-amplify";
 import { Link, withRouter } from "react-router-dom";
 import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { ThemeProvider } from "styled-components";
 import Routes from "./Routes";
 import { API } from "aws-amplify";
-import "./containers/global.css";
 import MainNav from "./components/MainNav";
 import EmbroideryNav from "./components/EmbroideryNav";
+import { pinkTheme, conventionalTheme } from "./containers/theme";
+import { GlobalStyles } from "./containers/globalCSS";
+// import "./containers/globalCSS.js";
 
 function App(props) {
+
   const primaryStyles = {
     body : {
-      backgroundColor: 'pink',
-      color: 'green'
+      backgroundColor: 'black',
+      color: 'orange'
     }
   }
-
   const secondaryStyles = {
     backgroundColor: 'purple',
     color: 'black'
   }
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
-  const [primaryColor, setPrimaryColor] = useState(primaryStyles);
+  const [theme, setTheme] = useState('pinkTheme');
   const [isLoading, setIsLoading] = useState(true);
   const { history } = props;
   const [products, setProducts] = useState([]);
@@ -56,11 +59,18 @@ function App(props) {
     props.history.push("/login");
   }
 
+  function toggleTheme () {
+    if(theme === 'pinkTheme') {
+      setTheme('conventionalTheme');
+    } else {
+      setTheme("pinkTheme");
+    }
+  }
 
   return (
     !isAuthenticating && (
-      <div className="App container">
-        <div style={{primaryColor}}>
+      <ThemeProvider theme={theme === 'pinkTheme' ? pinkTheme : conventionalTheme}>
+        <div className="App container">
           <Navbar className="appNav" fluid collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
@@ -68,9 +78,10 @@ function App(props) {
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
-            <Button onClick={() => {setPrimaryColor(primaryStyles ? secondaryStyles : primaryStyles); console.log(primaryColor)}}>Change Colors</Button>
             <Navbar.Collapse>
               <Nav pullRight>
+                <GlobalStyles />
+                <Button onClick={toggleTheme}>Toggle Theme</Button>
                 {isAuthenticated ? (
                   <>
                     <LinkContainer to="/admin">
@@ -95,7 +106,7 @@ function App(props) {
             <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
           </div>
         </div>
-      </div>
+      </ThemeProvider>
     )
   );
 }
