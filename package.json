@@ -25,6 +25,7 @@
     "react-scripts": "3.1.2",
     "react-smart-payment-buttons": "^0.2.3",
     "react-stripe-elements": "^5.0.1",
+    "react-toast-notifications": "^2.4.0",
     "serverless": "^1.55.1",
     "typescript": "^3.6.4",
     "uuid": "^3.3.3"
