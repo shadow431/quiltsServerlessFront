@@ -17,8 +17,6 @@ export default function KitchenHome(props) {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
-  // const [ colorChoice, setColorChoice ] = useState("");
-  // const [ colorChosen, setColorChosen ] = useState(false);
 
   const [fabric, setFabric] = useState([]);
   const [products, setProducts] = useState([]);
@@ -39,7 +37,7 @@ export default function KitchenHome(props) {
     catch (e) {
       if (e !== 'No current user') {
         loadProducts();
-        return <ToastDemo />;
+        // return <ToastDemo />;
       }
     }
     setIsLoading(false);
@@ -53,7 +51,7 @@ export default function KitchenHome(props) {
     catch (e) {
       if (e !== 'No current user') {
         loadFabric();
-        return <ToastDemo />;
+        // return <ToastDemo />;
       }
     }
   }
@@ -148,8 +146,8 @@ export default function KitchenHome(props) {
         </React.Fragment>
       ) : (
           <React.Fragment>
-            <Button onClick={() => {setProductChosen(false); setProductChoice([]); setFabricChosen(false); setFabricChoice([]);}}>Start Over</Button>
-            <Button onClick={() => {setProductChosen(false); setProductChoice([])}}>Change Product</Button>
+            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]); setFabricChosen(false); setFabricChoice([]);}}>Start Over</Button>
+            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([])}}>Change Product</Button>
             {!fabricChosen ? (
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>

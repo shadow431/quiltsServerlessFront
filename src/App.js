@@ -81,7 +81,7 @@ function App(props) {
             <Navbar.Collapse>
               <Nav pullRight>
                 <GlobalStyles />
-                <Button onClick={toggleTheme}>Toggle Theme</Button>
+                <NavItem className="adminLink" onClick={toggleTheme}>Toggle Theme</NavItem>
                 {isAuthenticated ? (
                   <>
                     <LinkContainer to="/admin">

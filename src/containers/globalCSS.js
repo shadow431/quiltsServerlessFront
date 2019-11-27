@@ -96,8 +96,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .loginLink,
-  .adminLink {
-    color: #00cc44;
+  .adminLink,
+  .adminLink a {
+    color: ${({ theme }) => theme.sideNavText};
     font-size: 16pt;
   }
 
