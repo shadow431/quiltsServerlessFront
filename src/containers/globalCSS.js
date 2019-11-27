@@ -40,7 +40,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .appNav {
-    background-color: #ffccdd;
+    background: ${({ theme }) => theme.body};
   }
 
   .freeShip {
@@ -110,7 +110,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .renderThumb {
-    background-color: rgb(238, 144, 172);
+    background: ${({ theme }) => theme.body};
     text-align: center;
   }
 
