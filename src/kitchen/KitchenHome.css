@@ -1,18 +1,29 @@
+.freeShip {
+  color: blue;
+  font-size: 20pt;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
 .KitchenHome {
-  background-color: #D57995;
+  background-color: #ffccdd!important;
 }
 
 .KitchenHomeNav {
-  color: #D57995;
+  color: #ffccdd!important;
+}
+
+.KitchenHomeNav a {
+  color: #0b7930!important;
 }
 
 .FabricThumb {
-  background-color: #ffccdd!important;
+  background-color: #D57995!important;
   text-align: center!important;
 }
 
 .ProductThumb {
-  background-color: #ffccdd!important;
+  background-color: #D57995!important;
   text-align: center!important;
 }
 
