@@ -26,8 +26,8 @@ export default function KitchenHome(props) {
 
   const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
 
-  useEffect(() => {
-    loadProducts();
+  useEffect(async () => {
+     await loadProducts();
   }, []);
 
   async function loadProducts() {

@@ -7,38 +7,10 @@ export default function Home(props) {
   const s3location = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/"
   const homeImgs = ["Show1.jpg", "Show2.jpg", "Show3.jpg", "Show4.jpg", "Show5.jpg", "Show6.jpg", "Show7.jpg"];
 
-  // paypal.Buttons({
-  //   style: {
-  //       shape: 'rect',
-  //       color: 'gold',
-  //       layout: 'vertical',
-  //       label: 'paypal'
-  //   },
-  //   createOrder: function(data, actions) {
-  //       return actions.order.create({
-  //           purchase_units: [{
-  //               amount: {
-  //                   value: '1'
-  //               }
-  //           }]
-  //       });
-  //   },
-  //   onApprove: function(data, actions) {
-  //       return actions.order.capture().then(function(details) {
-  //           alert('Transaction completed by ' + details.payer.name.given_name + '!');
-  //       });
-  //   }
-  // }).render('#paypal-button-container');
-
   return (
     <Grid className="Home">
-      {/* <Row>
-        <Col xs={12} sm={9} md={10}>
-          <h1 className="construction">THIS SITE UNDER CONSTRUCTION, FEEL FREE TO BROWSE THROUGH THE NEW FUNCTIONS</h1>
-        </Col>
-      </Row> */}
       <Row>
-        <Col xs={12} sm={9} md={10}>
+        <Col xs={12} sm={9} md={10} lg={5}>
           <Carousel interval={5000}>
             {homeImgs.map((img, i) => {
               return (
@@ -48,15 +20,9 @@ export default function Home(props) {
             )})}
           </Carousel>
         </Col>
-      </Row>
-      <Row>
-        <Col>
-          <h1 className="HomeBlurbHeader">WELCOME TO OUR WEBSITE!!</h1>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
+        <Col xs={12} sm={9} md={10} lg={7}>
           <div className="HomeBlurb">
+            <h1 className="HomeBlurbHeader">WELCOME TO OUR WEBSITE!!</h1>
             <p>
               My name is Wanda, I operate a home based business located in Maple Falls, WA.
             </p>
@@ -75,6 +41,10 @@ export default function Home(props) {
             </p>
           </div>
         </Col>
+      </Row>
+      <Row>
+      </Row>
+      <Row>
       </Row>
     </Grid>
   );
