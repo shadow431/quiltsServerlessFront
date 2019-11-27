@@ -32,11 +32,11 @@ export default function Home(props) {
 
   return (
     <Grid className="Home">
-      <Row>
+      {/* <Row>
         <Col xs={12} sm={9} md={10}>
           <h1 className="construction">THIS SITE UNDER CONSTRUCTION, FEEL FREE TO BROWSE THROUGH THE NEW FUNCTIONS</h1>
         </Col>
-      </Row>
+      </Row> */}
       <Row>
         <Col xs={12} sm={9} md={10}>
           <Carousel interval={5000}>
@@ -62,7 +62,7 @@ export default function Home(props) {
             </p>
             <p>
               It all started when I was four years old and my Grandmother sat me on her lap while she was sewing blocks for a quilt on her “White” treadle sewing machine. I have never gotten up.  That was 78 years ago.
-              Besides selling directly from my web site, I am a vendors at Festivals, Craft Shows, and Dog Shows. I sell at up to 40 shows each year in Western Washington traveling in my motor home along with my two rescue cats.
+              Besides selling directly from my web site, I am a vendor at Festivals, Craft Shows, and Dog Shows. I sell at up to 40 shows each year in Western Washington traveling in my motor home along with my two rescue cats.
             </p>
             <p>
               My love for sewing and embroidery started this business in 2004. All of the products that are sewn are produced by me in the USA. We purchase the other products to do my embroidery on. My love for animals made it a must to embellish these items with designs of the many breeds of dogs and cats available.

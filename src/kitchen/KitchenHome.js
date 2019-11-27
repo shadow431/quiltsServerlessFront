@@ -4,6 +4,7 @@ import { API } from "aws-amplify";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
 import "./KitchenHome.css";
+import { ToastDemo } from "../components/ToastDemo";
 // import ColorPopulater from "../components/ColorPopulater";
 
 export default function KitchenHome(props) {
@@ -37,7 +38,8 @@ export default function KitchenHome(props) {
     }
     catch (e) {
       if (e !== 'No current user') {
-        alert(e);
+        loadProducts();
+        return <ToastDemo />;
       }
     }
     setIsLoading(false);
@@ -50,7 +52,8 @@ export default function KitchenHome(props) {
     }
     catch (e) {
       if (e !== 'No current user') {
-        alert(e);
+        loadFabric();
+        return <ToastDemo />;
       }
     }
   }
@@ -72,7 +75,7 @@ export default function KitchenHome(props) {
     return (
       <Grid fluid>
         <Row>
-          <Col className="fabricHeader" xs={12} sm={5} md={3}>
+          <Col className="fabricHeader" xs={12} sm={5} md={4} lg={4}>
             <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.imgSubCat[fabricView]}</strong></h2>
           </Col>
         </Row>
@@ -88,7 +91,7 @@ export default function KitchenHome(props) {
               )
             } else if(fabric.fabricSubCat === fabricView){
               return (
-                <Col key={i} xs={12} sm={5} md={3}>
+                <Col key={i} xs={12} sm={5} md={4} lg={4}>
                   <Thumbnail className="FabricThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} style={{ backgroundColor: "#5b5f97", color: "white" }} alt="Image to be added soon....">
                     <h3>{fabric.fabricName}</h3>
                   </Thumbnail>
@@ -110,7 +113,7 @@ export default function KitchenHome(props) {
             {products.map((product, i) => {
               if (product.prodType === "PRO") {
                 return (
-                  <Col key={i} xs={12} sm={5} md={3}>
+                  <Col key={i} xs={12} sm={5} md={4} lg={4}>
                     <Thumbnail className="ProductThumb" key={product._id} src={product.prodImgUrl} onClick={() => handleProductChoice(product)} alt="Image to be added soon....">
                       <h3>{product.prodName}</h3>
                       <h4>{`$${product.price}`}</h4>
@@ -133,12 +136,11 @@ export default function KitchenHome(props) {
             <h3>Welcome to the Kitchen Items!!!</h3>
             <p>Feel free to pick out the Fabric you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
             <p>Simply click on the product you want to continue!!</p>
-            <span>FREE SHIPPING ON ORDERS $60.00 AND OVER.</span><br />
-            <Button onClick={() => renderProducts}>REFRESH</Button>
+            <span className="freeShip">FREE SHIPPING ON ORDERS $60.00 AND OVER.</span><br />
           </div>
           {isLoading ? (
             <React.Fragment>
-              <h4>Loading, please be patient... If network error, please refresh.</h4>
+              <h4>Loading, please be patient... </h4>
             </React.Fragment>
             ) : null
           }
@@ -200,7 +202,7 @@ export default function KitchenHome(props) {
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
           </div>
-          <FormGroup controlId="formControlsSelect">
+          {/* <FormGroup controlId="formControlsSelect">
             <ControlLabel>Select</ControlLabel>
             <FormControl componentClass="select" placeholder="select" onChange={(e) => {setQuantity(e.target.value); setPurchasePrice(price * e.target.value);}}>
               <option value="select">Choose Quantity</option>
@@ -210,7 +212,7 @@ export default function KitchenHome(props) {
               <option value="4">{`4 = $${price * 4}`}</option>
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
-          </FormGroup>
+          </FormGroup> */}
           <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={fabricChoice.fabricName} productName={productChoice.prodName} productType={productTypeChosen} />
         </React.Fragment>
       ) : null

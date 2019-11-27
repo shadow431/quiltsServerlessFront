@@ -41,7 +41,7 @@ export default function PayPalButton (props) {
           <thead>
             <tr>
               <td>
-                <input type="hidden" name="on0" value={`${props.product},${props.fabric}`} />Quantity
+                <input type="hidden" name="on0" value={`${props.productType},${props.fabric}`} />Quantity
               </td>
             </tr>
           </thead>
@@ -49,11 +49,11 @@ export default function PayPalButton (props) {
             <tr>
               <td>
                 <select name="os0">
-                  <option value="1 Bag">1 Bag $10.00 USD</option>
-                  <option value="2 Bags">2 Bags $20.00 USD</option>
-                  <option value="3 Bags">3 Bags $30.00 USD</option>
-                  <option value="4 Bags">4 Bags $40.00 USD</option>
-                  <option value="5 Bags">5 Bags $50.00 USD</option>
+                  <option value="1">1 $10.00 USD</option>
+                  <option value="2">2 $20.00 USD</option>
+                  <option value="3">3 $30.00 USD</option>
+                  <option value="4">4 $40.00 USD</option>
+                  <option value="5">5 $50.00 USD</option>
                 </select>
               </td>
             </tr>

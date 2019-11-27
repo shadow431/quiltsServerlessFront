@@ -18,7 +18,7 @@ export default function Schedule(props) {
     }
     catch (e) {
       if (e !== 'No current user') {
-        alert(e);
+        onLoad();
       }
     }
     setIsLoading(false);
