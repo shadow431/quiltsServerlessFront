@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Carousel, Grid, Row, Col } from "react-bootstrap";
 import "./globalCSS.js";
 import "../components/LoaderButton.css";

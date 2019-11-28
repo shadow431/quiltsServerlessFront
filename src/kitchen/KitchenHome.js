@@ -8,17 +8,17 @@ import { ToastDemo } from "../components/ToastDemo";
 // import ColorPopulater from "../components/ColorPopulater";
 
 export default function KitchenHome(props) {
-  const [fabricChoice, setFabricChoice] = useState([]);
-  const [fabricChosen, setFabricChosen] = useState(false);
+  const [graphicChoice, setGraphicChoice] = useState([]);
+  const [graphicChosen, setGraphicChosen] = useState(false);
   const [productChoice, setProductChoice] = useState([]);
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");
-  const [fabricView, setFabricView] = useState("");
+  const [graphicView, setGraphicView] = useState("");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
 
-  const [fabric, setFabric] = useState([]);
+  const [graphics, setGraphics] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -45,8 +45,8 @@ export default function KitchenHome(props) {
 
   async function loadFabric() {
     try {
-      const fabric = await API.get("quilts", "/fabric");
-      setFabric(fabric);
+      const fabrics = await API.get("quilts", "/fabric");
+      setGraphics(fabrics);
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -56,8 +56,8 @@ export default function KitchenHome(props) {
     }
   }
 
-  function handleFabricView(e) {
-    setFabricView(e.target.value);
+  function handleGraphicView(e) {
+    setGraphicView(e.target.value);
   }
 
   function handleProductChoice (product) {
@@ -69,29 +69,34 @@ export default function KitchenHome(props) {
     setQuantity(1);
   }
 
-  function renderFabric() {
+  function handleGraphicChoice(graphic) {
+    setGraphicChoice(graphic);
+    setGraphicChosen(true);
+  }
+
+  function renderGraphics() {
     return (
       <Grid fluid>
         <Row>
-          <Col className="fabricHeader" xs={12} sm={5} md={4} lg={4}>
-            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.imgSubCat[fabricView]}</strong></h2>
+          <Col className="graphicHeader" xs={12} sm={5} md={4} lg={4}>
+            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.imgSubCat[graphicView]}</strong></h2>
           </Col>
         </Row>
         <Row>
-          {fabric.map((fabric, i) => {
-            if (fabricView === "all") {
+          {graphics.map((graphic, i) => {
+            if (graphicView === "all") {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail className="renderThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} alt="Image to be added soon....">
-                    <h3>{fabric.fabricName}</h3>
+                  <Thumbnail className="renderThumb" key={i} src={graphic.fabricImgUrl} onClick={(graphic) => handleGraphicChoice} alt="Image to be added soon....">
+                    <h3>{graphic.fabricName}</h3>
                   </Thumbnail>
                 </Col>
               )
-            } else if(fabric.fabricSubCat === fabricView){
+            } else if(graphic.fabricSubCat === graphicView){
               return (
                 <Col key={i} xs={12} sm={5} md={4} lg={4}>
-                  <Thumbnail className="renderThumb" key={i} src={fabric.fabricImgUrl} onClick={() => {setFabricChoice(fabric); setFabricChosen(true); }} alt="Image to be added soon....">
-                    <h3>{fabric.fabricName}</h3>
+                  <Thumbnail className="renderThumb" key={i} src={graphic.fabricImgUrl} onClick={() => { }} alt="Image to be added soon....">
+                    <h3>{graphic.fabricName}</h3>
                   </Thumbnail>
                 </Col>
               )
@@ -102,6 +107,7 @@ export default function KitchenHome(props) {
       </Grid>
     );
   }
+
 
   function renderProducts() {
     return (
@@ -146,12 +152,12 @@ export default function KitchenHome(props) {
         </React.Fragment>
       ) : (
           <React.Fragment>
-            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]); setFabricChosen(false); setFabricChoice([]);}}>Start Over</Button>
+            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]);}}>Start Over</Button>
             <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([])}}>Change Product</Button>
-            {!fabricChosen ? (
+            {!graphicChosen ? (
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>
-                <FormControl componentClass="select" placeholder="select" onChange={handleFabricView}>
+                <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
                   <option value="select">Fabric Choice</option>
                   <option value="all">All Fabrics</option>
                   <option value="bir">Birds</option>
@@ -170,30 +176,30 @@ export default function KitchenHome(props) {
               ) :
               (
                 <React.Fragment>
-                  <Button onClick={() => {setFabricChosen(false); setFabricChoice([])}}>Change Fabric</Button>
+                  <Button onClick={() => {setGraphicChosen(false); setGraphicChoice([])}}>Change Fabric</Button>
                 </React.Fragment>
               )
             }
-            {productChosen && !fabricChosen ? (
+            {productChosen && !graphicChosen ? (
               <React.Fragment>
                 <Thumbnail className="renderThumb" key={productChoice._id} src={productChoice.prodImgUrl} alt="Image to be added soon....">
                   <h5>{productChoice.prodName}</h5>
                   <h5>{productChoice.prodDesc}</h5>
                 </Thumbnail>
-                {renderFabric()}
+                {renderGraphics()}
               </React.Fragment>
             ) : null
             }
           </React.Fragment>
         )
       }
-      {productChosen && fabricChosen ? (
+      {productChosen && graphicChosen ? (
         <React.Fragment>
           <h2>The product you have put together today is: </h2>
           <div style={{ display: "flex" }}>
-            <Thumbnail className="renderThumb" key={fabricChoice._id} src={fabricChoice.fabricImgUrl} alt="Image to be added soon....">
+            <Thumbnail className="renderThumb" key={graphicChoice._id} src={graphicChoice.fabricImgUrl} alt="Image to be added soon....">
               <h5>Fabric Chosen</h5>
-              <h3>{fabricChoice.fabricName}</h3>
+              <h3>{graphicChoice.fabricName}</h3>
             </Thumbnail>
             <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Image to be added soon....">
               <h5>{productChoice.prodName}</h5>
@@ -211,7 +217,7 @@ export default function KitchenHome(props) {
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
           </FormGroup> */}
-          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={fabricChoice.fabricName} productName={productChoice.prodName} productType={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={graphicChoice.fabricName} productName={productChoice.prodName} productType={productTypeChosen} />
         </React.Fragment>
       ) : null
       }
