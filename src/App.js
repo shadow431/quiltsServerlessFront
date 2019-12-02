@@ -7,7 +7,6 @@ import { ThemeProvider } from "styled-components";
 import Routes from "./Routes";
 import { API } from "aws-amplify";
 import MainNav from "./components/MainNav";
-import EmbroideryNav from "./components/EmbroideryNav";
 import { pinkTheme, conventionalTheme } from "./containers/theme";
 import { GlobalStyles } from "./containers/globalCSS";
 // import "./containers/globalCSS.js";
@@ -29,7 +28,7 @@ function App(props) {
   const [theme, setTheme] = useState('pinkTheme');
   const [isLoading, setIsLoading] = useState(true);
   const { history } = props;
-  const [products, setProducts] = useState([]);
+  const [schedule, setSchedule] = useState([]);
 
   useEffect(() => {
     onLoad();
@@ -37,8 +36,8 @@ function App(props) {
 
   async function onLoad() {
     try {
-      const products = await API.get("quilts", "/products");
-      setProducts(products);
+      const schedule = await API.get("quilts", "/schedule");
+      setSchedule(schedule);
       await Auth.currentSession();
       userHasAuthenticated(true);
     }
@@ -101,9 +100,8 @@ function App(props) {
             </Navbar.Collapse>
           </Navbar>
           <MainNav history={history} auth={isAuthenticated} />
-          {window.location.pathname.includes("/embroidery") ? <EmbroideryNav history={history} auth={isAuthenticated} />:null}
           <div style={{display: 'flex'}}>
-            <Routes appProps={{ isAuthenticated, userHasAuthenticated, products, isLoading }} />
+            <Routes appProps={{ isAuthenticated, userHasAuthenticated, schedule, isLoading }} />
           </div>
         </div>
       </ThemeProvider>
