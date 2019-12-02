@@ -4,7 +4,7 @@ import MediaQuery from "react-responsive";
 import "../containers/globalCSS.js";
 
 export default function MainNav (props) {
-  const [ navKey, setNavKey ] = useState(1);
+  const [ navKey, setNavKey ] = useState("");
   const { history, auth } = props;
 
   function handleNavSelection (e) {
