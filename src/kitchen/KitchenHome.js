@@ -3,8 +3,10 @@ import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel
 import { API } from "aws-amplify";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
+import RenderProducts from "../components/RenderProducts";
 import "../containers/globalCSS.js";
 import { ToastDemo } from "../components/ToastDemo";
+import RenderGraphics from "../components/RenderGraphics";
 // import ColorPopulater from "../components/ColorPopulater";
 
 export default function KitchenHome(props) {
@@ -74,64 +76,6 @@ export default function KitchenHome(props) {
     setGraphicChosen(true);
   }
 
-  function renderGraphics() {
-    return (
-      <Grid fluid>
-        <Row>
-          <Col className="graphicHeader" xs={12} sm={5} md={4} lg={4}>
-            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.subCat[graphicView]}</strong></h2>
-          </Col>
-        </Row>
-        <Row>
-          {graphics.map((graphic, i) => {
-            if (graphicView === "all") {
-              return (
-                <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail className="renderThumb" key={i} src={graphic.imgUrl} onClick={(graphic) => handleGraphicChoice} alt="Image to be added soon....">
-                    <h3>{graphic.name}</h3>
-                  </Thumbnail>
-                </Col>
-              )
-            } else if(graphic.subCat === graphicView){
-              return (
-                <Col key={i} xs={12} sm={5} md={4} lg={4}>
-                  <Thumbnail className="renderThumb" key={i} src={graphic.imgUrl} onClick={() => { }} alt="Image to be added soon....">
-                    <h3>{graphic.name}</h3>
-                  </Thumbnail>
-                </Col>
-              )
-            }
-          })
-          }
-        </Row>
-      </Grid>
-    );
-  }
-
-
-  function renderProducts() {
-    return (
-      <div>
-        <Grid fluid>
-          <Row>
-            {products.map((product, i) => {
-              if (product.prodType === "PRO") {
-                return (
-                  <Col key={i} xs={12} sm={5} md={4} lg={4}>
-                    <Thumbnail className="renderThumb" key={product._id} src={product.prodImgUrl} onClick={() => handleProductChoice(product)} alt="Image to be added soon....">
-                      <h3>{product.prodName}</h3>
-                      <h4>{`$${product.price}`}</h4>
-                    </Thumbnail>
-                  </Col>
-                )
-              }
-            })}
-          </Row>
-        </Grid>
-      </div>
-    );
-  }
-
   return (
     <div className="KitchenHome container">
       {!productChosen ? (
@@ -146,14 +90,13 @@ export default function KitchenHome(props) {
             <React.Fragment>
               <h4>Loading, please be patient... </h4>
             </React.Fragment>
-            ) : null
+            ) : <RenderProducts products={products} handleProductChoice={handleProductChoice}/>
           }
-          {renderProducts()}
         </React.Fragment>
       ) : (
           <React.Fragment>
-            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]);}}>Start Over</Button>
-            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([])}}>Change Product</Button>
+            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]);}}>Start Over</Button>
+            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]);}}>Change Product</Button>
             {!graphicChosen ? (
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>
@@ -182,11 +125,11 @@ export default function KitchenHome(props) {
             }
             {productChosen && !graphicChosen ? (
               <React.Fragment>
-                <Thumbnail className="renderThumb" key={productChoice._id} src={productChoice.prodImgUrl} alt="Image to be added soon....">
-                  <h5>{productChoice.prodName}</h5>
-                  <h5>{productChoice.prodDesc}</h5>
+                <Thumbnail className="renderThumb" key={productChoice._id} src={productChoice.imgUrl} alt="Image to be added soon....">
+                  <h5>{productChoice.name}</h5>
+                  <h5>{productChoice.desc}</h5>
                 </Thumbnail>
-                {renderGraphics()}
+                <RenderGraphics graphics={graphics} handleGraphicChoice={handleGraphicChoice} graphicView={graphicView} />
               </React.Fragment>
             ) : null
             }
@@ -197,12 +140,12 @@ export default function KitchenHome(props) {
         <React.Fragment>
           <h2>The product you have put together today is: </h2>
           <div style={{ display: "flex" }}>
-            <Thumbnail className="renderThumb" key={graphicChoice._id} src={graphicChoice.fabricImgUrl} alt="Image to be added soon....">
+            <Thumbnail className="renderThumb" key={graphicChoice._id} src={graphicChoice.imgUrl} alt="Image to be added soon....">
               <h5>Fabric Chosen</h5>
-              <h3>{graphicChoice.fabricName}</h3>
+              <h3>{graphicChoice.name}</h3>
             </Thumbnail>
-            <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].prodType} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].prodImgLocation}`} alt="Image to be added soon....">
-              <h5>{productChoice.prodName}</h5>
+            <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].type} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].imgLocation}`} alt="Image to be added soon....">
+              <h5>{productChoice.name}</h5>
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
           </div>
@@ -217,7 +160,7 @@ export default function KitchenHome(props) {
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
           </FormGroup> */}
-          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={graphicChoice.fabricName} productName={productChoice.prodName} productType={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
       ) : null
       }

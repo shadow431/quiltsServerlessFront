@@ -20,9 +20,9 @@ export default function NewFabric(props) {
   const [isLoading, setIsLoading] = useState(false);
 
   function validateForm() {
-    return fabricName.length > 0 &&
-      fabricType.length > 0 &&
-      fabricSubCat.length > 0;
+    return name.length > 0 &&
+      type.length > 0 &&
+      subCat.length > 0;
   }
 
   function handleFileChange(event) {
