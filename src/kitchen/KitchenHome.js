@@ -32,7 +32,7 @@ export default function KitchenHome(props) {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
-      loadFabric();
+      loadGraphic();
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -43,14 +43,14 @@ export default function KitchenHome(props) {
     setIsLoading(false);
   }
 
-  async function loadFabric() {
+  async function loadGraphic() {
     try {
       const fabrics = await API.get("quilts", "/fabric");
       setGraphics(fabrics);
     }
     catch (e) {
       if (e !== 'No current user') {
-        loadFabric();
+        loadGraphic();
         // return <ToastDemo />;
       }
     }
@@ -62,11 +62,11 @@ export default function KitchenHome(props) {
 
   function handleProductChoice (product) {
     setProductChoice(product);
-    setProductTypeChosen(product.prodSubCat);
+    setProductTypeChosen(product.subCat);
     setProductChosen(true);
     setPrice(product.price);
     setPurchasePrice(Number(product.price));
-    setQuantity(1);
+    // setQuantity(1);
   }
 
   function handleGraphicChoice(graphic) {
@@ -79,7 +79,7 @@ export default function KitchenHome(props) {
       <Grid fluid>
         <Row>
           <Col className="graphicHeader" xs={12} sm={5} md={4} lg={4}>
-            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.imgSubCat[graphicView]}</strong></h2>
+            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.subCat[graphicView]}</strong></h2>
           </Col>
         </Row>
         <Row>
@@ -87,16 +87,16 @@ export default function KitchenHome(props) {
             if (graphicView === "all") {
               return (
                 <Col key={i} xs={12} sm={5} md={3}>
-                  <Thumbnail className="renderThumb" key={i} src={graphic.fabricImgUrl} onClick={(graphic) => handleGraphicChoice} alt="Image to be added soon....">
-                    <h3>{graphic.fabricName}</h3>
+                  <Thumbnail className="renderThumb" key={i} src={graphic.imgUrl} onClick={(graphic) => handleGraphicChoice} alt="Image to be added soon....">
+                    <h3>{graphic.name}</h3>
                   </Thumbnail>
                 </Col>
               )
-            } else if(graphic.fabricSubCat === graphicView){
+            } else if(graphic.subCat === graphicView){
               return (
                 <Col key={i} xs={12} sm={5} md={4} lg={4}>
-                  <Thumbnail className="renderThumb" key={i} src={graphic.fabricImgUrl} onClick={() => { }} alt="Image to be added soon....">
-                    <h3>{graphic.fabricName}</h3>
+                  <Thumbnail className="renderThumb" key={i} src={graphic.imgUrl} onClick={() => { }} alt="Image to be added soon....">
+                    <h3>{graphic.name}</h3>
                   </Thumbnail>
                 </Col>
               )

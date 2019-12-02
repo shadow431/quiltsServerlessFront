@@ -11,11 +11,12 @@ import "./NewFabric.css";
 export default function NewFabric(props) {
   const imgLinkLocation = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
   const file = useRef(null);
-  const [fabricName, setFabricName] = useState("");
-  const [fabricType, setFabricType] = useState("");
-  const [fabricSubCat, setFabricSubCat] = useState("");
-  const [fabricImgUrl, setFabricImgUrl] = useState("");
-  const [newFabric, setNewFabric] = useState("");
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [subCat, setSubCat] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [newGraphic, setNewGraphic] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   function validateForm() {
@@ -26,10 +27,10 @@ export default function NewFabric(props) {
 
   function handleFileChange(event) {
     file.current = event.target.files[0];
-    setFabricName(file.current.name.split(".")[0]);
-    setFabricType(file.current.name.substr(0,3));
-    setFabricSubCat(file.current.name.substr(3, 3));
-    setFabricImgUrl(imgLinkLocation + file.current.name);
+    setName(file.current.name.split(".")[0]);
+    setType(file.current.name.substr(0,3));
+    setSubCat(file.current.name.substr(3, 3));
+    setImgUrl(imgLinkLocation + file.current.name);
   }
 
   async function handleSubmit(event) {
@@ -50,7 +51,7 @@ export default function NewFabric(props) {
     try {
       await s3Upload(file.current);
 
-      await createFabric({ fabricName, fabricType, fabricSubCat, fabricImgUrl, newFabric });
+      await createFabric({ name, type, subCat, imgUrl, newGraphic, hidden });
       props.history.push("/admin");
     } catch (e) {
       alert(e);
@@ -68,12 +69,30 @@ export default function NewFabric(props) {
   return (
     <div className="NewFabric">
       <form onSubmit={handleSubmit}>
-        <h4>{fabricName}</h4>
-        <h4>{fabricType}</h4>
-        <h4>{fabricSubCat}</h4>
+        <h4>{name}</h4>
+        <h4>{type}</h4>
+        <h4>{subCat}</h4>
         <FormGroup controlId="file">
           <ControlLabel>New Fabric? Please enter yes or no</ControlLabel>
-          <FormControl onChange={(e) => setNewFabric(e.target.value.toLowerCase().trim())} type="text"></FormControl>
+          <FormControl onChange={
+            (e) => {
+              if(e.target.value.toLowerCase().trim() === 'yes'){
+                setNewGraphic(true);
+              }else {
+                setNewGraphic(false);
+              }
+            }
+          } type="text"></FormControl>
+          <ControlLabel>Show the Fabric to the public? Please enter yes or no</ControlLabel>
+          <FormControl onChange={
+            (e) => {
+              if(e.target.value.toLowerCase().trim() === 'yes'){
+                setHidden(true);
+              }else {
+                setHidden(false);
+              }
+            }
+          } type="text"></FormControl>
           <ControlLabel>Attachment</ControlLabel>
           <FormControl onChange={handleFileChange} type="file" />
         </FormGroup>
