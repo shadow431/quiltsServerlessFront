@@ -1,48 +1,68 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Thumbnail, Button, Col, Grid, Row } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
+import RenderProducts from "../components/RenderProducts";
+import { API } from "aws-amplify";
 
 export default function EmbroideryHome (props) {
   console.log("props at embroidery: ", props)
+  const [graphicChoice, setGraphicChoice] = useState([]);
+  const [graphicChosen, setGraphicChosen] = useState(false);
+  const [productChoice, setProductChoice] = useState([]);
+  const [productChosen, setProductChosen] = useState(false);
+  const [productTypeChosen, setProductTypeChosen] = useState("");
+  const [graphicView, setGraphicView] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
+  const [purchasePrice, setPurchasePrice] = useState("");
+
+  const [graphics, setGraphics] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
   const [ prod, setProd ] = useState("");
+
+  useEffect(() => {
+    loadProducts();
+ }, []);
+
+ async function loadProducts() {
+   try {
+     const products = await API.get("quilts", "/products");
+     setProducts(products);
+     loadGraphic();
+   }
+   catch (e) {
+     if (e !== 'No current user') {
+       loadProducts();
+       // return <ToastDemo />;
+     }
+   }
+   setIsLoading(false);
+ }
+
+ async function loadGraphic() {
+   try {
+     const fabrics = await API.get("quilts", "/fabric");
+     setGraphics(fabrics);
+   }
+   catch (e) {
+     if (e !== 'No current user') {
+       loadGraphic();
+       // return <ToastDemo />;
+     }
+   }
+ }
 
   function handleProductType (e) {
     e.preventDefault();
-    setProd(imgBreakDown.typeOutline.BPB.prodType);
-    props.history.push("/embroidery/prodoptions");
+    setProd(imgBreakDown.typeOutline.BPB.type);
 
-  }
-
-  function populateProducts () {
-    return props.products.map((product, i) => {
-      if(i !== 0) {
-        return(
-          <Col key={i} xs={12} sm={4} md={3}>
-            <Thumbnail key={props.products[0]._id} src={props.products[0].imgUrl} alt="Well, something didn't work...">
-              <div>{imgBreakDown.typeOutline.FAB.prodType}</div>
-              <h4>{imgBreakDown.imgSubCat.abd}</h4>
-              <form onSubmit={handleProductType}>
-                <Button
-                  type="submit"
-                  bsStyle="primary"
-                >
-                  Choose Your Design
-                </Button>
-              </form>
-            </Thumbnail>
-          </Col>
-        )
-      }
-    })
   }
 
   return (
     <React.Fragment>
-      <Grid>
-        <Row>
-          {populateProducts()}
-        </Row>
-      </Grid>
+      <RenderProducts products={products}/>
     </React.Fragment>
   )
 }
