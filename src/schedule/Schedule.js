@@ -4,26 +4,7 @@ import { Button, Table } from "react-bootstrap";
 import "./Schedule.css";
 
 export default function Schedule(props) {
-  const [eventItems, updateEventItems] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true);
-
-  useEffect(() => {
-    onLoad();
-  }, []);
-
-  async function onLoad() {
-    try {
-      const schedule = await API.get("quilts", "/schedule");
-      updateEventItems(schedule);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        onLoad();
-      }
-    }
-    setIsLoading(false);
-  }
-
+  const [eventItems, updateEventItems] = useState(props.schedule);
   return (
     <div className="ScheduleHome">
       <Table striped bordered hover>
@@ -46,8 +27,7 @@ export default function Schedule(props) {
           </tr>
         </thead>
         <tbody>
-          {!isLoading ? (
-            eventItems.map((currEvent, i) => {
+            {eventItems.map((currEvent, i) => {
               return (
                 <tr key={currEvent._id}>
                   <td>{currEvent.date}</td>
@@ -60,14 +40,11 @@ export default function Schedule(props) {
                         <td><Button onClick={() => {props.history.push("/admin/schedule/edit", { props: currEvent })}}>Edit</Button></td>
                         <td><Button onClick={async () => {await API.del("quilts", `/admin/schedule/${currEvent._id}`); updateEventItems(eventItems.slice(eventItems.indexOf(currEvent._id, 1)));}}>Delete</Button></td>
                       </React.Fragment>
-                    )
-                    : null
+                    ) : null
                   }
                 </tr>
               )
-            })
-            ) : <tr><td>Loading Schedule...</td></tr>
-          }
+            })}
         </tbody>
       </Table>
     </div>
