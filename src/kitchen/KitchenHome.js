@@ -20,7 +20,6 @@ export default function KitchenHome(props) {
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
 
-  const [graphics, setGraphics] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -34,7 +33,6 @@ export default function KitchenHome(props) {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
-      loadGraphic();
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -43,19 +41,6 @@ export default function KitchenHome(props) {
       }
     }
     setIsLoading(false);
-  }
-
-  async function loadGraphic() {
-    try {
-      const fabrics = await API.get("quilts", "/fabric");
-      setGraphics(fabrics);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadGraphic();
-        // return <ToastDemo />;
-      }
-    }
   }
 
   function handleGraphicView(e) {
@@ -129,7 +114,7 @@ export default function KitchenHome(props) {
                   <h5>{productChoice.name}</h5>
                   <h5>{productChoice.desc}</h5>
                 </Thumbnail>
-                <RenderGraphics graphics={graphics} handleGraphicChoice={handleGraphicChoice} graphicView={graphicView} />
+                <RenderGraphics handleGraphicChoice={handleGraphicChoice} graphicView={graphicView} />
               </React.Fragment>
             ) : null
             }
