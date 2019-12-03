@@ -105,7 +105,7 @@ export default function KitchenHome(props) {
                   <option value="all">All Fabrics</option>
                   <option value="bir">Birds</option>
                   <option value="bug">Bugs and Frogs</option>
-                  <option value="cdo">Cats and Dogs</option>
+                  <option value="cad">Cats and Dogs</option>
                   <option value="fdk">Food</option>
                   <option value="flr">Flowers</option>
                   <option value="frm">Farm</option>
