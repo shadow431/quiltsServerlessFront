@@ -2,7 +2,6 @@ import React from "react";
 import { Col, Grid, Row, Thumbnail } from "react-bootstrap";
 
 export default function RenderProducts(productProps) {
-  console.log(productProps);
   return (
     <Grid fluid>
       <Row>

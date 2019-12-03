@@ -27,7 +27,7 @@ export default function KitchenHome(props) {
   const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
 
   useEffect(() => {
-     loadProducts();
+    loadProducts();
   }, []);
 
   async function loadProducts() {
@@ -62,7 +62,7 @@ export default function KitchenHome(props) {
     setGraphicView(e.target.value);
   }
 
-  function handleProductChoice (product) {
+  function handleProductChoice(product) {
     setProductChoice(product);
     setProductTypeChosen(product.subCat);
     setProductChosen(true);
@@ -90,13 +90,13 @@ export default function KitchenHome(props) {
             <React.Fragment>
               <h4>Loading, please be patient... </h4>
             </React.Fragment>
-            ) : <RenderProducts products={products} handleProductChoice={handleProductChoice}/>
+          ) : <RenderProducts products={products} handleProductChoice={handleProductChoice} />
           }
         </React.Fragment>
       ) : (
           <React.Fragment>
-            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]);}}>Start Over</Button>
-            <Button className="buttonToggle" onClick={() => {setProductChosen(false); setProductChoice([]);}}>Change Product</Button>
+            <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Start Over</Button>
+            <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button>
             {!graphicChosen ? (
               <FormGroup controlId="formControlsSelect">
                 <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>
@@ -116,10 +116,10 @@ export default function KitchenHome(props) {
                   <option value="wdl">Wild Animals</option>
                 </FormControl>
               </FormGroup>
-              ) :
+            ) :
               (
                 <React.Fragment>
-                  <Button onClick={() => {setGraphicChosen(false); setGraphicChoice([])}}>Change Fabric</Button>
+                  <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button>
                 </React.Fragment>
               )
             }
