@@ -1,15 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
 import { API, Storage } from "aws-amplify";
 import { Thumbnail, Button } from "react-bootstrap";
-import { s3Upload } from "../libs/awsLib";
+// import { s3Upload } from "../libs/awsLib";
 import S3FileUpload from "react-s3";
-import config from "../config";
+// import config from "../config";
 
 export default function Products(props) {
-  const file = useRef(null);
+  // const file = useRef(null);
   const [product, setProduct] = useState(null);
   const [content, setContent] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
   const configS3FileUpload = {

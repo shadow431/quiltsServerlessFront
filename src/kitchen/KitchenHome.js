@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Button, Col, Grid, Row, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
+import { Button, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import { API } from "aws-amplify";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
 import RenderProducts from "../components/RenderProducts";
 import "../containers/globalCSS.js";
-import { ToastDemo } from "../components/ToastDemo";
+// import { ToastDemo } from "../components/ToastDemo";
 import RenderGraphics from "../components/RenderGraphics";
 // import ColorPopulater from "../components/ColorPopulater";
 
@@ -15,13 +15,16 @@ export default function KitchenHome(props) {
   const [productChoice, setProductChoice] = useState([]);
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");
-  const [graphicView, setGraphicView] = useState("");
+  const [graphicView, setGraphicView] = useState("select");
+  const [graphics, setGraphics] = useState([]);
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
-
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+
+  // const [products, setProducts] = useState([]);
 
   const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
 
@@ -42,6 +45,8 @@ export default function KitchenHome(props) {
     }
     setIsLoading(false);
   }
+
+
 
   function handleGraphicView(e) {
     setGraphicView(e.target.value);
@@ -71,55 +76,56 @@ export default function KitchenHome(props) {
             <p>Simply click on the product you want to continue!!</p>
             <span className="freeShip">FREE SHIPPING ON ORDERS $60.00 AND OVER.</span><br />
           </div>
-          {isLoading ? (
-            <React.Fragment>
-              <h4>Loading, please be patient... </h4>
-            </React.Fragment>
-          ) : <RenderProducts products={products} handleProductChoice={handleProductChoice} />
-          }
         </React.Fragment>
       ) : (
           <React.Fragment>
             <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Start Over</Button>
             <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button>
-            {!graphicChosen ? (
-              <FormGroup controlId="formControlsSelect">
-                <ControlLabel>Choose a fabric family from this drop-down and click one from below the shown product to continue.</ControlLabel>
-                <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
-                  <option value="select">Fabric Choice</option>
-                  <option value="all">All Fabrics</option>
-                  <option value="bir">Birds</option>
-                  <option value="bug">Bugs and Frogs</option>
-                  <option value="cad">Cats and Dogs</option>
-                  <option value="fdk">Food</option>
-                  <option value="flr">Flowers</option>
-                  <option value="frm">Farm</option>
-                  <option value="hol">Holidays</option>
-                  <option value="mil">Military</option>
-                  <option value="mis">Miscelanneous</option>
-                  <option value="nat">Nautical</option>
-                  <option value="wdl">Wild Animals</option>
-                </FormControl>
-              </FormGroup>
-            ) :
-              (
-                <React.Fragment>
-                  <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button>
-                </React.Fragment>
-              )
-            }
-            {productChosen && !graphicChosen ? (
-              <React.Fragment>
-                <Thumbnail className="renderThumb" key={productChoice._id} src={productChoice.imgUrl} alt="Image to be added soon....">
-                  <h5>{productChoice.name}</h5>
-                  <h5>{productChoice.desc}</h5>
-                </Thumbnail>
-                <RenderGraphics handleGraphicChoice={handleGraphicChoice} graphicView={graphicView} />
-              </React.Fragment>
-            ) : null
-            }
+
           </React.Fragment>
         )
+      }
+      {!graphicChosen ? (
+        <FormGroup controlId="formControlsSelect">
+          <ControlLabel>Choose a fabric family from this drop-down or select a shown product to continue.</ControlLabel>
+          <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
+            <option value="select">Fabric Choice</option>
+            <option value="all">All Fabrics</option>
+            <option value="bir">Birds</option>
+            <option value="bug">Bugs and Frogs</option>
+            <option value="cad">Cats and Dogs</option>
+            <option value="fdk">Food</option>
+            <option value="flr">Flowers</option>
+            <option value="frm">Farm</option>
+            <option value="hol">Holidays</option>
+            <option value="mil">Military</option>
+            <option value="mis">Miscelanneous</option>
+            <option value="nat">Nautical</option>
+            <option value="wdl">Wild Animals</option>
+          </FormControl>
+        </FormGroup>
+        ) :
+        (
+          <React.Fragment>
+            <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button>
+          </React.Fragment>
+        )
+      }
+      {isLoading ?
+        <h4>Loading, please be patient... </h4> : null
+      }
+      {!productChosen && !isLoading ?
+        <RenderProducts productProps={{products, handleProductChoice}} /> : null
+      }
+      {productChosen && !graphicChosen ? (
+        <React.Fragment>
+          <Thumbnail className="renderThumb" key={productChoice._id} src={productChoice.imgUrl} alt="Image to be added soon....">
+            <h5>{productChoice.name}</h5>
+            <h5>{productChoice.desc}</h5>
+          </Thumbnail>
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, setGraphics, graphics}} />
+        </React.Fragment>
+        ) : null
       }
       {productChosen && graphicChosen ? (
         <React.Fragment>

@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Thumbnail, Button, Col, Grid, Row } from "react-bootstrap";
+// import { Thumbnail, Button, Col, Grid, Row } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import RenderProducts from "../components/RenderProducts";
 import { API } from "aws-amplify";
 
 export default function EmbroideryHome (props) {
   console.log("props at embroidery: ", props)
-  const [graphicChoice, setGraphicChoice] = useState([]);
-  const [graphicChosen, setGraphicChosen] = useState(false);
-  const [productChoice, setProductChoice] = useState([]);
-  const [productChosen, setProductChosen] = useState(false);
-  const [productTypeChosen, setProductTypeChosen] = useState("");
-  const [graphicView, setGraphicView] = useState("");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [purchasePrice, setPurchasePrice] = useState("");
+  // const [graphicChoice, setGraphicChoice] = useState([]);
+  // const [graphicChosen, setGraphicChosen] = useState(false);
+  // const [productChoice, setProductChoice] = useState([]);
+  // const [productChosen, setProductChosen] = useState(false);
+  // const [productTypeChosen, setProductTypeChosen] = useState("");
+  // const [graphicView, setGraphicView] = useState("");
+  // const [price, setPrice] = useState("");
+  // const [quantity, setQuantity] = useState("");
+  // const [purchasePrice, setPurchasePrice] = useState("");
 
   const [graphics, setGraphics] = useState([]);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [ prod, setProd ] = useState("");
+  // const [ prod, setProd ] = useState("");
 
   useEffect(() => {
     loadProducts();
@@ -54,11 +54,11 @@ export default function EmbroideryHome (props) {
    }
  }
 
-  function handleProductType (e) {
-    e.preventDefault();
-    setProd(imgBreakDown.typeOutline.BPB.type);
+  // function handleProductType (e) {
+  //   e.preventDefault();
+  //   setProd(imgBreakDown.typeOutline.BPB.type);
 
-  }
+  // }
 
   return (
     <React.Fragment>

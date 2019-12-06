@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { API } from "aws-amplify";
 import { Button, Table } from "react-bootstrap";
 import "./Schedule.css";

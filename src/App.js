@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
 import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
+import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { ThemeProvider } from "styled-components";
 import Routes from "./Routes";
@@ -13,22 +13,13 @@ import { GlobalStyles } from "./containers/globalCSS";
 
 function App(props) {
 
-  const primaryStyles = {
-    body : {
-      backgroundColor: 'black',
-      color: 'orange'
-    }
-  }
-  const secondaryStyles = {
-    backgroundColor: 'purple',
-    color: 'black'
-  }
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [theme, setTheme] = useState('pinkTheme');
   const [isLoading, setIsLoading] = useState(true);
   const { history } = props;
   const [schedule, setSchedule] = useState([]);
+
 
   useEffect(() => {
     onLoad();
@@ -43,7 +34,7 @@ function App(props) {
     }
     catch(e) {
       if (e !== 'No current user') {
-        alert(e);
+        onLoad();
       }
     }
     setIsLoading(false);
