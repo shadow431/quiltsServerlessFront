@@ -16,7 +16,6 @@ export default function KitchenHome(props) {
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");
   const [graphicView, setGraphicView] = useState("select");
-  const [graphics, setGraphics] = useState([]);
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
@@ -36,7 +35,6 @@ export default function KitchenHome(props) {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
-      loadAllGraphics();
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -44,24 +42,8 @@ export default function KitchenHome(props) {
         // return <ToastDemo />;
       }
     }
-  }
-
-  async function loadAllGraphics() {
-    console.log("inside all fab");
-    try {
-      const allGraphics = await API.get("quilts", "/fabric");
-      setGraphics(allGraphics);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadAllGraphics();
-        // return <ToastDemo />;
-      }
-    }
     setIsLoading(false);
   }
-
-
 
   function handleGraphicView(e) {
     setGraphicView(e.target.value);
@@ -119,7 +101,7 @@ export default function KitchenHome(props) {
         ) : null
       }
       {isLoading ?
-        <h4>Loading, please be patient... </h4> : null
+        <h4>Loading products, please be patient... </h4> : null
       }
       {!productChosen && !isLoading ?
         <RenderProducts productProps={{products, handleProductChoice}} /> : null
@@ -145,7 +127,7 @@ export default function KitchenHome(props) {
       {graphicView !== "select" && !graphicChosen ?
         (<React.Fragment>
           <h3>Fabric Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, setGraphics, graphics}} />
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView}} />
         </React.Fragment>
         ) : null
       }
@@ -175,7 +157,7 @@ export default function KitchenHome(props) {
           </FormGroup> */}
           <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
-      ) : null
+        ) : null
       }
     </div>
   )
