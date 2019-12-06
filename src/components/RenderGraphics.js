@@ -1,40 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Grid, Row, Thumbnail } from "react-bootstrap";
 import { API } from "aws-amplify";
 import imgBreakDown from "./ImgBreakDown";
 
 export default function renderGraphic(props) {
-  const { graphicView, graphics, setGraphics, handleGraphicChoice } = props.graphicProps;
-  console.log("graphicView at graphic Render: ", graphicView);
+  const { graphicView, graphics, handleGraphicChoice } = props.graphicProps;
+  const graphicToRender = [];
 
-  async function loadCategoryGraphic() {
-    console.log("inside cat fab");
-    try {
-      const categoryGraphics = await API.get("quilts", `/fabric/type/${graphicView}`);
-      console.log("Graph Cat: ",categoryGraphics);
-      setGraphics(categoryGraphics);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadCategoryGraphic();
-        // return <ToastDemo />;
-      }
-    }
-  }
+  // async function loadCategoryGraphic() {
+  //   console.log("inside cat fab: ", graphicView);
+  //   try {
+  //     const categoryGraphics = await API.get("quilts", `/fabric/type/${graphicView}`);
+  //     console.log("Graph Cat: ",categoryGraphics);
+  //     graphicToRender = categoryGraphics;
+  //   }
+  //   catch (e) {
+  //     if (e !== 'No current user') {
+  //       loadCategoryGraphic();
+  //       // return <ToastDemo />;
+  //     }
+  //   }
+  // }
 
-  async function loadAllGraphics() {
-    console.log("inside all fab");
-    try {
-      const allGraphics = await API.get("quilts", "/fabric");
-      setGraphics(allGraphics);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadAllGraphics();
-        // return <ToastDemo />;
-      }
-    }
-  }
+
 
   function renderCategoryGraphics () {
     console.log("render cat: ", graphics);
@@ -65,9 +53,9 @@ export default function renderGraphic(props) {
     return (
       graphics.map((graphic, i) => {
         return (
-          <Row>
-            <Col key={i} xs={12} sm={5} md={4} lg={4}>
-              <Thumbnail className="renderThumb" key={i} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
+          <Row key={i}>
+            <Col xs={12} sm={5} md={4} lg={4}>
+              <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
                 <h3>{graphic.name}</h3>
               </Thumbnail>
             </Col>

@@ -36,10 +36,25 @@ export default function KitchenHome(props) {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
+      loadAllGraphics();
     }
     catch (e) {
       if (e !== 'No current user') {
         loadProducts();
+        // return <ToastDemo />;
+      }
+    }
+  }
+
+  async function loadAllGraphics() {
+    console.log("inside all fab");
+    try {
+      const allGraphics = await API.get("quilts", "/fabric");
+      setGraphics(allGraphics);
+    }
+    catch (e) {
+      if (e !== 'No current user') {
+        loadAllGraphics();
         // return <ToastDemo />;
       }
     }
@@ -77,15 +92,12 @@ export default function KitchenHome(props) {
             <span className="freeShip">FREE SHIPPING ON ORDERS $60.00 AND OVER.</span><br />
           </div>
         </React.Fragment>
-      ) : (
-          <React.Fragment>
-            <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Start Over</Button>
-            <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button>
-
-          </React.Fragment>
-        )
+      ) : null
       }
-      {!graphicChosen ? (
+      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Start Over</Button> : null}
+      {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button> : null}
+      {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
+      {!graphicChosen || !productChosen ? (
         <FormGroup controlId="formControlsSelect">
           <ControlLabel>Choose a fabric family from this drop-down or select a shown product to continue.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
@@ -104,12 +116,7 @@ export default function KitchenHome(props) {
             <option value="wdl">Wild Animals</option>
           </FormControl>
         </FormGroup>
-        ) :
-        (
-          <React.Fragment>
-            <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button>
-          </React.Fragment>
-        )
+        ) : null
       }
       {isLoading ?
         <h4>Loading, please be patient... </h4> : null
@@ -117,12 +124,27 @@ export default function KitchenHome(props) {
       {!productChosen && !isLoading ?
         <RenderProducts productProps={{products, handleProductChoice}} /> : null
       }
+      {graphicChosen && !productChosen ? (
+        <React.Fragment>
+          <h3>Current Fabric Choice</h3>
+          <Thumbnail className="renderThumb" key={graphicChoice._id} src={graphicChoice.imgUrl} alt="Image to be added soon....">
+            <h3>{graphicChoice.name}</h3>
+          </Thumbnail>
+        </React.Fragment>
+        ) : null
+      }
       {productChosen && !graphicChosen ? (
         <React.Fragment>
           <Thumbnail className="renderThumb" key={productChoice._id} src={productChoice.imgUrl} alt="Image to be added soon....">
             <h5>{productChoice.name}</h5>
             <h5>{productChoice.desc}</h5>
           </Thumbnail>
+        </React.Fragment>
+        ) : null
+      }
+      {graphicView !== "select" && !graphicChosen ?
+        (<React.Fragment>
+          <h3>Fabric Options, Click one to choose!!</h3>
           <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, setGraphics, graphics}} />
         </React.Fragment>
         ) : null
