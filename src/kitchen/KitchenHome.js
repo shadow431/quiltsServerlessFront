@@ -139,7 +139,7 @@ export default function KitchenHome(props) {
               <h5>Fabric Chosen</h5>
               <h3>{graphicChoice.name}</h3>
             </Thumbnail>
-            <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].type} src={`${s3imgUrl}${imgBreakDown.typeOutline[productTypeChosen].imgLocation}`} alt="Image to be added soon....">
+            <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].type} src={productChoice.imgUrl} alt="Image to be added soon....">
               <h5>{productChoice.name}</h5>
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
