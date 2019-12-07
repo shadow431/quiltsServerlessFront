@@ -9,9 +9,9 @@ export const pinkTheme = {
 }
 
 export const conventionalTheme = {
-  body: 'lightblue',
+  body: '#84dcc6',
   sideNavText: 'navy',
-  thumbBackground: 'skyblue',
+  thumbBackground: '#d9fff8',
   text: 'black',
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
