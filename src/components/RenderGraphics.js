@@ -7,6 +7,7 @@ export default function RenderGraphics(props) {
   const { graphicView, handleGraphicChoice } = props.graphicProps;
   const [graphics, setGraphics] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const categories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"]
 
   useEffect(() => {
     loadAllGraphics();
@@ -52,7 +53,7 @@ export default function RenderGraphics(props) {
           {graphics.map((graphic, i) => {
             if(graphic.subCat === graphicView) {
               return (
-                <Col key={i} xs={12} sm={5} md={3}>
+                <Col key={i} xs={12} sm={5} md={3} lg={4}>
                   <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
                     <h3>{graphic.name}</h3>
                   </Thumbnail>
@@ -67,19 +68,34 @@ export default function RenderGraphics(props) {
 
   function renderAllGraphics () {
     return (
-      <Row>
-        {graphics.map((graphic, i) => {
+      <React.Fragment>
+        {categories.map((category) => {
           return (
-              <Col key={i} xs={12} sm={5} md={4} lg={4}>
-                <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
-                  <h3>{graphic.name}</h3>
-                </Thumbnail>
-              </Col>
+            <React.Fragment>
+              <Row key={category}>
+                <h2 style={{textDecoration: "underline"}}><strong>{imgBreakDown.fabSubCat[category]}</strong></h2>
+              </Row>
+              <Row>
+                {graphics.map((graphic, i) => {
+                  if(graphic.subCat == category){
+                    console.log(graphic.subCat)
+                    return (
+                      <Col key={i} xs={12} sm={5} md={4} lg={4}>
+                        <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
+                          <h3>{graphic.name}</h3>
+                        </Thumbnail>
+                      </Col>
+                    )
+                  }
+                })}
+              </Row>
+            </React.Fragment>
           )
         })}
-      </Row>
+      </React.Fragment>
     )
   }
+
   return (
     <React.Fragment>
       {isLoading ? <h3>Loading Choices, please be patient...</h3> : (
