@@ -2,7 +2,7 @@ export const pinkTheme = {
   body: '#ffccdd',
   headText: '#0b7930',
   sideNavText: '#0b7930',
-  thumbBackground: 'rgb(238, 144, 172)',
+  thumbBackground: '#e9e3b4',
   text: 'black',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
