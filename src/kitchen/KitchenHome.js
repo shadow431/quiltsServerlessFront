@@ -59,7 +59,6 @@ export default function KitchenHome(props) {
   }
 
   function handleGraphicChoice(graphic) {
-    console.log("in graphicChoice");
     setGraphicChoice(graphic);
     setGraphicChosen(true);
   }
@@ -77,7 +76,7 @@ export default function KitchenHome(props) {
         </React.Fragment>
       ) : null
       }
-      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]); }}>Start Over</Button> : null}
+      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]); setGraphicView("all")}}>Start Over</Button> : null}
       {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button> : null}
       {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
       {!graphicChosen || !productChosen ? (
