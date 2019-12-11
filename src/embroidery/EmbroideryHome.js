@@ -4,17 +4,16 @@ import imgBreakDown from "../components/ImgBreakDown";
 import RenderProducts from "../components/RenderProducts";
 import { API } from "aws-amplify";
 
-export default function EmbroideryHome (props) {
-  console.log("props at embroidery: ", props)
+export default function EmbroideryHome(props) {
   // const [graphicChoice, setGraphicChoice] = useState([]);
   // const [graphicChosen, setGraphicChosen] = useState(false);
-  // const [productChoice, setProductChoice] = useState([]);
-  // const [productChosen, setProductChosen] = useState(false);
-  // const [productTypeChosen, setProductTypeChosen] = useState("");
+  const [productChoice, setProductChoice] = useState([]);
+  const [productChosen, setProductChosen] = useState(false);
+  const [productTypeChosen, setProductTypeChosen] = useState("");
   // const [graphicView, setGraphicView] = useState("");
-  // const [price, setPrice] = useState("");
+  const [price, setPrice] = useState("");
   // const [quantity, setQuantity] = useState("");
-  // const [purchasePrice, setPurchasePrice] = useState("");
+  const [purchasePrice, setPurchasePrice] = useState("");
 
   const [graphics, setGraphics] = useState([]);
   const [products, setProducts] = useState([]);
@@ -24,35 +23,46 @@ export default function EmbroideryHome (props) {
 
   useEffect(() => {
     loadProducts();
- }, []);
+  }, []);
 
- async function loadProducts() {
-   try {
-     const products = await API.get("quilts", "/products");
-     setProducts(products);
-     loadGraphic();
-   }
-   catch (e) {
-     if (e !== 'No current user') {
-       loadProducts();
-       // return <ToastDemo />;
-     }
-   }
-   setIsLoading(false);
- }
+  function handleProductChoice(product) {
+    setProductChoice(product);
+    setProductTypeChosen(product.subCat);
+    setProductChosen(true);
+    setPrice(product.price);
+    setPurchasePrice(Number(product.price));
+    // setQuantity(1);
+  }
 
- async function loadGraphic() {
-   try {
-     const fabrics = await API.get("quilts", "/fabric");
-     setGraphics(fabrics);
-   }
-   catch (e) {
-     if (e !== 'No current user') {
-       loadGraphic();
-       // return <ToastDemo />;
-     }
-   }
- }
+
+  async function loadProducts() {
+    try {
+      const products = await API.get("quilts", "/products");
+      setProducts(products);
+      loadGraphic();
+    }
+    catch (e) {
+      if (e !== 'No current user') {
+        loadProducts();
+        // return <ToastDemo />;
+      }
+    }
+    setIsLoading(false);
+  }
+  console.log("products at embroidery: ", products);
+
+  async function loadGraphic() {
+    try {
+      const fabrics = await API.get("quilts", "/fabric");
+      setGraphics(fabrics);
+    }
+    catch (e) {
+      if (e !== 'No current user') {
+        loadGraphic();
+        // return <ToastDemo />;
+      }
+    }
+  }
 
   // function handleProductType (e) {
   //   e.preventDefault();
@@ -62,7 +72,7 @@ export default function EmbroideryHome (props) {
 
   return (
     <React.Fragment>
-      <RenderProducts products={products}/>
+      {!isLoading ? <RenderProducts productProps={{products, handleProductChoice}} /> : <h3>Loading products, please be patient...</h3>}
     </React.Fragment>
   )
 }

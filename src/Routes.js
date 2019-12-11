@@ -6,7 +6,6 @@ import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 import Admin from "./containers/Admin";
 import Backpack from "./embroidery/Backpack";
-import BowlWrap from "./kitchen/BowlWrap";
 import CompBrief from "./embroidery/CompBrief";
 import DeleteProduct from "./products/DeleteProduct";
 import EditProduct from "./products/EditProduct";
@@ -18,6 +17,7 @@ import Hoodies from "./embroidery/Hoodies";
 import KitchenHome from "./kitchen/KitchenHome";
 import KitchenTowel from "./embroidery/KitTowel";
 import Login from "./containers/Login";
+import NewDesign from "./Design/NewDesign";
 import NewFabric from "./Fabric/NewFabric";
 import NewProduct from "./products/NewProduct";
 import NewSchedule from "./schedule/NewSchedule";
@@ -38,7 +38,6 @@ export default function Routes({ appProps }) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
-      <AppliedRoute path="/kitchen/bowl" exact component={BowlWrap} appProps={appProps} />
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />
       <AppliedRoute path="/embroidery/backpack" exact component={Backpack} appProps={appProps} />
       <AppliedRoute path="/embroidery/colors" exact component={EmbroideryColors} appProps={appProps} />
@@ -59,6 +58,7 @@ export default function Routes({ appProps }) {
       <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/design/new" exact component={NewDesign} appProps={appProps} />
       <AuthenticatedRoute path="/admin/fabric/new" exact component={NewFabric} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/edit" exact component={EditSchedule} appProps={appProps} />

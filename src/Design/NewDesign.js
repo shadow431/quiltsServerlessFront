@@ -11,24 +11,34 @@ import "./NewDesign.css";
 export default function NewProduct(props) {
   const imgLinkLocation = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
   const file = useRef(null);
-  const [designName, setDesignName] = useState("");
-  const [designType, setDesignType] = useState("");
-  const [designSubCat, setDesignSubCat] = useState("");
-  const [designImgUrl, setDesignImgUrl] = useState("");
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [subCat, setSubCat] = useState("");
+  const [imgUrl, setImgUrl] = useState("");
+  const [newGraphic, setNewGraphic] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   function validateForm() {
-    return designName.length > 0 &&
-      designType.length > 0 &&
-      designSubCat.length > 0;
+    return name.length > 0 &&
+      type.length > 0 &&
+      subCat.length > 0;
   }
 
   function handleFileChange(event) {
     file.current = event.target.files[0];
-    setDesignName(file.current.name.split(".")[0]);
-    setDesignType(file.current.name.substr(0,3));
-    setDesignSubCat(file.current.name.substr(3, 3));
-    setDesignImgUrl(imgLinkLocation + file.current.name);
+    setName(file.current.name.split(".")[0]);
+    setType(file.current.name.substr(0,3));
+    setSubCat(file.current.name.substr(3, 3));
+    setImgUrl(imgLinkLocation + file.current.name);
+  }
+
+  function handleHidden() {
+    setHidden(!hidden ? true : false)
+  }
+
+  function handleNewGraphic() {
+    setNewGraphic(!newGraphic ? true : false)
   }
 
   async function handleSubmit(event) {
@@ -47,7 +57,7 @@ export default function NewProduct(props) {
     try {
       await s3Upload(file.current);
 
-      await createDesign({ designName, designType, designSubCat, designImgUrl });
+      await createDesign({ name, type, subCat, imgUrl, newGraphic, hidden });
       props.history.push("/admin");
     } catch (e) {
       alert(e);
@@ -56,6 +66,7 @@ export default function NewProduct(props) {
   }
 
   async function createDesign(design) {
+    console.log(design)
     const response = await API.post("quilts", "/admin/design", {
       body: design
     });
@@ -65,11 +76,19 @@ export default function NewProduct(props) {
   return (
     <div className="NewDesign">
       <form onSubmit={handleSubmit}>
-        <h4>{designName}</h4>
-        <h4>{designType}</h4>
+        <h4>{name}</h4>
+        <h4>{type}</h4>
         <FormGroup controlId="file">
           <ControlLabel>Attachment</ControlLabel>
           <FormControl onChange={handleFileChange} type="file" />
+        </FormGroup>
+        <FormGroup controlId="hidden">
+          <ControlLabel>Hidden?</ControlLabel>
+          <FormControl onChange={handleHidden} type="checkbox" />
+        </FormGroup>
+        <FormGroup controlId="newGraphic">
+          <ControlLabel>New Design?</ControlLabel>
+          <FormControl onChange={handleNewGraphic} type="checkbox" />
         </FormGroup>
         <LoaderButton
           block

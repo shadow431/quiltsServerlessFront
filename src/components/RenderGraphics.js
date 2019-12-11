@@ -77,7 +77,7 @@ export default function RenderGraphics(props) {
               </Row>
               <Row>
                 {graphics.map((graphic, i) => {
-                  if(graphic.subCat == category){
+                  if(graphic.subCat === category){
                     console.log(graphic.subCat)
                     return (
                       <Col key={i} xs={12} sm={5} md={4} lg={4}>
