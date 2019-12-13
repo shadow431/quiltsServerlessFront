@@ -63,10 +63,10 @@ export default function RenderGraphics(props) {
   }
 
   return (
-    <React.Fragment>
+    <Grid fluid>
       {graphicView === "select" ? <h2>Please choose from the dropdown above!!</h2> : null}
       {graphicView === "all" ? renderAllGraphics() : null}
       {graphicView !== "all" && graphicView !== "select" ? renderCategoryGraphics() : null}
-    </React.Fragment>
+    </Grid>
   );
 }
