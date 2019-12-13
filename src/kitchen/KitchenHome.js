@@ -21,6 +21,10 @@ export default function KitchenHome(props) {
   const [purchasePrice, setPurchasePrice] = useState("");
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [graphics, setGraphics] = useState([]);
+  const typeToRender = "KIT";
+  const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"]
+
 
 
   // const [products, setProducts] = useState([]);
@@ -35,10 +39,26 @@ export default function KitchenHome(props) {
     try {
       const products = await API.get("quilts", "/products");
       setProducts(products);
+      loadAllGraphics();
     }
     catch (e) {
       if (e !== 'No current user') {
         loadProducts();
+        loadAllGraphics();
+        // return <ToastDemo />;
+      }
+    }
+    setIsLoading(false);
+  }
+
+  async function loadAllGraphics() {
+    try {
+      const allGraphics = await API.get("quilts", "/fabric");
+      setGraphics(allGraphics);
+    }
+    catch (e) {
+      if (e !== 'No current user') {
+        loadAllGraphics();
         // return <ToastDemo />;
       }
     }
@@ -85,17 +105,11 @@ export default function KitchenHome(props) {
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
             <option value="select">Fabric Choice</option>
             <option value="all">All Fabrics</option>
-            <option value="bir">Birds</option>
-            <option value="bug">Bugs and Frogs</option>
-            <option value="cad">Cats and Dogs</option>
-            <option value="fdk">Food</option>
-            <option value="flr">Flowers</option>
-            <option value="frm">Farm</option>
-            <option value="hol">Holidays</option>
-            <option value="mil">Military</option>
-            <option value="mis">Miscelanneous</option>
-            <option value="nat">Nautical</option>
-            <option value="wdl">Wild Animals</option>
+            {graphicCategories.map((subcat, i) => {
+              return (
+                <option key={i} value={subcat}>{imgBreakDown.fabSubCat[subcat]}</option>
+              )
+            })}
           </FormControl>
         </FormGroup>
         ) : null
@@ -104,7 +118,7 @@ export default function KitchenHome(props) {
         <h4>Loading products, please be patient... </h4> : null
       }
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice}} /> : null
+        <RenderProducts productProps={{products, handleProductChoice, typeToRender}} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -127,7 +141,7 @@ export default function KitchenHome(props) {
       {graphicView !== "select" && !graphicChosen ?
         (<React.Fragment>
           <h3>Fabric Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView}} />
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics}} />
         </React.Fragment>
         ) : null
       }

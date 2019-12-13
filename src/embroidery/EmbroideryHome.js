@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-// import { Thumbnail, Button, Col, Grid, Row } from "react-bootstrap";
+import { Grid } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import RenderProducts from "../components/RenderProducts";
 import { API } from "aws-amplify";
+import RenderGraphics from "../components/RenderGraphics";
 
 export default function EmbroideryHome(props) {
   // const [graphicChoice, setGraphicChoice] = useState([]);
@@ -10,10 +11,14 @@ export default function EmbroideryHome(props) {
   const [productChoice, setProductChoice] = useState([]);
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");
+  const [graphicChoice, setGraphicChoice] = useState("");
+  const [graphicChosen, setGraphicChosen] = useState(false);
   // const [graphicView, setGraphicView] = useState("");
   const [price, setPrice] = useState("");
   // const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
+  const typeToRender = "EMB";
+  const graphicView = "cat";
 
   const [graphics, setGraphics] = useState([]);
   const [products, setProducts] = useState([]);
@@ -27,11 +32,16 @@ export default function EmbroideryHome(props) {
 
   function handleProductChoice(product) {
     setProductChoice(product);
-    setProductTypeChosen(product.subCat);
+    setProductTypeChosen(product.subCat.toUpperCase());
     setProductChosen(true);
     setPrice(product.price);
     setPurchasePrice(Number(product.price));
     // setQuantity(1);
+  }
+
+  function handleGraphicChoice(graphic) {
+    setGraphicChoice(graphic);
+    setGraphicChosen(true);
   }
 
 
@@ -47,14 +57,12 @@ export default function EmbroideryHome(props) {
         // return <ToastDemo />;
       }
     }
-    setIsLoading(false);
   }
-  console.log("products at embroidery: ", products);
 
   async function loadGraphic() {
     try {
-      const fabrics = await API.get("quilts", "/fabric");
-      setGraphics(fabrics);
+      const designs = await API.get("quilts", "/design");
+      setGraphics(designs);
     }
     catch (e) {
       if (e !== 'No current user') {
@@ -62,6 +70,7 @@ export default function EmbroideryHome(props) {
         // return <ToastDemo />;
       }
     }
+    setIsLoading(false);
   }
 
   // function handleProductType (e) {
@@ -72,7 +81,19 @@ export default function EmbroideryHome(props) {
 
   return (
     <React.Fragment>
-      {!isLoading ? <RenderProducts productProps={{products, handleProductChoice}} /> : <h3>Loading products, please be patient...</h3>}
+      {!isLoading
+      ?
+        <Grid fluid>
+          <RenderProducts productProps={{products, handleProductChoice, typeToRender}} />
+        </Grid>
+      : <h3>Loading products, please be patient...</h3>}
+      {!isLoading && graphics.length !== 0
+        ?
+          <Grid fluid>
+            <RenderGraphics graphicProps={{graphicView, graphics, handleGraphicChoice}} />
+          </Grid>
+        : <h3>Loading designs, please be patient...</h3>
+      }
     </React.Fragment>
   )
 }

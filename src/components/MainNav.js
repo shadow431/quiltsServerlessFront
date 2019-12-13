@@ -18,7 +18,7 @@ export default function MainNav (props) {
           matches
             ? (
             <Nav className="Home KitchenHomeNav Schedule" bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
-              <NavItem eventKey={1} onClick={() => {history.push("/embroidery"); setNavKey(2);}}>
+              <NavItem eventKey={1} onClick={() => {history.push("/embroidery"); setNavKey(1);}}>
                 Embroidery
               </NavItem>
               <NavItem eventKey={2} onClick={() => {history.push("/kitchen"); setNavKey(2);}}>

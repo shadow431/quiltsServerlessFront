@@ -65,10 +65,11 @@ const imgBreakDown = {
     },
     GRB: {
       type: "Grocery Bag AKA Tote Bag",
-      desc: `<p>Looking for a "tote bag" that won't let you down?? Look no further. Our bag is made of durable water resistant 600 demier polyester fabric, the inside can be wiped out with a damp cloth should something spill. Two small inside pockets and a water bottle pocket on the outside. Tired of your tote bag falling over and everything spilling out??&nbsp;&nbsp; Bag measures 14" wide X 12" high,&nbsp;6 1/2" deep.. With your favorite pet embroidered on front you can bring it along where ever you go. Comes in your choice of colors listed below. If you don't see your dog breed, please e-mail me. Most breeds available. Don't want a dog on this bag, special orders welcome. <span style="font-size: 16px">T-SHIRTS, SWEATSHIRTS, HOODIES ARE AVAILABLE. PLEASE CONTACT US BY PHONE OR E-MAIL FOR COLORS ETC.</span></p><p><span style="color: #0000ff"><span style="font-size: 16px">&nbsp;BAGS ARE ONLY $20.00 EACH. DESIGNS WILL VARY IN SIZE&nbsp;&nbsp; </span></span></p><p><span style="font-size: 16px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp;&nbsp; FREE SHIPPING ON ORDERS $60.00 AND OVER</span></span></span></span></p>`,
+      desc: `Looking for a "tote bag" that won't let you down?? Look no further. Our bag is made of durable water resistant 600 demier polyester fabric, the inside can be wiped out with a damp cloth should something spill. Two small inside pockets and a water bottle pocket on the outside. Tired of your tote bag falling over and everything spilling out?? Bag measures 14" wide X 12" high, 6 1/2" deep.. With your favorite pet embroidered on front you can bring it along where ever you go. Comes in your choice of colors listed below. If you don't see your dog breed, please e-mail me. Most breeds available. Don't want a dog on this bag, special orders welcome. BAGS ARE ONLY $20.00 EACH. DESIGNS WILL VARY IN SIZE`,
       price: "20.00",
       colors: ["red", "royal blue", "carolina blue", "navy", "lime green", "kelly green", "purple", "lavender", "light pink", "hot pink", "black", "charcoal grey", "turquoise", "tangerine", "stone"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: "58XNNCJWMBJ3S"
     },
     HOO: {
       type: "Hoodie",
@@ -117,6 +118,8 @@ const imgBreakDown = {
     },
     TOW: {
       type: "Kitchen Towel",
+      desc: "",
+      price: "15.00",
       colors: ["white", "stone", "blue", "light moss", "dark moss"],
       imgLocation: ""
     },
@@ -162,7 +165,7 @@ const imgBreakDown = {
     nat: "Nautical",
     wdl: "Wild Animals"
   },
-  subCat: {
+  embSubCat: {
     abd: "American Bull Dog",
     afg: "Afghan",
     air: "Airdale",

@@ -4,44 +4,10 @@ import { API } from "aws-amplify";
 import imgBreakDown from "./ImgBreakDown";
 
 export default function RenderGraphics(props) {
-  const { graphicView, handleGraphicChoice } = props.graphicProps;
-  const [graphics, setGraphics] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const categories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"]
+  const { graphicView, handleGraphicChoice, graphicCategories, graphics } = props.graphicProps;
 
-  useEffect(() => {
-    loadAllGraphics();
-  }, []);
-
-  // async function loadCategoryGraphic() {
-  //   try {
-  //     const categoryGraphics = await API.get("quilts", `/fabric/type/${graphicView}`);
-  //     setGraphicToRender(categoryGraphics);
-  //   }
-  //   catch (e) {
-  //     if (e !== 'No current user') {
-  //       loadCategoryGraphic();
-  //       // return <ToastDemo />;
-  //     }
-  //   }
-  // }
-
-  async function loadAllGraphics() {
-    try {
-      const allGraphics = await API.get("quilts", "/fabric");
-      setGraphics(allGraphics);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadAllGraphics();
-        // return <ToastDemo />;
-      }
-    }
-    setIsLoading(false);
-  }
 
   function renderCategoryGraphics () {
-    console.log(graphics)
     return (
       <React.Fragment>
         <Row>
@@ -69,7 +35,7 @@ export default function RenderGraphics(props) {
   function renderAllGraphics () {
     return (
       <React.Fragment>
-        {categories.map((category) => {
+        {graphicCategories.map((category) => {
           return (
             <React.Fragment>
               <Row key={category}>
@@ -98,13 +64,9 @@ export default function RenderGraphics(props) {
 
   return (
     <React.Fragment>
-      {isLoading ? <h3>Loading Choices, please be patient...</h3> : (
-        <Grid fluid>
-          {graphicView === "select" ? <h2>Please choose from the dropdown above!!</h2> : null}
-          {graphicView === "all" ? renderAllGraphics() : null}
-          {graphicView !== "all" && graphicView !== "select" ? renderCategoryGraphics() : null}
-        </Grid>
-      )}
+      {graphicView === "select" ? <h2>Please choose from the dropdown above!!</h2> : null}
+      {graphicView === "all" ? renderAllGraphics() : null}
+      {graphicView !== "all" && graphicView !== "select" ? renderCategoryGraphics() : null}
     </React.Fragment>
   );
 }
