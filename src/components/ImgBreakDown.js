@@ -5,14 +5,16 @@ const imgBreakDown = {
       desc: `<p>
       A MUST FOR THAT PRECIOUS LITTLE ONE IN YOUR LIFE..&nbsp; These quilts are just perfect for the crib, or to send along to day care or pre school. Made by hand, each quilt has eight squares of machine embroidery. The back of the quilt is flannel for warmth. All fabric is 100% cotton with Warm &amp; Natural batting inside. The binding is hand sewn on the back side.&nbsp; Fabric has been prewashed. Quilts are about 37" wide X45"long.</p><p>Can't find the colors or embroidery designs&nbsp;you want?&nbsp; Call or e-mail me. Special orders gladly accepted.</p><p>Please allow 3 weeks for special orders.</p><p><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp; FREE SHIPPING ON ALL BABY QUILTS</span></span></span></p><p>&nbsp;</p><p></p><p id="note">*Please note: Contrasting fabric may vary from image shown*</p>`,
       price: "95.00",
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: ""
     },
     BKP: {
       type: "Backpack",
       desc: "Self explanatory",
       price: "35.00",
       colors: ["charcoal", "black", "navy", "royal blue", "red"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: ""
     },
     BPB: {
       type: "Baked Potato Bag",
@@ -43,21 +45,24 @@ const imgBreakDown = {
       desc: `<p><span style="font-size: 18px">Time to replace that worn out cap??&nbsp; Why not wear one with man's best friend on it.&nbsp; Two styles to choose from, like the unstructured type, order CP78, for those that like the firmer cap, order the structured CP80.&nbsp; 100% cotton twill. Both styles are adjustable.</span><span style="font-size: 18px">Four colors to choose from, hunter green, red, blue and khaki.&nbsp; These caps make a great Father's Day gift. If you don't see you favorite dog breed, just give us a call or send an e-mail.</span></p><p>&nbsp;</p><p><span style="font-size: 18px"><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">&nbsp;FREE SHIPPING ON ORDERS $60.00 AND OVER</span></span></span></span></p>`,
       price: "20.00",
       colors: [],
-      imgLocation: "Cap2.jpg"
+      imgLocation: "Cap2.jpg",
+      paypalId: ""
     },
     COM: {
       type: "Computer Briefcase",
       desc: "",
       price: "50.00",
       colors: ["heather grey", "navy"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: "M8RDJWGCHHS2S"
     },
     DOQ: {
       type: "Dog Quilts",
       desc: `<p>Just in time for the Holidays!!&nbsp; The perfect gift for the dog or cat lover on your list. Makes a great gift for that pet in your life too.&nbsp; Each quilt is about 37"wide X 45"long,&nbsp;just right for most dogs or a lap quilt. There&nbsp;are eight squares of machine embroidery designs of the Dog Breed of your choice (if available). The reverse side of the quilt is flannel.&nbsp; All fabric is 100% cotton that has been pre-washed by us before the quilt is made. Each quilt is made in the USA by us.&nbsp; Custom quilts are welcome, so if you have more then one breed of dog, we can put more then one on a quilt. You can also choose colors.&nbsp; We try to have a good stock on hand, custom quilts will take up to 3 weeks to finish. Larger quilts available on request.&nbsp; Please call 360-599-1816 or e-mail, <a href="mailto:embroidery@quilts.ws">embroidery@quilts.ws</a> for special orders.&nbsp; GO TO THE "TOTE BAG" PAGE ON LEFT TO SEE THE DOG AND CAT DESIGNS</p><p>
       &nbsp;</p><p><span style="font-size: 24px"><span style="color: #0000ff"><span style="background-color: #00ff00">FREE SHIPPING ON ALL DOG QUILTS</span></span></span></p>  <p></p><p id="note">*Please note: Contrasting fabric may vary from image shown*</p><u><b><i><font face="Verdana" size="4">Australian Shephard</font></i></b></u>`,
       price: "95.00",
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: "KWRQBHXBUEJZG"
     },
     FAB: {
       type: "Fabric",
@@ -74,16 +79,55 @@ const imgBreakDown = {
     HOO: {
       type: "Hoodie",
       desc: "Regular Hoodie",
-      price: "40.00",
+      price: {
+        sm: "40.00",
+        md: "40.00",
+        lg: "40.00",
+        xl: "40.00",
+        x2: "45.00",
+        x3: "45.00",
+        x4: "50.00",
+        x5: "50.00"
+      },
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
-      imgLocation: ""
+      imgLocation: "",
+    },
+    HooSize: {
+      sm: "8NMMPSDS25VNS",
+      md: "U98VCRX9BF9RN",
+      lg: "EWR2TGZJN9CPU",
+      xl: "34UW2LMHF5LTE",
+      x2: "XAPEML2WKB9HN",
+      x3: "DMFEWKKUXGQWS",
+      x4: "7525C5T9388AY",
+      x5: "QFV83G22YRGK8"
     },
     HOZ: {
       type: "Zipper Hoodie",
       desc: "Hoodie with a zipper",
-      price: "45.00",
+      price: {
+        sm: "45.00",
+        md: "45.00",
+        lg: "45.00",
+        xl: "45.00",
+        x2: "50.00",
+        x3: "50.00",
+        x4: "55.00",
+        x5: "55.00"
+      },
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: ""
+    },
+    HozSize: {
+      sm: "U8P2XA8D237ZS",
+      md: "QPX3BN2PETAQ4",
+      lg: "7T3A7MTWJDMUU",
+      xl: "4HMRCQ4CA569W",
+      x2: "QPWNXMABFJZ78",
+      x3: "LN3ZDHBSWF6M6",
+      x4: "6PHERHGN5W7G8",
+      x5: "6P9JLVB6H42LA"
     },
     OVM: {
       type: "Oven Mitt",
@@ -100,15 +144,36 @@ const imgBreakDown = {
     SLN: {
       type: "Sling",
       desc: "",
-      price: "15.00",
+      price: "20.00",
       colors: ["red", "royal blue", "lime green", "navy", "black"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: "BX8D68BP9QMYJ"
     },
     SWT: {
       type: "Sweatshirt",
       desc: "",
-      price: "30.00",
-      colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"]
+      price: {
+        sm: "35.00",
+        md: "35.00",
+        lg: "35.00",
+        xl: "35.00",
+        x2: "40.00",
+        x3: "40.00",
+        x4: "45.00",
+        x5: "45.00"
+      },
+      colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
+      paypalId: ""
+    },
+    SwtSize: {
+      sm: "VVBCGBU3EEUTQ",
+      md: "TZQQ7J9NGGEA2",
+      lg: "UKGCHEDYQZ4GE",
+      xl: "LWMDYKPVF3KKG",
+      x2: "VAWBC2P5E5VQL",
+      x3: "48WKG49Z2PYKS",
+      x4: "8C5HJJBVRXRPU",
+      x5: "U5TAHFTV38Q76"
     },
     TLB: {
       type: "Tortilla Bags",
@@ -121,51 +186,91 @@ const imgBreakDown = {
       desc: "",
       price: "15.00",
       colors: ["white", "stone", "blue", "light moss", "dark moss"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: "68GPU6TJDSZ4Y"
     },
     TSL: {
       type: "Long Sleeve T-Shirt",
       desc: "",
       price: "25.00",
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: ""
+    },
+    TslSize: {
+      sm: "",
+      md: "",
+      lg: "",
+      xl: "",
+      x2: "",
+      x3: "",
+      x4: "",
+      x5: ""
     },
     TSS: {
       type: "Short Sleeve T-Shirt",
       desc: "",
-      price: "15.00",
+      price: {
+        sm: "25.00",
+        md: "25.00",
+        lg: "25.00",
+        xl: "25.00",
+        x2: "30.00",
+        x3: "30.00",
+        x4: "35.00",
+        x5: "35.00"
+      },
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: ""
+    },
+    TssSize: {
+      sm: "TTHEK7FA7L7WJ",
+      md: "9WF4DB3K95DJW",
+      lg: "4Y2JRWWUH3PYA",
+      xl: "54H6CCPL7N2T4",
+      x2: "9DYTASASRH2M4",
+      x3: "U7M9JFJ785ETY",
+      x4: "XDQZVHSU7NS2U",
+      x5: "HY4BJLCFG6P8A"
     },
     VES: {
       type: "Vest",
       desc: "",
-      price: "30.00",
+      price: {
+        sm: "50.00",
+        md: "50.00",
+        lg: "50.00",
+        xl: "50.00",
+        x2: "55.00",
+        x3: "55.00",
+        x4: "60.00",
+        x5: "60.00"
+      },
       colors: ["red", "royal blue", "navy blue"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: ""
+    },
+    VesSize: {
+      sm: "CF5MFZGFDS5BQ",
+      md: "2KZZMU5KGECGY",
+      lg: "FFQ2746KKAEL8",
+      xl: "JYVKRHNQXVMJG",
+      x2: "RV5ZK2RT58V3W",
+      x3: "5N6BLWW8J8PXJ",
+      x4: "FCZV9JVAUY862",
+      x5: "UZD68AATTXWU6"
     },
     ZZT: {
       type: "Zipper Tote Bag",
       desc: "Your all in one tote bag with a zipper for secure transportation.",
-      price: "10.00",
+      price: "30.00",
       colors: ["red", "royal blue", "hot pink", "black"],
-      imgLocation: ""
+      imgLocation: "",
+      paypalId: ""
     }
   },
-  fabSubCat: {
-    bir: "Birds",
-    bug: "Bugs and Frogs",
-    cad: "Cats and Dogs",
-    fdk: "Food",
-    flr: "Flowers",
-    frm: "Farm",
-    hol: "Holidays",
-    mil: "Military",
-    mis: "Misc",
-    nat: "Nautical",
-    wdl: "Wild Animals"
-  },
-  embSubCat: {
+  subCat: {
     abd: "American Bull Dog",
     afg: "Afghan",
     air: "Airdale",
@@ -181,6 +286,7 @@ const imgBreakDown = {
     bel: "Belgian Tervuren",
     ber: "Bernese Mountain",
     bic: "Bichon",
+    bir: "Birds",
     bld: "Bloodhound",
     bls: "Belgian Sheepdog",
     blt: "Bull Terrier",
@@ -195,7 +301,9 @@ const imgBreakDown = {
     brt: "Brittany Spaniel",
     bru: "Brussels Griffen",
     btc: "Black & Tan Coon Hound",
+    bug: "Bugs and Frogs",
     bul: "English Bull",
+    cad: "Cats and Dogs",
     cah: "Catahoula",
     can: "Cane Corso",
     cat: "Cats",
@@ -216,8 +324,11 @@ const imgBreakDown = {
     eng: "English Setter",
     esk: "American Eskimo",
     fbl: "French Bulldog",
+    fdk: "Food",
+    flr: "Flowers",
     flt: "Flat Coated Retriever",
     fox: "Fox Terrier",
+    frm: "Farm",
     gol: "Golden Retriever",
     gor: "Gordon Setter",
     grd: "Great Dane",
@@ -226,6 +337,7 @@ const imgBreakDown = {
     gry: "Greyhound",
     gsm: "Great Swiss Mountain Dog",
     hav: "Havanese",
+    hol: "Holidays",
     hus: "Husky",
     ice: "Icelandic Sheepdog",
     irh: "Irish Setter",
@@ -246,8 +358,11 @@ const imgBreakDown = {
     lhp: "Lhasa Apso",
     mal: "Maltese",
     mas: "Mastiff",
+    mil: "Military",
     min: "Min Pin (Miniature Doberman)",
+    mis: "Misc",
     mor: "Morkie",
+    nat: "Nautical",
     new: "Newfoundland",
     nor: "Norwich Terrier",
     nov: "Nova Scotia Duck Toller",
@@ -282,6 +397,7 @@ const imgBreakDown = {
     tib: "Tibetan Terrier",
     tre: "Treeing Walker Hound",
     vis: "Visla",
+    wdl: "Wild Animals",
     wei: "Weimeraner",
     whi: "West Highland Terrier",
     wht: "Wheaten Terrier",

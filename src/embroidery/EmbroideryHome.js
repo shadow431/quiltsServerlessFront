@@ -14,7 +14,7 @@ export default function EmbroideryHome(props) {
   const [productTypeChosen, setProductTypeChosen] = useState("");
   const [graphicChoice, setGraphicChoice] = useState("");
   const [graphicChosen, setGraphicChosen] = useState(false);
-  const [graphicView, setGraphicView] = useState("cat");
+  const [graphicView, setGraphicView] = useState("select");
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
@@ -108,7 +108,7 @@ export default function EmbroideryHome(props) {
             <option value="all">All Designs</option>
             {graphicCategories.map((subcat, i) => {
               return (
-                <option key={i} value={subcat}>{imgBreakDown.embSubCat[subcat]}</option>
+                <option key={i} value={subcat}>{imgBreakDown.subCat[subcat]}</option>
               )
             })}
           </FormControl>
@@ -139,7 +139,7 @@ export default function EmbroideryHome(props) {
         </React.Fragment>
         ) : null
       }
-      {graphicView !== "select" && !graphicChosen ?
+      {graphicView !== "select" && !graphicChosen && !isLoading ?
         (<React.Fragment>
           <h3>Fabric Options, Click one to choose!!</h3>
           <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics}} />

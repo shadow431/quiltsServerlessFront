@@ -77,7 +77,6 @@ export default function NewProduct(props) {
     <div className="NewDesign">
       <form onSubmit={handleSubmit}>
         <h4>{name}</h4>
-        <h4>{type}</h4>
         <FormGroup controlId="file">
           <ControlLabel>Attachment</ControlLabel>
           <FormControl onChange={handleFileChange} type="file" />

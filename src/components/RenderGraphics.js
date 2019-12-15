@@ -12,7 +12,7 @@ export default function RenderGraphics(props) {
       <React.Fragment>
         <Row>
           <Col className="graphicHeader" xs={12} sm={5} md={4} lg={4}>
-            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.fabSubCat[graphicView]}</strong></h2>
+            <h2 style={{textDecoration:"underline"}}><strong>{imgBreakDown.subCat[graphicView]}</strong></h2>
           </Col>
         </Row>
         <Row>
@@ -39,7 +39,7 @@ export default function RenderGraphics(props) {
           return (
             <React.Fragment>
               <Row key={category}>
-                <h2 style={{textDecoration: "underline"}}><strong>{imgBreakDown.fabSubCat[category]}</strong></h2>
+                <h2 style={{textDecoration: "underline"}}><strong>{imgBreakDown.subCat[category]}</strong></h2>
               </Row>
               <Row>
                 {graphics.map((graphic, i) => {

@@ -25,8 +25,7 @@ export default function NewProduct(props) {
   function validateForm() {
     return name.length > 0 &&
       type.length > 0 &&
-      desc.length > 0 &&
-      price.length > 0;
+      desc.length > 0;
   }
 
   function handleFileChange(event) {

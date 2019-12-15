@@ -107,7 +107,7 @@ export default function KitchenHome(props) {
             <option value="all">All Fabrics</option>
             {graphicCategories.map((subcat, i) => {
               return (
-                <option key={i} value={subcat}>{imgBreakDown.fabSubCat[subcat]}</option>
+                <option key={i} value={subcat}>{imgBreakDown.subCat[subcat]}</option>
               )
             })}
           </FormControl>
