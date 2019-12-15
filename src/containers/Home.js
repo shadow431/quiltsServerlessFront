@@ -5,7 +5,7 @@ import "../components/LoaderButton.css";
 
 export default function Home(props) {
   const s3location = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/"
-  const homeImgs = ["Cap2.jpg", "Show2.jpg", "Show9.jpg", "Show8.jpg", "Show5.jpg", "Show6.jpg", "Show7.jpg"];
+  const homeImgs = ["Show2.jpg", "Show9.jpg", "Show8.jpg", "Show5.jpg", "Show6.jpg", "Show7.jpg"];
 
   return (
     <Grid className="Home">
