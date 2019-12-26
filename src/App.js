@@ -9,12 +9,14 @@ import { API } from "aws-amplify";
 import MainNav from "./components/MainNav";
 import { pinkTheme, conventionalTheme } from "./containers/theme";
 import { GlobalStyles } from "./containers/globalCSS";
-// import "./containers/globalCSS.js";
 
 function App(props) {
 
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [fabrics, setFabrics] = useState([]);
+  const [designs, setDesigns] = useState([]);
   const [theme, setTheme] = useState('pinkTheme');
   const [isLoading, setIsLoading] = useState(true);
   const { history } = props;
@@ -29,6 +31,12 @@ function App(props) {
     try {
       const schedule = await API.get("quilts", "/schedule");
       setSchedule(schedule);
+      const products = await API.get("quilts", "/products");
+      setProducts(products);
+      const designs = await API.get("quilts", "/design");
+      setDesigns(designs);
+      const fabrics = await API.get("quilts", "/fabric");
+      setFabrics(fabrics);
       await Auth.currentSession();
       userHasAuthenticated(true);
     }
@@ -71,7 +79,7 @@ function App(props) {
             <Navbar.Collapse>
               <Nav pullRight>
                 <GlobalStyles />
-                <NavItem className="adminLink" onClick={toggleTheme}>Toggle Theme</NavItem>
+                <NavItem className="adminLink" onClick={toggleTheme}>Color Scheme</NavItem>
                 {isAuthenticated ? (
                   <>
                     <LinkContainer to="/admin">
@@ -92,7 +100,11 @@ function App(props) {
           </Navbar>
           <MainNav history={history} auth={isAuthenticated} />
           <div style={{display: 'flex'}}>
-            <Routes appProps={{ isAuthenticated, userHasAuthenticated, schedule, isLoading }} />
+            {!isLoading ?
+              <Routes appProps={{ isAuthenticated, userHasAuthenticated, schedule, isLoading, products, designs, fabrics }} />
+              :
+              null
+            }
           </div>
         </div>
       </ThemeProvider>

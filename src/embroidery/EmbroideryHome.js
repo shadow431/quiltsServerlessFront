@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, FormGroup, ControlLabel, FormControl, Thumbnail } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import RenderProducts from "../components/RenderProducts";
-import { API } from "aws-amplify";
 import RenderGraphics from "../components/RenderGraphics";
 import PayPalButton from "../components/PaypalButton"
 
@@ -20,17 +19,10 @@ export default function EmbroideryHome(props) {
   const [purchasePrice, setPurchasePrice] = useState("");
   const typeToRender = "EMB";
 
-  const [graphics, setGraphics] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const { designs, products, isLoading } = props;
+  const graphics = designs;
 
   const graphicCategories = ["afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bov", "box", "blt", "brr", "brt", "bru", "can", "cah", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "lgm", "leo", "lhp", "mal", "mas", "min", "mor", "new", "nor", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
-
-  // const [ prod, setProd ] = useState("");
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
 
   function handleProductChoice(product) {
     setProductChoice(product);
@@ -49,40 +41,6 @@ export default function EmbroideryHome(props) {
   function handleGraphicView(e) {
     setGraphicView(e.target.value);
   }
-
-  async function loadProducts() {
-    try {
-      const products = await API.get("quilts", "/products");
-      setProducts(products);
-      loadGraphic();
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadProducts();
-        // return <ToastDemo />;
-      }
-    }
-  }
-
-  async function loadGraphic() {
-    try {
-      const designs = await API.get("quilts", "/design");
-      setGraphics(designs);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadGraphic();
-        // return <ToastDemo />;
-      }
-    }
-    setIsLoading(false);
-  }
-
-  // function handleProductType (e) {
-  //   e.preventDefault();
-  //   setProd(imgBreakDown.typeOutline.BPB.type);
-
-  // }
 
   return (
     <div className="embroideryHome container">

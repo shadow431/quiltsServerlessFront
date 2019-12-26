@@ -1,15 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
-import { API } from "aws-amplify";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
 import RenderProducts from "../components/RenderProducts";
 import "../containers/globalCSS.js";
 // import { ToastDemo } from "../components/ToastDemo";
 import RenderGraphics from "../components/RenderGraphics";
-// import ColorPopulater from "../components/ColorPopulater";
 
 export default function KitchenHome(props) {
+  const { fabrics, isLoading, products } = props;
   const [graphicChoice, setGraphicChoice] = useState([]);
   const [graphicChosen, setGraphicChosen] = useState(false);
   const [productChoice, setProductChoice] = useState([]);
@@ -19,51 +18,9 @@ export default function KitchenHome(props) {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [graphics, setGraphics] = useState([]);
   const typeToRender = "KIT";
-  const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"]
-
-
-
-  // const [products, setProducts] = useState([]);
-
-  const s3imgUrl = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
-
-  useEffect(() => {
-    loadProducts();
-  }, []);
-
-  async function loadProducts() {
-    try {
-      const products = await API.get("quilts", "/products");
-      setProducts(products);
-      loadAllGraphics();
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadProducts();
-        loadAllGraphics();
-        // return <ToastDemo />;
-      }
-    }
-    setIsLoading(false);
-  }
-
-  async function loadAllGraphics() {
-    try {
-      const allGraphics = await API.get("quilts", "/fabric");
-      setGraphics(allGraphics);
-    }
-    catch (e) {
-      if (e !== 'No current user') {
-        loadAllGraphics();
-        // return <ToastDemo />;
-      }
-    }
-    setIsLoading(false);
-  }
+  const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
+  const graphics = fabrics;
 
   function handleGraphicView(e) {
     setGraphicView(e.target.value);

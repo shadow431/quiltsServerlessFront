@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Col, Grid, Row, Thumbnail } from "react-bootstrap";
-import { API } from "aws-amplify";
 import imgBreakDown from "./ImgBreakDown";
 
 export default function RenderGraphics(props) {
   const { graphicView, handleGraphicChoice, graphicCategories, graphics } = props.graphicProps;
-
 
   function renderCategoryGraphics () {
     return (
@@ -35,18 +33,17 @@ export default function RenderGraphics(props) {
   function renderAllGraphics () {
     return (
       <React.Fragment>
-        {graphicCategories.map((category) => {
+        {graphicCategories.map((category, i) => {
           return (
-            <React.Fragment>
+            <React.Fragment key={i}>
               <Row key={category}>
                 <h2 style={{textDecoration: "underline"}}><strong>{imgBreakDown.subCat[category]}</strong></h2>
               </Row>
               <Row>
                 {graphics.map((graphic, i) => {
                   if(graphic.subCat === category){
-                    console.log(graphic.subCat)
                     return (
-                      <Col key={i} xs={12} sm={5} md={4} lg={4}>
+                      <Col key={category + i} xs={12} sm={5} md={4} lg={4}>
                         <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
                           <h3>{graphic.name}</h3>
                         </Thumbnail>
