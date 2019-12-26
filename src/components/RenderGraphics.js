@@ -55,7 +55,9 @@ export default function RenderGraphics(props) {
                   }
                 })}
               </Row>
-              <hr />
+              <Row>
+                <hr />
+              </Row>
             </React.Fragment>
           )
         })}
