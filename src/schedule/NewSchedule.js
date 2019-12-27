@@ -39,7 +39,7 @@ export default function NewSchedule(props) {
     if(validateForm()){
       try {
         await createEvent({ name, date, time, location });
-        props.history.push("/schedule");
+        props.history.push("/admin");
       } catch (e) {
         alert(e);
         props.history.push("admin/schedule/new");

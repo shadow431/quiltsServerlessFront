@@ -7,7 +7,7 @@ export default async function DeleteSchedule (props) {
     try {
       const body = props.location.state.props;
       await API.del("quilts", `/admin/schedule/${props.location.state.props._id}`);
-      props.history.push("/schedule");
+      props.history.push("/admin");
     }
     catch (e) {
       console.log(e);
