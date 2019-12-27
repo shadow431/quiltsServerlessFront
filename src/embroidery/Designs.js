@@ -17,7 +17,7 @@ export default function Designs (props) {
     <Grid fluid>
       <Row>
         <FormGroup controlId="formControlsSelect">
-          <ControlLabel>Choose a fabric family from this drop-down or select a shown product to continue.</ControlLabel>
+          <ControlLabel>TO CHOOSE THESE EMBROIDERY DESIGNS FOR YOUR PRODUCTS, PLEASE GO TO THE "PRODUCTS" PAGE.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
             <option value="select">Design Choice</option>
             <option value="all">All Designs</option>

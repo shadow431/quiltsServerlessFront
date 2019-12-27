@@ -1,9 +1,10 @@
 import React from "react";
-import { Col, Grid, Row, Thumbnail } from "react-bootstrap";
+import { Col, Grid, Row, Thumbnail, Button } from "react-bootstrap";
 import imgBreakDown from "./ImgBreakDown";
 
 export default function RenderGraphics(props) {
   const { graphicView, handleGraphicChoice, graphicCategories, graphics } = props.graphicProps;
+  console.log(graphicView)
 
   function renderCategoryGraphics () {
     return (
@@ -18,8 +19,9 @@ export default function RenderGraphics(props) {
             if(graphic.subCat === graphicView) {
               return (
                 <Col key={i} xs={12} sm={5} md={3} lg={4}>
-                  <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
+                  <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} alt="Image to be added soon....">
                     <h3>{graphic.name}</h3>
+                    <Button onClick={() => handleGraphicChoice(graphic)}>Choose</Button>
                   </Thumbnail>
                 </Col>
               )
@@ -44,8 +46,9 @@ export default function RenderGraphics(props) {
                   if(graphic.subCat === category){
                     return (
                       <Col key={category + i} xs={12} sm={5} md={4} lg={4}>
-                        <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} onClick={() => handleGraphicChoice(graphic)} alt="Image to be added soon....">
+                        <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} alt="Image to be added soon....">
                           <h3>{graphic.name}</h3>
+                          <Button onClick={() => handleGraphicChoice(graphic)}>Choose</Button>
                         </Thumbnail>
                       </Col>
                     )

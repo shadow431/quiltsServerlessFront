@@ -6,8 +6,6 @@ import RenderGraphics from "../components/RenderGraphics";
 import PayPalButton from "../components/PaypalButton"
 
 export default function EmbroideryHome(props) {
-  // const [graphicChoice, setGraphicChoice] = useState([]);
-  // const [graphicChosen, setGraphicChosen] = useState(false);
   const [productChoice, setProductChoice] = useState([]);
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");

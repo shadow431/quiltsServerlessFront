@@ -17,7 +17,7 @@ export default function Fabrics (props) {
     <Grid fluid >
       <Row >
         <FormGroup controlId="formControlsSelect">
-          <ControlLabel>Choose a fabric family from this drop-down or select a shown product to continue.</ControlLabel>
+          <ControlLabel>TO CHOOSE THESE FABRICS FOR YOUR KITCHEN PRODUCTS, PLEASE GO TO THE "KITCHEN ITEMS" PAGE.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
             <option value="select">Fabric Choice</option>
             <option value="all">All Fabrics</option>
