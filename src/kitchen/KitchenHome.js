@@ -18,12 +18,37 @@ export default function KitchenHome(props) {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
+  const [isLargeImage, setIsLargeImage] = useState(false);
   const typeToRender = "KIT";
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
 
   function handleGraphicView(e) {
     setGraphicView(e.target.value);
+  }
+
+  function handleLargeImage(product) {
+    setIsLargeImage(!isLargeImage ? true : false);
+    // return (
+    //   <Modal>
+    //     <img alt="Larger view" src={product.imgUrl} onClick={() => handleLargeImage()}/>
+    //   </Modal>
+    // )
+    // return (
+    //   <dialog
+    //         className="dialog"
+    //         style={{ position: 'absolute' }}
+    //         open
+    //         onClick={() => handleLargeImage()}
+    //       >
+    //         <img
+    //           className="image"
+    //           src={product.imgUrl}
+    //           onClick={() => handleLargeImage()}
+    //           alt="no image"
+    //         />
+    //       </dialog>
+    // )
   }
 
   function handleProductChoice(product) {
@@ -75,7 +100,7 @@ export default function KitchenHome(props) {
         <h4>Loading products, please be patient... </h4> : null
       }
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice, typeToRender}} /> : null
+        <RenderProducts productProps={{products, handleProductChoice, typeToRender, handleLargeImage, isLargeImage}} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
