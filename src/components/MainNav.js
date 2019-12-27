@@ -55,8 +55,10 @@ export default function MainNav (props) {
                 <FormControl componentClass="select" placeholder="select" onChange={handleNavSelection}>
                   <option value="select">Select</option>
                   <option value="/">Home</option>
-                  {/* <option value="embroidery">Embroidery</option> */}
+                  <option value="embroidery">Embroidery</option>
+                  <option value="designs">Designs</option>
                   <option value="/kitchen">Kitchen</option>
+                  <option value="/fabrics">Fabrics</option>
                   {/* <option value="quilts">Quilts</option> */}
                   <option value="/schedule">Schedule</option>
                   {auth ? (

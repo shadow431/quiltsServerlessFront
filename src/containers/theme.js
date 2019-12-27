@@ -1,18 +1,20 @@
 export const pinkTheme = {
-  body: '#ffccdd',
+  body: '#aaaaaa',
   headText: '#0b7930',
-  sideNavText: '#0b7930',
-  thumbBackground: '#fe938c',
+  sideNavText: 'black',
+  navFontWeight: "bold",
+  thumbBackground: '#aaaaaa',
   text: 'black',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
 }
 
 export const conventionalTheme = {
-  body: '#84dcc6',
+  body: '#a4c2a5',
   sideNavText: 'navy',
-  thumbBackground: '#d9fff8',
+  thumbBackground: '#a4c2a5',
   text: 'black',
+  navFontWeight: "bold",
   toggleBorder: '#6B8096',
   gradient: 'linear-gradient(#091236, #1E215D)',
 }

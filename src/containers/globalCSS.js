@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
     font-size: 16px;
     color: ${({ theme }) => theme.text};
     background: ${({ theme }) => theme.body};
+    font-weight: ${({ theme }) => theme.navFontWeight};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -42,6 +43,7 @@ export const GlobalStyles = createGlobalStyle`
   .appNav {
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.sideNavText};
+    font-weight: ${({ theme }) => theme.navFontWeight};
   }
 
   .freeShip {
