@@ -3,13 +3,11 @@ import SmartPaymentButtons, { PayPalSDKWrapper } from "react-smart-payment-butto
 import "./PaypalButton.css";
 
 export default function PayPalButton (props) {
-  console.log(props);
   const CLIENT = {
     sandbox: "ASXEP2SpZf1QwO6SDyVEBgB_pOxIKC5fgNnrF4s-0RhkGLYhJnGx8fVRaZKnaICEIbJsvEmkVHQHGL8t",
     production: "AfdNscFujmkXKAenL1jP5Xo8RmTplWtmoml-toowjWOSmMxgg0as-sq5M7m4VxixSZEzgkZD9xWbmx4C"
   }
   let quantity = props.quantity;
-  console.log(Number(props.price))
 
   return (
     <div>

@@ -103,7 +103,7 @@ function App(props) {
             {!isLoading ?
               <Routes appProps={{ isAuthenticated, userHasAuthenticated, schedule, isLoading, products, designs, fabrics }} />
               :
-              null
+              <h3>Loading, please be patient... Still working on speeding up load times!!</h3>
             }
           </div>
         </div>
