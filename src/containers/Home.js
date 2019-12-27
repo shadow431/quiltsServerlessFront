@@ -10,7 +10,7 @@ export default function Home(props) {
   return (
     <Grid className="Home">
       <Row>
-        <Col xs={12} sm={9} md={10} lg={5}>
+        <Col xs={12} sm={9} md={10} lg={12}>
           <Carousel interval={5000}>
             {homeImgs.map((img, i) => {
               return (
@@ -20,10 +20,10 @@ export default function Home(props) {
             )})}
           </Carousel>
         </Col>
-        <Col xs={12} sm={9} md={10} lg={7}>
+        <Col xs={12} sm={9} md={10} lg={12}>
           <div className="HomeBlurb">
-            <h1 className="HomeBlurbHeader">WELCOME TO OUR WEBSITE!!</h1>
-            <p>
+            <h1 className="HomeBlurbHeader text-center">WELCOME TO OUR WEBSITE!!</h1>
+            {/* <p>
               My name is Wanda, I operate a home based business located in Maple Falls, WA.
             </p>
             <p>
@@ -35,8 +35,8 @@ export default function Home(props) {
               On the days I am home you will find me down in my sewing rooms with the machines working. I strive to make quality products that last for many years.
               Enjoy looking through our web site. Please contact us if you have any
               questions.
-            </p>
-            <p>
+            </p> */}
+            <p className="text-center">
               Thank you for the many customers that keep me working.
             </p>
           </div>

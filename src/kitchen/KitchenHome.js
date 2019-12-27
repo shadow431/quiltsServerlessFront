@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
+import Modal from "react-modal";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
 import RenderProducts from "../components/RenderProducts";
@@ -29,26 +30,34 @@ export default function KitchenHome(props) {
 
   function handleLargeImage(product) {
     setIsLargeImage(!isLargeImage ? true : false);
-    // return (
-    //   <Modal>
-    //     <img alt="Larger view" src={product.imgUrl} onClick={() => handleLargeImage()}/>
-    //   </Modal>
-    // )
-    // return (
-    //   <dialog
-    //         className="dialog"
-    //         style={{ position: 'absolute' }}
-    //         open
-    //         onClick={() => handleLargeImage()}
-    //       >
-    //         <img
-    //           className="image"
-    //           src={product.imgUrl}
-    //           onClick={() => handleLargeImage()}
-    //           alt="no image"
-    //         />
-    //       </dialog>
-    // )
+    if(isLargeImage) {
+      return showModal(product);
+    }
+  }
+
+  function showModal(item) {
+    const customStyles = {
+      content : {
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+      }
+    };
+    return (
+      <Modal
+        isOpen={true}
+        // onRequestClose={handleLargeImage}
+        style={customStyles}
+        contentLabel={item.name}
+      >
+        <img alt="Large showing" src={item.imgUrl} />
+        <Button  onClick={() => handleLargeImage()}>Close</Button>
+        <Button onClick={() => handleProductChoice(item)}>{item.name}</Button>
+      </Modal>
+    )
   }
 
   function handleProductChoice(product) {
