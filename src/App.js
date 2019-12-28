@@ -75,10 +75,7 @@ function App(props) {
     }
   }
 
-  console.log("app largeImg", isLargeImage);
-
   function LargerImage () {
-    console.log(currentLargeImg);
     const customStyles = {
       content : {
         top                   : '50%',
@@ -99,6 +96,7 @@ function App(props) {
       >
         <img alt="Large showing" src={currentLargeImg.imgUrl} />
         <br />
+        <h3>{currentLargeImg.name}</h3>
         <Button onClick={() => {setCurrentLargeImg([]); setIsLargeImage(false);}}>Close</Button>
       </Modal>
     )
@@ -123,6 +121,11 @@ function App(props) {
     setGraphicChoice(graphic);
     setGraphicChosen(true);
     setIsLargeImage(false);
+    if(graphic.type === "FAB") {
+      history.push("/kitchen");
+    } else if(graphic.type === "EMB") {
+      history.push("/embroidery");
+    }
   }
 
   function handleGraphicView(e) {

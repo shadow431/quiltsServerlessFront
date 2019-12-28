@@ -4,14 +4,11 @@ import { Grid, Row, FormGroup, FormControl, ControlLabel } from "react-bootstrap
 import imgBreakDown from "../components/ImgBreakDown";
 
 export default function Fabrics (props) {
-  const { fabrics } = props;
+  const { fabrics, graphicView, setGraphicView, isLargeImage, LargerImage, handleGraphicView, handleLargeImage, handleGraphicChoice } = props;
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
-  const [graphicView, setGraphicView] = useState("all");
 
-  function handleGraphicView(e) {
-    setGraphicView(e.target.value);
-  }
+  setGraphicView("all");
 
   return (
     <Grid fluid >
@@ -29,7 +26,8 @@ export default function Fabrics (props) {
           </FormControl>
         </FormGroup>
       </Row>
-      <RenderGraphics graphicProps={{ graphicCategories, graphicView, graphics }} />
+      {isLargeImage ? <LargerImage /> : null}
+      <RenderGraphics graphicProps={{ graphicCategories, graphicView, graphics, handleLargeImage, handleGraphicChoice }} />
     </Grid>
   )
 }

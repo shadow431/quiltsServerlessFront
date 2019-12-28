@@ -51,8 +51,6 @@ export default function KitchenHome(props) {
   const typeToRender = "KIT";
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
-  console.log("kitchen largeImg", isLargeImage);
-  console.log("kitchen largeImg", currentLargeImg);
 
   // function handleGraphicView(e) {
   //   setGraphicView(e.target.value);
