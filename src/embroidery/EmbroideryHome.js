@@ -12,6 +12,7 @@ export default function EmbroideryHome(props) {
   const [graphicChoice, setGraphicChoice] = useState("");
   const [graphicChosen, setGraphicChosen] = useState(false);
   const [graphicView, setGraphicView] = useState("select");
+  const [isLargeImage, setIsLargeImage] = useState(false);
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [purchasePrice, setPurchasePrice] = useState("");
@@ -31,13 +32,19 @@ export default function EmbroideryHome(props) {
     // setQuantity(1);
   }
 
+  function handleLargeImage() {
+    setIsLargeImage(!isLargeImage ? true : false);
+  }
+
   function handleGraphicChoice(graphic) {
     setGraphicChoice(graphic);
     setGraphicChosen(true);
+    setIsLargeImage(false);
   }
 
   function handleGraphicView(e) {
     setGraphicView(e.target.value);
+    setIsLargeImage(false);
   }
 
   return (
@@ -75,7 +82,7 @@ export default function EmbroideryHome(props) {
         <h4>Loading products, please be patient... </h4> : null
       }
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice, typeToRender}} /> : null
+        <RenderProducts productProps={{products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage}} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -98,7 +105,7 @@ export default function EmbroideryHome(props) {
       {graphicView !== "select" && !graphicChosen && !isLoading ?
         (<React.Fragment>
           <h3>Fabric Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics}} />
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage }} />
         </React.Fragment>
         ) : null
       }

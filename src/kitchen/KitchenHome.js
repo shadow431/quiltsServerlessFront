@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
-import Modal from "react-modal";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
 import RenderProducts from "../components/RenderProducts";
@@ -30,34 +29,6 @@ export default function KitchenHome(props) {
 
   function handleLargeImage(product) {
     setIsLargeImage(!isLargeImage ? true : false);
-    if(isLargeImage) {
-      return showModal(product);
-    }
-  }
-
-  function showModal(item) {
-    const customStyles = {
-      content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)'
-      }
-    };
-    return (
-      <Modal
-        isOpen={true}
-        // onRequestClose={handleLargeImage}
-        style={customStyles}
-        contentLabel={item.name}
-      >
-        <img alt="Large showing" src={item.imgUrl} />
-        <Button  onClick={() => handleLargeImage()}>Close</Button>
-        <Button onClick={() => handleProductChoice(item)}>{item.name}</Button>
-      </Modal>
-    )
   }
 
   function handleProductChoice(product) {
@@ -66,12 +37,14 @@ export default function KitchenHome(props) {
     setProductChosen(true);
     setPrice(product.price);
     setPurchasePrice(Number(product.price));
+    setIsLargeImage(false);
     // setQuantity(1);
   }
 
   function handleGraphicChoice(graphic) {
     setGraphicChoice(graphic);
     setGraphicChosen(true);
+    setIsLargeImage(false);
   }
 
   return (
@@ -132,7 +105,7 @@ export default function KitchenHome(props) {
       {graphicView !== "select" && !graphicChosen ?
         (<React.Fragment>
           <h3>Fabric Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics}} />
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage}} />
         </React.Fragment>
         ) : null
       }
