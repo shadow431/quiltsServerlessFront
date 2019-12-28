@@ -46,10 +46,9 @@ export default function RenderProducts(props) {
                   <Thumbnail className="renderThumb" key={product._id} src={product.imgUrl} alt="Image to be added soon....">
                     <h3>{product.name}</h3>
                     <h4>{`$${product.price}`}</h4>
-                    <Button onClick={() => {console.log("button", product); handleLargeImage(product);}}>Enlarge</Button>
+                    <Button onClick={() => handleLargeImage(product)}>Enlarge</Button>
                     <Button onClick={() => handleProductChoice(product)}>Choose</Button>
                   </Thumbnail>
-                  {isLargeImage ? <LargerImage /> : null}
                 </React.Fragment>
               </Col>
             )

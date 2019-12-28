@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Thumbnail, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import PayPalButton from "../components/PaypalButton";
@@ -10,6 +10,7 @@ import RenderGraphics from "../components/RenderGraphics";
 export default function KitchenHome(props) {
   const {
     fabrics,
+    LargerImage,
     currentGraphic,
     setCurrentGraphic,
     isLoading,
@@ -29,6 +30,7 @@ export default function KitchenHome(props) {
     setProductChoice,
     isLargeImage,
     setCurrentLargeImg,
+    currentLargeImg,
     graphicView,
     setGraphicView,
     price,
@@ -49,6 +51,8 @@ export default function KitchenHome(props) {
   const typeToRender = "KIT";
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
+  console.log("kitchen largeImg", isLargeImage);
+  console.log("kitchen largeImg", currentLargeImg);
 
   // function handleGraphicView(e) {
   //   setGraphicView(e.target.value);
@@ -105,9 +109,7 @@ export default function KitchenHome(props) {
         </FormGroup>
         ) : null
       }
-      {isLoading ?
-        <h4>Loading products, please be patient... </h4> : null
-      }
+      {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
         <RenderProducts productProps={{products, handleProductChoice, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
       }
@@ -132,7 +134,7 @@ export default function KitchenHome(props) {
       {graphicView !== "select" && !graphicChosen ?
         (<React.Fragment>
           <h3>Design Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, currentGraphic, setCurrentGraphic }} />
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, currentGraphic, setCurrentGraphic, setCurrentLargeImg }} />
         </React.Fragment>
         ) : null
       }

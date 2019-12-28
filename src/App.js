@@ -75,6 +75,8 @@ function App(props) {
     }
   }
 
+  console.log("app largeImg", isLargeImage);
+
   function LargerImage () {
     console.log(currentLargeImg);
     const customStyles = {
@@ -97,7 +99,7 @@ function App(props) {
       >
         <img alt="Large showing" src={currentLargeImg.imgUrl} />
         <br />
-        <Button onClick={() => handleLargeImage()}>Close</Button>
+        <Button onClick={() => {setCurrentLargeImg([]); setIsLargeImage(false);}}>Close</Button>
       </Modal>
     )
   }
@@ -112,11 +114,9 @@ function App(props) {
     // setQuantity(1);
   }
 
-  async function handleLargeImage(product) {
-    await setCurrentLargeImg(product);
-    if (currentLargeImg.length !== 0) {
-      setIsLargeImage(!isLargeImage ? true : false);
-    }
+  function handleLargeImage(product) {
+    setCurrentLargeImg(product);
+    setIsLargeImage(true);
   }
 
   function handleGraphicChoice(graphic) {
@@ -179,6 +179,7 @@ function App(props) {
                   handleLargeImage,
                   handleGraphicView,
                   handleGraphicChoice,
+                  isLargeImage,
                   graphicChoice,
                   graphicChosen,
                   productChoice,
