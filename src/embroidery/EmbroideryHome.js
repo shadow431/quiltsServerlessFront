@@ -6,16 +6,6 @@ import RenderGraphics from "../components/RenderGraphics";
 import PayPalButton from "../components/PaypalButton"
 
 export default function EmbroideryHome(props) {
-  // const [productChoice, setProductChoice] = useState([]);
-  // const [productChosen, setProductChosen] = useState(false);
-  // const [productTypeChosen, setProductTypeChosen] = useState("");
-  // const [graphicChoice, setGraphicChoice] = useState("");
-  // const [graphicChosen, setGraphicChosen] = useState(false);
-  // const [graphicView, setGraphicView] = useState("select");
-  // const [isLargeImage, setIsLargeImage] = useState(false);
-  // const [price, setPrice] = useState("");
-  // const [quantity, setQuantity] = useState("");
-  // const [purchasePrice, setPurchasePrice] = useState("");
   const typeToRender = "EMB";
 
   const {
@@ -36,6 +26,7 @@ export default function EmbroideryHome(props) {
     productChoice,
     setProductChoice,
     isLargeImage,
+    LargerImage,
     graphicView,
     setGraphicView,
     price,
@@ -103,9 +94,7 @@ export default function EmbroideryHome(props) {
         </FormGroup>
         ) : null
       }
-      {isLoading ?
-        <h4>Loading products, please be patient... </h4> : null
-      }
+      {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
         <RenderProducts productProps={{products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage}} /> : null
       }
