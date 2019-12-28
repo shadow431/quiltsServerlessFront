@@ -53,7 +53,7 @@ export default function EmbroideryHome(props) {
         <React.Fragment>
           <div className="EmbroideryHomeHeader" style={{ paddingLeft: "20px" }}>
             <h3>Welcome to the Embroidery Items!!!</h3>
-            <p>Feel free to pick out the Design you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
+            <p>Feel free to pick out the design you would like to start with and we will go through the new and improved process of getting you to your desires!!</p>
             <p>Simply click on the product you want to continue!!</p>
             <span className="freeShip">FREE SHIPPING ON ORDERS $60.00 AND OVER.</span><br />
           </div>
@@ -65,7 +65,7 @@ export default function EmbroideryHome(props) {
       {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
       {!graphicChosen || !productChosen ? (
         <FormGroup controlId="formControlsSelect">
-          <ControlLabel>Choose a fabric family from this drop-down or select a shown product to continue.</ControlLabel>
+          <ControlLabel>Choose a design family from this drop-down or select a shown product to continue.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
             <option value="select">Design Choice</option>
             <option value="all">All Designs</option>
@@ -86,7 +86,7 @@ export default function EmbroideryHome(props) {
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
-          <h3>Current Fabric Choice</h3>
+          <h3>Current Design Choice</h3>
           <Thumbnail className="renderThumb" key={graphicChoice._id} src={graphicChoice.imgUrl} alt="Image to be added soon....">
             <h3>{graphicChoice.name}</h3>
           </Thumbnail>
@@ -104,7 +104,7 @@ export default function EmbroideryHome(props) {
       }
       {graphicView !== "select" && !graphicChosen && !isLoading ?
         (<React.Fragment>
-          <h3>Fabric Options, Click one to choose!!</h3>
+          <h3>Design Options, Click one to choose!!</h3>
           <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage }} />
         </React.Fragment>
         ) : null

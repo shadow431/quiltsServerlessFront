@@ -104,7 +104,7 @@ export default function KitchenHome(props) {
       }
       {graphicView !== "select" && !graphicChosen ?
         (<React.Fragment>
-          <h3>Fabric Options, Click one to choose!!</h3>
+          <h3>Design Options, Click one to choose!!</h3>
           <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage}} />
         </React.Fragment>
         ) : null
