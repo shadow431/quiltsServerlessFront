@@ -121,7 +121,15 @@ function App(props) {
     setGraphicChoice(graphic);
     setGraphicChosen(true);
     setIsLargeImage(false);
-    if(graphic.type === "FAB") {
+    if(graphic.type === "FAB" && productChoice.type === "EMB") {
+      setProductChoice([]);
+      setProductChosen(false);
+      history.push("/kitchen");
+    } else if(graphic.type === "EMB" && productChoice.type === "KIT") {
+      setProductChoice([]);
+      setProductChosen(false);
+      history.push("/embroidery");
+    } else if(graphic.type === "FAB") {
       history.push("/kitchen");
     } else if(graphic.type === "EMB") {
       history.push("/embroidery");

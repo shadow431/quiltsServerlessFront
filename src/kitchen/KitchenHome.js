@@ -38,16 +38,6 @@ export default function KitchenHome(props) {
     purchasePrice,
     setPurchasePrice
   } = props;
-  // const [graphicChoice, setGraphicChoice] = useState([]);
-  // const [graphicChosen, setGraphicChosen] = useState(false);
-  // const [productChoice, setProductChoice] = useState([]);
-  // const [productChosen, setProductChosen] = useState(false);
-  // const [productTypeChosen, setProductTypeChosen] = useState("");
-  // const [graphicView, setGraphicView] = useState("select");
-  // const [price, setPrice] = useState("");
-  // const [quantity, setQuantity] = useState("");
-  // const [purchasePrice, setPurchasePrice] = useState("");
-  // const [isLargeImage, setIsLargeImage] = useState(false);
   const typeToRender = "KIT";
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
