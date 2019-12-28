@@ -8,44 +8,71 @@ import "../containers/globalCSS.js";
 import RenderGraphics from "../components/RenderGraphics";
 
 export default function KitchenHome(props) {
-  const { fabrics, isLoading, products } = props;
-  const [graphicChoice, setGraphicChoice] = useState([]);
-  const [graphicChosen, setGraphicChosen] = useState(false);
-  const [productChoice, setProductChoice] = useState([]);
-  const [productChosen, setProductChosen] = useState(false);
-  const [productTypeChosen, setProductTypeChosen] = useState("");
-  const [graphicView, setGraphicView] = useState("select");
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [purchasePrice, setPurchasePrice] = useState("");
-  const [isLargeImage, setIsLargeImage] = useState(false);
+  const {
+    fabrics,
+    currentGraphic,
+    setCurrentGraphic,
+    isLoading,
+    products,
+    handleGraphicView,
+    handleLargeImage,
+    handleGraphicChoice,
+    handleProductChoice,
+    graphicChoice,
+    setGraphicChoice,
+    graphicChosen,
+    setGraphicChosen,
+    productTypeChosen,
+    setProductChosen,
+    productChosen,
+    productChoice,
+    setProductChoice,
+    isLargeImage,
+    setCurrentLargeImg,
+    graphicView,
+    setGraphicView,
+    price,
+    setPrice,
+    purchasePrice,
+    setPurchasePrice
+  } = props;
+  // const [graphicChoice, setGraphicChoice] = useState([]);
+  // const [graphicChosen, setGraphicChosen] = useState(false);
+  // const [productChoice, setProductChoice] = useState([]);
+  // const [productChosen, setProductChosen] = useState(false);
+  // const [productTypeChosen, setProductTypeChosen] = useState("");
+  // const [graphicView, setGraphicView] = useState("select");
+  // const [price, setPrice] = useState("");
+  // const [quantity, setQuantity] = useState("");
+  // const [purchasePrice, setPurchasePrice] = useState("");
+  // const [isLargeImage, setIsLargeImage] = useState(false);
   const typeToRender = "KIT";
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
 
-  function handleGraphicView(e) {
-    setGraphicView(e.target.value);
-  }
+  // function handleGraphicView(e) {
+  //   setGraphicView(e.target.value);
+  // }
 
-  function handleLargeImage(product) {
-    setIsLargeImage(!isLargeImage ? true : false);
-  }
+  // function handleLargeImage(product) {
+  //   setIsLargeImage(!isLargeImage ? true : false);
+  // }
 
-  function handleProductChoice(product) {
-    setProductChoice(product);
-    setProductTypeChosen(product.subCat);
-    setProductChosen(true);
-    setPrice(product.price);
-    setPurchasePrice(Number(product.price));
-    setIsLargeImage(false);
-    // setQuantity(1);
-  }
+  // function handleProductChoice(product) {
+  //   setProductChoice(product);
+  //   setProductTypeChosen(product.subCat.toUpperCase());
+  //   setProductChosen(true);
+  //   setPrice(product.price);
+  //   setPurchasePrice(Number(product.price));
+  //   setIsLargeImage(false);
+  //   // setQuantity(1);
+  // }
 
-  function handleGraphicChoice(graphic) {
-    setGraphicChoice(graphic);
-    setGraphicChosen(true);
-    setIsLargeImage(false);
-  }
+  // function handleGraphicChoice(graphic) {
+  //   setGraphicChoice(graphic);
+  //   setGraphicChosen(true);
+  //   setIsLargeImage(false);
+  // }
 
   return (
     <div className="KitchenHome container">
@@ -82,7 +109,7 @@ export default function KitchenHome(props) {
         <h4>Loading products, please be patient... </h4> : null
       }
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice, typeToRender, handleLargeImage, isLargeImage}} /> : null
+        <RenderProducts productProps={{products, handleProductChoice, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -105,7 +132,7 @@ export default function KitchenHome(props) {
       {graphicView !== "select" && !graphicChosen ?
         (<React.Fragment>
           <h3>Design Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage}} />
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, currentGraphic, setCurrentGraphic }} />
         </React.Fragment>
         ) : null
       }
@@ -133,7 +160,7 @@ export default function KitchenHome(props) {
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
           </FormGroup> */}
-          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
         ) : null
       }

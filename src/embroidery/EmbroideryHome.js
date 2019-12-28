@@ -6,46 +6,71 @@ import RenderGraphics from "../components/RenderGraphics";
 import PayPalButton from "../components/PaypalButton"
 
 export default function EmbroideryHome(props) {
-  const [productChoice, setProductChoice] = useState([]);
-  const [productChosen, setProductChosen] = useState(false);
-  const [productTypeChosen, setProductTypeChosen] = useState("");
-  const [graphicChoice, setGraphicChoice] = useState("");
-  const [graphicChosen, setGraphicChosen] = useState(false);
-  const [graphicView, setGraphicView] = useState("select");
-  const [isLargeImage, setIsLargeImage] = useState(false);
-  const [price, setPrice] = useState("");
-  const [quantity, setQuantity] = useState("");
-  const [purchasePrice, setPurchasePrice] = useState("");
+  // const [productChoice, setProductChoice] = useState([]);
+  // const [productChosen, setProductChosen] = useState(false);
+  // const [productTypeChosen, setProductTypeChosen] = useState("");
+  // const [graphicChoice, setGraphicChoice] = useState("");
+  // const [graphicChosen, setGraphicChosen] = useState(false);
+  // const [graphicView, setGraphicView] = useState("select");
+  // const [isLargeImage, setIsLargeImage] = useState(false);
+  // const [price, setPrice] = useState("");
+  // const [quantity, setQuantity] = useState("");
+  // const [purchasePrice, setPurchasePrice] = useState("");
   const typeToRender = "EMB";
 
-  const { designs, products, isLoading } = props;
+  const {
+    designs,
+    isLoading,
+    products,
+    handleGraphicView,
+    handleLargeImage,
+    handleGraphicChoice,
+    handleProductChoice,
+    graphicChoice,
+    setGraphicChoice,
+    graphicChosen,
+    setGraphicChosen,
+    productTypeChosen,
+    setProductChosen,
+    productChosen,
+    productChoice,
+    setProductChoice,
+    isLargeImage,
+    graphicView,
+    setGraphicView,
+    price,
+    setPrice,
+    purchasePrice,
+    setPurchasePrice
+  } = props;
+
   const graphics = designs;
 
   const graphicCategories = ["afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bov", "box", "blt", "brr", "brt", "bru", "can", "cah", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "lgm", "leo", "lhp", "mal", "mas", "min", "mor", "new", "nor", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
 
-  function handleProductChoice(product) {
-    setProductChoice(product);
-    setProductTypeChosen(product.subCat.toUpperCase());
-    setProductChosen(true);
-    setPrice(product.price);
-    setPurchasePrice(Number(product.price));
-    // setQuantity(1);
-  }
+  // function handleProductChoice(product) {
+  //   setProductChoice(product);
+  //   setProductTypeChosen(product.subCat.toUpperCase());
+  //   setProductChosen(true);
+  //   setPrice(product.price);
+  //   setPurchasePrice(Number(product.price));
+  //   // setQuantity(1);
+  // }
 
-  function handleLargeImage() {
-    setIsLargeImage(!isLargeImage ? true : false);
-  }
+  // function handleLargeImage() {
+  //   setIsLargeImage(!isLargeImage ? true : false);
+  // }
 
-  function handleGraphicChoice(graphic) {
-    setGraphicChoice(graphic);
-    setGraphicChosen(true);
-    setIsLargeImage(false);
-  }
+  // function handleGraphicChoice(graphic) {
+  //   setGraphicChoice(graphic);
+  //   setGraphicChosen(true);
+  //   setIsLargeImage(false);
+  // }
 
-  function handleGraphicView(e) {
-    setGraphicView(e.target.value);
-    setIsLargeImage(false);
-  }
+  // function handleGraphicView(e) {
+  //   setGraphicView(e.target.value);
+  //   setIsLargeImage(false);
+  // }
 
   return (
     <div className="embroideryHome container">
@@ -133,7 +158,7 @@ export default function EmbroideryHome(props) {
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
           </FormGroup> */}
-          <PayPalButton paypalId={productChoice.paypalId} quantity={quantity} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
         ) : null
       }
