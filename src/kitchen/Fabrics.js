@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import RenderGraphics from "../components/RenderGraphics";
 import { Grid, Row, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
@@ -8,13 +8,11 @@ export default function Fabrics (props) {
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
 
-  setGraphicView("all");
-
   return (
     <Grid fluid >
       <Row >
         <FormGroup controlId="formControlsSelect">
-          <ControlLabel>TO CHOOSE THESE FABRICS FOR YOUR KITCHEN PRODUCTS, PLEASE GO TO THE "KITCHEN ITEMS" PAGE.</ControlLabel>
+          <ControlLabel>Feel free to browse through the Fabric Designs and choose what meets your fancy!!</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
             <option value="select">Fabric Choice</option>
             <option value="all">All Fabrics</option>

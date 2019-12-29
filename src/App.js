@@ -47,6 +47,7 @@ function App(props) {
       setDesigns(designs);
       const fabrics = await API.get("quilts", "/fabric");
       setFabrics(fabrics);
+      setGraphicView("all");
       await Auth.currentSession();
       userHasAuthenticated(true);
     }
@@ -109,6 +110,13 @@ function App(props) {
     setPrice(product.price);
     setPurchasePrice(Number(product.price));
     setIsLargeImage(false);
+    if(graphicChoice.type === "FAB" && product.type === "EMB") {
+      setGraphicChoice([]);
+      setGraphicChosen(false);
+    } else if(graphicChoice.type === "EMB" && product.type === "KIT") {
+      setGraphicChoice([]);
+      setGraphicChosen(false);
+    }
     // setQuantity(1);
   }
 
@@ -174,7 +182,7 @@ function App(props) {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          <MainNav history={history} auth={isAuthenticated} />
+          <MainNav history={history} auth={isAuthenticated} setGraphicView={setGraphicView} />
           <div style={{display: 'flex'}}>
             {!isLoading ?
               <Routes appProps={

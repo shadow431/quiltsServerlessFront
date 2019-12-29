@@ -5,11 +5,12 @@ import "../containers/globalCSS.js";
 
 export default function MainNav (props) {
   const [ navKey, setNavKey ] = useState("");
-  const { history, auth } = props;
+  const { history, auth, setGraphicView } = props;
 
   function handleNavSelection (e) {
     history.push(`${e.target.value}`);
   }
+
   return (
     <React.Fragment>
       {window.location.pathname.includes("/admin") || window.location.pathname.includes("/login") ? null : (
@@ -18,16 +19,16 @@ export default function MainNav (props) {
           matches
             ? (
             <Nav className="Home KitchenHomeNav Schedule" bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
-              <NavItem eventKey={1} onClick={() => {history.push("/embroidery"); setNavKey(1);}}>
+              <NavItem eventKey={1} onClick={() => {setGraphicView("all"); history.push("/embroidery"); setNavKey(1);}}>
                 Products
               </NavItem>
-              <NavItem eventKey={2} onClick={() => {history.push("/designs"); setNavKey(2);}}>
+              <NavItem eventKey={2} onClick={() => {setGraphicView("all"); history.push("/designs"); setNavKey(2);}}>
                 Embroidery
               </NavItem>
-              <NavItem eventKey={3} onClick={() => {history.push("/kitchen"); setNavKey(3);}}>
+              <NavItem eventKey={3} onClick={() => {setGraphicView("all"); history.push("/kitchen"); setNavKey(3);}}>
                 Kitchen Items
               </NavItem>
-              <NavItem eventKey={4} onClick={() => {history.push("/fabrics"); setNavKey(4);}}>
+              <NavItem eventKey={4} onClick={() => {setGraphicView("all"); history.push("/fabrics"); setNavKey(4);}}>
                 Fabrics
               </NavItem>
               {/* <NavItem eventKey={3} onClick={() => {history.push("/quilts"); setNavKey(3);}}>

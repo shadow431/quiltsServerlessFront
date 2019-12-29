@@ -8,13 +8,11 @@ export default function Designs (props) {
   const graphicCategories = ["afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bov", "box", "blt", "brr", "brt", "bru", "can", "cah", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "lgm", "leo", "lhp", "mal", "mas", "min", "mor", "new", "nor", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
   const graphics = designs;
 
-  setGraphicView("all");
-
   return (
     <Grid fluid>
       <Row>
         <FormGroup controlId="formControlsSelect">
-          <ControlLabel>TO CHOOSE THESE EMBROIDERY DESIGNS FOR YOUR PRODUCTS, PLEASE GO TO THE "PRODUCTS" PAGE.</ControlLabel>
+          <ControlLabel>Welcome to Embroidery!!  Feel free to browse through and choose a design.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
             <option value="select">Design Choice</option>
             <option value="all">All Designs</option>

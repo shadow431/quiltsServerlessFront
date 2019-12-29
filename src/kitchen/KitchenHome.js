@@ -42,30 +42,6 @@ export default function KitchenHome(props) {
   const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
 
-  // function handleGraphicView(e) {
-  //   setGraphicView(e.target.value);
-  // }
-
-  // function handleLargeImage(product) {
-  //   setIsLargeImage(!isLargeImage ? true : false);
-  // }
-
-  // function handleProductChoice(product) {
-  //   setProductChoice(product);
-  //   setProductTypeChosen(product.subCat.toUpperCase());
-  //   setProductChosen(true);
-  //   setPrice(product.price);
-  //   setPurchasePrice(Number(product.price));
-  //   setIsLargeImage(false);
-  //   // setQuantity(1);
-  // }
-
-  // function handleGraphicChoice(graphic) {
-  //   setGraphicChoice(graphic);
-  //   setGraphicChosen(true);
-  //   setIsLargeImage(false);
-  // }
-
   return (
     <div className="KitchenHome container">
       {!productChosen ? (
@@ -139,17 +115,6 @@ export default function KitchenHome(props) {
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
           </div>
-          {/* <FormGroup controlId="formControlsSelect">
-            <ControlLabel>Select</ControlLabel>
-            <FormControl componentClass="select" placeholder="select" onChange={(e) => {setQuantity(e.target.value); setPurchasePrice(price * e.target.value);}}>
-              <option value="select">Choose Quantity</option>
-              <option value="1">{`1 = $${price * 1}`}</option>
-              <option value="2">{`2 = $${price * 2}`}</option>
-              <option value="3">{`3 = $${price * 3}`}</option>
-              <option value="4">{`4 = $${price * 4}`}</option>
-              <option value="5">{`5 = $${price * 5}`}</option>
-            </FormControl>
-          </FormGroup> */}
           <PayPalButton paypalId={productChoice.paypalId} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
         ) : null
