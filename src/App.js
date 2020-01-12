@@ -32,6 +32,8 @@ function App(props) {
   const [purchasePrice, setPurchasePrice] = useState("");
   const [isLargeImage, setIsLargeImage] = useState(false);
   const [currentLargeImg, setCurrentLargeImg] = useState([]);
+  const [colorChoice, setColorChoice] = useState("");
+  const [colorChosen, setColorChosen] = useState(false);
 
   useEffect(() => {
     onLoad();
@@ -76,6 +78,16 @@ function App(props) {
     }
   }
 
+  function startOver() {
+    setProductChosen(false);
+    setProductChoice([]);
+    setGraphicChosen(false);
+    setGraphicChoice([]);
+    setGraphicView("all");
+    setColorChoice("");
+    setColorChosen(false);
+  }
+
   function LargerImage () {
     const customStyles = {
       content : {
@@ -98,6 +110,8 @@ function App(props) {
         <img alt="Large showing" src={currentLargeImg.imgUrl} />
         <br />
         <h3>{currentLargeImg.name}</h3>
+        <h5>{currentLargeImg.desc}</h5>
+        <h5>{currentLargeImg.price}</h5>
         <Button onClick={() => {setCurrentLargeImg([]); setIsLargeImage(false);}}>Close</Button>
       </Modal>
     )
@@ -123,6 +137,11 @@ function App(props) {
   function handleLargeImage(product) {
     setCurrentLargeImg(product);
     setIsLargeImage(true);
+  }
+
+  function handleColorChoice(e) {
+    setColorChoice(e.target.value);
+    setColorChosen(true);
   }
 
   function handleGraphicChoice(graphic) {
@@ -182,7 +201,7 @@ function App(props) {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          <MainNav history={history} auth={isAuthenticated} setGraphicView={setGraphicView} />
+          <MainNav history={history} auth={isAuthenticated} startOver={startOver} />
           <div style={{display: 'flex'}}>
             {!isLoading ?
               <Routes appProps={
@@ -203,6 +222,11 @@ function App(props) {
                   graphicChosen,
                   productChoice,
                   productChosen,
+                  colorChoice,
+                  colorChosen,
+                  setColorChoice,
+                  setColorChosen,
+                  handleColorChoice,
                   productTypeChosen,
                   setGraphicView,
                   graphicView,

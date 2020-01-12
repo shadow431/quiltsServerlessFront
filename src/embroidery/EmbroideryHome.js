@@ -16,9 +16,14 @@ export default function EmbroideryHome(props) {
     handleLargeImage,
     handleGraphicChoice,
     handleProductChoice,
+    colorChoice,
+    colorChosen,
+    setColorChosen,
+    setColorChoice,
     graphicChoice,
     setGraphicChoice,
     graphicChosen,
+    handleColorChoice,
     setGraphicChosen,
     productTypeChosen,
     setProductChosen,
@@ -39,30 +44,6 @@ export default function EmbroideryHome(props) {
 
   const graphicCategories = ["afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bov", "box", "blt", "brr", "brt", "bru", "can", "cah", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "lgm", "leo", "lhp", "mal", "mas", "min", "mor", "new", "nor", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
 
-  // function handleProductChoice(product) {
-  //   setProductChoice(product);
-  //   setProductTypeChosen(product.subCat.toUpperCase());
-  //   setProductChosen(true);
-  //   setPrice(product.price);
-  //   setPurchasePrice(Number(product.price));
-  //   // setQuantity(1);
-  // }
-
-  // function handleLargeImage() {
-  //   setIsLargeImage(!isLargeImage ? true : false);
-  // }
-
-  // function handleGraphicChoice(graphic) {
-  //   setGraphicChoice(graphic);
-  //   setGraphicChosen(true);
-  //   setIsLargeImage(false);
-  // }
-
-  // function handleGraphicView(e) {
-  //   setGraphicView(e.target.value);
-  //   setIsLargeImage(false);
-  // }
-
   return (
     <div className="embroideryHome container">
       {!productChosen ? (
@@ -76,8 +57,8 @@ export default function EmbroideryHome(props) {
         </React.Fragment>
       ) : null
       }
-      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]); setGraphicView("all")}}>Start Over</Button> : null}
-      {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button> : null}
+      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]); setGraphicView("all"); setColorChoice(""); setColorChosen(false); }}>Start Over</Button> : null}
+      {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setColorChoice(""); setColorChosen(false); }}>Change Product</Button> : null}
       {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
       {!graphicChosen || !productChosen ? (
         <FormGroup controlId="formControlsSelect">
@@ -96,7 +77,7 @@ export default function EmbroideryHome(props) {
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage}} /> : null
+        <RenderProducts productProps={{products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage, handleColorChoice}} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -111,7 +92,7 @@ export default function EmbroideryHome(props) {
         <React.Fragment>
           <Thumbnail className="renderThumb" key={productChoice._id} src={productChoice.imgUrl} alt="Image to be added soon....">
             <h5>{productChoice.name}</h5>
-            <h5>{productChoice.desc}</h5>
+            {colorChosen && <h5>{colorChoice}</h5>}
           </Thumbnail>
         </React.Fragment>
         ) : null
@@ -133,6 +114,7 @@ export default function EmbroideryHome(props) {
             </Thumbnail>
             <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].type} src={productChoice.imgUrl} alt="Image to be added soon....">
               <h5>{productChoice.name}</h5>
+              {colorChosen && <h5>{colorChoice}</h5>}
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
           </div>
@@ -147,24 +129,10 @@ export default function EmbroideryHome(props) {
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
           </FormGroup> */}
-          <PayPalButton paypalId={productChoice.paypalId} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
         ) : null
       }
     </div>
   )
 }
-
-// {colorChosen ? (
-//   <React.Fragment>
-//     {/* <h3>{colorChoice}</h3> */}
-//     <Thumbnail style={{overflow:"auto"}} key={fabricChoice._id} src={fabricChoice.imgUrl} alt="Well, something didn't work...">
-//       <h3>Fabric Chosen</h3>
-//     </Thumbnail>
-//     <Thumbnail style={{overflow:"auto"}} key={imgBreakDown.typeOutline[prodTypeChosen].prodType} src={imgBreakDown.typeOutline[prodTypeChosen].prodImgLocation} alt="Well, something didn't work...">
-//       <h3>Product Chosen</h3>
-//       <h3>{imgBreakDown.typeOutline[prodTypeChosen].prodType}</h3>
-//     </Thumbnail>
-//   </React.Fragment>
-//   ) : null
-// }

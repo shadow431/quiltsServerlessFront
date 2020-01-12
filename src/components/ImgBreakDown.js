@@ -1,5 +1,12 @@
 const imgBreakDown = {
   typeOutline: {
+    APR: {
+      type: "Apron",
+      desc: "Great for keeping your clothes clean while cooking and looking good while doing it!",
+      price: "",
+      imgLocation: "",
+      paypalId: "",
+    },
     BBQ: {
       type: "Baby Quilts",
       desc: `<p>
@@ -143,7 +150,7 @@ const imgBreakDown = {
     },
     SLN: {
       type: "Sling",
-      desc: "",
+      desc: "Need to carry stuff with you and don't want something as big as a backpack?  Well, the sling is what you need!!",
       price: "20.00",
       colors: ["red", "royal blue", "lime green", "navy", "black"],
       imgLocation: "",

@@ -8,32 +8,6 @@ Modal.setAppElement('#root');
 export default function RenderGraphics(props) {
   const { graphicView, handleGraphicChoice, graphicCategories, graphics, handleLargeImage } = props.graphicProps;
 
-  // function LargerImage () {
-  //   const customStyles = {
-  //     content : {
-  //       top                   : '50%',
-  //       left                  : '50%',
-  //       right                 : 'auto',
-  //       bottom                : 'auto',
-  //       marginRight           : '-50%',
-  //       transform             : 'translate(-50%, -50%)',
-  //       maxHeight             : "90%"
-  //     }
-  //   };
-  //   return (
-  //     <Modal
-  //       isOpen={isLargeImage}
-  //       // onRequestClose={handleLargeImage}
-  //       style={customStyles}
-  //       contentLabel={currentGraphic.name}
-  //     >
-  //       <img alt="Large showing" src={currentLargeImg.imgUrl} />
-  //       <br />
-  //       <Button onClick={() => {handleLargeImage()}}>Close</Button>
-  //       <Button onClick={() => handleGraphicChoice(currentLargeImg)}>Choose</Button>
-  //     </Modal>
-  //   )
-  // }
 
   function renderCategoryGraphics () {
     return (

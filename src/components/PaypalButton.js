@@ -8,6 +8,13 @@ export default function PayPalButton (props) {
     production: "AfdNscFujmkXKAenL1jP5Xo8RmTplWtmoml-toowjWOSmMxgg0as-sq5M7m4VxixSZEzgkZD9xWbmx4C"
   }
   let quantity = props.quantity;
+  const {
+    paypalId,
+    fabric,
+    color,
+    colorChosen,
+    productType
+  } = props;
 
   return (
     <div>
@@ -34,9 +41,14 @@ export default function PayPalButton (props) {
       </PayPalSDKWrapper> */}
       <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
         <input type="hidden" name="cmd" value="_s-xclick" />
-        <input type="hidden" name="hosted_button_id" value={props.paypalId} />
-        <input type="hidden" name="on0" value={`${props.productType},${props.fabric}`} />
+        <input type="hidden" name="hosted_button_id" value={paypalId} />
+        <input type="hidden" name="on0" value={`${productType},${fabric}`} />
         <input type="hidden" name="os0" value="1" />
+        {colorChosen &&
+          <React.Fragment>
+            <input type="hidden" name="on1" value={color} />
+            <input type="hidden" name="os1" value="" />
+          </React.Fragment>}
         <input type="hidden" name="currency_code" value="USD" />
         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />

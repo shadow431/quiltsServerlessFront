@@ -27,9 +27,12 @@ export default function KitchenHome(props) {
     setProductChosen,
     productChosen,
     productChoice,
+    colorChoice,
+    colorChosen,
     setProductChoice,
     isLargeImage,
     setCurrentLargeImg,
+    startOver,
     currentLargeImg,
     graphicView,
     setGraphicView,
@@ -55,7 +58,7 @@ export default function KitchenHome(props) {
         </React.Fragment>
       ) : null
       }
-      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]); setGraphicView("all")}}>Start Over</Button> : null}
+      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => startOver}>Start Over</Button> : null}
       {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button> : null}
       {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
       {!graphicChosen || !productChosen ? (
@@ -115,7 +118,7 @@ export default function KitchenHome(props) {
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
           </div>
-          <PayPalButton paypalId={productChoice.paypalId} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
         ) : null
       }
