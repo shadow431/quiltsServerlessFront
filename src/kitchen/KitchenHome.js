@@ -30,7 +30,10 @@ export default function KitchenHome(props) {
     colorChoice,
     colorChosen,
     setProductChoice,
+    renderSizes,
+    setRenderSizes,
     isLargeImage,
+    sizeChoice,
     setCurrentLargeImg,
     startOver,
     currentLargeImg,
@@ -42,7 +45,7 @@ export default function KitchenHome(props) {
     setPurchasePrice
   } = props;
   const typeToRender = "KIT";
-  const graphicCategories = ["bir", "bug", "cad", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
+  const graphicCategories = ["bir", "bug", "cat", "dog", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
 
   return (
@@ -118,7 +121,7 @@ export default function KitchenHome(props) {
               <h3>{`$${productChoice.price}`}</h3>
             </Thumbnail>
           </div>
-          <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+          <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
         </React.Fragment>
         ) : null
       }

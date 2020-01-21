@@ -1,11 +1,21 @@
 import React from "react";
 import { Col, Grid, Row, Thumbnail, Button, FormControl, ControlLabel, FormGroup } from "react-bootstrap";
 import Modal from "react-modal";
+import imgBreakDown from "./ImgBreakDown";
 
 Modal.setAppElement('#root');
 
 export default function RenderProducts(props) {
-  const {products, handleProductChoice, typeToRender, handleLargeImage, handleColorChoice } = props.productProps;
+  const {
+    products,
+    handleProductChoice,
+    typeToRender,
+    handleLargeImage,
+    handleSizeChoice,
+    handleColorChoice,
+    renderSizes,
+    setRenderSizes
+  } = props.productProps;
 
 
   return (
@@ -13,8 +23,16 @@ export default function RenderProducts(props) {
       <Row>
         {products.map((product, i) => {
           let colors = [];
+          let sizes = [];
           if(product.colors && product.colors.length !== 0) {
             colors = product.colors.split(",");
+          }
+          // || "hoz" || "ves" || "tss" || "tsl" || "swt"
+          if(product.subCat == "hoo" ) {
+            console.log("Product: ", product);
+            sizes = product.price[0];
+            setRenderSizes(true);
+            console.log("sizes: ", sizes);
           }
           if (product.type === typeToRender) {
             return (
@@ -31,6 +49,19 @@ export default function RenderProducts(props) {
                           {colors.map((color, i) => {
                             return (
                               <option key={i} value={color}>{color}</option>
+                            )
+                          })}
+                        </FormControl>
+                      </FormGroup>
+                    }
+                    {renderSizes &&
+                      <FormGroup controlId="sizeSelect">
+                        <ControlLabel>Choose a color!</ControlLabel>
+                        <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
+                          <option value="select">Size Choice</option>
+                          {sizes.map((size, i) => {
+                            return (
+                              <option key={i} value={size}>{size}</option>
                             )
                           })}
                         </FormControl>

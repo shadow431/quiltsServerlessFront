@@ -4,6 +4,28 @@
 
 This repo is for the frontend React app that we build over the course of the tutorial. You can find the repo for the backend serverless API [here](https://github.com/AnomalyInnovations/serverless-stack-demo-api). And the repo for the tutorial [here](https://github.com/AnomalyInnovations/serverless-stack-com).
 
+TODO List
+Kitchen Items:
+Add size drop-down bowl wrap
+Add descriptions for items on thumbnail
+
+Embroidery:
+Drop tsl
+Check Norwich/Norwegian
+
+Alphabet searching
+
+add cats to embroidery
+thumbnails for dog and cat choice
+
+create new products page
+
+separate cat and dog fabric to own category
+
+
+
+
+
 #### Steps
 
 To support the different chapters and steps of the tutorial; we use branches to represent the project codebase at the various points. Here is an index of the various chapters and branches in order.

@@ -34,6 +34,8 @@ function App(props) {
   const [currentLargeImg, setCurrentLargeImg] = useState([]);
   const [colorChoice, setColorChoice] = useState("");
   const [colorChosen, setColorChosen] = useState(false);
+  const [sizeChoice, setSizeChoice] = useState("");
+  const [renderSizes, setRenderSizes] = useState(false);
 
   useEffect(() => {
     onLoad();
@@ -144,6 +146,11 @@ function App(props) {
     setColorChosen(true);
   }
 
+  function handleColorChoice(e) {
+    setSizeChoice(e.target.value);
+    setColorChosen(true);
+  }
+
   function handleGraphicChoice(graphic) {
     setGraphicChoice(graphic);
     setGraphicChosen(true);
@@ -237,7 +244,9 @@ function App(props) {
                   setProductChoice,
                   currentLargeImg,
                   setCurrentLargeImg,
-                  LargerImage
+                  LargerImage,
+                  renderSizes,
+                  setRenderSizes
                 }
               } />
               :

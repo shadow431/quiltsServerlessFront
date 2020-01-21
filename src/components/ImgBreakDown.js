@@ -99,7 +99,7 @@ const imgBreakDown = {
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       imgLocation: "",
     },
-    HooSize: {
+    hooSize: {
       sm: "8NMMPSDS25VNS",
       md: "U98VCRX9BF9RN",
       lg: "EWR2TGZJN9CPU",
@@ -126,7 +126,7 @@ const imgBreakDown = {
       imgLocation: "",
       paypalId: ""
     },
-    HozSize: {
+    hozSize: {
       sm: "U8P2XA8D237ZS",
       md: "QPX3BN2PETAQ4",
       lg: "7T3A7MTWJDMUU",
@@ -172,7 +172,7 @@ const imgBreakDown = {
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       paypalId: ""
     },
-    SwtSize: {
+    swtSize: {
       sm: "VVBCGBU3EEUTQ",
       md: "TZQQ7J9NGGEA2",
       lg: "UKGCHEDYQZ4GE",
@@ -204,7 +204,7 @@ const imgBreakDown = {
       imgLocation: "",
       paypalId: ""
     },
-    TslSize: {
+    tslSize: {
       sm: "",
       md: "",
       lg: "",
@@ -231,7 +231,7 @@ const imgBreakDown = {
       imgLocation: "",
       paypalId: ""
     },
-    TssSize: {
+    tssSize: {
       sm: "TTHEK7FA7L7WJ",
       md: "9WF4DB3K95DJW",
       lg: "4Y2JRWWUH3PYA",
@@ -258,7 +258,7 @@ const imgBreakDown = {
       imgLocation: "",
       paypalId: ""
     },
-    VesSize: {
+    vesSize: {
       sm: "CF5MFZGFDS5BQ",
       md: "2KZZMU5KGECGY",
       lg: "FFQ2746KKAEL8",
@@ -291,6 +291,7 @@ const imgBreakDown = {
     bea: "Beagle",
     brd: "Bearded Collie",
     bed: "Bedlington Terrier",
+    blm: "Belgian Malinois",
     bls: "Belgian Sheepdog",
     bel: "Belgian Tervuren",
     ber: "Bernese Mountain",
@@ -310,7 +311,6 @@ const imgBreakDown = {
     brt: "Brittany Spaniel",
     bru: "Brussels Griffen",
     bug: "Bugs and Frogs",
-    cad: "Cats and Dogs",
     can: "Cane Corso",
     cah: "Catahoula",
     cat: "Cats",
@@ -328,6 +328,7 @@ const imgBreakDown = {
     dal: "Dalmation",
     ddt: "Dandie Dinmount Terrier",
     dob: "Doberman",
+    dog: "Dogs",
     bul: "English Bull",
     eng: "English Setter",
     spr: "English Spring Spaniel",
@@ -339,6 +340,7 @@ const imgBreakDown = {
     frm: "Farm",
     she: "German Shepherd",
     grs: "German Shorthair",
+    gon: "Golden Doodle",
     gol: "Golden Retriever",
     gor: "Gordon Setter",
     grd: "Great Dane",
@@ -362,7 +364,6 @@ const imgBreakDown = {
     lab: "Labrador",
     lag: "Lagotto Romagnolo",
     lak: "Lakeland Terrier",
-    lgm: "Large Munsterlander",
     leo: "Leonberger",
     lhp: "Lhasa Apso",
     mal: "Maltese",
@@ -371,9 +372,11 @@ const imgBreakDown = {
     min: "Min Pin (Miniature Doberman)",
     mis: "Misc",
     mor: "Morkie",
+    lgm: "Munsterlander, Large",
     nat: "Nautical",
     new: "Newfoundland",
-    nor: "Norwich Terrier",
+    nor: "Norwegian Elkhound",
+    now: "Norwich Terrier",
     nov: "Nova Scotia Duck Toller",
     egs: "Old English Sheep Dog",
     pap: "Papillon",
@@ -389,7 +392,7 @@ const imgBreakDown = {
     rod: "Rhodesian Ridgeback",
     rot: "Rottweiler",
     sal: "Saluki",
-    sam: "Sanoyed",
+    sam: "Samoyed",
     sci: "Schipperke",
     sch: "Schnauzer",
     sco: "Scottie",

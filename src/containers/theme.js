@@ -1,5 +1,5 @@
 export const pinkTheme = {
-  body: '#aaaaaa',
+  body: '#a4c2a5',
   headText: '#0b7930',
   sideNavText: 'black',
   navFontWeight: "bold",
@@ -10,7 +10,7 @@ export const pinkTheme = {
 }
 
 export const conventionalTheme = {
-  body: '#a4c2a5',
+  body: '#aaaaaa',
   sideNavText: 'navy',
   thumbBackground: '#a4c2a5',
   text: 'black',
