@@ -36,6 +36,9 @@ function App(props) {
   const [colorChosen, setColorChosen] = useState(false);
   const [sizeChoice, setSizeChoice] = useState("");
   const [renderSizes, setRenderSizes] = useState(false);
+  const [sizesToRender, setSizesToRender] = useState([]);
+  const [priceSizes, setPriceSizes] = useState([]);
+
 
   useEffect(() => {
     onLoad();
@@ -246,7 +249,11 @@ function App(props) {
                   setCurrentLargeImg,
                   LargerImage,
                   renderSizes,
-                  setRenderSizes
+                  setRenderSizes,
+                  priceSizes,
+                  setPriceSizes,
+                  sizesToRender,
+                  setSizesToRender
                 }
               } />
               :

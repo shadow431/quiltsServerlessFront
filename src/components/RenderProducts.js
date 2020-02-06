@@ -14,7 +14,11 @@ export default function RenderProducts(props) {
     handleSizeChoice,
     handleColorChoice,
     renderSizes,
-    setRenderSizes
+    setRenderSizes,
+    sizesToRender,
+    setSizesToRender,
+    sizePrices,
+    setSizePrices
   } = props.productProps;
 
 
@@ -61,7 +65,7 @@ export default function RenderProducts(props) {
                           <option value="select">Size Choice</option>
                           {sizes.map((size, i) => {
                             return (
-                              <option key={i} value={size}>{size}</option>
+                              <option key={i} value={size[i]}>`${size[i]} : ${price[i]}`</option>
                             )
                           })}
                         </FormControl>
