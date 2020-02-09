@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, FormGroup, ControlLabel, FormControl, Thumbnail } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import RenderProducts from "../components/RenderProducts";
 import RenderGraphics from "../components/RenderGraphics";
 import PayPalButton from "../components/PaypalButton"
+import RenderLetterGraphics from "../components/RenderLetterGraphics";
 
 export default function EmbroideryHome(props) {
   const typeToRender = "EMB";
 
   const {
+    embroideryGraphicCategories,
     designs,
     isLoading,
     products,
@@ -39,12 +41,13 @@ export default function EmbroideryHome(props) {
     price,
     setPrice,
     purchasePrice,
-    setPurchasePrice
+    setPurchasePrice,
+    showByLetter,
+    letterView
   } = props;
 
   const graphics = designs;
-
-  const graphicCategories = ["afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "blm", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bov", "box", "brr", "brt", "bru", "blt", "can", "cah", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gon", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "leo", "lhp", "mal", "mas", "min", "mor", "lgm", "new", "nor", "now", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
+  const graphicCategories = embroideryGraphicCategories;
 
   return (
     <div className="embroideryHome container">
@@ -63,10 +66,9 @@ export default function EmbroideryHome(props) {
       {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setColorChoice(""); setColorChosen(false); }}>Change Product</Button> : null}
       {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
       {!graphicChosen || !productChosen ? (
-        <FormGroup controlId="formControlsSelect">
+        <FormGroup controlId="formControlsSelect" className="categorySelector">
           <ControlLabel>Choose a design family from this drop-down or select a shown product to continue.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
-            <option value="select">Design Choice</option>
             <option value="all">All Designs</option>
             {graphicCategories.map((subcat, i) => {
               return (
@@ -99,13 +101,14 @@ export default function EmbroideryHome(props) {
         </React.Fragment>
         ) : null
       }
-      {graphicView !== "select" && !graphicChosen && !isLoading ?
+      {!graphicChosen && !isLoading && !showByLetter ?
         (<React.Fragment>
           <h3>Design Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage }} />
+          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, showByLetter, letterView }} />
         </React.Fragment>
         ) : null
       }
+      {showByLetter ? <RenderLetterGraphics letterProps={{letterView, graphicCategories, graphics, handleGraphicChoice, handleLargeImage}} /> : null}
       {productChosen && graphicChosen ? (
         <React.Fragment>
           <h2>The product you have put together today is: </h2>

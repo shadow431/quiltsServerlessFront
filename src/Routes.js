@@ -19,7 +19,6 @@ import NewFabric from "./Fabric/NewFabric";
 import NewProduct from "./products/NewProduct";
 import NewSchedule from "./schedule/NewSchedule";
 import NotFound from "./containers/NotFound";
-import Quilts from "./containers/Quilts";
 import Schedule from "./schedule/Schedule"
 import Signup from "./containers/Signup";
 import Sandbox from "./containers/Sandbox";
@@ -32,12 +31,11 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />
       <AppliedRoute path="/fabrics" exact component={Fabrics} appProps={appProps} />
       <AppliedRoute path="/kitchen" exact component={KitchenHome} appProps={appProps} />
-      <AppliedRoute path="/quilts" exact component={Quilts} appProps={appProps} />
       <AppliedRoute path="/schedule" exact component={Schedule} appProps={appProps} />
       <AppliedRoute path="/sandbox" exact component={Sandbox} appProps={appProps} />
-      <UnauthenticatedRoute path="/login" exact component={Login} appProps={appProps} />
+      <UnauthenticatedRoute path="/admin" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
-      <AuthenticatedRoute path="/admin" exact component={Admin} appProps={appProps} />
+      <AuthenticatedRoute path="/adminLoggedIn" exact component={Admin} appProps={appProps} />
       <AuthenticatedRoute path="/admin/design/new" exact component={NewDesign} appProps={appProps} />
       <AuthenticatedRoute path="/admin/fabric/new" exact component={NewFabric} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />

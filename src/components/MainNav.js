@@ -5,7 +5,7 @@ import "../containers/globalCSS.js";
 
 export default function MainNav (props) {
   const [ navKey, setNavKey ] = useState("");
-  const { history, auth, startOver } = props;
+  const { history, isAuthenticated, startOver, setShowLetterNav } = props.navProps;
 
   function handleNavSelection (e) {
     history.push(`${e.target.value}`);
@@ -18,33 +18,33 @@ export default function MainNav (props) {
         {(matches) =>
           matches
             ? (
-            <Nav className="Home KitchenHomeNav Schedule" bsStyle="pills" fixed="false" stacked pullLeft activeKey={navKey} >
+            <Nav className="mainNav" bsStyle="pills" stacked pullLeft activeKey={navKey} >
               {/* <NavItem eventKey={1} onClick={() => {startOver(); history.push("/new"); setNavKey(1);}}>
                 Products
               </NavItem> */}
-              <NavItem eventKey={2} onClick={() => {startOver(); history.push("/embroidery"); setNavKey(2);}}>
+              <NavItem eventKey={1} onClick={() => {startOver(); history.push("/embroidery"); setNavKey(1); setShowLetterNav(true);}}>
                 Products
               </NavItem>
-              <NavItem eventKey={3} onClick={() => {startOver(); history.push("/designs"); setNavKey(3);}}>
+              <NavItem eventKey={2} onClick={() => {startOver(); history.push("/designs"); setNavKey(2); setShowLetterNav(true);}}>
                 Embroidery
               </NavItem>
-              <NavItem eventKey={4} onClick={() => {startOver(); history.push("/kitchen"); setNavKey(4);}}>
+              <NavItem eventKey={3} onClick={() => {startOver(); history.push("/kitchen"); setNavKey(3);}}>
                 Kitchen Items
               </NavItem>
-              <NavItem eventKey={5} onClick={() => {startOver(); history.push("/fabrics"); setNavKey(5);}}>
+              <NavItem eventKey={4} onClick={() => {startOver(); history.push("/fabrics"); setNavKey(4);}}>
                 Fabrics
               </NavItem>
               {/* <NavItem eventKey={3} onClick={() => {history.push("/quilts"); setNavKey(3);}}>
                 Quilts
               </NavItem> */}
-              <NavItem eventKey={6} onClick={() => { startOver(); history.push("/schedule"); setNavKey(5);}}>
+              <NavItem eventKey={5} onClick={() => { startOver(); history.push("/schedule"); setNavKey(5);}}>
                 Show Schedule
               </NavItem>
               {/* <NavItem eventKey={4} onClick={() => {history.push("/newFabrics"); setNavKey(4);}}>
                 New Items!!
               </NavItem> */}
-              {auth ? (
-                <NavItem eventKey={5} onClick={() => {startOver(); history.push("/admin"); setNavKey(6);}}>
+              {isAuthenticated ? (
+                <NavItem eventKey={6} onClick={() => {startOver(); history.push("/adminLoggedIn"); setNavKey(6);}}>
                   Admin
                 </NavItem>
               ) : (
@@ -65,7 +65,7 @@ export default function MainNav (props) {
                   <option value="/fabrics">Fabrics</option>
                   {/* <option value="quilts">Quilts</option> */}
                   <option value="/schedule">Schedule</option>
-                  {auth ? (
+                  {isAuthenticated ? (
                     <option value="admin">Admin</option>
                     ) :
                     null

@@ -9,6 +9,7 @@ import RenderGraphics from "../components/RenderGraphics";
 
 export default function KitchenHome(props) {
   const {
+    kitchenGraphicCategories,
     fabrics,
     LargerImage,
     currentGraphic,
@@ -45,8 +46,8 @@ export default function KitchenHome(props) {
     setPurchasePrice
   } = props;
   const typeToRender = "KIT";
-  const graphicCategories = ["bir", "bug", "cat", "dog", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const graphics = fabrics;
+  const graphicCategories = kitchenGraphicCategories;
 
   return (
     <div className="KitchenHome container">
@@ -65,10 +66,9 @@ export default function KitchenHome(props) {
       {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); }}>Change Product</Button> : null}
       {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
       {!graphicChosen || !productChosen ? (
-        <FormGroup controlId="formControlsSelect">
+        <FormGroup controlId="formControlsSelect" className="categorySelector">
           <ControlLabel>Choose a fabric family from this drop-down or select a shown product to continue.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
-            <option value="select">Fabric Choice</option>
             <option value="all">All Fabrics</option>
             {graphicCategories.map((subcat, i) => {
               return (

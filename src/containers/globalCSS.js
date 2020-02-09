@@ -44,6 +44,21 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.body};
     color: ${({ theme }) => theme.sideNavText};
     font-weight: ${({ theme }) => theme.navFontWeight};
+    top: 10px;
+    z-index: 100;
+    position: fixed;
+    width: 80%;
+  }
+
+  .categorySelector {
+    top: 100px;
+    z-index: 100;
+    position: fixed;
+    width: 60%;
+  }
+
+  .control-label {
+    font-size: 18px;
   }
 
   .freeShip {
@@ -89,23 +104,37 @@ export const GlobalStyles = createGlobalStyle`
     color: #666;
   }
 
-  .KitchenHomeNav a {
+  .mainNav {
+    top: 100px;
+    x-index 100;
+    position: fixed;
+    width: 15%;
+  }
+
+  .mainNav a {
     color: ${({ theme }) => theme.sideNavText};
+    font-size: 18pt;
+  }
+
+  .letterNav {
+    font-size: 22pt;
+    top: 45%;
+    z-index: 100;
+    position: fixed;
+    width: 16%;
   }
 
   li.active {
     background-color: green;
   }
 
-  .loginLink,
-  .adminLink,
-  .adminLink a {
-    color: ${({ theme }) => theme.sideNavText};
-    font-size: 16pt;
+  .logoutLink {
+    color: red;
   }
 
-  .logoutLink {
-    color: #00cc44;
+  .MainSection {
+    margin-left: 25%;
+    margin-top: 150px;
   }
 
   .NavHeaderBarLogo {

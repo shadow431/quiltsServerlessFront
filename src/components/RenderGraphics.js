@@ -6,7 +6,13 @@ import imgBreakDown from "./ImgBreakDown";
 Modal.setAppElement('#root');
 
 export default function RenderGraphics(props) {
-  const { graphicView, handleGraphicChoice, graphicCategories, graphics, handleLargeImage } = props.graphicProps;
+  const {
+    graphicView,
+    handleGraphicChoice,
+    graphicCategories,
+    graphics,
+    handleLargeImage,
+  } = props.graphicProps;
 
 
   function renderCategoryGraphics () {
@@ -72,9 +78,8 @@ export default function RenderGraphics(props) {
 
   return (
     <Grid fluid>
-      {graphicView === "select" ? <h2>Please choose from the dropdown above!!</h2> : null}
-      {graphicView === "all" ? renderAllGraphics() : null}
-      {graphicView !== "all" && graphicView !== "select" ? renderCategoryGraphics() : null}
+      {graphicView === "all" ? renderAllGraphics() : <h2>Please choose from the dropdown above!!</h2>}
+      {graphicView !== "all" ? renderCategoryGraphics() : <h2>Please choose from the dropdown above!!</h2>}
     </Grid>
   );
 }

@@ -1,18 +1,18 @@
-export const pinkTheme = {
+export const greenTheme = {
   body: '#a4c2a5',
   headText: '#0b7930',
-  sideNavText: 'black',
+  sideNavText: '#009900',
   navFontWeight: "bold",
-  thumbBackground: '#aaaaaa',
+  thumbBackground: '#a4c2a5',
   text: 'black',
   toggleBorder: '#FFF',
   gradient: 'linear-gradient(#39598A, #79D7ED)',
 }
 
-export const conventionalTheme = {
+export const greyTheme = {
   body: '#aaaaaa',
   sideNavText: 'navy',
-  thumbBackground: '#a4c2a5',
+  thumbBackground: '#aaaaaa',
   text: 'black',
   navFontWeight: "bold",
   toggleBorder: '#6B8096',

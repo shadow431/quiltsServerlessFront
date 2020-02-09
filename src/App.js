@@ -7,18 +7,18 @@ import { ThemeProvider } from "styled-components";
 import Routes from "./Routes";
 import { API } from "aws-amplify";
 import MainNav from "./components/MainNav";
+import LetterNav from "./components/LetterNav";
 import Modal from "react-modal";
-import { pinkTheme, conventionalTheme } from "./containers/theme";
+import { greenTheme, greyTheme } from "./containers/theme";
 import { GlobalStyles } from "./containers/globalCSS";
 
 function App(props) {
-
   const [isAuthenticating, setIsAuthenticating] = useState(false);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const [products, setProducts] = useState([]);
   const [fabrics, setFabrics] = useState([]);
   const [designs, setDesigns] = useState([]);
-  const [theme, setTheme] = useState('pinkTheme');
+  const [theme, setTheme] = useState('greenTheme');
   const [isLoading, setIsLoading] = useState(true);
   const [price, setPrice] = useState("");
   const { history } = props;
@@ -28,7 +28,7 @@ function App(props) {
   const [productChoice, setProductChoice] = useState([]);
   const [productChosen, setProductChosen] = useState(false);
   const [productTypeChosen, setProductTypeChosen] = useState("");
-  const [graphicView, setGraphicView] = useState("select");
+  const [graphicView, setGraphicView] = useState("all");
   const [purchasePrice, setPurchasePrice] = useState("");
   const [isLargeImage, setIsLargeImage] = useState(false);
   const [currentLargeImg, setCurrentLargeImg] = useState([]);
@@ -38,7 +38,13 @@ function App(props) {
   const [renderSizes, setRenderSizes] = useState(false);
   const [sizesToRender, setSizesToRender] = useState([]);
   const [priceSizes, setPriceSizes] = useState([]);
+  const [showByLetter, setShowByLetter] = useState(false);
+  const [letterView, setLetterView] = useState("");
+  const [letterNavKey, setLetterNavKey] = useState("");
+  const [showLetterNav, setShowLetterNav] = useState(false);
 
+  const kitchenGraphicCategories = ["bir", "bug", "cat", "dog", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
+  const embroideryGraphicCategories = ["afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "blm", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bov", "box", "brr", "brt", "bru", "blt", "can", "cah", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gon", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "leo", "lhp", "mal", "mas", "min", "mor", "lgm", "new", "nor", "now", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
 
   useEffect(() => {
     onLoad();
@@ -65,6 +71,9 @@ function App(props) {
     }
     setIsLoading(false);
     setIsAuthenticating(false);
+    if(!isAuthenticating && isAuthenticated) {
+      props.history.push("/adminLoggedIn");
+    };
   }
 
   async function handleLogout() {
@@ -72,14 +81,14 @@ function App(props) {
 
     userHasAuthenticated(false);
 
-    props.history.push("/login");
+    props.history.push("/");
   }
 
   function toggleTheme () {
-    if(theme === 'pinkTheme') {
-      setTheme('conventionalTheme');
+    if(theme === 'greenTheme') {
+      setTheme('greyTheme');
     } else {
-      setTheme("pinkTheme");
+      setTheme("greenTheme");
     }
   }
 
@@ -91,6 +100,9 @@ function App(props) {
     setGraphicView("all");
     setColorChoice("");
     setColorChosen(false);
+    setShowByLetter(false);
+    setShowLetterNav(false);
+    setLetterNavKey("");
   }
 
   function LargerImage () {
@@ -129,6 +141,7 @@ function App(props) {
     setPrice(product.price);
     setPurchasePrice(Number(product.price));
     setIsLargeImage(false);
+    setShowByLetter(false);
     if(graphicChoice.type === "FAB" && product.type === "EMB") {
       setGraphicChoice([]);
       setGraphicChosen(false);
@@ -149,15 +162,11 @@ function App(props) {
     setColorChosen(true);
   }
 
-  function handleColorChoice(e) {
-    setSizeChoice(e.target.value);
-    setColorChosen(true);
-  }
-
   function handleGraphicChoice(graphic) {
     setGraphicChoice(graphic);
     setGraphicChosen(true);
     setIsLargeImage(false);
+    setShowByLetter(false);
     if(graphic.type === "FAB" && productChoice.type === "EMB") {
       setProductChoice([]);
       setProductChosen(false);
@@ -176,11 +185,12 @@ function App(props) {
   function handleGraphicView(e) {
     setGraphicView(e.target.value);
     setIsLargeImage(false);
+    setShowByLetter(false);
   }
 
   return (
     !isAuthenticating && (
-      <ThemeProvider theme={theme === 'pinkTheme' ? pinkTheme : conventionalTheme}>
+      <ThemeProvider theme={theme === 'greyTheme' ? greenTheme : greyTheme}>
         <div className="App container">
           <Navbar className="appNav" fluid collapseOnSelect>
             <Navbar.Header>
@@ -193,29 +203,20 @@ function App(props) {
               <Nav pullRight>
                 <GlobalStyles />
                 <NavItem className="adminLink" onClick={toggleTheme}>Color Scheme</NavItem>
-                {isAuthenticated ? (
-                  <>
-                    <LinkContainer to="/admin">
-                      <NavItem><span className="adminLink">Admin</span></NavItem>
-                    </LinkContainer>
-                    <NavItem onClick={handleLogout}><span className="logoutLink">Logout</span></NavItem>
-                  </>
-                  ) : (
-                  <>
-                    <LinkContainer to="/login">
-                      <NavItem><span className="adminLink">Admin</span></NavItem>
-                    </LinkContainer>
-                  </>
-                  )
-                }
+                {isAuthenticated ? <NavItem onClick={handleLogout}><span className="logoutLink">Logout</span></NavItem> : null }
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          <MainNav history={history} auth={isAuthenticated} startOver={startOver} />
-          <div style={{display: 'flex'}}>
+          <MainNav navProps={{history, isAuthenticated, startOver, setShowLetterNav}}/>
+          {showLetterNav ?
+            <LetterNav letterNavProps={{setLetterView, setLetterNavKey, letterNavKey, setGraphicView, setShowByLetter}}/> : null
+          }
+          <div className="MainSection" style={{display: 'flex'}}>
             {!isLoading ?
               <Routes appProps={
                 {
+                  kitchenGraphicCategories,
+                  embroideryGraphicCategories,
                   isAuthenticated,
                   userHasAuthenticated,
                   schedule,
@@ -253,7 +254,12 @@ function App(props) {
                   priceSizes,
                   setPriceSizes,
                   sizesToRender,
-                  setSizesToRender
+                  setSizesToRender,
+                  letterView,
+                  setLetterView,
+                  letterNavKey,
+                  setLetterNavKey,
+                  showByLetter
                 }
               } />
               :
