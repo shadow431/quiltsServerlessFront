@@ -86,55 +86,115 @@ const imgBreakDown = {
     HOO: {
       type: "Hoodie",
       desc: "Regular Hoodie",
-      price: {
-        sm: "40.00",
-        md: "40.00",
-        lg: "40.00",
-        xl: "40.00",
-        x2: "45.00",
-        x3: "45.00",
-        x4: "50.00",
-        x5: "50.00"
-      },
+      sizes: [
+        {
+          sm: {
+            paypalId: "8NMMPSDS25VNS",
+            price: "40.00"
+          }
+        },
+        {
+          md: {
+            paypalId: "U98VCRX9BF9RN",
+            price: "40.00"
+          }
+        },
+        {
+          lg: {
+            paypalId: "EWR2TGZJN9CPU",
+            price: "40.00"
+          }
+        },
+        {
+          xl: {
+            paypalId: "34UW2LMHF5LTE",
+            price: "40.00"
+          }
+        },
+        {
+          x2: {
+            paypalId: "XAPEML2WKB9HN",
+            price: "45.00"
+          }
+        },
+        {
+          x3: {
+            paypalId: "DMFEWKKUXGQWS",
+            price: "45.00"
+          }
+        },
+        {
+          x4: {
+            paypalId: "7525C5T9388AY",
+            price: "50.00"
+          }
+        },
+        {
+          x5: {
+            paypalId: "QFV83G22YRGK8",
+            price: "50.00"
+          }
+        }
+      ],
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       imgLocation: "",
-    },
-    hooSize: {
-      sm: "8NMMPSDS25VNS",
-      md: "U98VCRX9BF9RN",
-      lg: "EWR2TGZJN9CPU",
-      xl: "34UW2LMHF5LTE",
-      x2: "XAPEML2WKB9HN",
-      x3: "DMFEWKKUXGQWS",
-      x4: "7525C5T9388AY",
-      x5: "QFV83G22YRGK8"
     },
     HOZ: {
       type: "Zipper Hoodie",
       desc: "Hoodie with a zipper",
-      price: {
-        sm: "45.00",
-        md: "45.00",
-        lg: "45.00",
-        xl: "45.00",
-        x2: "50.00",
-        x3: "50.00",
-        x4: "55.00",
-        x5: "55.00"
-      },
+      sizes: [
+        {
+          sm: {
+            paypalId: "U8P2XA8D237ZS",
+            price: "45.00"
+          }
+        },
+        {
+          md: {
+            paypalId: "QPX3BN2PETAQ4",
+            price: "45.00"
+          }
+        },
+        {
+          lg: {
+            paypalId: "7T3A7MTWJDMUU",
+            price: "45.00"
+          }
+        },
+        {
+          x1: {
+            paypalId: "4HMRCQ4CA569W",
+            price: "45.00"
+          }
+        },
+        {
+          x2: {
+            paypalId: "QPWNXMABFJZ78",
+            price: "50.00"
+          }
+        },
+        {
+          x3: {
+            paypalId: "LN3ZDHBSWF6M6",
+            price: "50.00"
+          }
+        },
+        {
+          x4: {
+            paypalId: "6PHERHGN5W7G8",
+            price: "55.00"
+          }
+        },
+        {
+          x5: {
+            paypalId: "6P9JLVB6H42LA",
+            price: "55.00"
+          }
+        }
+      ],
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       imgLocation: "",
       paypalId: ""
-    },
-    hozSize: {
-      sm: "U8P2XA8D237ZS",
-      md: "QPX3BN2PETAQ4",
-      lg: "7T3A7MTWJDMUU",
-      xl: "4HMRCQ4CA569W",
-      x2: "QPWNXMABFJZ78",
-      x3: "LN3ZDHBSWF6M6",
-      x4: "6PHERHGN5W7G8",
-      x5: "6P9JLVB6H42LA"
     },
     OVM: {
       type: "Oven Mitt",
@@ -159,28 +219,58 @@ const imgBreakDown = {
     SWT: {
       type: "Sweatshirt",
       desc: "",
-      price: {
-        sm: "35.00",
-        md: "35.00",
-        lg: "35.00",
-        xl: "35.00",
-        x2: "40.00",
-        x3: "40.00",
-        x4: "45.00",
-        x5: "45.00"
-      },
+      sizes: [
+        {
+          sm: {
+            paypalId: "VVBCGBU3EEUTQ",
+            price: "35.00"
+          }
+        },
+        {
+          md: {
+            paypalId: "TZQQ7J9NGGEA2",
+            price: "35.00"
+          }
+        },
+        {
+          lg: {
+            paypalId: "UKGCHEDYQZ4GE",
+            price: "35.00"
+          }
+        },
+        {
+          x1: {
+            paypalId: "LWMDYKPVF3KKG",
+            price: "35.00"
+          }
+        },
+        {
+          x2: {
+            paypalId: "VAWBC2P5E5VQL",
+            price: "40.00"
+          }
+        },
+        {
+          x3: {
+            paypalId: "48WKG49Z2PYKS",
+            price: "40.00"
+          }
+        },
+        {
+          x4: {
+            paypalId: "8C5HJJBVRXRPU",
+            price: "45.00"
+          }
+        },
+        {
+          x5: {
+            paypalId: "U5TAHFTV38Q76",
+            price: "45.00"
+          }
+        }
+      ],
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       paypalId: ""
-    },
-    swtSize: {
-      sm: "VVBCGBU3EEUTQ",
-      md: "TZQQ7J9NGGEA2",
-      lg: "UKGCHEDYQZ4GE",
-      xl: "LWMDYKPVF3KKG",
-      x2: "VAWBC2P5E5VQL",
-      x3: "48WKG49Z2PYKS",
-      x4: "8C5HJJBVRXRPU",
-      x5: "U5TAHFTV38Q76"
     },
     TLB: {
       type: "Tortilla Bags",
@@ -199,74 +289,173 @@ const imgBreakDown = {
     TSL: {
       type: "Long Sleeve T-Shirt",
       desc: "",
-      price: "25.00",
+      sizes: [
+        {
+          sm: {
+            paypalId: "",
+            price: "25.00"
+          }
+        },
+        {
+          md: {
+            paypalId: "",
+            price: "25.00"
+          }
+        },
+        {
+          lg: {
+            paypalId: "",
+            price: "25.00"
+          }
+        },
+        {
+          x1: {
+            paypalId: "",
+            price: "25.00"
+          }
+        },
+        {
+          x2: {
+            paypalId: "",
+            price: "30.00"
+          }
+        },
+        {
+          x3: {
+            paypalId: "",
+            price: "30.00"
+          }
+        },
+        {
+          x4: {
+            paypalId: "",
+            price: "35.00"
+          }
+        },
+        {
+          x5: {
+            paypalId: "",
+            price: "35.00"
+          }
+        }
+      ],
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       imgLocation: "",
       paypalId: ""
-    },
-    tslSize: {
-      sm: "",
-      md: "",
-      lg: "",
-      xl: "",
-      x2: "",
-      x3: "",
-      x4: "",
-      x5: ""
     },
     TSS: {
       type: "Short Sleeve T-Shirt",
       desc: "",
-      price: {
-        sm: "25.00",
-        md: "25.00",
-        lg: "25.00",
-        xl: "25.00",
-        x2: "30.00",
-        x3: "30.00",
-        x4: "35.00",
-        x5: "35.00"
-      },
+      sizes: [
+        {
+          sm: {
+            paypalId: "TTHEK7FA7L7WJ",
+            price: "25.00"
+          }
+        },
+        {
+          md: {
+            paypalId: "9WF4DB3K95DJW",
+            price: "25.00"
+          }
+        },
+        {
+          lg: {
+            paypalId: "4Y2JRWWUH3PYA",
+            price: "25.00"
+          }
+        },
+        {
+          x1: {
+            paypalId: "54H6CCPL7N2T4",
+            price: "25.00"
+          }
+        },
+        {
+          x2: {
+            paypalId: "9DYTASASRH2M4",
+            price: "30.00"
+          }
+        },
+        {
+          x3: {
+            paypalId: "U7M9JFJ785ETY",
+            price: "30.00"
+          }
+        },
+        {
+          x4: {
+            paypalId: "XDQZVHSU7NS2U",
+            price: "35.00"
+          }
+        },
+        {
+          x5: {
+            paypalId: "HY4BJLCFG6P8A",
+            price: "35.00"
+          }
+        }
+      ],
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       imgLocation: "",
       paypalId: ""
     },
-    tssSize: {
-      sm: "TTHEK7FA7L7WJ",
-      md: "9WF4DB3K95DJW",
-      lg: "4Y2JRWWUH3PYA",
-      xl: "54H6CCPL7N2T4",
-      x2: "9DYTASASRH2M4",
-      x3: "U7M9JFJ785ETY",
-      x4: "XDQZVHSU7NS2U",
-      x5: "HY4BJLCFG6P8A"
-    },
     VES: {
       type: "Vest",
       desc: "",
-      price: {
-        sm: "50.00",
-        md: "50.00",
-        lg: "50.00",
-        xl: "50.00",
-        x2: "55.00",
-        x3: "55.00",
-        x4: "60.00",
-        x5: "60.00"
-      },
+      sizes: [
+        {
+          sm: {
+            paypalId: "CF5MFZGFDS5BQ",
+            price: "50.00"
+          }
+        },
+        {
+          md: {
+            paypalId: "2KZZMU5KGECGY",
+            price: "50.00"
+          }
+        },
+        {
+          lg: {
+            paypalId: "FFQ2746KKAEL8",
+            price: "50.00"
+          }
+        },
+        {
+          x1: {
+            paypalId: "JYVKRHNQXVMJG",
+            price: "50.00"
+          }
+        },
+        {
+          x2: {
+            paypalId: "RV5ZK2RT58V3W",
+            price: "55.00"
+          }
+        },
+        {
+          x3: {
+            paypalId: "5N6BLWW8J8PXJ",
+            price: "55.00"
+          }
+        },
+        {
+          x4: {
+            paypalId: "FCZV9JVAUY862",
+            price: "60.00"
+          }
+        },
+        {
+          x5: {
+            paypalId: "UZD68AATTXWU6",
+            price: "60.00"
+          }
+        }
+      ],
       colors: ["red", "royal blue", "navy blue"],
       imgLocation: "",
       paypalId: ""
-    },
-    vesSize: {
-      sm: "CF5MFZGFDS5BQ",
-      md: "2KZZMU5KGECGY",
-      lg: "FFQ2746KKAEL8",
-      xl: "JYVKRHNQXVMJG",
-      x2: "RV5ZK2RT58V3W",
-      x3: "5N6BLWW8J8PXJ",
-      x4: "FCZV9JVAUY862",
-      x5: "UZD68AATTXWU6"
     },
     ZZT: {
       type: "Zipper Tote Bag",

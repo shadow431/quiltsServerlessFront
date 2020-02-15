@@ -31,8 +31,6 @@ export default function KitchenHome(props) {
     colorChoice,
     colorChosen,
     setProductChoice,
-    renderSizes,
-    setRenderSizes,
     isLargeImage,
     sizeChoice,
     setCurrentLargeImg,

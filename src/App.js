@@ -35,8 +35,6 @@ function App(props) {
   const [colorChoice, setColorChoice] = useState("");
   const [colorChosen, setColorChosen] = useState(false);
   const [sizeChoice, setSizeChoice] = useState("");
-  const [renderSizes, setRenderSizes] = useState(false);
-  const [sizesToRender, setSizesToRender] = useState([]);
   const [priceSizes, setPriceSizes] = useState([]);
   const [showByLetter, setShowByLetter] = useState(false);
   const [letterView, setLetterView] = useState("");
@@ -249,12 +247,8 @@ function App(props) {
                   currentLargeImg,
                   setCurrentLargeImg,
                   LargerImage,
-                  renderSizes,
-                  setRenderSizes,
                   priceSizes,
                   setPriceSizes,
-                  sizesToRender,
-                  setSizesToRender,
                   letterView,
                   setLetterView,
                   letterNavKey,

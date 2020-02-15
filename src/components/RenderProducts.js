@@ -13,14 +13,9 @@ export default function RenderProducts(props) {
     handleLargeImage,
     handleSizeChoice,
     handleColorChoice,
-    renderSizes,
-    setRenderSizes,
-    sizesToRender,
-    setSizesToRender,
     sizePrices,
     setSizePrices
   } = props.productProps;
-
 
   return (
     <Grid fluid>
@@ -31,12 +26,8 @@ export default function RenderProducts(props) {
           if(product.colors && product.colors.length !== 0) {
             colors = product.colors.split(",");
           }
-          // || "hoz" || "ves" || "tss" || "tsl" || "swt"
-          // if(product.subCat == "hoo" ) {
-          //   console.log("Product: ", product);
-          //   sizes = product.price[0];
-          //   setRenderSizes(true);
-          //   console.log("sizes: ", sizes);
+          // if(product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves") {
+          //   sizes = imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes;
           // }
           if (product.type === typeToRender) {
             return (
@@ -58,19 +49,20 @@ export default function RenderProducts(props) {
                         </FormControl>
                       </FormGroup>
                     }
-                    {/* {renderSizes &&
+                    {product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves" || "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES" &&
                       <FormGroup controlId="sizeSelect">
-                        <ControlLabel>Choose a color!</ControlLabel>
+                        <ControlLabel>Choose a size!</ControlLabel>
                         <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
                           <option value="select">Size Choice</option>
-                          {sizes.map((size, i) => {
+                          {imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes.map((size, i) => {
+                            console.log(product.subCat)
                             return (
-                              <option key={i} value={size[i]}>`${size[i]} : ${price[i]}`</option>
+                              <option key={i} value={size[i]} id={size[i].paypayId}>`${size[i]} : $${size.price[i]}`</option>
                             )
                           })}
                         </FormControl>
                       </FormGroup>
-                    } */}
+                    }
                     <Button onClick={() => handleLargeImage(product)}>Enlarge</Button>
                     <Button onClick={() => handleProductChoice(product)}>Choose</Button>
                   </Thumbnail>

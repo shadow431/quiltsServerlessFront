@@ -81,7 +81,7 @@ export default function EmbroideryHome(props) {
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, renderSizes, setRenderSizes, handleProductChoice, typeToRender, isLargeImage, handleLargeImage, handleColorChoice}} /> : null
+        <RenderProducts productProps={{products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage, handleColorChoice}} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
