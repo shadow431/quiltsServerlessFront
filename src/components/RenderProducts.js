@@ -21,13 +21,18 @@ export default function RenderProducts(props) {
     <Grid fluid>
       <Row>
         {products.map((product, i) => {
+          // console.log(product);
           let colors = [];
-          let sizes = [];
+          // let sizes = [];
           if(product.colors && product.colors.length !== 0) {
             colors = product.colors.split(",");
           }
-          // if(product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves") {
-          //   sizes = imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes;
+          // if(product.type !== "IMG") {
+          //   if(product.subCat.toUpperCase() === "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES") {
+          //     if(imgBreakDown.typeOutline[product.subCat.toUpperCase()] !== undefined || null) {
+          //       sizes = imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes;
+          //     }
+          //   }
           // }
           if (product.type === typeToRender) {
             return (
@@ -49,12 +54,12 @@ export default function RenderProducts(props) {
                         </FormControl>
                       </FormGroup>
                     }
-                    {product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves" || "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES" ?
+                    {/* {product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves" || "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES" ?
                       (<FormGroup controlId="sizeSelect">
                         <ControlLabel>Choose a size!</ControlLabel>
                         <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
                           <option value="select">Size Choice</option>
-                          {imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes.map((size, i) => {
+                          {sizes.map((size, i) => {
                             console.log(product.subCat)
                             return (
                               <option key={i} value={size[i]} id={size[i].paypayId}>`${size[i]} : $${size.price[i]}`</option>
@@ -62,7 +67,7 @@ export default function RenderProducts(props) {
                           })}
                         </FormControl>
                       </FormGroup>) : null
-                    }
+                    } */}
                     <Button onClick={() => handleLargeImage(product)}>Enlarge</Button>
                     <Button onClick={() => handleProductChoice(product)}>Choose</Button>
                   </Thumbnail>
