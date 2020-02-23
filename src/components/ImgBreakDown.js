@@ -603,6 +603,7 @@ const imgBreakDown = {
     wht: "Wheaten Terrier",
     wip: "Whippert",
     wfx: "Wire Fox Terrier",
+    ylb: "Yellow Lab",
     yor: "Yorkshire"
   },
   colors: {

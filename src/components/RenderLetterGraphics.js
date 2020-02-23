@@ -12,11 +12,18 @@ export default function RenderLetterGraphics(props) {
   } = props.letterProps;
 
   const letterArr = graphics.filter(graphic =>
-    graphic.subCat.substr(0, 1).toUpperCase() === letterView
+    // let nameToCheck = imgBreakDown.subCat[graphic.subCat];
+    // if(nameToCheck === undefined) {
+    //   console.log(graphic.name);
+    // }
+    // console.log(nameToCheck);
+    imgBreakDown.subCat[graphic.subCat].substr(0,1).toUpperCase() === letterView
   ).sort((a, b) => {
-    if(a.name>b.name){return 1}
-    if(a.name<b.name){return -1}
-    if(a.name===b.name){return 0}
+    let name1 = imgBreakDown.subCat[a.subCat];
+    let name2 = imgBreakDown.subCat[b.subCat];
+    if(name1>name2){return 1}
+    if(name1<name2){return -1}
+    if(name1===name2){return 0}
   });
 
 

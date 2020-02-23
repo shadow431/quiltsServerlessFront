@@ -49,8 +49,8 @@ export default function RenderProducts(props) {
                         </FormControl>
                       </FormGroup>
                     }
-                    {product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves" || "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES" &&
-                      <FormGroup controlId="sizeSelect">
+                    {product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves" || "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES" ?
+                      (<FormGroup controlId="sizeSelect">
                         <ControlLabel>Choose a size!</ControlLabel>
                         <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
                           <option value="select">Size Choice</option>
@@ -61,7 +61,7 @@ export default function RenderProducts(props) {
                             )
                           })}
                         </FormControl>
-                      </FormGroup>
+                      </FormGroup>) : null
                     }
                     <Button onClick={() => handleLargeImage(product)}>Enlarge</Button>
                     <Button onClick={() => handleProductChoice(product)}>Choose</Button>
