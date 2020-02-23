@@ -18,7 +18,7 @@ function App(props) {
   const [products, setProducts] = useState([]);
   const [fabrics, setFabrics] = useState([]);
   const [designs, setDesigns] = useState([]);
-  const [theme, setTheme] = useState('greenTheme');
+  const [theme, setTheme] = useState('greyTheme');
   const [isLoading, setIsLoading] = useState(true);
   const [price, setPrice] = useState("");
   const { history } = props;
@@ -188,7 +188,7 @@ function App(props) {
 
   return (
     !isAuthenticating && (
-      <ThemeProvider theme={theme === 'greyTheme' ? greenTheme : greyTheme}>
+      <ThemeProvider theme={theme === 'greenTheme' ? greyTheme : greenTheme}>
         <div className="App container">
           <Navbar className="appNav" fluid collapseOnSelect>
             <Navbar.Header>
