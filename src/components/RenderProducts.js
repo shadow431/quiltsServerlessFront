@@ -29,8 +29,11 @@ export default function RenderProducts(props) {
           }
           // if(product.type !== "IMG") {
           //   if(product.subCat.toUpperCase() === "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES") {
-          //     if(imgBreakDown.typeOutline[product.subCat.toUpperCase()] !== undefined || null) {
-          //       sizes = imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes;
+          //     // console.log("subcat matches: ",product);
+          //     if(imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes !== undefined || null) {
+          //       // console.log("product has category info: ", product);
+          //       sizes.push(imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes);
+          //       // console.log("Sizes: ", sizes)
           //     }
           //   }
           // }
@@ -54,15 +57,15 @@ export default function RenderProducts(props) {
                         </FormControl>
                       </FormGroup>
                     }
-                    {/* {product.subCat === "bwl" || "hoo" || "hoz" || "swt" || "tsl" || "tss" || "ves" || "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES" ?
+                    {/* {sizes.length !== 0 ?
                       (<FormGroup controlId="sizeSelect">
                         <ControlLabel>Choose a size!</ControlLabel>
                         <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
                           <option value="select">Size Choice</option>
                           {sizes.map((size, i) => {
-                            console.log(product.subCat)
+                            console.log(size[i]);
                             return (
-                              <option key={i} value={size[i]} id={size[i].paypayId}>`${size[i]} : $${size.price[i]}`</option>
+                              <option key={i} value={size[0]} id={size[0].paypayId}>`${size[0]} : $${size.price[0]}`</option>
                             )
                           })}
                         </FormControl>
