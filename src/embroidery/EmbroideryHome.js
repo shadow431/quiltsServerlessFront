@@ -6,6 +6,8 @@ import RenderGraphics from "../components/RenderGraphics";
 import PayPalButton from "../components/PaypalButton"
 import RenderLetterGraphics from "../components/RenderLetterGraphics";
 
+// EMBpub1076 needs to be added eventually CrossStitch
+
 export default function EmbroideryHome(props) {
   const typeToRender = "EMB";
 
@@ -43,7 +45,7 @@ export default function EmbroideryHome(props) {
     purchasePrice,
     setPurchasePrice,
     showByLetter,
-    letterView
+    letterView,
   } = props;
 
   const graphics = designs;
@@ -69,7 +71,7 @@ export default function EmbroideryHome(props) {
         <FormGroup controlId="formControlsSelect" className="categorySelector">
           <ControlLabel>Choose a design family from this drop-down or select a shown product to continue.</ControlLabel>
           <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
-            <option value="all">All Designs</option>
+            <option value="select">Select</option>
             {graphicCategories.map((subcat, i) => {
               return (
                 <option key={i} value={subcat}>{imgBreakDown.subCat[subcat]}</option>

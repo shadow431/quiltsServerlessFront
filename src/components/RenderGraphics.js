@@ -78,8 +78,8 @@ export default function RenderGraphics(props) {
 
   return (
     <Grid fluid>
-      {graphicView === "all" ? renderAllGraphics() : <h2>Please choose from the dropdown above!!</h2>}
-      {graphicView !== "all" ? renderCategoryGraphics() : <h2>Please choose from the dropdown above!!</h2>}
+      {graphicView === "all" || "select" ? renderAllGraphics() : <h2>Please choose from the dropdown above!!</h2>}
+      {graphicView !== "all" || "select" ? renderCategoryGraphics() : <h2>Please choose from the dropdown above!!</h2>}
     </Grid>
   );
 }

@@ -470,6 +470,7 @@ const imgBreakDown = {
     afg: "Afghan",
     air: "Airdale",
     aki: "Akita",
+    all: "All Designs",
     abd: "American Bull Dog",
     esk: "American Eskimo",
     asc: "Australian Cattle Dog",
@@ -605,7 +606,6 @@ const imgBreakDown = {
     wht: "Wheaten Terrier",
     wip: "Whippert",
     wfx: "Wire Fox Terrier",
-    ylb: "Yellow Lab",
     yor: "Yorkshire"
   },
   colors: {

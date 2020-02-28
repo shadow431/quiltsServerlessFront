@@ -16,7 +16,7 @@ export default function Designs (props) {
     handleGraphicChoice,
     embroideryGraphicCategories,
     letterView,
-    showByLetter
+    showByLetter,
   } = props;
   const graphicCategories = embroideryGraphicCategories;
   const graphics = designs;
@@ -28,7 +28,7 @@ export default function Designs (props) {
           <FormGroup controlId="formControlsSelect" className="categorySelector">
             <ControlLabel>Welcome to Embroidery!!  Feel free to browse through and choose a design.</ControlLabel>
             <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
-              <option value="all">All Designs</option>
+              <option value="select">Select</option>
               {graphicCategories.map((subcat, i) => {
                 return (
                   <option key={i} value={subcat}>{imgBreakDown.subCat[subcat]}</option>
