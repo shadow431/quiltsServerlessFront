@@ -133,7 +133,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .MainSection {
-    margin-left: 25%;
+    margin-left: 28%;
     margin-top: 150px;
   }
 

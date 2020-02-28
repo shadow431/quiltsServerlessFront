@@ -41,7 +41,9 @@ export default function KitchenHome(props) {
     price,
     setPrice,
     purchasePrice,
-    setPurchasePrice
+    setPurchasePrice,
+    sizesToDisplay,
+    sizesToChoose
   } = props;
   const typeToRender = "KIT";
   const graphics = fabrics;

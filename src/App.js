@@ -43,6 +43,8 @@ function App(props) {
 
   const kitchenGraphicCategories = ["bir", "bug", "cat", "dog", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const embroideryGraphicCategories = ["all", "afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "blm", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bou", "box", "brr", "brt", "bru", "blt", "car", "can", "cah", "cat", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gon", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "leo", "lhp", "mal", "man", "mas", "min", "mor", "lgm", "new", "nor", "now", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
+  const sizesToChoose = ["sm", "md", "lg", "x1", "x2", "x3", "x4", "x5"];
+  const sizesToDisplay = ["Sm", "Md", "Lg", "1X", "2X", "3X", "4X", "5X"];
 
   useEffect(() => {
     onLoad();
@@ -257,7 +259,9 @@ function App(props) {
                   setLetterView,
                   letterNavKey,
                   setLetterNavKey,
-                  showByLetter
+                  showByLetter,
+                  sizesToChoose,
+                  sizesToDisplay
                 }
               } />
               :

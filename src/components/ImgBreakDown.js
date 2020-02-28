@@ -142,56 +142,56 @@ const imgBreakDown = {
     HOZ: {
       type: "Zipper Hoodie",
       desc: "Hoodie with a zipper",
-      sizes: [
-        {
-          sm: {
-            paypalId: "U8P2XA8D237ZS",
-            price: "45.00"
-          }
-        },
-        {
+      // sizes: [
+        // {
+      sm: {
+        paypalId: "U8P2XA8D237ZS",
+        price: "45.00"
+      // }
+      },
+        // {
           md: {
             paypalId: "QPX3BN2PETAQ4",
             price: "45.00"
-          }
-        },
-        {
+          },
+        // },
+        // {
           lg: {
             paypalId: "7T3A7MTWJDMUU",
             price: "45.00"
-          }
-        },
-        {
+          },
+        // },
+        // {
           x1: {
             paypalId: "4HMRCQ4CA569W",
             price: "45.00"
-          }
-        },
-        {
+          },
+        // },
+        // {
           x2: {
             paypalId: "QPWNXMABFJZ78",
             price: "50.00"
-          }
-        },
-        {
+          },
+        // },
+        // {
           x3: {
             paypalId: "LN3ZDHBSWF6M6",
             price: "50.00"
-          }
-        },
-        {
+          },
+        // },
+        // {
           x4: {
             paypalId: "6PHERHGN5W7G8",
             price: "55.00"
-          }
-        },
-        {
+          },
+        // },
+        // {
           x5: {
             paypalId: "6P9JLVB6H42LA",
             price: "55.00"
-          }
-        }
-      ],
+          },
+        // }
+      // ],
       colors: ["red", "royal blue", "heather grey", "purple", "lavender", "forest green"],
       imgLocation: "",
       paypalId: ""

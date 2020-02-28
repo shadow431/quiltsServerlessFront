@@ -14,7 +14,9 @@ export default function RenderProducts(props) {
     handleSizeChoice,
     handleColorChoice,
     sizePrices,
-    setSizePrices
+    setSizePrices,
+    sizesToChoose,
+    sizesToDisplay
   } = props.productProps;
 
   return (
@@ -23,20 +25,24 @@ export default function RenderProducts(props) {
         {products.map((product, i) => {
           // console.log(product);
           let colors = [];
-          // let sizes = [];
+          let sizes = [];
           if(product.colors && product.colors.length !== 0) {
             colors = product.colors.split(",");
           }
-          // if(product.type !== "IMG") {
-          //   if(product.subCat.toUpperCase() === "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES") {
-          //     // console.log("subcat matches: ",product);
-          //     if(imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes !== undefined || null) {
-          //       // console.log("product has category info: ", product);
-          //       sizes.push(imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes);
-          //       // console.log("Sizes: ", sizes)
-          //     }
-          //   }
-          // }
+          if(product.type !== "IMG") {
+            if(product.subCat.toUpperCase() === "BWL" || "HOO" || "HOZ" || "SWT" || "TSL" || "TSS" || "VES") {
+              console.log("Product at size figure: ", product);
+              console.log("New Sizes: ", imgBreakDown.typeOutline[product.subCat.toUpperCase()][sizesToChoose[0]]);
+              sizes.push(imgBreakDown.typeOutline[product.subCat.toUpperCase()][sizesToChoose[i]]);
+              // console.log("subcat matches: ",product);
+              // if(imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes !== undefined || null) {
+              //   // console.log("product has category info: ", product);
+              //   sizes.push(imgBreakDown.typeOutline[product.subCat.toUpperCase()].sizes);
+              //   // console.log(sizes);
+              //   // console.log("Sizes: ", sizes)
+              // }
+            }
+          }
           if (product.type === typeToRender) {
             return (
               <Col key={i} xs={12} sm={5} md={4} lg={4}>
@@ -57,20 +63,22 @@ export default function RenderProducts(props) {
                         </FormControl>
                       </FormGroup>
                     }
-                    {/* {sizes.length !== 0 ?
+                    {sizes.length !== 0 ?
                       (<FormGroup controlId="sizeSelect">
                         <ControlLabel>Choose a size!</ControlLabel>
                         <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
                           <option value="select">Size Choice</option>
-                          {sizes.map((size, i) => {
-                            console.log(size[i]);
+                          {sizesToChoose.map((size, i) => {
+                            let tempItem = imgBreakDown.typeOutline[product.subCat.toUpperCase()];
+                            console.log(product.name, tempItem);
+                            // console.log(product);
                             return (
-                              <option key={i} value={size[0]} id={size[0].paypayId}>`${size[0]} : $${size.price[0]}`</option>
+                              <option key={i} value={size} id={size.paypayId}> {sizesToDisplay[i]}  : $ {size.price}</option>
                             )
                           })}
                         </FormControl>
                       </FormGroup>) : null
-                    } */}
+                    }
                     <Button onClick={() => handleLargeImage(product)}>Enlarge</Button>
                     <Button onClick={() => handleProductChoice(product)}>Choose</Button>
                   </Thumbnail>
