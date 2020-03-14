@@ -10,14 +10,11 @@ export default function RenderProducts(props) {
     handleProductChoice,
     typeToRender,
     handleLargeImage,
-    handleSizeChoice,
     handleColorChoice,
-    sizeChoice,
-    setSizeChoice,
+    handleSizeChoice,
+    sizesToDisplay,
+    sizesToChoose
   } = props.productProps;
-  const sizesToChoose = ["sm", "md", "lg", "x1", "x2", "x3", "x4", "x5"];
-  const sizesToDisplay = ["Sm", "Md", "Lg", "1X", "2X", "3X", "4X", "5X"];
-  const subCatToWorkWith = ["BWL", "HOO", "HOZ", "SWT", "TSS", "VES"];
   let renderSizes = false;
 
   return (
@@ -45,14 +42,29 @@ export default function RenderProducts(props) {
               renderSizes = false;
             }
           }
-          console.log(renderSizes);
           if (product.type === typeToRender) {
             return (
               <Col key={i} xs={12} sm={5} md={4} lg={4}>
                 <React.Fragment>
                 <Thumbnail className="renderThumb" key={product._id} src={product.imgUrl} alt="Image to be added soon....">
                   <h3>{product.name}</h3>
-                  <h4>{`$${product.price}`}</h4>
+                  {renderSizes ?
+                    (<FormGroup controlId="sizeSelect">
+                      <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
+                        <option value="select">Size Choice</option>
+                        {sizesToChoose.map((size, l) => {
+                          if(prodWithSize[0][size] === undefined) {
+                            return null;
+                          }else {
+                            return (
+                              <option key={prodWithSize[0][size].paypalId} value={sizesToDisplay[l] + " " + prodWithSize[0][size].paypalId + " $" + prodWithSize[0][size].price}> {sizesToDisplay[l]} : $ {prodWithSize[0][size].price}</option>
+                            )
+                          }
+                        })}
+                        }
+                      </FormControl>
+                    </FormGroup>) : <h4>{`$${product.price}`}</h4>
+                  }
                   {typeToRender === "EMB" &&
                     <FormGroup controlId="colorSelect">
                       <ControlLabel>Choose a color!</ControlLabel>
@@ -65,26 +77,6 @@ export default function RenderProducts(props) {
                           })}
                       </FormControl>
                     </FormGroup>
-                  }
-                  {renderSizes ?
-                    (<FormGroup controlId="sizeSelect">
-                      <ControlLabel>Choose a size!</ControlLabel>
-                      <FormControl componentClass="select" placeholder="select" onChange={handleSizeChoice}>
-                        <option value="select">Size Choice</option>
-                        {sizesToChoose.map((size, l) => {
-                          if(prodWithSize[0][size] === undefined) {
-                            console.log("Size to choose: ", prodWithSize[0][size]);
-                            return null;
-                          }else {
-                            console.log("size in prodWithSize: ", prodWithSize[0][size]);
-                            return (
-                              <option key={prodWithSize[0][size].paypalId} value={prodWithSize[0][size]} id={prodWithSize[0][size].paypalId}> {sizesToDisplay[l]} : $ {prodWithSize[0][size].price}</option>
-                            )
-                          }
-                        })}
-                        }
-                      </FormControl>
-                    </FormGroup>) : null
                   }
                   <Button onClick={() => handleLargeImage(product)}>Enlarge</Button>
                   <Button onClick={() => handleProductChoice(product)}>Choose</Button>

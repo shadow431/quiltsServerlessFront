@@ -20,6 +20,7 @@ export default function EmbroideryHome(props) {
     handleLargeImage,
     handleGraphicChoice,
     handleProductChoice,
+    handleSizeChoice,
     colorChoice,
     colorChosen,
     setColorChosen,
@@ -36,22 +37,24 @@ export default function EmbroideryHome(props) {
     setProductChoice,
     isLargeImage,
     LargerImage,
-    renderSizes,
-    setRenderSizes,
     graphicView,
     setGraphicView,
-    sizeChoice,
-    setSizeChoice,
     price,
     setPrice,
     purchasePrice,
     setPurchasePrice,
     showByLetter,
-    letterView
+    letterView,
+    sizeChoicePaypalId,
+    sizeChoice,
+    startOver,
+    setSizeChoice
   } = props;
 
   const graphics = designs;
   const graphicCategories = embroideryGraphicCategories;
+  const sizesToChoose = ["sm", "md", "lg", "x1", "x2", "x3", "x4", "x5"];
+  const sizesToDisplay = ["Sm", "Md", "Lg", "1X", "2X", "3X", "4X", "5X"];
 
   return (
     <div className="embroideryHome container">
@@ -66,8 +69,8 @@ export default function EmbroideryHome(props) {
         </React.Fragment>
       ) : null
       }
-      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setGraphicChosen(false); setGraphicChoice([]); setGraphicView("all"); setColorChoice(""); setColorChosen(false); }}>Start Over</Button> : null}
-      {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setColorChoice(""); setColorChosen(false); }}>Change Product</Button> : null}
+      {productChosen || graphicChosen ? <Button className="buttonToggle" onClick={() => startOver}>Start Over</Button> : null}
+      {productChosen ? <Button className="buttonToggle" onClick={() => { setProductChosen(false); setProductChoice([]); setColorChoice(""); setColorChosen(false); setPrice(""); setSizeChoice(""); }}>Change Product</Button> : null}
       {graphicChosen ? <Button onClick={() => { setGraphicChosen(false); setGraphicChoice([]) }}>Change Fabric</Button> : null}
       {!graphicChosen || !productChosen ? (
         <FormGroup controlId="formControlsSelect" className="categorySelector">
@@ -85,7 +88,7 @@ export default function EmbroideryHome(props) {
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{sizeChoice, setSizeChoice, products, handleProductChoice, typeToRender, isLargeImage, renderSizes, setRenderSizes, handleLargeImage, handleColorChoice }} /> : null
+        <RenderProducts productProps={{sizesToChoose, sizesToDisplay, products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage, handleColorChoice, handleSizeChoice }} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -121,10 +124,18 @@ export default function EmbroideryHome(props) {
               <h5>Fabric Chosen</h5>
               <h3>{graphicChoice.name}</h3>
             </Thumbnail>
-            <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].type} src={productChoice.imgUrl} alt="Image to be added soon....">
+            <Thumbnail className="renderThumb" key={productChoice.name} src={productChoice.imgUrl} alt="Image to be added soon....">
               <h5>{productChoice.name}</h5>
               {colorChosen && <h5>{colorChoice}</h5>}
-              <h3>{`$${productChoice.price}`}</h3>
+              {productChoice.subCat === "BWL" ||
+              productChoice.subCat === "HOO" ||
+              productChoice.subCat === "HOZ" ||
+              productChoice.subCat === "SWT" ||
+              // productChoice.subCat === "TSL" ||
+              productChoice.subCat === "TSS" ||
+              productChoice.subCat === "VES" ? (
+                <h3>{`${sizeChoice} $${price}`}</h3>
+              ) : <h3>{`$${productChoice.price}`}</h3>}
             </Thumbnail>
           </div>
           {/* <FormGroup controlId="formControlsSelect">
@@ -138,7 +149,21 @@ export default function EmbroideryHome(props) {
               <option value="5">{`5 = $${price * 5}`}</option>
             </FormControl>
           </FormGroup> */}
-          <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+          {
+            productChoice.subCat === "BWL" ||
+            productChoice.subCat === "HOO" ||
+            productChoice.subCat === "HOZ" ||
+            productChoice.subCat === "SWT" ||
+            // productChoice.subCat === "TSL" ||
+            productChoice.subCat === "TSS" ||
+            productChoice.subCat === "VES" ? (
+              <PayPalButton paypalId={sizeChoicePaypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+            )
+            :
+            (
+              <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+            )
+          }
         </React.Fragment>
         ) : null
       }

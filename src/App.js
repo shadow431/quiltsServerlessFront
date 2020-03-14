@@ -40,7 +40,7 @@ function App(props) {
   const [letterView, setLetterView] = useState("");
   const [letterNavKey, setLetterNavKey] = useState("");
   const [showLetterNav, setShowLetterNav] = useState(false);
-  const [renderSizes, setRenderSizes] = useState(false);
+  const [sizeChoicePaypalId, setSizeChoicePaypalId] = useState("");
 
   const kitchenGraphicCategories = ["bir", "bug", "cat", "dog", "fdk", "flr", "frm", "hol", "mil", "mis", "nat", "wdl"];
   const embroideryGraphicCategories = ["all", "afg", "air", "aki", "abd", "esk", "asc", "aus", "atr", "baj", "bas", "bea", "brd", "bed", "blm", "bls", "bel", "ber", "bic", "btc", "bch", "bld", "brc", "bod", "bor", "bos", "bou", "box", "brr", "brt", "bru", "blt", "car", "can", "cah", "cat", "kcs", "che", "chi", "chc", "cho", "clb", "cos", "col", "cor", "cot", "dox", "dal", "ddt", "dob", "bul", "eng", "spr", "flt", "fox", "fbl", "she", "grs", "gon", "gol", "gor", "grd", "grp", "gsm", "gry", "hav", "pul", "hus", "ice", "irh", "irw", "iwh", "itg", "jrt", "jpc", "kes", "ker", "lad", "lab", "lag", "lak", "leo", "lhp", "mal", "man", "mas", "min", "mor", "lgm", "new", "nor", "now", "nov", "egs", "pap", "pek", "pic", "pit", "plh", "pom", "pod", "por", "pug", "rat", "rod", "rot", "sal", "sam", "sci", "sch", "sco", "sha", "shl", "shb", "shi", "sil", "smc", "stb", "stf", "tib", "tre", "vis", "wei", "wss", "whi", "wht", "wip", "wfx", "yor"];
@@ -102,6 +102,8 @@ function App(props) {
     setShowByLetter(false);
     setShowLetterNav(false);
     setLetterNavKey("");
+    setSizeChoice("");
+    setPrice("");
   }
 
   function LargerImage () {
@@ -137,7 +139,6 @@ function App(props) {
     setProductChoice(product);
     setProductTypeChosen(product.subCat.toUpperCase());
     setProductChosen(true);
-    setPrice(product.price);
     setPurchasePrice(Number(product.price));
     setIsLargeImage(false);
     setShowByLetter(false);
@@ -149,6 +150,12 @@ function App(props) {
       setGraphicChosen(false);
     }
     // setQuantity(1);
+  }
+
+  function handleSizeChoice(e){
+    setSizeChoicePaypalId(e.target.value.split(" ")[1]);
+    setSizeChoice(e.target.value.substr(0,2));
+    setPrice(e.target.value.split("$")[1]);
   }
 
   function handleLargeImage(product) {
@@ -231,6 +238,7 @@ function App(props) {
                   handleLargeImage,
                   handleGraphicView,
                   handleGraphicChoice,
+                  handleSizeChoice,
                   isLargeImage,
                   graphicChoice,
                   graphicChosen,
@@ -246,10 +254,9 @@ function App(props) {
                   graphicView,
                   setGraphicChosen,
                   setGraphicChoice,
+                  price,
                   purchasePrice,
                   setPurchasePrice,
-                  renderSizes,
-                  setRenderSizes,
                   sizeChoice,
                   setSizeChoice,
                   setProductChosen,
@@ -264,6 +271,8 @@ function App(props) {
                   letterNavKey,
                   setLetterNavKey,
                   showByLetter,
+                  sizeChoicePaypalId,
+                  startOver
                 }
               } />
               :

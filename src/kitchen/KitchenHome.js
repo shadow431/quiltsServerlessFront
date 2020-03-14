@@ -26,10 +26,6 @@ export default function KitchenHome(props) {
     setGraphicChosen,
     productTypeChosen,
     setProductChosen,
-    sizeChoice,
-    setSizeChoice,
-    renderSizes,
-    setRenderSizes,
     productChosen,
     productChoice,
     colorChoice,
@@ -42,11 +38,18 @@ export default function KitchenHome(props) {
     graphicView,
     setGraphicView,
     purchasePrice,
-    setPurchasePrice
+    setPurchasePrice,
+    sizeChoicePaypalId,
+    price,
+    handleSizeChoice,
+    sizeChoice,
+    setSizeChoice
   } = props;
   const typeToRender = "KIT";
   const graphics = fabrics;
   const graphicCategories = kitchenGraphicCategories;
+  const sizesToChoose = ["sm", "md", "lg", "x1", "x2", "x3", "x4", "x5"];
+  const sizesToDisplay = ["Sm", "Md", "Lg", "1X", "2X", "3X", "4X", "5X"];
 
   return (
     <div className="KitchenHome container">
@@ -80,7 +83,7 @@ export default function KitchenHome(props) {
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice, sizeChoice, setSizeChoice, renderSizes, setRenderSizes, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
+        <RenderProducts productProps={{handleSizeChoice, sizesToChoose, sizesToDisplay, products, handleProductChoice, sizeChoice, setSizeChoice, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -115,12 +118,34 @@ export default function KitchenHome(props) {
               <h5>Fabric Chosen</h5>
               <h3>{graphicChoice.name}</h3>
             </Thumbnail>
-            <Thumbnail className="renderThumb" key={imgBreakDown.typeOutline[productTypeChosen].type} src={productChoice.imgUrl} alt="Image to be added soon....">
+            <Thumbnail className="renderThumb" key={productChoice.name} src={productChoice.imgUrl} alt="Image to be added soon....">
               <h5>{productChoice.name}</h5>
-              <h3>{`$${productChoice.price}`}</h3>
+              {productChoice.subCat === "BWL" ||
+              productChoice.subCat === "HOO" ||
+              productChoice.subCat === "HOZ" ||
+              productChoice.subCat === "SWT" ||
+              // productChoice.subCat === "TSL" ||
+              productChoice.subCat === "TSS" ||
+              productChoice.subCat === "VES" ? (
+                <h3>{`${sizeChoice} $${price}`}</h3>
+              ) : <h3>{`$${productChoice.price}`}</h3>}
             </Thumbnail>
           </div>
-          <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+          {
+            productChoice.subCat === "BWL" ||
+            productChoice.subCat === "HOO" ||
+            productChoice.subCat === "HOZ" ||
+            productChoice.subCat === "SWT" ||
+            // productChoice.subCat === "TSL" ||
+            productChoice.subCat === "TSS" ||
+            productChoice.subCat === "VES" ? (
+              <PayPalButton paypalId={sizeChoicePaypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+            )
+            :
+            (
+              <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+            )
+          }
         </React.Fragment>
         ) : null
       }

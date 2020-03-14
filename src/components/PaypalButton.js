@@ -13,7 +13,8 @@ export default function PayPalButton (props) {
     fabric,
     color,
     colorChosen,
-    productType
+    productType,
+    size
   } = props;
 
   return (
@@ -49,6 +50,8 @@ export default function PayPalButton (props) {
             <input type="hidden" name="on1" value={color} />
             <input type="hidden" name="os1" value="" />
           </React.Fragment>}
+        <input type="hidden" name="on2" value={size} />
+        <input type="hidden" name="os2" value="" />
         <input type="hidden" name="currency_code" value="USD" />
         <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" />
         <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
