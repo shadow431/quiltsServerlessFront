@@ -26,24 +26,23 @@ export default function KitchenHome(props) {
     setGraphicChosen,
     productTypeChosen,
     setProductChosen,
+    sizeChoice,
+    setSizeChoice,
+    renderSizes,
+    setRenderSizes,
     productChosen,
     productChoice,
     colorChoice,
     colorChosen,
     setProductChoice,
     isLargeImage,
-    sizeChoice,
     setCurrentLargeImg,
     startOver,
     currentLargeImg,
     graphicView,
     setGraphicView,
-    price,
-    setPrice,
     purchasePrice,
-    setPurchasePrice,
-    sizesToDisplay,
-    sizesToChoose
+    setPurchasePrice
   } = props;
   const typeToRender = "KIT";
   const graphics = fabrics;
@@ -81,7 +80,7 @@ export default function KitchenHome(props) {
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
+        <RenderProducts productProps={{products, handleProductChoice, sizeChoice, setSizeChoice, renderSizes, setRenderSizes, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>

@@ -40,14 +40,14 @@ export default function EmbroideryHome(props) {
     setRenderSizes,
     graphicView,
     setGraphicView,
+    sizeChoice,
+    setSizeChoice,
     price,
     setPrice,
     purchasePrice,
     setPurchasePrice,
     showByLetter,
-    letterView,
-    sizesToDisplay,
-    sizesToChoose
+    letterView
   } = props;
 
   const graphics = designs;
@@ -85,7 +85,7 @@ export default function EmbroideryHome(props) {
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage, handleColorChoice, sizesToDisplay, sizesToChoose}} /> : null
+        <RenderProducts productProps={{sizeChoice, setSizeChoice, products, handleProductChoice, typeToRender, isLargeImage, renderSizes, setRenderSizes, handleLargeImage, handleColorChoice }} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
