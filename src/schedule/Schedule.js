@@ -6,20 +6,19 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 export default function Schedule(props) {
   const [eventItems, updateEventItems] = useState(props.schedule);
-  const sortedEvents = months.map((month, i) => {
-    eventItems.filter(event => {
-      return event.date.split(" ")[0] === month
-    }).sort((a, b) => {
-      let show1 = a.date;
-      let show2 = b.date;
-      console.log("Show1: ", show1);
-      console.log("Show2: ", show2);
-      if(show1>show2){return 1}
-      if(show1<show2){return -1}
-      if(show1===show2){return 0}
-    });
-  });
-  console.log("sorted: ", sortedEvents);
+  // const sortedEvents = [];
+  // eventItems.filter((event, i) =>
+  //   event.date.split(" ")[0] === months[i]
+  // ).sort((a, b) => {
+  //   let show1 = a.date.split(" ")[0];
+  //   let show2 = a.date.split(" ")[0];
+  //   if(show1>show2){return 1}
+  //   if(show1<show2){return -1}
+  //   if(show1===show2){return 0}
+  // });
+
+  // const singleList = [...new Map(eventItems.map(item => [item.date, item])).values()];
+  // console.log("sorted: ", singleList);
 
   return (
     <div className="ScheduleHome">
@@ -43,7 +42,7 @@ export default function Schedule(props) {
           </tr>
         </thead>
         <tbody>
-            {sortedEvents.map((currEvent, i) => {
+            {eventItems.map((currEvent, i) => {
               return (
                 <tr key={currEvent._id}>
                   <td>{currEvent.date}</td>

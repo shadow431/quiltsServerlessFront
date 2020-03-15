@@ -16,6 +16,7 @@ import KitchenHome from "./kitchen/KitchenHome";
 import Login from "./containers/Login";
 import NewDesign from "./Design/NewDesign";
 import NewFabric from "./Fabric/NewFabric";
+import NewItems from "./containers/NewItems";
 import NewProduct from "./products/NewProduct";
 import NewSchedule from "./schedule/NewSchedule";
 import NotFound from "./containers/NotFound";
@@ -31,6 +32,7 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />
       <AppliedRoute path="/fabrics" exact component={Fabrics} appProps={appProps} />
       <AppliedRoute path="/kitchen" exact component={KitchenHome} appProps={appProps} />
+      <AppliedRoute path="/newitems" exact component={NewItems} appProps={appProps} />
       <AppliedRoute path="/schedule" exact component={Schedule} appProps={appProps} />
       <AppliedRoute path="/sandbox" exact component={Sandbox} appProps={appProps} />
       <UnauthenticatedRoute path="/admin" exact component={Login} appProps={appProps} />
