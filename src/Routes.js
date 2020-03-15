@@ -5,6 +5,7 @@ import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
 import Admin from "./containers/Admin";
+import ContactUs from "./containers/ContactUs";
 import DeleteProduct from "./products/DeleteProduct";
 import Designs from "./embroidery/Designs";
 import EditProduct from "./products/EditProduct";
@@ -28,6 +29,7 @@ export default function Routes({ appProps }) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
+      <AppliedRoute path="/contact" exact component={ContactUs} appProps={appProps} />
       <AppliedRoute path="/designs" exact component={Designs} appProps={appProps} />
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />
       <AppliedRoute path="/fabrics" exact component={Fabrics} appProps={appProps} />

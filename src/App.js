@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
 import { Link, withRouter } from "react-router-dom";
 import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
-import { LinkContainer } from "react-router-bootstrap";
 import { ThemeProvider } from "styled-components";
 import Routes from "./Routes";
 import { API } from "aws-amplify";
@@ -212,6 +211,7 @@ function App(props) {
             <Navbar.Collapse>
               <Nav pullRight>
                 <GlobalStyles />
+                <NavItem className="contactLink"><Link to="/contact">Contact Us</Link></NavItem>
                 <NavItem className="adminLink" onClick={toggleTheme}>Color Scheme</NavItem>
                 {isAuthenticated ? <NavItem onClick={handleLogout}><span className="logoutLink">Logout</span></NavItem> : null }
               </Nav>
