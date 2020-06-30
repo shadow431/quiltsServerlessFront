@@ -21,6 +21,8 @@ export default function EmbroideryHome(props) {
     handleGraphicChoice,
     handleProductChoice,
     handleSizeChoice,
+    handleEdit,
+    handleDelete,
     colorChoice,
     colorChosen,
     setColorChosen,
@@ -48,7 +50,8 @@ export default function EmbroideryHome(props) {
     sizeChoicePaypalId,
     sizeChoice,
     startOver,
-    setSizeChoice
+    setSizeChoice,
+    isAuthenticated
   } = props;
 
   const graphics = designs;
@@ -88,7 +91,7 @@ export default function EmbroideryHome(props) {
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{ sizesToChoose, sizesToDisplay, products, handleProductChoice, typeToRender, isLargeImage, handleLargeImage, handleColorChoice, handleSizeChoice }} /> : null
+        <RenderProducts productProps={{ isAuthenticated, sizesToChoose, sizesToDisplay, products, handleProductChoice, handleEdit, handleDelete, typeToRender, isLargeImage, handleLargeImage, handleColorChoice, handleSizeChoice }} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -111,11 +114,11 @@ export default function EmbroideryHome(props) {
       {!graphicChosen && !isLoading && !showByLetter ?
         (<React.Fragment>
           <h3>Design Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps={{ handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, showByLetter, letterView }} />
+          <RenderGraphics graphicProps={{ isAuthenticated, handleGraphicChoice, handleDelete, handleEdit, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, showByLetter, letterView }} />
         </React.Fragment>
         ) : null
       }
-      {showByLetter ? <RenderLetterGraphics letterProps={{ letterView, graphicCategories, graphics, handleGraphicChoice, handleLargeImage }} /> : null}
+      {showByLetter ? <RenderLetterGraphics letterProps={{ isAuthenticated, letterView, graphicCategories, graphics, handleGraphicChoice, handleEdit, handleDelete, handleLargeImage }} /> : null}
       {productChosen && graphicChosen ? (
         <React.Fragment>
           <h2>The product you have put together today is: </h2>

@@ -187,6 +187,14 @@ function App(props) {
     }
   }
 
+  function handleDelete(graphic) {
+    console.log("item to be deleted: ", graphic);
+  }
+
+  function handleEdit(graphic) {
+    console.log("item to be edited: ", graphic);
+  }
+
   function handleGraphicView(e) {
     console.log(e.target.value);
     if (e.target.value === "select" || "all") {
@@ -241,6 +249,8 @@ function App(props) {
                   handleGraphicView,
                   handleGraphicChoice,
                   handleSizeChoice,
+                  handleDelete,
+                  handleEdit,
                   isLargeImage,
                   graphicChoice,
                   graphicChosen,

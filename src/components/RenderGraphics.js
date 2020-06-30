@@ -7,8 +7,11 @@ Modal.setAppElement('#root');
 
 export default function RenderGraphics(props) {
   const {
+    isAuthenticated,
     graphicView,
     handleGraphicChoice,
+    handleEdit,
+    handleDelete,
     graphicCategories,
     graphics,
     handleLargeImage,
@@ -34,6 +37,14 @@ export default function RenderGraphics(props) {
                     <h3>{graphic.name}</h3>
                     <Button onClick={() => handleLargeImage(graphic)}>Enlarge</Button>
                     <Button onClick={() => handleGraphicChoice(graphic)}>Choose</Button>
+                    {
+                      isAuthenticated && (
+                        <React.Fragment>
+                          <Button onClick={() => handleEdit(graphic)}>Edit</Button>
+                          <Button onClick={() => handleDelete(graphic)}>Delete</Button>
+                        </React.Fragment>
+                      )
+                    }
                   </Thumbnail>
                 </Col>
               )
@@ -62,6 +73,15 @@ export default function RenderGraphics(props) {
                           <h3>{graphic.name}</h3>
                           <Button onClick={() => handleLargeImage(graphic)}>Enlarge</Button>
                           <Button onClick={() => handleGraphicChoice(graphic)}>Choose</Button>
+                          {
+                            isAuthenticated && (
+                              <React.Fragment>
+                                <Button onClick={() => handleEdit(graphic)}>Edit</Button>
+                                <Button onClick={() => handleDelete(graphic)}>Delete</Button>
+                              </React.Fragment>
+                            )
+                          }
+
                         </Thumbnail>
                       </Col>
                     )

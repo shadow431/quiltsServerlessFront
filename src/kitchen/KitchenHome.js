@@ -9,6 +9,7 @@ import RenderGraphics from "../components/RenderGraphics";
 
 export default function KitchenHome(props) {
   const {
+    isAuthenticated,
     kitchenGraphicCategories,
     fabrics,
     LargerImage,
@@ -20,6 +21,8 @@ export default function KitchenHome(props) {
     handleLargeImage,
     handleGraphicChoice,
     handleProductChoice,
+    handleEdit,
+    handleDelete,
     graphicChoice,
     setGraphicChoice,
     graphicChosen,
@@ -79,11 +82,11 @@ export default function KitchenHome(props) {
             })}
           </FormControl>
         </FormGroup>
-        ) : null
+      ) : null
       }
       {isLargeImage ? <LargerImage /> : null}
       {!productChosen && !isLoading ?
-        <RenderProducts productProps={{handleSizeChoice, sizesToChoose, sizesToDisplay, products, handleProductChoice, sizeChoice, setSizeChoice, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
+        <RenderProducts productProps={{ isAuthenticated, handleSizeChoice, handleDelete, handleEdit, sizesToChoose, sizesToDisplay, products, handleProductChoice, sizeChoice, setSizeChoice, typeToRender, handleLargeImage, isLargeImage, setCurrentLargeImg }} /> : null
       }
       {graphicChosen && !productChosen ? (
         <React.Fragment>
@@ -92,7 +95,7 @@ export default function KitchenHome(props) {
             <h3>{graphicChoice.name}</h3>
           </Thumbnail>
         </React.Fragment>
-        ) : null
+      ) : null
       }
       {productChosen && !graphicChosen ? (
         <React.Fragment>
@@ -101,12 +104,12 @@ export default function KitchenHome(props) {
             <h5>{productChoice.desc}</h5>
           </Thumbnail>
         </React.Fragment>
-        ) : null
+      ) : null
       }
       {graphicView !== "select" && !graphicChosen ?
         (<React.Fragment>
           <h3>Design Options, Click one to choose!!</h3>
-          <RenderGraphics graphicProps = {{handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, currentGraphic, setCurrentGraphic, setCurrentLargeImg }} />
+          <RenderGraphics graphicProps={{ isAuthenticated, handleEdit, handleDelete, handleGraphicChoice, graphicView, graphicCategories, graphics, isLargeImage, handleLargeImage, currentGraphic, setCurrentGraphic, setCurrentLargeImg }} />
         </React.Fragment>
         ) : null
       }
@@ -121,33 +124,33 @@ export default function KitchenHome(props) {
             <Thumbnail className="renderThumb" key={productChoice.name} src={productChoice.imgUrl} alt="Image to be added soon....">
               <h5>{productChoice.name}</h5>
               {productChoice.subCat === "BWL" ||
+                productChoice.subCat === "HOO" ||
+                productChoice.subCat === "HOZ" ||
+                productChoice.subCat === "SWT" ||
+                // productChoice.subCat === "TSL" ||
+                productChoice.subCat === "TSS" ||
+                productChoice.subCat === "VES" ? (
+                  <h3>{`${sizeChoice} $${price}`}</h3>
+                ) : <h3>{`$${productChoice.price}`}</h3>}
+            </Thumbnail>
+          </div>
+          {
+            productChoice.subCat === "BWL" ||
               productChoice.subCat === "HOO" ||
               productChoice.subCat === "HOZ" ||
               productChoice.subCat === "SWT" ||
               // productChoice.subCat === "TSL" ||
               productChoice.subCat === "TSS" ||
               productChoice.subCat === "VES" ? (
-                <h3>{`${sizeChoice} $${price}`}</h3>
-              ) : <h3>{`$${productChoice.price}`}</h3>}
-            </Thumbnail>
-          </div>
-          {
-            productChoice.subCat === "BWL" ||
-            productChoice.subCat === "HOO" ||
-            productChoice.subCat === "HOZ" ||
-            productChoice.subCat === "SWT" ||
-            // productChoice.subCat === "TSL" ||
-            productChoice.subCat === "TSS" ||
-            productChoice.subCat === "VES" ? (
-              <PayPalButton paypalId={sizeChoicePaypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
-            )
-            :
-            (
-              <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
-            )
+                <PayPalButton paypalId={sizeChoicePaypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+              )
+              :
+              (
+                <PayPalButton paypalId={productChoice.paypalId} color={colorChoice} size={sizeChoice} colorChosen={colorChosen} price={purchasePrice} fabric={graphicChoice.name} productName={productChoice.name} productType={productTypeChosen} />
+              )
           }
         </React.Fragment>
-        ) : null
+      ) : null
       }
     </div>
   )
