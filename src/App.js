@@ -62,14 +62,14 @@ function App(props) {
       await Auth.currentSession();
       userHasAuthenticated(true);
     }
-    catch(e) {
+    catch (e) {
       if (e !== 'No current user') {
         onLoad();
       }
     }
     setIsLoading(false);
     setIsAuthenticating(false);
-    if(!isAuthenticating && isAuthenticated) {
+    if (!isAuthenticating && isAuthenticated) {
       props.history.push("/adminLoggedIn");
     };
   }
@@ -82,8 +82,8 @@ function App(props) {
     props.history.push("/");
   }
 
-  function toggleTheme () {
-    if(theme === 'greenTheme') {
+  function toggleTheme() {
+    if (theme === 'greenTheme') {
       setTheme('greyTheme');
     } else {
       setTheme("greenTheme");
@@ -105,16 +105,16 @@ function App(props) {
     setPrice("");
   }
 
-  function LargerImage () {
+  function LargerImage() {
     const customStyles = {
-      content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
-        maxHeight             : "90%"
+      content: {
+        top: '50%',
+        left: '50%',
+        right: 'auto',
+        bottom: 'auto',
+        marginRight: '-50%',
+        transform: 'translate(-50%, -50%)',
+        maxHeight: "90%"
       }
     };
     return (
@@ -129,7 +129,7 @@ function App(props) {
         <h3>{currentLargeImg.name}</h3>
         <h5>{currentLargeImg.desc}</h5>
         <h5>{currentLargeImg.price}</h5>
-        <Button onClick={() => {setCurrentLargeImg([]); setIsLargeImage(false);}}>Close</Button>
+        <Button onClick={() => { setCurrentLargeImg([]); setIsLargeImage(false); }}>Close</Button>
       </Modal>
     )
   }
@@ -141,19 +141,19 @@ function App(props) {
     setPurchasePrice(Number(product.price));
     setIsLargeImage(false);
     setShowByLetter(false);
-    if(graphicChoice.type === "FAB" && product.type === "EMB") {
+    if (graphicChoice.type === "FAB" && product.type === "EMB") {
       setGraphicChoice([]);
       setGraphicChosen(false);
-    } else if(graphicChoice.type === "EMB" && product.type === "KIT") {
+    } else if (graphicChoice.type === "EMB" && product.type === "KIT") {
       setGraphicChoice([]);
       setGraphicChosen(false);
     }
     // setQuantity(1);
   }
 
-  function handleSizeChoice(e){
+  function handleSizeChoice(e) {
     setSizeChoicePaypalId(e.target.value.split(" ")[1]);
-    setSizeChoice(e.target.value.substr(0,2));
+    setSizeChoice(e.target.value.substr(0, 2));
     setPrice(e.target.value.split("$")[1]);
   }
 
@@ -172,24 +172,25 @@ function App(props) {
     setGraphicChosen(true);
     setIsLargeImage(false);
     setShowByLetter(false);
-    if(graphic.type === "FAB" && productChoice.type === "EMB") {
+    if (graphic.type === "FAB" && productChoice.type === "EMB") {
       setProductChoice([]);
       setProductChosen(false);
       history.push("/kitchen");
-    } else if(graphic.type === "EMB" && productChoice.type === "KIT") {
+    } else if (graphic.type === "EMB" && productChoice.type === "KIT") {
       setProductChoice([]);
       setProductChosen(false);
       history.push("/embroidery");
-    } else if(graphic.type === "FAB") {
+    } else if (graphic.type === "FAB") {
       history.push("/kitchen");
-    } else if(graphic.type === "EMB") {
+    } else if (graphic.type === "EMB") {
       history.push("/embroidery");
     }
   }
 
   function handleGraphicView(e) {
-    if(e.target.value === "select" || "all") {
-      setLetterView("all");
+    console.log(e.target.value);
+    if (e.target.value === "select" || "all") {
+      setLetterView("false");
       setLetterNavKey("");
     }
     setGraphicView(e.target.value);
@@ -211,17 +212,18 @@ function App(props) {
             <Navbar.Collapse>
               <Nav pullRight>
                 <GlobalStyles />
-                <NavItem className="contactLink"><Link to="/contact">Contact Us</Link></NavItem>
+                <NavItem className="contactLink" onClick={() => props.history.push("/contact")}>Contact Us</NavItem>
+                <NavItem className="contactLink" onClick={() => props.history.push("/about")}>About Us</NavItem>
                 <NavItem className="adminLink" onClick={toggleTheme}>Color Scheme</NavItem>
-                {isAuthenticated ? <NavItem onClick={handleLogout}><span className="logoutLink">Logout</span></NavItem> : null }
+                {isAuthenticated ? <NavItem onClick={handleLogout}><span className="logoutLink">Logout</span></NavItem> : null}
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          <MainNav navProps={{history, isAuthenticated, startOver, setShowLetterNav}}/>
+          <MainNav navProps={{ history, isAuthenticated, startOver, setShowLetterNav, setLetterView, setShowByLetter }} />
           {showLetterNav ?
-            <LetterNav letterNavProps={{setLetterView, setLetterNavKey, letterNavKey, setGraphicView, setShowByLetter}}/> : null
+            <LetterNav letterNavProps={{ setLetterView, setLetterNavKey, letterNavKey, setGraphicView, setShowByLetter }} /> : null
           }
-          <div className="MainSection" style={{display: 'flex'}}>
+          <div className="MainSection" style={{ display: 'flex' }}>
             {!isLoading ?
               <Routes appProps={
                 {

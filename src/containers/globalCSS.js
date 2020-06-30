@@ -142,6 +142,22 @@ export const GlobalStyles = createGlobalStyle`
     width: 400px;
   }
 
+//   .navbar {
+//   min-height: 80px;
+// }
+
+// .navbar-brand {
+//   padding: 0 15px;
+//   height: 80px;
+//   line-height: 80px;
+// }
+
+// .navbar-toggle {
+//   /* (80px - button height 34px) / 2 = 23px */
+//   margin-top: 23px;
+//   padding: 9px 10px !important;
+// }
+
   .renderThumb {
     background: ${({ theme }) => theme.thumbBackground};
     text-align: center;

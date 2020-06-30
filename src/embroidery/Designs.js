@@ -4,7 +4,7 @@ import { FormControl, FormGroup, ControlLabel, Grid, Row } from "react-bootstrap
 import imgBreakDown from "../components/ImgBreakDown";
 import RenderLetterGraphics from "../components/RenderLetterGraphics";
 
-export default function Designs (props) {
+export default function Designs(props) {
   const {
     designs,
     handleGraphicView,
@@ -28,7 +28,7 @@ export default function Designs (props) {
           <FormGroup controlId="formControlsSelect" className="categorySelector">
             <ControlLabel>Welcome to Embroidery!!  Feel free to browse through and choose a design.</ControlLabel>
             <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
-              <option value="select">Select</option>
+              <option value="all">Select</option>
               {graphicCategories.map((subcat, i) => {
                 return (
                   <option key={i} value={subcat}>{imgBreakDown.subCat[subcat]}</option>
@@ -39,8 +39,8 @@ export default function Designs (props) {
         </Row>
         {isLargeImage ? <LargerImage /> : null}
         {showByLetter ?
-          <RenderLetterGraphics letterProps={{letterView, graphicCategories, graphics, handleGraphicChoice, handleLargeImage}} />
-        :
+          <RenderLetterGraphics letterProps={{ letterView, graphicCategories, graphics, handleGraphicChoice, handleLargeImage }} />
+          :
           <RenderGraphics graphicProps={{ graphicCategories, graphicView, graphics, handleLargeImage, handleGraphicChoice }} />
         }
 

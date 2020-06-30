@@ -12,13 +12,13 @@ export default function RenderLetterGraphics(props) {
   } = props.letterProps;
 
   const letterArr = graphics.filter(graphic =>
-    imgBreakDown.subCat[graphic.subCat].substr(0,1).toUpperCase() === letterView
+    imgBreakDown.subCat[graphic.subCat].substr(0, 1).toUpperCase() === letterView.toUpperCase()
   ).sort((a, b) => {
     let name1 = imgBreakDown.subCat[a.subCat];
     let name2 = imgBreakDown.subCat[b.subCat];
-    if(name1>name2){return 1}
-    if(name1<name2){return -1}
-    if(name1===name2){return 0}
+    if (name1 > name2) { return 1 }
+    if (name1 < name2) { return -1 }
+    if (name1 === name2) { return 0 }
   });
 
 
@@ -31,11 +31,11 @@ export default function RenderLetterGraphics(props) {
           return (
             <React.Fragment key={i}>
               <Row key={toBeOrdered.subCat}>
-                <h2 style={{textDecoration: "underline"}}><strong>{imgBreakDown.subCat[toBeOrdered.subCat]}</strong></h2>
+                <h2 style={{ textDecoration: "underline" }}><strong>{imgBreakDown.subCat[toBeOrdered.subCat]}</strong></h2>
               </Row>
               <Row>
                 {graphics.map((graphic, j) => {
-                  if(graphic.subCat === toBeOrdered.subCat){
+                  if (graphic.subCat === toBeOrdered.subCat) {
                     return (
                       <Col key={graphic + j} xs={12} sm={5} md={4} lg={4}>
                         <Thumbnail className="renderThumb" key={graphic._id} src={graphic.imgUrl} alt="Image to be added soon....">
@@ -62,7 +62,7 @@ export default function RenderLetterGraphics(props) {
     <React.Fragment>
       <Row>
         <Col className="graphicHeader" xs={12} sm={5} md={4} lg={4}>
-          <h1 style={{textDecoration:"underline"}}><strong>{letterView}</strong></h1>
+          <h1 style={{ textDecoration: "underline" }}><strong>{letterView}</strong></h1>
         </Col>
       </Row>
       {headerCreator()}

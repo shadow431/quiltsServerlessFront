@@ -24,7 +24,7 @@ export default function Login(props) {
     try {
       await Auth.signIn(fields.email, fields.password);
       props.userHasAuthenticated(true);
-      props.history.push("/adminLoggedIn");
+      props.history.push("/");
     } catch (e) {
       alert(e.message);
       setIsLoading(false);
@@ -32,7 +32,7 @@ export default function Login(props) {
   }
 
   return (
-    <div className="Login" style={{marginBottom: 160}}>
+    <div className="Login" style={{ marginBottom: 160 }}>
       <form onSubmit={handleSubmit}>
         <FormGroup controlId="email" bsSize="large">
           <ControlLabel>Email</ControlLabel>

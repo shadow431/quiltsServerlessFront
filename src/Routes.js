@@ -4,7 +4,7 @@ import AppliedRoute from "./components/AppliedRoute";
 import AuthenticatedRoute from "./components/AuthenticatedRoute";
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute";
 
-import Admin from "./containers/Admin";
+import AboutUs from "./containers/AboutUs";
 import ContactUs from "./containers/ContactUs";
 import DeleteProduct from "./products/DeleteProduct";
 import Designs from "./embroidery/Designs";
@@ -29,6 +29,7 @@ export default function Routes({ appProps }) {
   return (
     <Switch>
       <AppliedRoute path="/" exact component={Home} appProps={appProps} />
+      <AppliedRoute path="/about" exact component={AboutUs} appProps={appProps} />
       <AppliedRoute path="/contact" exact component={ContactUs} appProps={appProps} />
       <AppliedRoute path="/designs" exact component={Designs} appProps={appProps} />
       <AppliedRoute path="/embroidery" exact component={EmbroideryHome} appProps={appProps} />
@@ -39,7 +40,6 @@ export default function Routes({ appProps }) {
       <AppliedRoute path="/sandbox" exact component={Sandbox} appProps={appProps} />
       <UnauthenticatedRoute path="/admin" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
-      <AuthenticatedRoute path="/adminLoggedIn" exact component={Admin} appProps={appProps} />
       <AuthenticatedRoute path="/admin/design/new" exact component={NewDesign} appProps={appProps} />
       <AuthenticatedRoute path="/admin/fabric/new" exact component={NewFabric} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />

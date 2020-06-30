@@ -13,8 +13,8 @@ export default function ContactUs() {
       <div id="devInfo">
         <h3>Web Master/Developer</h3>
         <h4>Peter L Gunter Jr</h4>
-        <h4>Tukwila, WA</h4>
-        <h4>206-794-4275</h4>
+        <h4>Renton, WA</h4>
+        <h4>206-459-7367</h4>
         <h4>petlgunjr@gmail.com</h4>
       </div>
     </div>
