@@ -28,7 +28,7 @@ export default function NewProduct(props) {
   function handleFileChange(event) {
     file.current = event.target.files[0];
     setName(file.current.name.split(".")[0]);
-    setType(file.current.name.substr(0,3));
+    setType(file.current.name.substr(0, 3));
     setSubCat(file.current.name.substr(3, 3));
     setImgUrl(imgLinkLocation + file.current.name);
   }
@@ -47,7 +47,7 @@ export default function NewProduct(props) {
     if (file.current && file.current.size > config.MAX_ATTACHMENT_SIZE) {
       alert(
         `Please pick a file smaller than ${config.MAX_ATTACHMENT_SIZE /
-          1000000} MB.`
+        1000000} MB.`
       );
       return;
     }
@@ -58,7 +58,7 @@ export default function NewProduct(props) {
       await s3Upload(file.current);
 
       await createDesign({ name, type, subCat, imgUrl, newGraphic, hidden });
-      props.history.push("/admin");
+      props.history.push("/");
     } catch (e) {
       alert(e);
       setIsLoading(false);

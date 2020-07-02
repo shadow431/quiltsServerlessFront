@@ -8,6 +8,7 @@ import AboutUs from "./containers/AboutUs";
 import ContactUs from "./containers/ContactUs";
 import DeleteProduct from "./products/DeleteProduct";
 import Designs from "./embroidery/Designs";
+import EditDesign from "./Design/EditDesign";
 import EditProduct from "./products/EditProduct";
 import EditSchedule from "./schedule/EditSchedule";
 import EmbroideryHome from "./embroidery/EmbroideryHome";
@@ -41,6 +42,7 @@ export default function Routes({ appProps }) {
       <UnauthenticatedRoute path="/admin" exact component={Login} appProps={appProps} />
       <UnauthenticatedRoute path="/signup" exact component={Signup} appProps={appProps} />
       <AuthenticatedRoute path="/admin/design/new" exact component={NewDesign} appProps={appProps} />
+      <AuthenticatedRoute path="/admin/design/edit" exact component={EditDesign} appProps={appProps} />
       <AuthenticatedRoute path="/admin/fabric/new" exact component={NewFabric} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/new" exact component={NewSchedule} appProps={appProps} />
       <AuthenticatedRoute path="/admin/schedule/edit" exact component={EditSchedule} appProps={appProps} />

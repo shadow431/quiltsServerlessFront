@@ -192,7 +192,8 @@ function App(props) {
   }
 
   function handleEdit(graphic) {
-    console.log("item to be edited: ", graphic);
+    setGraphicChoice(graphic);
+    props.history.push("/admin/design/edit");
   }
 
   function handleGraphicView(e) {

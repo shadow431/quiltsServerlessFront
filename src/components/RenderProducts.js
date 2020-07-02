@@ -64,9 +64,9 @@ export default function RenderProducts(props) {
                               )
                             }
                           })}
-                        }
-                      </FormControl>
-                      </FormGroup>) : <h4>{`$${product.price}`}</h4>
+                        </FormControl>
+                      </FormGroup>
+                      ) : <h4>{`$${product.price}`}</h4>
                     }
                     {typeToRender === "EMB" &&
                       <FormGroup controlId="colorSelect">
