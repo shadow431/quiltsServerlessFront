@@ -215,6 +215,8 @@ function App(props) {
             <Navbar.Header>
               <Navbar.Brand>
                 <Link to="/"><img className="NavHeaderBarLogo" src="https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/top.ht2-trans.gif" alt="Embroidery by Wanda" /></Link>
+              </Navbar.Brand>
+              <Navbar.Brand>
                 <h1>Wanda 360-599-1816 wgunter90@gmail.com</h1>
               </Navbar.Brand>
               <Navbar.Toggle />
