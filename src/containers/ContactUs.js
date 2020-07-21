@@ -8,6 +8,7 @@ export default function ContactUs() {
         <h3>Owner/Embroider Done By:</h3>
         <h4>Wanda Gunter</h4>
         <h4>Maple Falls, WA</h4>
+        <h4>360-599-1816</h4>
         <h4>wgunter90@gmail.com</h4>
       </div>
       <div id="devInfo">
