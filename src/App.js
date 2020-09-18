@@ -10,6 +10,7 @@ import LetterNav from "./components/LetterNav";
 import Modal from "react-modal";
 import { greenTheme, greyTheme } from "./containers/theme";
 import { GlobalStyles } from "./containers/globalCSS";
+import Header from "./components/Header";
 
 function App(props) {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
@@ -211,30 +212,7 @@ function App(props) {
     !isAuthenticating && (
       <ThemeProvider theme={theme === 'greenTheme' ? greyTheme : greenTheme}>
         <div className="App container">
-          <Navbar className="appNav" fluid collapseOnSelect>
-            <Navbar.Header>
-              <Navbar.Brand>
-                <Link to="/"><img className="NavHeaderBarLogo" src="https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/top.ht2-trans.gif" alt="Embroidery by Wanda" /></Link>
-              </Navbar.Brand>
-              <Navbar.Brand>
-                <h1>Wanda 360-599-1816 wgunter90@gmail.com</h1>
-              </Navbar.Brand>
-              <Navbar.Toggle />
-            </Navbar.Header>
-            <Navbar.Collapse>
-              <Nav pullRight>
-                <GlobalStyles />
-                <NavItem className="contactLink" onClick={() => props.history.push("/contact")}>Contact Us</NavItem>
-                <NavItem className="contactLink" onClick={() => props.history.push("/about")}>About Us</NavItem>
-                <NavItem className="adminLink" onClick={toggleTheme}>Color Scheme</NavItem>
-                {isAuthenticated ? <NavItem onClick={handleLogout}><span className="logoutLink">Logout</span></NavItem> : null}
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-          <MainNav navProps={{ history, isAuthenticated, startOver, setShowLetterNav, setLetterView, setShowByLetter }} />
-          {showLetterNav ?
-            <LetterNav letterNavProps={{ setLetterView, setLetterNavKey, letterNavKey, setGraphicView, setShowByLetter }} /> : null
-          }
+          <Header headerProps={{ isAuthenticated, toggleTheme, handleLogout, history, startOver, setLetterView, setShowLetterNav, LetterNav, setGraphicView, setShowByLetter, showLetterNav, setLetterNavKey, letterNavKey }} />
           <div className="MainSection" style={{ display: 'flex' }}>
             {!isLoading ?
               <Routes appProps={
