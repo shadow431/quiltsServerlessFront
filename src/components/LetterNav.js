@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Nav, NavItem, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import MediaQuery from "react-responsive";
 

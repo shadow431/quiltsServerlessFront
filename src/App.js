@@ -265,6 +265,7 @@ function App(props) {
                   setLetterNavKey,
                   showByLetter,
                   sizeChoicePaypalId,
+                  setShowByLetter,
                   startOver
                 }
               } />

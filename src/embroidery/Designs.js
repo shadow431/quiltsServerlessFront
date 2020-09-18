@@ -31,6 +31,9 @@ export default function Designs(props) {
     <React.Fragment>
       <Grid fluid>
         <Row>
+          <LetterNav letterNavProps={{ setLetterView, setShowByLetter, letterNavKey, setLetterNavKey, handleLetterSort }} />
+        </Row>
+        <Row>
           <FormGroup controlId="formControlsSelect" className="categorySelector">
             <ControlLabel>Welcome to Embroidery!!  Feel free to browse through and choose a design.</ControlLabel>
             <FormControl componentClass="select" placeholder="select" onChange={handleGraphicView}>
@@ -42,7 +45,6 @@ export default function Designs(props) {
               })}
             </FormControl>
           </FormGroup>
-          <LetterNav letterNavProps={{ setLetterView, setShowByLetter, letterNavKey, setLetterNavKey, handleLetterSort }} />
         </Row>
         {isLargeImage ? <LargerImage /> : null}
         {showByLetter ?
