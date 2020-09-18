@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Auth } from "aws-amplify";
-import { Link, withRouter } from "react-router-dom";
-import { Nav, Navbar, NavItem, Button } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import { ThemeProvider } from "styled-components";
 import Routes from "./Routes";
 import { API } from "aws-amplify";
-import MainNav from "./components/MainNav";
 import LetterNav from "./components/LetterNav";
 import Modal from "react-modal";
 import { greenTheme, greyTheme } from "./containers/theme";

@@ -3,6 +3,7 @@ import RenderGraphics from "../components/RenderGraphics";
 import { FormControl, FormGroup, ControlLabel, Grid, Row } from "react-bootstrap";
 import imgBreakDown from "../components/ImgBreakDown";
 import RenderLetterGraphics from "../components/RenderLetterGraphics";
+import LetterNav from "../components/LetterNav";
 
 export default function Designs(props) {
   const {
@@ -17,6 +18,11 @@ export default function Designs(props) {
     embroideryGraphicCategories,
     letterView,
     showByLetter,
+    setLetterView,
+    setShowByLetter,
+    letterNavKey,
+    setLetterNavKey,
+    handleLetterSort
   } = props;
   const graphicCategories = embroideryGraphicCategories;
   const graphics = designs;
@@ -36,6 +42,7 @@ export default function Designs(props) {
               })}
             </FormControl>
           </FormGroup>
+          <LetterNav letterNavProps={{ setLetterView, setShowByLetter, letterNavKey, setLetterNavKey, handleLetterSort }} />
         </Row>
         {isLargeImage ? <LargerImage /> : null}
         {showByLetter ?

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Nav, Navbar, NavItem, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
+import { Nav, NavItem, FormControl, FormGroup, ControlLabel } from "react-bootstrap";
 import MediaQuery from "react-responsive";
 import "../containers/globalCSS.js";
 
@@ -20,7 +20,7 @@ export default function MainNav(props) {
 
   return (
     <React.Fragment>
-      // {window.location.pathname.includes("/admin") || window.location.pathname.includes("/login") ? null : (
+      {window.location.pathname.includes("/admin") || window.location.pathname.includes("/login") ? null : (
         <MediaQuery minWidth={786}>
           {(matches) =>
             matches
@@ -29,23 +29,23 @@ export default function MainNav(props) {
                   <NavItem eventKey={1} onClick={() => { startOver(); history.push("/newitems"); setNavKey(1); }}>
                     NEW!!
                 </NavItem>
-                <NavItem eventKey={2} onClick={() => { startOver(); history.push("/embroidery"); setNavKey(2); setShowLetterNav(true); }}>
-                  Products
+                  <NavItem eventKey={2} onClick={() => { startOver(); history.push("/embroidery"); setNavKey(2); setShowLetterNav(true); }}>
+                    Products
                 </NavItem>
-                <NavItem eventKey={3} onClick={() => { startOver(); history.push("/designs"); setNavKey(3); setShowLetterNav(true); }}>
-                  Embroidery
+                  <NavItem eventKey={3} onClick={() => { startOver(); history.push("/designs"); setNavKey(3); setShowLetterNav(true); }}>
+                    Embroidery
                 </NavItem>
-                <NavItem eventKey={4} onClick={() => { startOver(); history.push("/kitchen"); setNavKey(4); }}>
-                  Kitchen Items
+                  <NavItem eventKey={4} onClick={() => { startOver(); history.push("/kitchen"); setNavKey(4); }}>
+                    Kitchen Items
                 </NavItem>
-                <NavItem eventKey={5} onClick={() => { startOver(); history.push("/fabrics"); setNavKey(5); }}>
-                  Fabrics
+                  <NavItem eventKey={5} onClick={() => { startOver(); history.push("/fabrics"); setNavKey(5); }}>
+                    Fabrics
                 </NavItem>
-                      {/* <NavItem eventKey={3} onClick={() => {history.push("/quilts"); setNavKey(3);}}>
+                  {/* <NavItem eventKey={3} onClick={() => {history.push("/quilts"); setNavKey(3);}}>
                   Quilts
                 </NavItem> */}
-                <NavItem eventKey={6} onClick={() => { startOver(); history.push("/schedule"); setNavKey(6); }}>
-                  Show Schedule
+                  <NavItem eventKey={6} onClick={() => { startOver(); history.push("/schedule"); setNavKey(6); }}>
+                    Show Schedule
                 </NavItem>
                   {isAuthenticated ? (
                     <React.Fragment>
@@ -82,37 +82,6 @@ export default function MainNav(props) {
                       ) :
                         null
                       }
-                    </FormControl>
-                  </FormGroup>
-                  <FormGroup controlId="letterNavSelect">
-                    <ControlLabel>Letter Sort</ControlLabel>
-                    <FormControl componentClass="select" placeholder="select" onChange={handleLetterSort}>
-                      <option value="a">A</option>
-                      <option value="b">B</option>
-                      <option value="c">C</option>
-                      <option value="d">D</option>
-                      <option value="e">E</option>
-                      <option value="f">F</option>
-                      <option value="g">G</option>
-                      <option value="h">H</option>
-                      <option value="i">I</option>
-                      <option value="j">J</option>
-                      <option value="k">K</option>
-                      <option value="l">L</option>
-                      <option value="m">M</option>
-                      <option value="n">N</option>
-                      <option value="o">O</option>
-                      <option value="p">P</option>
-                      <option value="q">Q</option>
-                      <option value="r">R</option>
-                      <option value="s">S</option>
-                      <option value="t">T</option>
-                      <option value="u">U</option>
-                      <option value="v">V</option>
-                      <option value="w">W</option>
-                      <option value="x">X</option>
-                      <option value="y">Y</option>
-                      <option value="z">Z</option>
                     </FormControl>
                   </FormGroup>
                 </React.Fragment>
