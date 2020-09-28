@@ -1,36 +1,36 @@
 const dev = {
-  STRIPE_KEY: "pk_test_v1amvR35uoCNduJfkqGB8RLD",
+  STRIPE_KEY: "",
   s3: {
-    REGION: "us-east-2",
-    BUCKET: "wandaquilts"
+    REGION: "",
+    BUCKET: ""
   },
   apiGateway: {
-    REGION: "us-east-2",
-    URL: "https://h9ueaa5ebh.execute-api.us-east-2.amazonaws.com/prod"
+    REGION: "",
+    URL: ""
   },
   cognito: {
-    REGION: "us-east-2",
-    USER_POOL_ID: "us-east-2_l7DIHcmKz",
-    APP_CLIENT_ID: "4k73l09jd81j9h27ii6to55b2h",
-    IDENTITY_POOL_ID: "us-east-2:0a42de85-da60-4a25-88dc-897de3628657"
+    REGION: "",
+    USER_POOL_ID: "",
+    APP_CLIENT_ID: "",
+    IDENTITY_POOL_ID: ""
   }
 };
 
 const prod = {
-  STRIPE_KEY: "pk_test_LvcoovDotThQ9oZ5Jb5jWjLp00XjM6Vkpf",
+  STRIPE_KEY: "",
   s3: {
-    REGION: "us-east-2",
-    BUCKET: "wandaquilts"
+    REGION: "",
+    BUCKET: ""
   },
   apiGateway: {
-    REGION: "us-east-2",
-    URL: "https://h9ueaa5ebh.execute-api.us-east-2.amazonaws.com/prod"
+    REGION: "",
+    URL: ""
   },
   cognito: {
-    REGION: "us-east-2",
-    USER_POOL_ID: "us-east-2_l7DIHcmKz",
-    APP_CLIENT_ID: "4k73l09jd81j9h27ii6to55b2h",
-    IDENTITY_POOL_ID: "us-east-2:0a42de85-da60-4a25-88dc-897de3628657"
+    REGION: "",
+    USER_POOL_ID: "",
+    APP_CLIENT_ID: "",
+    IDENTITY_POOL_ID: ""
   }
 };
 
