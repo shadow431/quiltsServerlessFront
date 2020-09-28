@@ -5,8 +5,8 @@ const dev = {
     BUCKET: ""
   },
   apiGateway: {
-    REGION: "",
-    URL: ""
+    REGION: "us-east-2",
+    URL: "https://w615iliqbh.execute-api.us-east-2.amazonaws.com/prod"
   },
   cognito: {
     REGION: "",
@@ -23,8 +23,8 @@ const prod = {
     BUCKET: ""
   },
   apiGateway: {
-    REGION: "",
-    URL: ""
+    REGION: "us-east-2",
+    URL: "https://w615iliqbh.execute-api.us-east-2.amazonaws.com/prod"
   },
   cognito: {
     REGION: "",
