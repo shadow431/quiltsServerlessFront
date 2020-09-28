@@ -27,7 +27,7 @@ export default function Header(props) {
       <Navbar className="headerLogoNav" fluid>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/"><img className="NavHeaderBarLogo" src="https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/top.ht2-trans.gif" alt="Embroidery by Wanda" /></Link>
+            <Link to="/"><img className="NavHeaderBarLogo" src="https://wandaquilts-terraformtest.s3.us-east-2.amazonaws.com/top.ht2-trans.gif" alt="Embroidery by Wanda" /></Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

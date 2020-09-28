@@ -9,7 +9,7 @@ import "./NewProduct.css";
 
 
 export default function NewProduct(props) {
-  const imgLinkLocation = "https://wandaquilts.s3.us-east-2.amazonaws.com/private/us-east-2%3A2f67acc9-e8bd-4aa4-b6cf-074193ad94e4/";
+  const imgLinkLocation = "https://wandaquilts-terraformtest.s3.us-east-2.amazonaws.com/";
   const file = useRef(null);
   const [imgName, setImgName] = useState("");
   const [imgType, setImgType] = useState("");
